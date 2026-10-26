@@ -2,7 +2,6 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/pages',
-  outputDir: './output/pages-test-results',
   fullyParallel: true,
   retries: 0,
   workers: 3,

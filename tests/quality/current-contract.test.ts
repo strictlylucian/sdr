@@ -1,5 +1,5 @@
 import { afterEach, expect, it } from 'vitest';
-import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join, resolve, sep } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import { utilityStyles } from '../../tooling/build/tokens.mjs';
@@ -8,7 +8,6 @@ import { prunePages } from '../../tooling/docs/prune-pages.mts';
 import { countText } from '../../apps/docs/src/i18n/messages';
 import { orderedComponents } from '../../catalog/components';
 import { patterns } from '../../catalog/patterns';
-import { writeGenerated } from '../../tooling/docs/write-generated.mts';
 
 const base = resolve('output/docs-current-tests');
 const roots: string[] = [];
@@ -60,18 +59,4 @@ it('prunes stale generated pages without deleting other file types', async () =>
   await Promise.all(['current.mdx', 'obsolete.mdx', 'asset.svg'].map(name => writeFile(join(root, name), name)));
   await prunePages(root, ['current'], '.mdx');
   expect((await readdir(root)).sort()).toEqual(['asset.svg', 'current.mdx']);
-});
-
-it('replaces complete generated files and leaves unchanged output untouched', async () => {
-  await mkdir(base, { recursive: true });
-  const root = await mkdtemp(join(base, 'case-'));
-  roots.push(root);
-  const path = join(root, 'nested', 'page.mdx');
-  await writeGenerated(path, 'Prima versiune: România');
-  const first = await stat(path);
-  await writeGenerated(path, 'Prima versiune: România');
-  expect((await stat(path)).mtimeMs).toBe(first.mtimeMs);
-  await writeGenerated(path, 'Versiune actualizată');
-  expect(await readFile(path, 'utf8')).toBe('Versiune actualizată');
-  expect(await readdir(join(root, 'nested'))).toEqual(['page.mdx']);
 });

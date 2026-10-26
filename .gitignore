@@ -17,4 +17,3 @@ output/
 CONTINUITY.md
 __pycache__/
 *.pyc
-*.sdr-generated

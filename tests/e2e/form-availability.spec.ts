@@ -63,17 +63,9 @@ for (const locale of ['ro', 'en'] as Locale[]) for (const edition of ['react', '
           const composite = rail.querySelector('.sdr-input-group,.sdr-segmented');
           const last = composite ?? (choices.length ? choices[choices.length - 1] : controls[controls.length - 1]);
           const frame = rail.getBoundingClientRect();
-          const style = getComputedStyle(first);
-          const canvas = document.createElement('canvas').getContext('2d')!;
-          canvas.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-          const metrics = canvas.measureText('H');
-          const capTop = (parseFloat(style.lineHeight) - metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent) / 2
-            + metrics.fontBoundingBoxAscent - metrics.actualBoundingBoxAscent;
-          const mark = getComputedStyle(rail, '::before');
-          return { top: frame.top + parseFloat(mark.top) - first.getBoundingClientRect().top - capTop,
-            bottom: frame.bottom - parseFloat(mark.bottom) - last.getBoundingClientRect().bottom };
+          return { top: frame.top - first.getBoundingClientRect().top, bottom: frame.bottom - last.getBoundingClientRect().bottom };
         });
-        expect(Math.abs(alignment.top), `${example.name}: rail aligned with capital ink`).toBeLessThanOrEqual(1.5);
+        expect(Math.abs(alignment.top), `${example.name}: rail top`).toBeLessThanOrEqual(1);
         expect(Math.abs(alignment.bottom), `${example.name}: rail bottom`).toBeLessThanOrEqual(1);
       }
     }

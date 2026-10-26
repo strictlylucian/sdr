@@ -61,11 +61,6 @@ for (const locale of ['ro', 'en']) {
     await expect(page.locator('[data-sdr-variant="ToggleButton"]')).toHaveAttribute('href', `/sdr/${locale}/components/button/#variant-toggle-button`);
     await page.locator('.sdr-example-code').first().getByRole('tab', { name: 'HTML', exact: true }).click();
     await expect(page.locator('.sdr-example-code').first().getByRole('link')).toHaveAttribute('href', `/sdr/${locale}/getting-started/`);
-    await page.goto(`/sdr/${locale}/components/checkbox/#state-switch-error`);
-    await expect(page.locator('[data-sdr-state="switch-error"]')).toHaveAttribute('href', `/sdr/${locale}/components/checkbox/#state-switch-error`);
-    await expect(page.locator('[data-sdr-state="switch-error"]')).toHaveAttribute('aria-current', 'location');
-    await expect(page.locator('[data-sdr-state="switch-error"]')).toBeVisible();
-    await expect(page.locator('[data-sdr-state="switch-error"]')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     await page.goto(`/sdr/${locale}/components/page/`);
     const frame = page.frameLocator('iframe');
     await expect(frame.locator('h1')).toBeVisible();

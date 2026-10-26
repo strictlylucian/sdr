@@ -1,6 +1,5 @@
-import { writeGenerated } from './write-generated.mts';
 import { uiText } from '../../apps/docs/src/i18n/messages';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { components, orderedComponents } from '../../catalog/components';
 import { componentVariants } from '../../catalog/component-variants';
 import { componentHref } from '../../catalog/component-navigation';
@@ -12,7 +11,6 @@ import { readExamples, exampleHtml, writePortablePage } from './doc-examples.mts
 import { readApi } from './api.mts';
 import { formatExample } from './format-example.mts';
 import states from '../../catalog/data/component-states.json';
-import { stateAnchor, componentStateHref } from '../../catalog/component-states';
 import './docs-guides.mts';
 const snippets = await readExamples();
 const api = readApi();
@@ -28,7 +26,7 @@ function apiTable(name: string, locale: 'ro' | 'en') {
 async function page(locale: string, path: string, title: string, content: string, sidebar?: { order?: number; hidden?: boolean }) {
   const target = `${root}/${locale}/${path}.mdx`;
   await mkdir(target.slice(0, target.lastIndexOf('/')), { recursive: true });
-  await writeGenerated(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR. ${uiText(locale, "docs.independentProposal")}`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
+  await writeFile(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR. ${uiText(locale, "docs.independentProposal")}`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
 }
 for (const locale of ['ro', 'en'] as const) {
   const ordered = orderedComponents(locale);
@@ -57,7 +55,7 @@ ${code('html', await formatExample(exampleHtml(name, locale), 'html'))}
     const key = state.state as keyof typeof copy;
     if (!Object.hasOwn(copy, key)) throw new Error('Unknown form state: ' + state.state);
     const guidance = state.native ? copy[key].guidance : 'docs.staticStateGuidance';
-    return `\n<div id="${stateAnchor(state.slug)}" className="sdr-component-state">\n\n${nested ? '###' : '##'} ${uiText(locale, copy[key].title)}\n\n${uiText(locale, guidance)}\n\n<Preview name="${state.example}" locale="${locale}" />\n\n${await sourceTabs(state.example)}\n\n[${uiText(locale, 'docs.openThePortableExample')}](/examples/${locale}/${state.slug}.html)\n\n</div>\n`;
+    return `\n${nested ? '###' : '##'} ${uiText(locale, copy[key].title)}\n\n${uiText(locale, guidance)}\n\n<Preview name="${state.example}" locale="${locale}" />\n\n${await sourceTabs(state.example)}\n\n[${uiText(locale, 'docs.openThePortableExample')}](/examples/${locale}/${state.slug}.html)\n`;
   }))).join('\n');
   const imports = `import Preview from '../../../../components/Preview.astro';\nimport { Tabs, TabItem } from '@astrojs/starlight/components';`;
   const index = ordered.map(item => `- [${item.title[locale]}](${componentHref(item.name, locale)}) — ${item.description[locale]}${componentVariants.filter(variant => variant.parent === item.name).map(variant => '\n  - [' + variant.title[locale] + '](' + componentHref(variant.name, locale) + ')').join('')}`).join('\n');
@@ -138,8 +136,8 @@ ${uiText(locale, "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFo
   ], '.html');
 }
 await mkdir('apps/docs/src/data', { recursive: true });
-await writeGenerated('apps/docs/src/data/api.json', JSON.stringify(api));
-await writeGenerated('apps/docs/public/qa-manifest.json', JSON.stringify({ states: states.map(state => ({ name: state.example, slug: state.slug, state: state.state, native: state.native, docsPath: { ro: componentStateHref(state, 'ro'), en: componentStateHref(state, 'en') } })), components: components.map(item => {
+await writeFile('apps/docs/src/data/api.json', JSON.stringify(api));
+await writeFile('apps/docs/public/qa-manifest.json', JSON.stringify({ states: states.map(state => ({ name: state.example, slug: state.slug, state: state.state, native: state.native, docsPath: { ro: componentHref(state.component, 'ro'), en: componentHref(state.component, 'en') } })), components: components.map(item => {
   const docsPath = Object.fromEntries((['ro', 'en'] as const).map(locale => [locale, componentHref(item.name, locale)]));
   return { name: item.name, slug: item.slug, docsPath };
 }), patterns: patterns.map(item => item.slug), patternExamples: patternEntries.map(item => ({ name: item.example, slug: patternExampleSlug(item.slug), docsPath: { ro: patternHref(item.slug, 'ro'), en: patternHref(item.slug, 'en') } })) }));

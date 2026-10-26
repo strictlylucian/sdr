@@ -5,7 +5,6 @@ import { patternHref } from '../../../catalog/pattern-navigation';
 import { components } from '../../../catalog/components';
 import { componentVariants } from '../../../catalog/component-variants';
 import { componentHref } from '../../../catalog/component-navigation';
-import { sidebarStates } from './sidebar-states';
 type Entry = StarlightRouteData['sidebar'][number];
 export const onRequest = defineRouteMiddleware(context => {
   const route = (context.locals as { starlightRoute: StarlightRouteData }).starlightRoute;
@@ -28,24 +27,15 @@ export const onRequest = defineRouteMiddleware(context => {
       };
     }
     const variants = componentVariants.filter(variant => variant.parent === parent.name);
-    const states = sidebarStates(parent.name, locale);
-    if (!variants.length && !states.length) return entry;
+    if (!variants.length) return entry;
     return {
-      type: 'group', label: entry.label, collapsed: !entry.isCurrent, badge: undefined,
+      type: 'group', label: entry.label, collapsed: false, badge: undefined,
       entries: [
         { ...entry, label: locale === 'ro' ? 'Prezentare' : 'Overview', attrs: { ...entry.attrs, 'data-sdr-parent': parent.name } },
-        ...states,
-        ...variants.map(variant => {
-          const link: Entry = {
-            type: 'link', label: variant.title[locale], href: docsUrl(componentHref(variant.name, locale)),
-            isCurrent: false, badge: undefined, attrs: { 'data-sdr-variant': variant.name },
-          };
-          const children = sidebarStates(variant.name, locale);
-          return children.length ? {
-            type: 'group' as const, label: variant.title[locale], collapsed: true, badge: undefined,
-            entries: [{ ...link, label: locale === 'ro' ? 'Prezentare' : 'Overview' }, ...children],
-          } : link;
-        }),
+        ...variants.map(variant => ({
+          type: 'link' as const, label: variant.title[locale], href: docsUrl(componentHref(variant.name, locale)),
+          isCurrent: false, badge: undefined, attrs: { 'data-sdr-variant': variant.name },
+        })),
       ],
     };
   });
