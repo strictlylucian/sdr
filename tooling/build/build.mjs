@@ -8,7 +8,7 @@ import { embeddedFontStyles } from './fonts.mjs';
 import { clearBuildOutputs } from './outputs.mjs';
 
 await clearBuildOutputs();
-const styles = ['base', 'motif.generated', 'layout', 'forms', 'navigation', 'feedback', 'interactive', 'data'];
+const styles = ['base', 'motif.generated', 'layout', 'forms', 'conditional-choice', 'navigation', 'feedback', 'interactive', 'data'];
 await writeFile('packages/core/src/styles/motif.generated.css', await motifStyles());
 const generated = tokenStyles() + utilityStyles();
 const fonts = await embeddedFontStyles();
@@ -30,5 +30,4 @@ await cp('dist/types/core/src', 'packages/core/dist', { recursive: true });
 await cp('dist/types/react/src', 'packages/react/dist', { recursive: true });
 for (const name of ['core', 'react']) await cp('LICENSE', `packages/${name}/LICENSE`);
 await cp('packages/core/assets/inter/LICENSE.txt', 'packages/core/dist/INTER-LICENSE.txt');
-await cp('catalog/motif-provenance.json', 'packages/core/dist/MOTIF-PROVENANCE.json');
 console.log('Built React, core and exactly two portable runtime files.');

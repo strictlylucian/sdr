@@ -17,3 +17,4 @@ export * from './pattern-search';
 export * from './form-errors';
 export * from './form-disabled';
 export * from './form-readonly';
+export * from './conditional-choices';

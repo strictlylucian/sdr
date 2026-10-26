@@ -79,9 +79,9 @@ ${await sourceTabs(variant.name)}
 
 ${await controlStates(variant.name, true)}
 
-### API · ${variant.name}
+### API · ${variant.apiName ?? variant.name}
 
-${apiTable(variant.name, locale)}
+${apiTable(variant.apiName ?? variant.name, locale)}
 
 </div>
 `));

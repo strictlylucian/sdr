@@ -93,7 +93,7 @@
   "docs-guides.headerRule": "Linia de sub header",
   "docs-guides.theValuesAreDefinedIn": "Valorile sunt definite în",
   "docs-guides.theAnnexToLaw1762023": "anexa Legii nr. 176/2023",
-  "docs-guides.theFlagColoursExportFromSdrCoreExposesThe": "Exportul flagColours din @sdr/core oferă aceleași valori în JavaScript. Culorile semantice pentru text, stări și suprafețe sunt adaptate fiecărei teme pentru contrast.",
+  "docs-guides.theFlagColoursExportFromSdrCoreExposesThe": "Exportul flagColours din @strictlylucian/sdr-core oferă aceleași valori în JavaScript. Culorile semantice pentru text, stări și suprafețe sunt adaptate fiecărei teme pentru contrast.",
   "docs-guides.buttonsUseFlagYellowForKeyboardFocusAnd": "Butoanele au fundal galben când primesc focus din tastatură sau sunt apăsate. Butoanele toggle îl păstrează cât timp aria-pressed este true. Textul și conturul închise la culoare oferă contrast pe galben. Indicatorul de focus are un contur galben și unul interior închis, vizibile atât pe fundal deschis, cât și pe fundal întunecat. Linkul către conținut apare când primește focus și folosește aceleași culori.",
   "docs-guides.featuresAndImplementationStatus": "Funcționalități și stadiu",
   "docs-guides.statusReviewedOn25October2026AllComponents": "Stadiu verificat la 25 octombrie 2026. Toate componentele sunt experimentale. Existența unei implementări nu reprezintă certificarea accesibilității sau validarea într-un serviciu real.",

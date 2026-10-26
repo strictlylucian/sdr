@@ -3,6 +3,7 @@ export const refreshEvent = 'sdr:refresh';
 export function lifecycle() {
   const cleanups: Cleanup[] = [];
   const changed = new WeakMap<Element, Set<string>>();
+  const pending = new Set<ReturnType<typeof setTimeout>>();
   return {
     on(target: EventTarget, type: string, listener: EventListener) {
       target.addEventListener(type, listener);
@@ -19,7 +20,17 @@ export function lifecycle() {
       if (value === null) element.removeAttribute(name); else element.setAttribute(name, value);
     },
     add(cleanup: Cleanup) { cleanups.push(cleanup); },
-    destroy() { for (const cleanup of cleanups.reverse()) cleanup(); cleanups.length = 0; },
+    // Native reset-button activation can finish its default action after microtasks run.
+    defer(callback: Cleanup) {
+      const timer = setTimeout(() => { pending.delete(timer); callback(); }, 0);
+      pending.add(timer);
+    },
+    destroy() {
+      for (const timer of pending) clearTimeout(timer);
+      pending.clear();
+      for (const cleanup of cleanups.reverse()) cleanup();
+      cleanups.length = 0;
+    },
   };
 }
 export function requireElement<T extends Element>(root: ParentNode, selector: string): T {

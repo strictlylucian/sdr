@@ -8,9 +8,15 @@ Componente React cu tipuri TypeScript și conținut furnizat de aplicație, în 
 
 Aplicația furnizează toate etichetele și mesajele dinamice. SDR nu include un mecanism i18n sau dicționare și acceptă conținut în orice limbă. SdrProvider transmite atributul nativ lang fără să aleagă traduceri. CharacterCount primește obligatoriu funcția formatCount.
 
+## Instalare
+
+```sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+```
+
 ```tsx
-import '@sdr/core/styles.css';
-import { SdrProvider, TextInput, Button } from '@sdr/react';
+import '@strictlylucian/sdr-core/styles.css';
+import { SdrProvider, TextInput, Button } from '@strictlylucian/sdr-react';
 
 export function Example() {
   return (
@@ -24,7 +30,7 @@ export function Example() {
 }
 ```
 
-Pentru integrarea locală sunt necesare ambele arhive. React și React DOM sunt dependențe peer. CSS-ul este importat o singură dată în aplicație.
+Pachetele core și React se instalează împreună, la aceeași versiune. React și React DOM sunt dependențe peer. CSS-ul este importat o singură dată în aplicație.
 
 Componentele acceptă valori controlate pentru câmpurile native, refs, etichete, texte ajutătoare și mesaje de eroare asociate. Un form builder gestionează schema, regulile de validare, navigarea și salvarea datelor; SDR furnizează interfața și interacțiunile componentelor. ID-urile stabile păstrează asocierile și ajută la gestionarea focusului în formularele dinamice.
 
@@ -32,4 +38,4 @@ Interacțiunile sunt inițializate și eliminate prin efectele React. Scriptul p
 
 Versiunile alpha pot modifica API-ul. O integrare de form builder poate fixa versiuni exacte pentru a controla actualizările.
 
-Codul folosește licența MIT. Notificările pentru fonturi și modelul decorativ vectorial sunt incluse în pachetul core.
+Codul folosește licența MIT. Notificările pentru fonturi sunt incluse în pachetul core.

@@ -93,7 +93,7 @@
   "docs-guides.headerRule": "Header rule",
   "docs-guides.theValuesAreDefinedIn": "The values are defined in",
   "docs-guides.theAnnexToLaw1762023": "the annex to Law 176/2023",
-  "docs-guides.theFlagColoursExportFromSdrCoreExposesThe": "The flagColours export from @sdr/core exposes the same values in JavaScript. Semantic text, status and surface colours adapt to each theme for contrast.",
+  "docs-guides.theFlagColoursExportFromSdrCoreExposesThe": "The flagColours export from @strictlylucian/sdr-core exposes the same values in JavaScript. Semantic text, status and surface colours adapt to each theme for contrast.",
   "docs-guides.buttonsUseFlagYellowForKeyboardFocusAnd": "Buttons use flag yellow for keyboard focus and while pressed. Toggle buttons retain this state while aria-pressed is true. Dark text and borders provide contrast against yellow; the focus indicator combines a yellow ring with a dark inner edge for light and dark surfaces. The skip-to-content link becomes visible on focus and uses the same colour pair.",
   "docs-guides.featuresAndImplementationStatus": "Features and implementation status",
   "docs-guides.statusReviewedOn25October2026AllComponents": "Status reviewed on 25 October 2026. All components are experimental. An implementation does not represent accessibility certification or validation in a real service.",

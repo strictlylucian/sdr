@@ -21,7 +21,7 @@ Select zero or more independent options.
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -121,7 +121,7 @@ The error message is associated with the control through aria-describedby, and a
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -235,7 +235,7 @@ The disabled attribute disables the control and excludes it from Tab navigation 
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -339,7 +339,7 @@ This control has no native HTML readonly attribute. The example uses SummaryList
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -395,6 +395,8 @@ Group related choices with Fieldset and include a none option where appropriate.
 | `label` | `ReactNode` | Yes |
 | `hint` | `ReactNode` | No |
 | `error` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `conditionalId` | `string \| undefined` | No |
 
 Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
 
@@ -415,7 +417,7 @@ Switch is the setting-toggle variant and retains checkbox semantics. The applica
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -490,7 +492,7 @@ The error message is associated with the control through aria-describedby, and a
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -573,7 +575,7 @@ The disabled attribute disables the control and excludes it from Tab navigation 
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -652,7 +654,7 @@ This control has no native HTML readonly attribute. The example uses SummaryList
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -702,6 +704,222 @@ export function SwitchReadOnlyExample() {
 | `label` | `ReactNode` | Yes |
 | `hint` | `ReactNode` | No |
 | `error` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `conditionalId` | `string \| undefined` | No |
+
+</div>
+
+
+<div id="variant-conditional-fields" className="sdr-component-variant">
+
+## With conditional fields
+
+Related fields are passed as children of Radio or Checkbox. conditionalId optionally provides the related fieldset ID. A short, directly related question works best; vertical choices keep the relationship clear. The example starts with an email validation error to show the nested error rail. Selection reveals the fields without moving focus. Inactive content stays mounted, hidden and disabled: values are retained, but excluded from native validation and FormData. The application owns validation, error summaries and submitted data, including any custom form-state library. Without JavaScript all related fields remain visible. In HTML, data-sdr-component="conditional-choice" opts in; aria-controls references the direct child fieldset marked data-sdr-conditional. Programmatic checked/disabled changes require a bubbling change event or sdr:refresh on the choice container. Native form reset restores the reveal state. Complex branching is better handled on separate pages. Manual screen-reader evaluation is still pending.
+
+<Preview name="ConditionalCheckbox" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@strictlylucian/sdr-react';
+
+const locale = 'en';
+
+export function ConditionalCheckboxExample() {
+  return (
+    <R.Fieldset
+      legend="How would you prefer to be contacted?"
+      hint="Select all that apply. Each selected option reveals a related field."
+    >
+      <R.Checkbox
+        id="updates-email"
+        name="contact-methods"
+        value="email"
+        label="Email"
+        defaultChecked
+      >
+        <R.TextInput
+          id="updates-email-address"
+          name="email-address"
+          type="email"
+          autoComplete="email"
+          label="Email address"
+          error="Enter your email address."
+        />
+      </R.Checkbox>
+      <R.Checkbox
+        id="updates-phone"
+        name="contact-methods"
+        value="phone"
+        label="Phone"
+      >
+        <R.TextInput
+          id="updates-phone-number"
+          name="phone-number"
+          type="tel"
+          autoComplete="tel"
+          label="Phone number"
+        />
+      </R.Checkbox>
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="conditional-checkbox"
+      class="sdr-fieldset"
+      aria-describedby="conditional-checkbox-hint"
+    >
+      <legend class="sdr-legend">How would you prefer to be contacted?</legend>
+      <div
+        class="sdr-hint"
+        id="conditional-checkbox-hint"
+      >
+        Select all that apply. Each selected option reveals a related field.
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="updates-email"
+          ><span class="sdr-choice__control"
+            ><input
+              id="updates-email"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-controls="updates-email-conditional"
+              aria-describedby="conditional-checkbox-hint"
+              name="contact-methods"
+              checked=""
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="updates-email-label"
+              class="sdr-choice__label"
+              >Email</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="updates-email-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="updates-email-label"
+        >
+          <div class="sdr-field sdr-field--error">
+            <label
+              class="sdr-label"
+              for="updates-email-address"
+              >Email address</label
+            >
+            <div
+              id="updates-email-address-error"
+              class="sdr-error"
+            >
+              Enter your email address.
+            </div>
+            <input
+              type="email"
+              autocomplete="email"
+              id="updates-email-address"
+              aria-invalid="true"
+              aria-describedby="updates-email-address-error"
+              class="sdr-input"
+              name="email-address"
+            />
+          </div>
+        </fieldset>
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="updates-phone"
+          ><span class="sdr-choice__control"
+            ><input
+              id="updates-phone"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-controls="updates-phone-conditional"
+              aria-describedby="conditional-checkbox-hint"
+              name="contact-methods"
+              value="phone" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="updates-phone-label"
+              class="sdr-choice__label"
+              >Phone</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="updates-phone-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="updates-phone-label"
+        >
+          <div class="sdr-field">
+            <label
+              class="sdr-label"
+              for="updates-phone-number"
+              >Phone number</label
+            ><input
+              type="tel"
+              autocomplete="tel"
+              id="updates-phone-number"
+              class="sdr-input"
+              name="phone-number"
+            />
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/conditional-checkbox.html)
+
+
+
+### API · Checkbox
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `conditionalId` | `string \| undefined` | No |
 
 </div>
 

@@ -3,7 +3,7 @@ title: "Get started"
 description: "Get started — SDR. Independent proposal."
 ---
 
-SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system. No packages have been published to a registry.
+SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system.
 
 ## Run this workspace
 
@@ -20,11 +20,20 @@ Open /ro/ or /en/ on the local server. Run npm run verify for source checks, typ
 
 ## Use React
 
-Build and pack the local packages with npm pack -w @sdr/core and npm pack -w @sdr/react. Install both resulting tarballs in the consuming project. React and React DOM are peer dependencies, not bundled runtimes.
+~~~sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+~~~
+
+The alpha uses matching versions of the core and React packages. React and React DOM are peer dependencies supplied by the application. Source contributors can build local archives with npm run pack:release.
 
 ~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@sdr/react';
-import '@sdr/core/styles.css';
+import {
+  SdrProvider,
+  Button,
+  Stack,
+  TextInput,
+} from '@strictlylucian/sdr-react';
+import '@strictlylucian/sdr-core/styles.css';
 
 export function Application() {
   return (

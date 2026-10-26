@@ -21,7 +21,7 @@ Choose exactly one answer in a named group.
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -121,7 +121,7 @@ The error message is associated with the control through aria-describedby, and a
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -235,7 +235,7 @@ The disabled attribute disables the control and excludes it from Tab navigation 
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -339,7 +339,7 @@ This control has no native HTML readonly attribute. The example uses SummaryList
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -395,6 +395,8 @@ All radios in a question must share a name; different questions need different n
 | `label` | `ReactNode` | Yes |
 | `hint` | `ReactNode` | No |
 | `error` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `conditionalId` | `string \| undefined` | No |
 
 Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
 
@@ -415,7 +417,7 @@ This variant presents radio options as interface modes, such as list or grid. Th
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -515,7 +517,7 @@ The error message is associated with the control through aria-describedby, and a
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -627,7 +629,7 @@ The disabled attribute disables the control and excludes it from Tab navigation 
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -729,7 +731,7 @@ This control has no native HTML readonly attribute. The example uses SummaryList
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'en';
 
@@ -780,6 +782,243 @@ export function SegmentedControlReadOnlyExample() {
 | `error` | `ReactNode` | No |
 | `id` | `string \| undefined` | No |
 | `disabled` | `boolean \| undefined` | No |
+
+</div>
+
+
+<div id="variant-conditional-fields" className="sdr-component-variant">
+
+## With conditional fields
+
+Related fields are passed as children of Radio or Checkbox. conditionalId optionally provides the related fieldset ID. A short, directly related question works best; vertical choices keep the relationship clear. The example starts with an email validation error to show the nested error rail. Selection reveals the fields without moving focus. Inactive content stays mounted, hidden and disabled: values are retained, but excluded from native validation and FormData. The application owns validation, error summaries and submitted data, including any custom form-state library. Without JavaScript all related fields remain visible. In HTML, data-sdr-component="conditional-choice" opts in; aria-controls references the direct child fieldset marked data-sdr-conditional. Programmatic checked/disabled changes require a bubbling change event or sdr:refresh on the choice container. Native form reset restores the reveal state. Complex branching is better handled on separate pages. Manual screen-reader evaluation is still pending.
+
+<Preview name="ConditionalRadio" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@strictlylucian/sdr-react';
+
+const locale = 'en';
+
+export function ConditionalRadioExample() {
+  return (
+    <R.Fieldset
+      legend="How would you prefer to be contacted?"
+      hint="Select one option. Selecting email or phone reveals a related field."
+    >
+      <R.Radio
+        id="contact-email"
+        name="contact-method"
+        value="email"
+        label="Email"
+        defaultChecked
+      >
+        <R.TextInput
+          id="contact-email-address"
+          name="email-address"
+          type="email"
+          autoComplete="email"
+          label="Email address"
+          error="Enter your email address."
+        />
+      </R.Radio>
+      <R.Radio
+        id="contact-phone"
+        name="contact-method"
+        value="phone"
+        label="Phone"
+      >
+        <R.TextInput
+          id="contact-phone-number"
+          name="phone-number"
+          type="tel"
+          autoComplete="tel"
+          label="Phone number"
+        />
+      </R.Radio>
+      <R.Radio
+        id="contact-post"
+        name="contact-method"
+        value="post"
+        label="By post"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="conditional-radio"
+      class="sdr-fieldset"
+      aria-describedby="conditional-radio-hint"
+    >
+      <legend class="sdr-legend">How would you prefer to be contacted?</legend>
+      <div
+        class="sdr-hint"
+        id="conditional-radio-hint"
+      >
+        Select one option. Selecting email or phone reveals a related field.
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="contact-email"
+          ><span class="sdr-choice__control"
+            ><input
+              id="contact-email"
+              class="sdr-choice__input"
+              type="radio"
+              aria-controls="contact-email-conditional"
+              aria-describedby="conditional-radio-hint"
+              name="contact-method"
+              checked=""
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="contact-email-label"
+              class="sdr-choice__label"
+              >Email</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="contact-email-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="contact-email-label"
+        >
+          <div class="sdr-field sdr-field--error">
+            <label
+              class="sdr-label"
+              for="contact-email-address"
+              >Email address</label
+            >
+            <div
+              id="contact-email-address-error"
+              class="sdr-error"
+            >
+              Enter your email address.
+            </div>
+            <input
+              type="email"
+              autocomplete="email"
+              id="contact-email-address"
+              aria-invalid="true"
+              aria-describedby="contact-email-address-error"
+              class="sdr-input"
+              name="email-address"
+            />
+          </div>
+        </fieldset>
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="contact-phone"
+          ><span class="sdr-choice__control"
+            ><input
+              id="contact-phone"
+              class="sdr-choice__input"
+              type="radio"
+              aria-controls="contact-phone-conditional"
+              aria-describedby="conditional-radio-hint"
+              name="contact-method"
+              value="phone" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="contact-phone-label"
+              class="sdr-choice__label"
+              >Phone</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="contact-phone-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="contact-phone-label"
+        >
+          <div class="sdr-field">
+            <label
+              class="sdr-label"
+              for="contact-phone-number"
+              >Phone number</label
+            ><input
+              type="tel"
+              autocomplete="tel"
+              id="contact-phone-number"
+              class="sdr-input"
+              name="phone-number"
+            />
+          </div>
+        </fieldset>
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="contact-post"
+          ><span class="sdr-choice__control"
+            ><input
+              id="contact-post"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="conditional-radio-hint"
+              name="contact-method"
+              value="post" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">By post</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/conditional-radio.html)
+
+
+
+### API · Radio
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `conditionalId` | `string \| undefined` | No |
 
 </div>
 

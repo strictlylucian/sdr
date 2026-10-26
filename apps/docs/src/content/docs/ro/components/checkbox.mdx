@@ -21,7 +21,7 @@ Permite bifarea uneia sau mai multor opțiuni independente.
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -121,7 +121,7 @@ Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-inval
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -235,7 +235,7 @@ Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -339,7 +339,7 @@ Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care n
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -395,6 +395,8 @@ Opțiunile care răspund aceleiași întrebări se grupează cu Fieldset. Poate 
 | `label` | `ReactNode` | Da |
 | `hint` | `ReactNode` | Nu |
 | `error` | `ReactNode` | Nu |
+| `children` | `ReactNode` | Nu |
+| `conditionalId` | `string \| undefined` | Nu |
 
 Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
 
@@ -415,7 +417,7 @@ Switch activează sau dezactivează o setare și păstrează semantica unui chec
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -490,7 +492,7 @@ Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-inval
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -573,7 +575,7 @@ Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -652,7 +654,7 @@ Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care n
 
 ~~~tsx
 import { useState } from 'react';
-import * as R from '@sdr/react';
+import * as R from '@strictlylucian/sdr-react';
 
 const locale = 'ro';
 
@@ -702,6 +704,223 @@ export function SwitchReadOnlyExample() {
 | `label` | `ReactNode` | Da |
 | `hint` | `ReactNode` | Nu |
 | `error` | `ReactNode` | Nu |
+| `children` | `ReactNode` | Nu |
+| `conditionalId` | `string \| undefined` | Nu |
+
+</div>
+
+
+<div id="variant-campuri-conditionate" className="sdr-component-variant">
+
+## Cu câmpuri condiționate
+
+Câmpurile asociate se transmit ca children în Radio sau Checkbox. conditionalId permite alegerea unui ID pentru fieldset-ul asociat. Varianta se potrivește unei întrebări scurte, legate direct de opțiune; opțiunile pe verticală fac relația mai ușor de urmărit. Exemplul pornește cu o eroare la adresa de email, pentru a arăta bara de eroare a câmpului asociat. Selectarea afișează câmpurile fără să mute focusul. Conținutul inactiv rămâne montat, ascuns și dezactivat: valorile se păstrează, dar nu intră în validarea nativă sau în FormData. Aplicația gestionează validarea, sumarul erorilor și datele trimise, inclusiv integrarea cu biblioteci de formulare. Fără JavaScript, toate câmpurile asociate rămân vizibile. În HTML, data-sdr-component="conditional-choice" activează comportamentul; aria-controls indică fieldset-ul copil direct, marcat cu data-sdr-conditional. Modificarea programatică a checked/disabled necesită un eveniment change cu propagare sau sdr:refresh pe containerul opțiunii. Resetarea nativă a formularului restabilește afișarea câmpurilor. Ramificațiile complexe se potrivesc mai bine pe pagini separate. Evaluarea manuală cu cititoare de ecran este încă în așteptare.
+
+<Preview name="ConditionalCheckbox" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@strictlylucian/sdr-react';
+
+const locale = 'ro';
+
+export function ConditionalCheckboxExample() {
+  return (
+    <R.Fieldset
+      legend="Cum preferi să te contactăm?"
+      hint="Poți alege mai multe opțiuni. Fiecare opțiune selectată afișează câmpul corespunzător."
+    >
+      <R.Checkbox
+        id="updates-email"
+        name="contact-methods"
+        value="email"
+        label="Email"
+        defaultChecked
+      >
+        <R.TextInput
+          id="updates-email-address"
+          name="email-address"
+          type="email"
+          autoComplete="email"
+          label="Adresa de email"
+          error="Introdu adresa de email."
+        />
+      </R.Checkbox>
+      <R.Checkbox
+        id="updates-phone"
+        name="contact-methods"
+        value="phone"
+        label="Telefon"
+      >
+        <R.TextInput
+          id="updates-phone-number"
+          name="phone-number"
+          type="tel"
+          autoComplete="tel"
+          label="Numărul de telefon"
+        />
+      </R.Checkbox>
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="conditional-checkbox"
+      class="sdr-fieldset"
+      aria-describedby="conditional-checkbox-hint"
+    >
+      <legend class="sdr-legend">Cum preferi să te contactăm?</legend>
+      <div
+        class="sdr-hint"
+        id="conditional-checkbox-hint"
+      >
+        Poți alege mai multe opțiuni. Fiecare opțiune selectată afișează câmpul
+        corespunzător.
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="updates-email"
+          ><span class="sdr-choice__control"
+            ><input
+              id="updates-email"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-controls="updates-email-conditional"
+              aria-describedby="conditional-checkbox-hint"
+              name="contact-methods"
+              checked=""
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="updates-email-label"
+              class="sdr-choice__label"
+              >Email</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="updates-email-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="updates-email-label"
+        >
+          <div class="sdr-field sdr-field--error">
+            <label
+              class="sdr-label"
+              for="updates-email-address"
+              >Adresa de email</label
+            >
+            <div
+              id="updates-email-address-error"
+              class="sdr-error"
+            >
+              Introdu adresa de email.
+            </div>
+            <input
+              type="email"
+              autocomplete="email"
+              id="updates-email-address"
+              aria-invalid="true"
+              aria-describedby="updates-email-address-error"
+              class="sdr-input"
+              name="email-address"
+            />
+          </div>
+        </fieldset>
+      </div>
+      <div
+        data-sdr-component="conditional-choice"
+        class="sdr-choice-field"
+      >
+        <label
+          class="sdr-choice"
+          for="updates-phone"
+          ><span class="sdr-choice__control"
+            ><input
+              id="updates-phone"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-controls="updates-phone-conditional"
+              aria-describedby="conditional-checkbox-hint"
+              name="contact-methods"
+              value="phone" /></span
+          ><span class="sdr-choice__content"
+            ><span
+              id="updates-phone-label"
+              class="sdr-choice__label"
+              >Telefon</span
+            ></span
+          ></label
+        >
+        <fieldset
+          id="updates-phone-conditional"
+          class="sdr-choice__conditional"
+          data-sdr-conditional="true"
+          aria-labelledby="updates-phone-label"
+        >
+          <div class="sdr-field">
+            <label
+              class="sdr-label"
+              for="updates-phone-number"
+              >Numărul de telefon</label
+            ><input
+              type="tel"
+              autocomplete="tel"
+              id="updates-phone-number"
+              class="sdr-input"
+              name="phone-number"
+            />
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/conditional-checkbox.html)
+
+
+
+### API · Checkbox
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `children` | `ReactNode` | Nu |
+| `conditionalId` | `string \| undefined` | Nu |
 
 </div>
 

@@ -34,7 +34,7 @@ it('recounts after form reset using the reset default rather than the old value'
   init(document, { formatCount: remaining => remaining < 0 ? `${-remaining} character over` : `${remaining} characters remaining` }); const textarea = document.querySelector('textarea')!;
   textarea.value = 'abcd'; textarea.dispatchEvent(new Event('input'));
   expect(document.querySelector('p')).toHaveTextContent('1 character over');
-  document.querySelector('form')!.reset(); await Promise.resolve();
+  document.querySelector('form')!.reset(); await new Promise(resolve => setTimeout(resolve, 0));
   expect(document.querySelector('p')).toHaveTextContent('2 characters remaining');
 });
 

@@ -398,5 +398,14 @@
   "actions.removeAttachment": "Elimină fișierul",
   "states.messageValue": "Doresc informații despre cererea depusă.",
   "states.searchValue": "Pașaport",
-  "states.enabled": "Activate"
+  "states.enabled": "Activate",
+  "conditional.contact": "Cum preferi să te contactăm?",
+  "conditional.chooseOne": "Alege o singură opțiune. Dacă alegi email sau telefon, apare câmpul corespunzător.",
+  "conditional.chooseMany": "Poți alege mai multe opțiuni. Fiecare opțiune selectată afișează câmpul corespunzător.",
+  "conditional.email": "Email",
+  "conditional.phone": "Telefon",
+  "conditional.post": "Prin poștă",
+  "conditional.emailAddress": "Adresa de email",
+  "conditional.phoneNumber": "Numărul de telefon",
+  "conditional.emailError": "Introdu adresa de email."
 }

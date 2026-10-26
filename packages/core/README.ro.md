@@ -6,11 +6,17 @@ Propunere independentă de sistem de design românesc. Versiune alpha experiment
 
 Pachetul conține stiluri, tokenuri și interacțiuni pentru HTML. Etichetele, traducerile și funcțiile de formatare sunt furnizate de aplicație; biblioteca nu conține dicționare sau un mecanism i18n. Fontul Inter este inclus în CSS, iar motivul decorativ este desenat prin măști SVG incluse în CSS, folosind paleta SDR, fără un fișier imagine separat.
 
+## Instalare
+
+```sh
+npm install @strictlylucian/sdr-core@alpha
+```
+
 ## Integrare cu un bundler
 
 ```js
-import '@sdr/core/styles.css';
-import { init, destroy } from '@sdr/core';
+import '@strictlylucian/sdr-core/styles.css';
+import { init, destroy } from '@strictlylucian/sdr-core';
 
 const release = init(document);
 // Înainte de înlocuirea unei pagini sau a unui fragment:
@@ -25,10 +31,10 @@ Interacțiunile sunt activate explicit pentru elementele cu data-sdr-component. 
 
 Fișierele dist/sdr.css și dist/sdr.js formează ediția cu două fișiere. Aplicația încarcă CSS-ul, scriptul clasic și propriul script, care apelează SDR.init(document). SDR.destroy(container) elimină interacțiunile.
 
-Exportul @sdr/core/portable.js permite rezolvarea fișierului clasic de către instrumentele de copiere a resurselor. Aplicațiile cu bundler folosesc exporturile ESM obișnuite.
+Exportul @strictlylucian/sdr-core/portable.js permite rezolvarea fișierului clasic de către instrumentele de copiere a resurselor. Aplicațiile cu bundler folosesc exporturile ESM obișnuite.
 
 Validarea pe server, trimiterea formularelor, salvarea datelor și integrarea plăților aparțin aplicației. Logica demonstrativă din documentație nu face parte din pachet.
 
 ## Licențe
 
-Codul folosește licența MIT. Inter folosește SIL OFL 1.1; notificarea din CSS și fișierul dist/INTER-LICENSE.txt se păstrează. Fișierul dist/MOTIF-PROVENANCE.json descrie modelul vectorial reconstruit și autorul/licența încă neconfirmate ale referinței. Licența codului nu stabilește drepturi asupra modelului de referință.
+Codul folosește licența MIT. Inter folosește SIL OFL 1.1; notificarea din CSS și fișierul dist/INTER-LICENSE.txt se păstrează.

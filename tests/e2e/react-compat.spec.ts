@@ -1,0 +1,41 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { expect, test } from './support/fixtures';
+
+// npm run test:packages builds these fixtures from actual npm archives and isolated runtimes.
+const consumers = JSON.parse(readFileSync('output/compatibility/consumers.json', 'utf8')) as { version: string; directory: string }[];
+for (const { version, directory } of consumers) test(`React ${version}: packed-package hydration, refs, controlled updates and cleanup`, async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()); });
+  await page.route('**/__compat__/client.js', route => route.fulfill({ contentType: 'text/javascript', body: readFileSync(join(directory, 'client.js')) }));
+  await page.route('**/__compat__/fixture', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/portable/sdr.css"></head><body class="sdr sdr-u-padding-5"><main id="root">${readFileSync(join(directory, 'fixture.html'), 'utf8')}</main><script src="/__compat__/client.js" defer></script></body></html>` }));
+  await page.goto('/__compat__/fixture');
+  await expect(page.getByRole('button', { name: 'Arată parola' })).toBeVisible();
+  expect(await page.evaluate(() => (window as any).compatVersion)).toBe(version);
+  const name = page.getByRole('textbox', { name: 'Nume', exact: true });
+  await name.fill('Ana'); await page.getByRole('button', { name: 'Validare' }).click();
+  await expect(name).toHaveValue('Ana'); await expect(name).toHaveAttribute('aria-invalid', 'true');
+  await page.getByRole('button', { name: 'Focus nume' }).click(); await expect(name).toBeFocused();
+  const email = page.locator('input[name="email"]');
+  await email.fill('ana@example.ro'); await page.getByRole('button', { name: 'Schimbă opțiunea' }).click();
+  await expect(email).toBeHidden(); await expect(email).toBeDisabled();
+  await page.getByRole('button', { name: 'Schimbă opțiunea' }).click(); await expect(email).toHaveValue('ana@example.ro');
+  await page.getByRole('radio', { name: 'Prin poștă' }).check();
+  const phone = page.locator('input[name="phone"]'); await expect(phone).toBeHidden(); await expect(phone).toBeDisabled();
+  expect(await page.locator('form').evaluate((form: HTMLFormElement) => new FormData(form).has('phone'))).toBe(false);
+  await page.getByRole('button', { name: 'Resetează' }).click(); await expect(phone).toBeVisible();
+  await page.getByRole('button', { name: 'Arată parola' }).click();
+  await expect(page.locator('input[name="password"]')).toHaveAttribute('type', 'text');
+  await page.getByRole('textbox', { name: 'Mesaj' }).fill('Bună');
+  await expect(page.locator('[data-sdr-count]')).toHaveText('16 disponibile');
+  await page.getByRole('button', { name: 'Resetează' }).click();
+  await expect(page.locator('[data-sdr-count]')).toHaveText('20 disponibile');
+  await page.getByRole('tab', { name: 'A doua' }).click(); await expect(page.getByRole('tabpanel', { name: 'A doua' })).toBeVisible();
+  await page.getByRole('button', { name: 'Deschide toate' }).click(); await expect(page.locator('details')).toHaveAttribute('open', '');
+  await page.getByRole('button', { name: 'Deschide dialogul' }).click(); await expect(page.getByRole('dialog')).toBeVisible();
+  await page.keyboard.press('Escape'); await expect(page.getByRole('dialog')).toBeHidden();
+  await page.screenshot({ path: `output/playwright/react-compat/${info.project.name}-${version}.png`, fullPage: true });
+  expect(await page.evaluate(() => (window as any).compatErrors)).toEqual([]);
+  expect(errors).toEqual([]);
+  await page.evaluate(() => (window as any).compatUnmount()); await expect(page.locator('#root')).toBeEmpty();
+});

@@ -5,7 +5,7 @@ Componentele SDR afișează conținutul furnizat de aplicație. Traducerile, ale
 Etichetele, textele ajutătoare, erorile, titlurile și numele acțiunilor sunt proprietăți obișnuite ale componentelor. Controalele cu mai multe stări primesc și etichetele pentru fiecare stare. Valorile pot proveni din orice bibliotecă de traduceri sau pot fi texte simple.
 
 ~~~tsx
-import { SdrProvider, PasswordInput } from '@sdr/react';
+import { SdrProvider, PasswordInput } from '@strictlylucian/sdr-react';
 
 <SdrProvider lang="ro">
   <PasswordInput

@@ -398,5 +398,14 @@
   "actions.removeAttachment": "Remove attachment",
   "states.messageValue": "I would like information about my application.",
   "states.searchValue": "Passport",
-  "states.enabled": "Enabled"
+  "states.enabled": "Enabled",
+  "conditional.contact": "How would you prefer to be contacted?",
+  "conditional.chooseOne": "Select one option. Selecting email or phone reveals a related field.",
+  "conditional.chooseMany": "Select all that apply. Each selected option reveals a related field.",
+  "conditional.email": "Email",
+  "conditional.phone": "Phone",
+  "conditional.post": "By post",
+  "conditional.emailAddress": "Email address",
+  "conditional.phoneNumber": "Phone number",
+  "conditional.emailError": "Enter your email address."
 }

@@ -8,9 +8,9 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=@sdr/docs",
-    "preview:lan": "npm run preview:lan --workspace=@sdr/docs",
-    "build": "node tooling/build/build.mjs && tsx tooling/docs/docs.mts && npm run build -w @sdr/docs",
+    "dev": "npm run dev --workspace=@strictlylucian/sdr-docs",
+    "preview:lan": "npm run preview:lan --workspace=@strictlylucian/sdr-docs",
+    "build": "node tooling/build/build.mjs && tsx tooling/docs/docs.mts && npm run build -w @strictlylucian/sdr-docs",
     "build:library": "node tooling/build/build.mjs",
     "fonts:subset": "python tooling/fonts/subset-fonts.py",
     "typecheck": "tsc --noEmit",

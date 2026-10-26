@@ -54,6 +54,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run build
+      - run: npm run test:packages
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v7
         if: always()
@@ -63,5 +64,6 @@ jobs:
             playwright-report/
             test-results/
             output/playwright/choice-review/
+            output/playwright/react-compat/
           if-no-files-found: warn
           retention-days: 14

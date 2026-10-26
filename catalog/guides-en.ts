@@ -1,7 +1,7 @@
 import { localisationContent } from './content';
 export const guidesEn: Record<string, { title: string; body: string }> = {
   'getting-started': { title: 'Get started', body: `
-SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system. No packages have been published to a registry.
+SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system.
 
 ## Run this workspace
 
@@ -18,11 +18,15 @@ Open /ro/ or /en/ on the local server. Run npm run verify for source checks, typ
 
 ## Use React
 
-Build and pack the local packages with npm pack -w @sdr/core and npm pack -w @sdr/react. Install both resulting tarballs in the consuming project. React and React DOM are peer dependencies, not bundled runtimes.
+~~~sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+~~~
+
+The alpha uses matching versions of the core and React packages. React and React DOM are peer dependencies supplied by the application. Source contributors can build local archives with npm run pack:release.
 
 ~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@sdr/react';
-import '@sdr/core/styles.css';
+import { SdrProvider, Button, Stack, TextInput } from '@strictlylucian/sdr-react';
+import '@strictlylucian/sdr-core/styles.css';
 
 export function Application() {
   return <SdrProvider lang="ro" theme="light">
@@ -187,7 +191,7 @@ Blouse embroidery with altiță belongs to the cultural heritage of Romania and 
 
 Motif and the sdr-motif class share the same drawing in library examples. The 194 × 225-unit repeat preserves the reference pixel coordinates, including unequal stitch widths and the checked centre. Two SVG masks embedded in CSS separate geometry from palette colours. The diamond crosses the horizontal boundary and wraps into the next repeat, preserving its complete shape. All colours use SDR palette variables. The horizontal band defaults to 3rem (48px at a 16px root). The documentation header, hero and footer currently use no motif. The size prop accepts sm (24px), md (48px, default), lg (64px) and xl (96px); HTML uses sdr-motif--sm, sdr-motif--md, sdr-motif--lg and sdr-motif--xl. The --sdr-motif-size property supports custom heights. CSS scales the drawing proportionally and repeats it horizontally, without separate image files, extra elements or network requests. Decoration stays separate from text and controls, hidden from assistive technology and removed in forced colours.
 
-A consuming institution can supply its own visual assets outside functional components. The reference author and licence for the included band remain unconfirmed in catalog/motif-provenance.json; the SVG reconstruction does not establish ownership of that reference. No reference photograph is included.
+A consuming institution can supply its own visual assets outside functional components. The ornament uses embedded SVG masks; no reference photograph is included.
 
 Institutional identity is separate from library identity. Header accepts an optional application-provided emblem and has no default institutional mark. The [experimental identity studies](/en/studies/institutional-identity/) are documentation material, separate from the library packages.
 ` },
@@ -246,7 +250,7 @@ SDR is an original independent implementation. It draws on publicly documented g
 - [Inter 4.1](https://github.com/rsms/inter/releases/tag/v4.1): licensed under SIL Open Font License 1.1. Regular and italic WOFF2 faces are embedded in CSS with the copyright notice and full license. The core package also includes dist/INTER-LICENSE.txt.
 - [Astro Starlight](https://starlight.astro.build/): the documentation framework, under MIT.
 - React, Astro, TypeScript, esbuild, Vitest and Playwright remain third-party dependencies under their respective licences. Versions are locked in package-lock.json.
-- [UNESCO altiță entry](https://ich.unesco.org/en/RL/01861): cultural research reference, not a licence for images or patterns.
+- [UNESCO altiță entry](https://ich.unesco.org/en/RL/01861): cultural background for the traditional embroidery.
 
 The SDR-authored implementation is licensed under the repository MIT licence. Third-party rights remain with their owners. Check naming and trademarks before public branding or publication.
 ` },

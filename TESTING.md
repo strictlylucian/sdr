@@ -29,6 +29,8 @@ Coverage includes every TypeScript runtime file under `packages/core/src/` and `
 
 ## Browser tests
 
+Run `npm run test:packages` before browser tests. It installs the packed packages in isolated projects using React 18.3.0, 18.3.1, 19.0.0 and 19.2.0, checks their matching declarations, server-renders the complete example catalogue in both languages, and builds version-specific hydration fixtures. `tests/e2e/react-compat.spec.ts` uses those fixtures in Chromium, Firefox and WebKit, including Strict Mode effect setup/cleanup, generated IDs, refs, conditional fields, controlled updates, reset, validation, password reveal, character count, tabs, accordion and dialog. Hydration warnings and recoverable errors fail the tests.
+
 `tests/e2e/` contains named Playwright tests with isolated browser contexts and automatic runtime-error assertions. Failures retain a trace and screenshot. HTML and JUnit reports are written to `playwright-report/` and `test-results/`. Tests have no automatic retries that could conceal an intermittent failure.
 
 - Chromium runs the complete component and pattern catalogue in React and HTML, in Romanian and English, with axe checks and 320px/desktop/200% text reflow checks.
@@ -59,3 +61,5 @@ Automated checks cover their fixtures. They do not replace manual assistive-tech
 ## Choice visual checks
 
 `tests/e2e/choice-content.spec.ts` captures React/HTML choice states in four themes across Chromium, Firefox and WebKit. Screenshots are saved under `output/playwright/choice-review/`, including 320px and enlarged-text profiles. Enlarged-text captures use an isolated React fixture and standalone HTML, while the documentation previews also undergo 320px/200% reflow checks. The Starlight shell itself still needs separate font-resize layout work. Component captures hide documentation chrome to avoid sticky-header overlap; actual documentation pages are also reviewed in the browser. Geometry assertions check first-line alignment, hint placement, unpadded row bottoms, error-rail boundaries and extended clickable label areas. Native PNG corner checks detect rectangular radio error borders that computed border-radius alone would miss.
+
+`tests/e2e/conditional-choices.spec.ts` exercises related child fields in both editions and languages across all three engines. Checks include keyboard reveal order, independent checkbox branches, exclusive radio branches, retained values, actual FormData and native required-field validation, form reset, no-JavaScript availability, nested error/branch rail geometry, themes, densities, narrow layouts, RTL and enlarged text. Review captures live under `output/playwright/conditional/`. Unit tests additionally cover controlled React updates, dynamic children, nested choices, disabled fields and controller disposal.

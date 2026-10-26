@@ -44,7 +44,7 @@ export function characterCount(root: HTMLElement, { formatCount }: EnhancementOp
   };
   life.on(input, 'input', update);
   life.on(root, refreshEvent, update);
-  life.on(input.form ?? input, 'reset', () => { queueMicrotask(update); });
+  life.on(input.form ?? input, 'reset', () => { life.defer(update); });
   update();
   return life.destroy;
 }

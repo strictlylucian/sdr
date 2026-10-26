@@ -318,5 +318,39 @@
       "ro": "Linkul cu săgeată în sus duce la ancora de la începutul paginii.",
       "en": "The upward-arrow variant navigates to the document start anchor."
     }
+  },
+  {
+    "name": "ConditionalRadio",
+    "parent": "Radio",
+    "apiName": "Radio",
+    "anchor": {
+      "ro": "variant-campuri-conditionate",
+      "en": "variant-conditional-fields"
+    },
+    "title": {
+      "ro": "Cu câmpuri condiționate",
+      "en": "With conditional fields"
+    },
+    "guidance": {
+      "en": "Related fields are passed as children of Radio or Checkbox. conditionalId optionally provides the related fieldset ID. A short, directly related question works best; vertical choices keep the relationship clear. The example starts with an email validation error to show the nested error rail. Selection reveals the fields without moving focus. Inactive content stays mounted, hidden and disabled: values are retained, but excluded from native validation and FormData. The application owns validation, error summaries and submitted data, including any custom form-state library. Without JavaScript all related fields remain visible. In HTML, data-sdr-component=\"conditional-choice\" opts in; aria-controls references the direct child fieldset marked data-sdr-conditional. Programmatic checked/disabled changes require a bubbling change event or sdr:refresh on the choice container. Native form reset restores the reveal state. Complex branching is better handled on separate pages. Manual screen-reader evaluation is still pending.",
+      "ro": "Câmpurile asociate se transmit ca children în Radio sau Checkbox. conditionalId permite alegerea unui ID pentru fieldset-ul asociat. Varianta se potrivește unei întrebări scurte, legate direct de opțiune; opțiunile pe verticală fac relația mai ușor de urmărit. Exemplul pornește cu o eroare la adresa de email, pentru a arăta bara de eroare a câmpului asociat. Selectarea afișează câmpurile fără să mute focusul. Conținutul inactiv rămâne montat, ascuns și dezactivat: valorile se păstrează, dar nu intră în validarea nativă sau în FormData. Aplicația gestionează validarea, sumarul erorilor și datele trimise, inclusiv integrarea cu biblioteci de formulare. Fără JavaScript, toate câmpurile asociate rămân vizibile. În HTML, data-sdr-component=\"conditional-choice\" activează comportamentul; aria-controls indică fieldset-ul copil direct, marcat cu data-sdr-conditional. Modificarea programatică a checked/disabled necesită un eveniment change cu propagare sau sdr:refresh pe containerul opțiunii. Resetarea nativă a formularului restabilește afișarea câmpurilor. Ramificațiile complexe se potrivesc mai bine pe pagini separate. Evaluarea manuală cu cititoare de ecran este încă în așteptare."
+    }
+  },
+  {
+    "name": "ConditionalCheckbox",
+    "parent": "Checkbox",
+    "apiName": "Checkbox",
+    "anchor": {
+      "ro": "variant-campuri-conditionate",
+      "en": "variant-conditional-fields"
+    },
+    "title": {
+      "ro": "Cu câmpuri condiționate",
+      "en": "With conditional fields"
+    },
+    "guidance": {
+      "en": "Related fields are passed as children of Radio or Checkbox. conditionalId optionally provides the related fieldset ID. A short, directly related question works best; vertical choices keep the relationship clear. The example starts with an email validation error to show the nested error rail. Selection reveals the fields without moving focus. Inactive content stays mounted, hidden and disabled: values are retained, but excluded from native validation and FormData. The application owns validation, error summaries and submitted data, including any custom form-state library. Without JavaScript all related fields remain visible. In HTML, data-sdr-component=\"conditional-choice\" opts in; aria-controls references the direct child fieldset marked data-sdr-conditional. Programmatic checked/disabled changes require a bubbling change event or sdr:refresh on the choice container. Native form reset restores the reveal state. Complex branching is better handled on separate pages. Manual screen-reader evaluation is still pending.",
+      "ro": "Câmpurile asociate se transmit ca children în Radio sau Checkbox. conditionalId permite alegerea unui ID pentru fieldset-ul asociat. Varianta se potrivește unei întrebări scurte, legate direct de opțiune; opțiunile pe verticală fac relația mai ușor de urmărit. Exemplul pornește cu o eroare la adresa de email, pentru a arăta bara de eroare a câmpului asociat. Selectarea afișează câmpurile fără să mute focusul. Conținutul inactiv rămâne montat, ascuns și dezactivat: valorile se păstrează, dar nu intră în validarea nativă sau în FormData. Aplicația gestionează validarea, sumarul erorilor și datele trimise, inclusiv integrarea cu biblioteci de formulare. Fără JavaScript, toate câmpurile asociate rămân vizibile. În HTML, data-sdr-component=\"conditional-choice\" activează comportamentul; aria-controls indică fieldset-ul copil direct, marcat cu data-sdr-conditional. Modificarea programatică a checked/disabled necesită un eveniment change cu propagare sau sdr:refresh pe containerul opțiunii. Resetarea nativă a formularului restabilește afișarea câmpurilor. Ramificațiile complexe se potrivesc mai bine pe pagini separate. Evaluarea manuală cu cititoare de ecran este încă în așteptare."
+    }
   }
 ]

@@ -26,6 +26,7 @@ it("ships portable assets, verified embedded fonts, embedded vector decoration a
       assert(urls.every(url => url.startsWith('data:font/woff2;base64,') || allowedMasks.includes(url)), 'Only pinned fonts and the two authored SVG masks may be embedded');
       assert(allowedMasks.every(mask => urls.includes(mask)), 'Both motif thread masks must be embedded');
       assert(source.toString().includes('.sdr-motif'), "Portable CSS must include the motif");
+      assert(source.toString().includes('.sdr-choice__conditional'), 'Portable CSS must include conditional field layout');
       const withoutFontData = source
         .toString()
         .replace(/url\([^)]*\)/g, "url()");

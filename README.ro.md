@@ -39,14 +39,14 @@ Chromium verifică întregul catalog React/HTML în ambele limbi, inclusiv stăr
 
 ## Pachete
 
-- `@sdr/core`: tokenuri, stiluri și controlere pentru interacțiunile HTML.
-- `@sdr/react`: componente React cu tipuri TypeScript, conținut furnizat de aplicație și compoziții reutilizabile.
+- `@strictlylucian/sdr-core`: tokenuri, stiluri și controlere pentru interacțiunile HTML.
+- `@strictlylucian/sdr-react`: componente React cu tipuri TypeScript, conținut furnizat de aplicație și compoziții reutilizabile.
 - `dist/portable/sdr.css` și `dist/portable/sdr.js`: cele două fișiere de distribuție, cu fonturile Inter și măștile SVG incluse în CSS.
 - `apps/docs`: documentație Astro Starlight, exemple interactive, tabele API și resurse i18next folosite doar în docs.
 
-`npm run pack:release` construiește și verifică arhivele locale. Directorul `output/release/0.1.0-alpha.1/` conține arhivele celor două pachete, ediția portabilă și sumele SHA-256. Comanda pregătește fișiere locale; pachetele nu sunt publicate pe npm. Deținerea scope-ului npm `@sdr` rămâne neconfirmată.
+`npm run pack:release` construiește și verifică arhivele locale. Directorul `output/release/0.1.0-alpha.1/` conține arhivele celor două pachete, ediția portabilă și sumele SHA-256. Comanda pregătește fișiere locale, fără să le publice. Namespace-ul npm este `@strictlylucian`.
 
-Aplicațiile React instalează ambele arhive, importă `@sdr/core/styles.css` o singură dată și plasează componentele într-un `SdrProvider`. Manifestele declară React/React DOM >=18.3; verificările actuale în aplicația consumatoare și în browsere folosesc React 19. Versiunea minimă declarată are nevoie de o verificare separată.
+Aplicațiile React instalează ambele pachete, importă `@strictlylucian/sdr-core/styles.css` o singură dată și plasează componentele într-un `SdrProvider`. Intervalul peer pentru React și React DOM este ^18.3.0 || ^19.0.0. Pachetele sunt verificate cu React 18.3.0, 18.3.1, 19.0.0 și 19.2.0, cu declarațiile de tipuri corespunzătoare, randare pe server și hidratare în browser.
 
 Aplicațiile HTML copiază cele două fișiere, furnizează structura semantică și inițializează componentele din propriul script. `SDR.init(root)` returnează o funcție de curățare; contorul de caractere necesită și funcția `formatCount` a aplicației. Elementele React sunt gestionate prin efectele React. Logica serviciului, validarea, navigarea, salvarea și traducerile aparțin aplicației.
 
@@ -62,12 +62,12 @@ Exemplele formularelor includ eroare, disabled și read-only nativ. Pentru contr
 
 Ținta este WCAG 2.2 AA. Verificările automate acoperă exemplele testate; NVDA, VoiceOver, TalkBack și cercetarea cu persoane cu dizabilități rămân neverificate. API-urile sunt experimentale, iar integrările pot fixa versiuni exacte. Alte detalii sunt în [DESIGN.md](DESIGN.md), [TESTING.md](TESTING.md) și [CHANGELOG.md](CHANGELOG.md).
 
-Codul are licență MIT. Inter folosește SIL OFL 1.1, cu notificarea inclusă în CSS și în arhiva core. Autorul și licența referinței pentru altița reconstruită rămân neconfirmate în `catalog/motif-provenance.json`; licența codului nu stabilește drepturi asupra referinței. Planșele originale furnizate pentru studiile de identitate sunt resurse ale documentației, separate de fișierele runtime.
+Codul are licență MIT. Inter folosește SIL OFL 1.1, cu notificarea inclusă în CSS și în arhiva core. Planșele originale furnizate pentru studiile de identitate sunt resurse ale documentației, separate de fișierele runtime.
 
 ## Repository și hosting
 
 Repository-ul public este [strictlylucian/sdr](https://github.com/strictlylucian/sdr). Documentația este publicată la [strictlylucian.github.io/sdr](https://strictlylucian.github.io/sdr/).
 
-Workflow-ul Deploy documentation construiește și publică GitHub Pages la push pe main sau la pornire manuală. Doar job-ul de deploy are drepturi de scriere pentru Pages. Verificarea pachetelor rulează separat; publicarea npm rămâne manuală și nu a avut loc.
+Workflow-ul Deploy documentation construiește și publică GitHub Pages la push pe main sau la pornire manuală. Doar job-ul de deploy are drepturi de scriere pentru Pages. Verificarea pachetelor rulează separat; publicarea npm rămâne manuală.
 
 `npm run build:pages` generează site-ul în `output/pages/sdr/`, cu prefixul `/sdr/`; `npm run test:pages` verifică rutele publicate și interacțiunile în browser. Comanda obișnuită `npm run build` păstrează rutele fără prefix pentru localhost și LAN. Rezultatele CI sunt disponibile în tabul Actions al repository-ului.

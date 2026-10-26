@@ -4,7 +4,7 @@ export interface ComponentDefinition {
   title: LocalisedText; description: LocalisedText; caution: LocalisedText;
 }
 export interface ComponentVariant {
-  name: string; parent: string; anchor: LocalisedText; title: LocalisedText; guidance: LocalisedText;
+  name: string; parent: string; apiName?: string; anchor: LocalisedText; title: LocalisedText; guidance: LocalisedText;
 }
 export interface PatternDefinition {
   slug: string; example: string; title: LocalisedText; guidance: LocalisedText;

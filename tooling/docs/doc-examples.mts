@@ -23,7 +23,7 @@ export async function readExamples() {
         const name = node.name.text.replace(/Example$/, '');
         for (const locale of ['ro', 'en'] as const) {
           const formatter = node.getText(file).includes('countText(') ? countSnippet(locale) : '';
-          snippets[locale][name] = await formatExample(`import { useState } from 'react';\nimport * as R from '@sdr/react';\n${formatter}\nconst locale = '${locale}';\n\n${localiseExample(node, file, locale)}`, 'tsx');
+          snippets[locale][name] = await formatExample(`import { useState } from 'react';\nimport * as R from '@strictlylucian/sdr-react';\n${formatter}\nconst locale = '${locale}';\n\n${localiseExample(node, file, locale)}`, 'tsx');
         }
       }
     }

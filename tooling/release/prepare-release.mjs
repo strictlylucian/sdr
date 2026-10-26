@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, readdir, unlink } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 
@@ -23,6 +23,9 @@ for (const filename of ['sdr.css', 'sdr.js']) {
   files.push(`portable/${filename}`);
 }
 const hashes = [];
+for (const filename of await readdir(directory)) {
+  if (filename.endsWith('.tgz') && !files.includes(filename)) await unlink(`${directory}/${filename}`);
+}
 for (const file of files) hashes.push(`${createHash('sha256').update(await readFile(`${directory}/${file}`)).digest('hex')}  ${file}`);
 await writeFile(`${directory}/SHA256SUMS`, hashes.join('\n') + '\n');
 console.log(`Prepared ${version}: two npm archives, two portable runtime files and SHA256SUMS in ${directory}. Nothing was published.`);

@@ -6,9 +6,15 @@ Independent Romanian design-system proposal. Experimental alpha; no government a
 
 Typed React components for public-service interfaces. Styles are supplied by the companion core package. All labels and dynamic messages are application-owned; SDR has no i18n engine or dictionaries and accepts content in any language. SdrProvider forwards native lang without selecting translations. CharacterCount requires a formatCount callback.
 
+## Installation
+
+```sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+```
+
 ```tsx
-import '@sdr/core/styles.css';
-import { SdrProvider, TextInput, Button } from '@sdr/react';
+import '@strictlylucian/sdr-core/styles.css';
+import { SdrProvider, TextInput, Button } from '@strictlylucian/sdr-react';
 
 export function Example() {
   return (
@@ -22,7 +28,7 @@ export function Example() {
 }
 ```
 
-Install both package archives together while the alpha is distributed locally. React and React DOM are peer dependencies. Import the stylesheet once in the host application's global entry point.
+Install the core and React packages together at matching versions. React and React DOM are peer dependencies. Import the stylesheet once in the host application's global entry point.
 
 Components support controlled native input values, refs, labels, hints and error associations. A form builder owns its schema, validation rules, routing and persistence; SDR provides the rendering and component interactions. Stable field IDs help preserve label/error relationships and focus when forms change dynamically.
 
@@ -30,4 +36,4 @@ The shared behaviour controllers mount and clean up through React effects. There
 
 The package supports server rendering; interactive components also need a client-rendered or hydrated React tree. Public alpha APIs can change, so pin exact versions when integrating the form builder.
 
-Code is MIT licensed. Embedded fonts and vector-motif provenance notices are distributed with `@sdr/core`.
+Code is MIT licensed. Embedded font notices are distributed with `@strictlylucian/sdr-core`.

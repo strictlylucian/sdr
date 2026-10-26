@@ -1,0 +1,17 @@
+.sdr-choice-field:has(> .sdr-choice__conditional) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sdr-space-3);
+}
+.sdr-choice__conditional {
+  --sdr-choice-conditional-inset: calc(var(--sdr-space-5) - var(--sdr-border-strong));
+  display: grid;
+  gap: var(--sdr-group-gap);
+  min-inline-size: 0;
+  margin: 0;
+  margin-inline-start: var(--sdr-space-3);
+  padding: 0;
+  padding-inline-start: var(--sdr-choice-conditional-inset);
+  border: 0;
+  border-inline-start: var(--sdr-border-strong) solid var(--sdr-divider);
+}

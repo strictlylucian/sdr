@@ -1,7 +1,7 @@
 import { localisationContent } from './content';
 export const guidesRo: Record<string, { title: string; body: string }> = {
   'getting-started': { title: 'Instalare și integrare', body: `
-SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României. Pachetele se instalează local; nu sunt încă publicate într-un registru de pachete.
+SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României.
 
 ## Rularea proiectului local
 
@@ -18,11 +18,15 @@ Documentația este disponibilă la /ro/ și /en/ pe serverul local. Comanda npm 
 
 ## Integrarea în React
 
-Comenzile npm pack -w @sdr/core și npm pack -w @sdr/react creează arhivele celor două pachete, după build. Ambele arhive se instalează în aplicația care va folosi SDR. React și React DOM sunt dependențe peer: aplicația furnizează aceste biblioteci.
+~~~sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+~~~
+
+Pachetele core și React se folosesc la aceeași versiune. React și React DOM sunt dependențe peer, furnizate de aplicație. Pentru contribuții la codul sursă, npm run pack:release pregătește arhive locale.
 
 ~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@sdr/react';
-import '@sdr/core/styles.css';
+import { SdrProvider, Button, Stack, TextInput } from '@strictlylucian/sdr-react';
+import '@strictlylucian/sdr-core/styles.css';
 
 export function Application() {
   return <SdrProvider lang="ro" theme="light">
@@ -187,7 +191,7 @@ Broderia cu altiță face parte din patrimoniul cultural al României și al Rep
 
 Motif și clasa sdr-motif folosesc același desen în exemplele bibliotecii. Repetiția de 194 × 225 de unități păstrează coordonatele pixelilor din modelul de referință, inclusiv lățimile inegale ale cusăturilor și centrul în carouri. Două măști SVG incluse în CSS separă desenul de culorile paletei. Rombul continuă peste marginea orizontală în repetiția următoare, astfel încât forma rămâne întreagă. Toate culorile provin din variabilele paletei SDR. Înălțimea implicită a benzii orizontale este de 3rem (48px la baza de 16px). Headerul, hero-ul și footerul documentației nu folosesc momentan acest ornament. Proprietatea size acceptă sm (24px), md (48px, implicit), lg (64px) și xl (96px); ediția HTML folosește clasele sdr-motif--sm, sdr-motif--md, sdr-motif--lg și sdr-motif--xl. Proprietatea --sdr-motif-size permite și alte înălțimi. Desenul se scalează proporțional și se repetă orizontal, fără fișiere imagine separate, elemente suplimentare sau cereri de rețea. Decorul este separat de text și controale, ascuns tehnologiilor asistive și eliminat în modul de culori forțate.
 
-Instituțiile pot adăuga propriile elemente vizuale în afara controalelor funcționale. Autorul și licența referinței pentru banda inclusă rămân neconfirmate în catalog/motif-provenance.json; reconstrucția SVG nu stabilește drepturi asupra referinței. Fotografia de referință nu este inclusă.
+Instituțiile pot adăuga propriile elemente vizuale în afara controalelor funcționale. Ornamentului îi corespund măști SVG incluse în CSS; fotografia de referință nu este inclusă.
 
 Header acceptă o emblemă opțională, furnizată de aplicație, fără o emblemă instituțională implicită. [Studiile experimentale de identitate](/ro/studies/institutional-identity/) sunt materiale ale documentației, separate de pachetele bibliotecii.
 ` },
@@ -246,7 +250,7 @@ SDR este o implementare originală și independentă, inspirată de practici des
 - [Inter 4.1](https://github.com/rsms/inter/releases/tag/v4.1): font cu licență SIL Open Font License 1.1. Fișierele WOFF2 regular și italic sunt incluse în CSS, împreună cu notificarea de copyright și licența completă. În pachetul core există și dist/INTER-LICENSE.txt.
 - [Astro Starlight](https://starlight.astro.build/): framework-ul documentației, cu licență MIT.
 - React, Astro, TypeScript, esbuild, Vitest și Playwright au propriile licențe. Versiunile folosite sunt în package-lock.json.
-- [Pagina UNESCO despre altiță](https://ich.unesco.org/en/RL/01861): referință culturală, fără a acorda drepturi de folosire a imaginilor sau modelelor.
+- [Pagina UNESCO despre altiță](https://ich.unesco.org/en/RL/01861): context cultural pentru broderia tradițională.
 
 Codul SDR este distribuit sub licența MIT din proiect. Resursele terțe își păstrează propriile condiții de utilizare. Numele și mărcile necesită verificare înainte de promovarea publică.
 ` },

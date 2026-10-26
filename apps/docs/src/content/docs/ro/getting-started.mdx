@@ -3,7 +3,7 @@ title: "Instalare și integrare"
 description: "Instalare și integrare — SDR. Propunere independentă."
 ---
 
-SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României. Pachetele se instalează local; nu sunt încă publicate într-un registru de pachete.
+SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României.
 
 ## Rularea proiectului local
 
@@ -20,11 +20,20 @@ Documentația este disponibilă la /ro/ și /en/ pe serverul local. Comanda npm 
 
 ## Integrarea în React
 
-Comenzile npm pack -w @sdr/core și npm pack -w @sdr/react creează arhivele celor două pachete, după build. Ambele arhive se instalează în aplicația care va folosi SDR. React și React DOM sunt dependențe peer: aplicația furnizează aceste biblioteci.
+~~~sh
+npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
+~~~
+
+Pachetele core și React se folosesc la aceeași versiune. React și React DOM sunt dependențe peer, furnizate de aplicație. Pentru contribuții la codul sursă, npm run pack:release pregătește arhive locale.
 
 ~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@sdr/react';
-import '@sdr/core/styles.css';
+import {
+  SdrProvider,
+  Button,
+  Stack,
+  TextInput,
+} from '@strictlylucian/sdr-react';
+import '@strictlylucian/sdr-core/styles.css';
 
 export function Application() {
   return (
