@@ -63,6 +63,7 @@ for (const locale of ['ro', 'en'] as Locale[]) {
       const selected = page.locator(`[data-sdr-state="${example.slug}"]`);
       await expect(selected).toHaveAttribute('aria-current', 'location');
       await expect(selected).toBeVisible();
+      await expect(selected).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await expect(page.locator('[aria-current="location"]')).toHaveCount(1);
       await page.reload();
       await expect(selected).toHaveAttribute('aria-current', 'location');

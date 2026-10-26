@@ -28,7 +28,7 @@
 .sdr-home__status a { font-size:var(--sdr-text-sm); }
 .sdr-demo { margin-block:var(--sdr-space-5);border:var(--sdr-border-width) solid var(--sl-color-gray-4);border-radius:var(--sdr-radius); }
 .sdr-example-code { margin-block:var(--sdr-space-5); }
-[data-sdr-variant][aria-current='location'],[data-sdr-variant][aria-current='location']:is(:hover,:focus) { font-weight:600;color:var(--sl-color-text-invert);background:var(--sl-color-text-accent); }
+:is([data-sdr-variant],[data-sdr-state])[aria-current='location'],:is([data-sdr-variant],[data-sdr-state])[aria-current='location']:is(:hover,:focus) { font-weight:600;color:var(--sl-color-text-invert);background:var(--sl-color-text-accent); }
 .sl-skip-link:focus { padding:var(--sdr-space-3) var(--sdr-space-4);background:var(--sdr-pressed-bg);color:var(--sdr-on-pressed);font-weight:700;outline:var(--sdr-focus-width) solid var(--sdr-pressed-border);outline-offset:0;text-decoration:underline; }
 .sdr-component-variant { scroll-margin-block-start:calc(var(--sl-nav-height) + var(--sdr-space-5)); }
 .sdr-doc-warning { margin-block-start:var(--sdr-space-6);font-size:var(--sdr-text-sm); }

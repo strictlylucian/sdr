@@ -65,6 +65,7 @@ for (const locale of ['ro', 'en']) {
     await expect(page.locator('[data-sdr-state="switch-error"]')).toHaveAttribute('href', `/sdr/${locale}/components/checkbox/#state-switch-error`);
     await expect(page.locator('[data-sdr-state="switch-error"]')).toHaveAttribute('aria-current', 'location');
     await expect(page.locator('[data-sdr-state="switch-error"]')).toBeVisible();
+    await expect(page.locator('[data-sdr-state="switch-error"]')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     await page.goto(`/sdr/${locale}/components/page/`);
     const frame = page.frameLocator('iframe');
     await expect(frame.locator('h1')).toBeVisible();
