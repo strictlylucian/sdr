@@ -1,5 +1,5 @@
 import { afterEach, expect, it } from 'vitest';
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { join, resolve, sep } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import { utilityStyles } from '../../tooling/build/tokens.mjs';
@@ -8,6 +8,7 @@ import { prunePages } from '../../tooling/docs/prune-pages.mts';
 import { countText } from '../../apps/docs/src/i18n/messages';
 import { orderedComponents } from '../../catalog/components';
 import { patterns } from '../../catalog/patterns';
+import { writeGenerated } from '../../tooling/docs/write-generated.mts';
 
 const base = resolve('output/docs-current-tests');
 const roots: string[] = [];
@@ -59,4 +60,18 @@ it('prunes stale generated pages without deleting other file types', async () =>
   await Promise.all(['current.mdx', 'obsolete.mdx', 'asset.svg'].map(name => writeFile(join(root, name), name)));
   await prunePages(root, ['current'], '.mdx');
   expect((await readdir(root)).sort()).toEqual(['asset.svg', 'current.mdx']);
+});
+
+it('writes changed UTF-8 documentation and does not rewrite identical output', async () => {
+  await mkdir(base, { recursive: true });
+  const root = await mkdtemp(join(base, 'case-'));
+  roots.push(root);
+  const path = join(root, 'page.mdx');
+  await writeGenerated(path, 'Română');
+  const first = await stat(path);
+  await writeGenerated(path, 'Română');
+  expect((await stat(path)).mtimeMs).toBe(first.mtimeMs);
+  await writeGenerated(path, 'Conținut actualizat');
+  expect(await readFile(path, 'utf8')).toBe('Conținut actualizat');
+  await expect(writeGenerated(join(root, 'missing', 'page.mdx'), '')).rejects.toMatchObject({ code: 'ENOENT' });
 });

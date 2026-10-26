@@ -55,3 +55,7 @@ Automated checks cover their fixtures. They do not replace manual assistive-tech
 ## GitHub Pages
 
 `npm run build:pages` creates an isolated `/sdr/` deployment in `output/pages/sdr/`; `npm run test:pages` serves it at that prefix and crawls every generated HTML page and internal resource. Chromium, Firefox and WebKit verify hydrated sidebar variants, source links, the embedded Page and institutional-study assets. The normal localhost/LAN build remains separate.
+
+## Choice visual checks
+
+`tests/e2e/choice-content.spec.ts` captures React/HTML choice states in four themes across Chromium, Firefox and WebKit. Screenshots are saved under `output/playwright/choice-review/`, including 320px and enlarged-text profiles. Enlarged-text captures use an isolated React fixture and standalone HTML, while the documentation previews also undergo 320px/200% reflow checks. The Starlight shell itself still needs separate font-resize layout work. Component captures hide documentation chrome to avoid sticky-header overlap; actual documentation pages are also reviewed in the browser. Geometry assertions check first-line alignment, hint placement, unpadded row bottoms, error-rail boundaries and extended clickable label areas. Native PNG corner checks detect rectangular radio error borders that computed border-radius alone would miss.

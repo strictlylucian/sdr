@@ -1,5 +1,6 @@
+import { writeGenerated } from './write-generated.mts';
 import { uiText } from '../../apps/docs/src/i18n/messages';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir } from 'node:fs/promises';
 import { components, orderedComponents } from '../../catalog/components';
 import { componentVariants } from '../../catalog/component-variants';
 import { componentHref } from '../../catalog/component-navigation';
@@ -26,7 +27,7 @@ function apiTable(name: string, locale: 'ro' | 'en') {
 async function page(locale: string, path: string, title: string, content: string, sidebar?: { order?: number; hidden?: boolean }) {
   const target = `${root}/${locale}/${path}.mdx`;
   await mkdir(target.slice(0, target.lastIndexOf('/')), { recursive: true });
-  await writeFile(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR. ${uiText(locale, "docs.independentProposal")}`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
+  await writeGenerated(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR. ${uiText(locale, "docs.independentProposal")}`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
 }
 for (const locale of ['ro', 'en'] as const) {
   const ordered = orderedComponents(locale);
@@ -136,8 +137,8 @@ ${uiText(locale, "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFo
   ], '.html');
 }
 await mkdir('apps/docs/src/data', { recursive: true });
-await writeFile('apps/docs/src/data/api.json', JSON.stringify(api));
-await writeFile('apps/docs/public/qa-manifest.json', JSON.stringify({ states: states.map(state => ({ name: state.example, slug: state.slug, state: state.state, native: state.native, docsPath: { ro: componentHref(state.component, 'ro'), en: componentHref(state.component, 'en') } })), components: components.map(item => {
+await writeGenerated('apps/docs/src/data/api.json', JSON.stringify(api));
+await writeGenerated('apps/docs/public/qa-manifest.json', JSON.stringify({ states: states.map(state => ({ name: state.example, slug: state.slug, state: state.state, native: state.native, docsPath: { ro: componentHref(state.component, 'ro'), en: componentHref(state.component, 'en') } })), components: components.map(item => {
   const docsPath = Object.fromEntries((['ro', 'en'] as const).map(locale => [locale, componentHref(item.name, locale)]));
   return { name: item.name, slug: item.slug, docsPath };
 }), patterns: patterns.map(item => item.slug), patternExamples: patternEntries.map(item => ({ name: item.example, slug: patternExampleSlug(item.slug), docsPath: { ro: patternHref(item.slug, 'ro'), en: patternHref(item.slug, 'en') } })) }));

@@ -27,5 +27,5 @@
 .sdr-tooltip { display:inline-flex; position:relative; }
 .sdr-tooltip::after { content:''; position:absolute; inset-inline:0; inset-block-end:100%; block-size:var(--sdr-space-2); }
 .sdr-tooltip__content { position:absolute; inset-block-end:calc(100% + var(--sdr-space-2)); inset-inline-start:0; z-index:30; padding:var(--sdr-space-2) var(--sdr-space-3); inline-size:max-content; max-inline-size:min(18rem,calc(100vw - var(--sdr-space-6))); background:var(--sdr-text); color:var(--sdr-surface); border-radius:var(--sdr-radius); font-size:var(--sdr-text-xs); box-shadow:var(--sdr-shadow); }
-.sdr-segmented { display:flex; flex-wrap:wrap; gap:var(--sdr-space-2); padding:var(--sdr-space-1); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius); }
+.sdr-segmented { display:flex;flex-wrap:wrap;column-gap:var(--sdr-space-4);row-gap:var(--sdr-space-5);padding:0;border:0; }
 .sdr-exit { background:var(--sdr-danger); color:var(--sdr-surface); }

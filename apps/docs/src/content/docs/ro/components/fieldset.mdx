@@ -170,31 +170,35 @@ export function FieldsetErrorExample() {
         <label
           class="sdr-choice"
           for="error-contact"
-          ><input
-            id="error-contact"
-            class="sdr-choice__input"
-            type="checkbox"
-            aria-invalid="true"
-            aria-describedby="fieldset-error-error"
-            name="error-contact"
-            value="email"
-          /><span class="sdr-choice__content"><span>Email</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-contact"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-invalid="true"
+              aria-describedby="fieldset-error-error"
+              name="error-contact"
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">Email</span></span
+          ></label
         >
       </div>
       <div class="sdr-choice-field">
         <label
           class="sdr-choice"
           for="error-contact-2"
-          ><input
-            id="error-contact-2"
-            class="sdr-choice__input"
-            type="checkbox"
-            aria-invalid="true"
-            aria-describedby="fieldset-error-error"
-            name="error-contact"
-            value="post"
-          /><span class="sdr-choice__content"
-            ><span>Prin poștă</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-contact-2"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-invalid="true"
+              aria-describedby="fieldset-error-error"
+              name="error-contact"
+              value="post" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">Prin poștă</span></span
           ></label
         >
       </div>

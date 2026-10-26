@@ -64,26 +64,32 @@ export function CheckboxExample() {
         <label
           class="sdr-choice"
           for="contact"
-          ><input
-            id="contact"
-            class="sdr-choice__input"
-            type="checkbox"
-            name="contact"
-            value="email"
-          /><span class="sdr-choice__content"><span>Email</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="contact"
+              class="sdr-choice__input"
+              type="checkbox"
+              name="contact"
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">Email</span></span
+          ></label
         >
       </div>
       <div class="sdr-choice-field">
         <label
           class="sdr-choice"
           for="contact-2"
-          ><input
-            id="contact-2"
-            class="sdr-choice__input"
-            type="checkbox"
-            name="contact"
-            value="post"
-          /><span class="sdr-choice__content"><span>By post</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="contact-2"
+              class="sdr-choice__input"
+              type="checkbox"
+              name="contact"
+              value="post" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">By post</span></span
+          ></label
         >
       </div>
     </fieldset>
@@ -168,30 +174,36 @@ export function CheckboxErrorExample() {
         <label
           class="sdr-choice"
           for="error-contact"
-          ><input
-            id="error-contact"
-            class="sdr-choice__input"
-            type="checkbox"
-            aria-invalid="true"
-            aria-describedby="checkbox-error-error"
-            name="error-contact"
-            value="email"
-          /><span class="sdr-choice__content"><span>Email</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-contact"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-invalid="true"
+              aria-describedby="checkbox-error-error"
+              name="error-contact"
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">Email</span></span
+          ></label
         >
       </div>
       <div class="sdr-choice-field">
         <label
           class="sdr-choice"
           for="error-contact-2"
-          ><input
-            id="error-contact-2"
-            class="sdr-choice__input"
-            type="checkbox"
-            aria-invalid="true"
-            aria-describedby="checkbox-error-error"
-            name="error-contact"
-            value="post"
-          /><span class="sdr-choice__content"><span>By post</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-contact-2"
+              class="sdr-choice__input"
+              type="checkbox"
+              aria-invalid="true"
+              aria-describedby="checkbox-error-error"
+              name="error-contact"
+              value="post" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">By post</span></span
+          ></label
         >
       </div>
     </fieldset>
@@ -270,26 +282,32 @@ export function CheckboxDisabledExample() {
         <label
           class="sdr-choice"
           for="disabled-contact"
-          ><input
-            id="disabled-contact"
-            class="sdr-choice__input"
-            type="checkbox"
-            name="disabled-contact"
-            value="email"
-          /><span class="sdr-choice__content"><span>Email</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="disabled-contact"
+              class="sdr-choice__input"
+              type="checkbox"
+              name="disabled-contact"
+              value="email" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">Email</span></span
+          ></label
         >
       </div>
       <div class="sdr-choice-field">
         <label
           class="sdr-choice"
           for="disabled-contact-2"
-          ><input
-            id="disabled-contact-2"
-            class="sdr-choice__input"
-            type="checkbox"
-            name="disabled-contact"
-            value="post"
-          /><span class="sdr-choice__content"><span>By post</span></span></label
+          ><span class="sdr-choice__control"
+            ><input
+              id="disabled-contact-2"
+              class="sdr-choice__input"
+              type="checkbox"
+              name="disabled-contact"
+              value="post" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">By post</span></span
+          ></label
         >
       </div>
     </fieldset>
@@ -427,15 +445,16 @@ export function SwitchExample() {
     <label
       class="sdr-choice sdr-choice--switch"
       for="notifications"
-      ><input
-        id="notifications"
-        class="sdr-choice__input"
-        type="checkbox"
-        role="switch"
-        aria-describedby="notifications-hint"
-        name="notifications"
-      /><span class="sdr-choice__content"
-        ><span>Receive email notifications</span
+      ><span class="sdr-choice__control"
+        ><input
+          id="notifications"
+          class="sdr-choice__input"
+          type="checkbox"
+          role="switch"
+          aria-describedby="notifications-hint"
+          name="notifications" /></span
+      ><span class="sdr-choice__content"
+        ><span class="sdr-choice__label">Receive email notifications</span
         ><span
           id="notifications-hint"
           class="sdr-hint"
@@ -508,16 +527,17 @@ export function SwitchErrorExample() {
     <label
       class="sdr-choice sdr-choice--switch"
       for="error-notifications"
-      ><input
-        id="error-notifications"
-        class="sdr-choice__input"
-        type="checkbox"
-        role="switch"
-        aria-invalid="true"
-        aria-describedby="error-notifications-hint error-notifications-error"
-        name="error-notifications"
-      /><span class="sdr-choice__content"
-        ><span>Receive email notifications</span
+      ><span class="sdr-choice__control"
+        ><input
+          id="error-notifications"
+          class="sdr-choice__input"
+          type="checkbox"
+          role="switch"
+          aria-invalid="true"
+          aria-describedby="error-notifications-hint error-notifications-error"
+          name="error-notifications" /></span
+      ><span class="sdr-choice__content"
+        ><span class="sdr-choice__label">Receive email notifications</span
         ><span
           id="error-notifications-hint"
           class="sdr-hint"
@@ -585,17 +605,18 @@ export function SwitchDisabledExample() {
     <label
       class="sdr-choice sdr-choice--switch"
       for="disabled-notifications"
-      ><input
-        disabled=""
-        id="disabled-notifications"
-        class="sdr-choice__input"
-        type="checkbox"
-        role="switch"
-        aria-describedby="disabled-notifications-hint"
-        name="disabled-notifications"
-        checked=""
-      /><span class="sdr-choice__content"
-        ><span>Receive email notifications</span
+      ><span class="sdr-choice__control"
+        ><input
+          disabled=""
+          id="disabled-notifications"
+          class="sdr-choice__input"
+          type="checkbox"
+          role="switch"
+          aria-describedby="disabled-notifications-hint"
+          name="disabled-notifications"
+          checked="" /></span
+      ><span class="sdr-choice__content"
+        ><span class="sdr-choice__label">Receive email notifications</span
         ><span
           id="disabled-notifications-hint"
           class="sdr-hint"

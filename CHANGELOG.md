@@ -12,6 +12,7 @@ Experimental SDR — Sistem de Design Românesc, an independent proposal. Packag
 - Generated inventories remove obsolete documentation pages, duplicate examples and old build assets after successful publication.
 - Error, disabled and native read-only form states; fixed-value examples for controls without native readonly support.
 - Stable fieldset error rails, associated messages and preserved answers during validation updates.
+- Choice controls align with the first label line, with hints below and spacing between containers. Error rails end at visible row content; horizontal radios have no enclosing frame, and error rings preserve native control geometry across browser engines.
 - Shared semantic error/destructive-action palette, with theme-specific contrast adaptations.
 - Documentation-only i18next and JSON-backed catalogue, variants, scenarios and form-state definitions. Applications own library labels, translations and formatters.
 - Optional application-provided institutional emblems; separate experimental identity-study boards in the docs.

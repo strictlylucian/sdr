@@ -20,10 +20,16 @@
 .sdr-fieldset { margin:0; padding:0; border:0; min-inline-size:0; display:flex; flex-direction:column; gap:var(--sdr-space-3); }
 .sdr-field--error { border-inline-start:var(--sdr-space-1) solid var(--sdr-danger);padding-inline-start:var(--sdr-space-4); }
 .sdr-legend { padding:0; margin-block-end:var(--sdr-space-3); }
-.sdr-choice { display:flex; align-items:start; gap:var(--sdr-space-3); min-block-size:var(--sdr-control-height); padding-block:var(--sdr-space-2); cursor:pointer; }
-.sdr-choice__input { inline-size:var(--sdr-space-5); block-size:var(--sdr-space-5); margin:var(--sdr-space-1) 0 0; accent-color:var(--sdr-action); flex:none; }
-.sdr-choice__content { display:flex; flex-direction:column; gap:var(--sdr-space-1); }
-.sdr-choice--switch .sdr-choice__input { inline-size:var(--sdr-space-6); }
+.sdr-choice-field { min-inline-size:0; }
+.sdr-choice-field.sdr-field--error { gap:var(--sdr-space-3); }
+.sdr-fieldset > .sdr-choice-field + .sdr-choice-field { margin-block-start:var(--sdr-space-3); }
+.sdr-choice { display:grid;grid-template-columns:var(--sdr-space-5) minmax(0,1fr);column-gap:var(--sdr-space-3);row-gap:var(--sdr-space-1);align-items:start;line-height:max(1.25em,var(--sdr-space-5));position:relative;isolation:isolate;cursor:pointer; }
+.sdr-choice::before { content:"";position:absolute;inset-inline:0;inset-block:calc((var(--sdr-space-5) - var(--sdr-control-height)) / 2);z-index:-1; }
+.sdr-choice__control { grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;block-size:1lh;position:relative; }
+.sdr-choice__input { inline-size:var(--sdr-space-5);block-size:var(--sdr-space-5);margin:0;accent-color:var(--sdr-action); }
+.sdr-choice__content { display:contents; }
+.sdr-choice__label { grid-column:2;grid-row:1;min-inline-size:0; }
+.sdr-choice__content > .sdr-hint { grid-column:2;grid-row:2;line-height:var(--sdr-leading); }
 .sdr-date { display:flex; flex-wrap:wrap; gap:var(--sdr-space-3); }
 .sdr-date .sdr-field { inline-size:5rem; }
 .sdr-date .sdr-field:last-child { inline-size:7rem; }
@@ -35,13 +41,17 @@
 .sdr-file { display:block; inline-size:100%; padding:var(--sdr-space-4); border:var(--sdr-border-strong) dashed var(--sdr-border); border-radius:var(--sdr-radius); background:var(--sdr-subtle); }
 .sdr-file::file-selector-button { font:inherit; margin-inline-end:var(--sdr-space-3); padding:var(--sdr-space-2) var(--sdr-space-3); color:var(--sdr-text); background:var(--sdr-surface); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius); cursor:pointer; }
 .sdr-range { margin:0; inline-size:100%; min-block-size:var(--sdr-control-height); accent-color:var(--sdr-action); }
-.sdr-file[aria-invalid="true"],.sdr-field--error > .sdr-fieldset > .sdr-segmented { border-color:var(--sdr-danger); }
-.sdr-choice__input[aria-invalid="true"] { accent-color:var(--sdr-danger);box-shadow:0 0 0 var(--sdr-border-strong) var(--sdr-danger); }
+.sdr-file[aria-invalid="true"] { border-color:var(--sdr-danger); }
+.sdr-choice__input[type="radio"] { border-radius:50%; }
+.sdr-choice__input[type="checkbox"] { border-radius:var(--sdr-radius); }
+.sdr-choice__input[aria-invalid="true"] { accent-color:var(--sdr-danger); }
+.sdr-choice__control:has(> input[aria-invalid="true"])::after { content:"";position:absolute;inset-inline-start:0;inset-block-start:50%;translate:0 -50%;inline-size:var(--sdr-space-5);block-size:var(--sdr-space-5);border:var(--sdr-border-strong) solid var(--sdr-danger);border-radius:var(--sdr-radius);pointer-events:none; }
+.sdr-choice__control:has(> input[type="radio"])::after { border-radius:50%; }
 .sdr-range[aria-invalid="true"] { accent-color:var(--sdr-danger); }
 .sdr-character-count { font-size:var(--sdr-text-sm); color:var(--sdr-muted); }
 .sdr :is(.sdr-input,.sdr-textarea)[readonly]:not(:disabled) { background:var(--sdr-subtle);border-style:dashed;cursor:text; }
 .sdr :is(.sdr-input,.sdr-select,.sdr-textarea,.sdr-file,.sdr-range):disabled { opacity:1;background:var(--sdr-subtle);color:var(--sdr-muted); }
-.sdr-choice:has(> input:disabled) { cursor:not-allowed;color:var(--sdr-muted); }
+.sdr-choice:has(input:disabled) { cursor:not-allowed;color:var(--sdr-muted); }
 .sdr-fieldset:disabled > .sdr-legend { color:var(--sdr-muted); }
 @media(max-width:30rem) { .sdr-input-group > .sdr-input { flex-basis:100%; } }
 @media (max-width:39.999rem) { .sdr-button { padding-inline:var(--sdr-space-3); } }

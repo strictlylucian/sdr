@@ -19,9 +19,9 @@ function Choice({ label, hint, error, id: given, className, kind, ...props }: Ch
   return <div className={cx('sdr-choice-field', !!error && 'sdr-field', !!error && 'sdr-field--error', className)}>
     {error && <p id={`${id}-error`} className="sdr-error">{error}</p>}
     <label className={cx('sdr-choice', kind === 'switch' && 'sdr-choice--switch')} htmlFor={id}>
-      <input {...props} id={id} ref={ref} className="sdr-choice__input" type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined}
-        aria-invalid={error || group.invalid ? true : props['aria-invalid']} aria-describedby={[hint && `${id}-hint`, error && `${id}-error`, group.described, props['aria-describedby']].filter(Boolean).join(' ') || undefined} />
-      <span className="sdr-choice__content"><span>{label}</span>{hint && <span id={`${id}-hint`} className="sdr-hint">{hint}</span>}</span>
+      <span className="sdr-choice__control"><input {...props} id={id} ref={ref} className="sdr-choice__input" type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined}
+        aria-invalid={error || group.invalid ? true : props['aria-invalid']} aria-describedby={[hint && `${id}-hint`, error && `${id}-error`, group.described, props['aria-describedby']].filter(Boolean).join(' ') || undefined} /></span>
+      <span className="sdr-choice__content"><span className="sdr-choice__label">{label}</span>{hint && <span id={`${id}-hint`} className="sdr-hint">{hint}</span>}</span>
     </label>
   </div>;
 }

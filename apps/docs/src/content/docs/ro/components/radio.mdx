@@ -64,14 +64,15 @@ export function RadioExample() {
         <label
           class="sdr-choice"
           for="residence"
-          ><input
-            id="residence"
-            class="sdr-choice__input"
-            type="radio"
-            name="residence"
-            value="ro"
-          /><span class="sdr-choice__content"
-            ><span>În România</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="residence"
+              class="sdr-choice__input"
+              type="radio"
+              name="residence"
+              value="ro" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În România</span></span
           ></label
         >
       </div>
@@ -79,14 +80,15 @@ export function RadioExample() {
         <label
           class="sdr-choice"
           for="residence-2"
-          ><input
-            id="residence-2"
-            class="sdr-choice__input"
-            type="radio"
-            name="residence"
-            value="abroad"
-          /><span class="sdr-choice__content"
-            ><span>În altă țară</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="residence-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="residence"
+              value="abroad" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În altă țară</span></span
           ></label
         >
       </div>
@@ -172,16 +174,17 @@ export function RadioErrorExample() {
         <label
           class="sdr-choice"
           for="error-residence"
-          ><input
-            id="error-residence"
-            class="sdr-choice__input"
-            type="radio"
-            aria-invalid="true"
-            aria-describedby="radio-error-error"
-            name="error-residence"
-            value="ro"
-          /><span class="sdr-choice__content"
-            ><span>În România</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-residence"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="radio-error-error"
+              name="error-residence"
+              value="ro" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În România</span></span
           ></label
         >
       </div>
@@ -189,16 +192,17 @@ export function RadioErrorExample() {
         <label
           class="sdr-choice"
           for="error-residence-2"
-          ><input
-            id="error-residence-2"
-            class="sdr-choice__input"
-            type="radio"
-            aria-invalid="true"
-            aria-describedby="radio-error-error"
-            name="error-residence"
-            value="abroad"
-          /><span class="sdr-choice__content"
-            ><span>În altă țară</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="error-residence-2"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="radio-error-error"
+              name="error-residence"
+              value="abroad" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În altă țară</span></span
           ></label
         >
       </div>
@@ -278,14 +282,15 @@ export function RadioDisabledExample() {
         <label
           class="sdr-choice"
           for="disabled-residence"
-          ><input
-            id="disabled-residence"
-            class="sdr-choice__input"
-            type="radio"
-            name="disabled-residence"
-            value="ro"
-          /><span class="sdr-choice__content"
-            ><span>În România</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="disabled-residence"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-residence"
+              value="ro" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În România</span></span
           ></label
         >
       </div>
@@ -293,14 +298,15 @@ export function RadioDisabledExample() {
         <label
           class="sdr-choice"
           for="disabled-residence-2"
-          ><input
-            id="disabled-residence-2"
-            class="sdr-choice__input"
-            type="radio"
-            name="disabled-residence"
-            value="abroad"
-          /><span class="sdr-choice__content"
-            ><span>În altă țară</span></span
+          ><span class="sdr-choice__control"
+            ><input
+              id="disabled-residence-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-residence"
+              value="abroad" /></span
+          ><span class="sdr-choice__content"
+            ><span class="sdr-choice__label">În altă țară</span></span
           ></label
         >
       </div>
@@ -448,27 +454,33 @@ export function SegmentedControlExample() {
           <label
             class="sdr-choice"
             for="view"
-            ><input
-              id="view"
-              class="sdr-choice__input"
-              type="radio"
-              name="view"
-              checked=""
-              value="list"
-            /><span class="sdr-choice__content"><span>Listă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="view"
+                class="sdr-choice__input"
+                type="radio"
+                name="view"
+                checked=""
+                value="list" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Listă</span></span
+            ></label
           >
         </div>
         <div class="sdr-choice-field">
           <label
             class="sdr-choice"
             for="view-2"
-            ><input
-              id="view-2"
-              class="sdr-choice__input"
-              type="radio"
-              name="view"
-              value="grid"
-            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="view-2"
+                class="sdr-choice__input"
+                type="radio"
+                name="view"
+                value="grid" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Grilă</span></span
+            ></label
           >
         </div>
       </div>
@@ -550,31 +562,37 @@ export function SegmentedControlErrorExample() {
           <label
             class="sdr-choice"
             for="error-view"
-            ><input
-              id="error-view"
-              class="sdr-choice__input"
-              type="radio"
-              aria-invalid="true"
-              aria-describedby="segmented-control-error-error"
-              name="error-view"
-              checked=""
-              value="list"
-            /><span class="sdr-choice__content"><span>Listă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="error-view"
+                class="sdr-choice__input"
+                type="radio"
+                aria-invalid="true"
+                aria-describedby="segmented-control-error-error"
+                name="error-view"
+                checked=""
+                value="list" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Listă</span></span
+            ></label
           >
         </div>
         <div class="sdr-choice-field">
           <label
             class="sdr-choice"
             for="error-view-2"
-            ><input
-              id="error-view-2"
-              class="sdr-choice__input"
-              type="radio"
-              aria-invalid="true"
-              aria-describedby="segmented-control-error-error"
-              name="error-view"
-              value="grid"
-            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="error-view-2"
+                class="sdr-choice__input"
+                type="radio"
+                aria-invalid="true"
+                aria-describedby="segmented-control-error-error"
+                name="error-view"
+                value="grid" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Grilă</span></span
+            ></label
           >
         </div>
       </div>
@@ -650,27 +668,33 @@ export function SegmentedControlDisabledExample() {
           <label
             class="sdr-choice"
             for="disabled-view"
-            ><input
-              id="disabled-view"
-              class="sdr-choice__input"
-              type="radio"
-              name="disabled-view"
-              checked=""
-              value="list"
-            /><span class="sdr-choice__content"><span>Listă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="disabled-view"
+                class="sdr-choice__input"
+                type="radio"
+                name="disabled-view"
+                checked=""
+                value="list" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Listă</span></span
+            ></label
           >
         </div>
         <div class="sdr-choice-field">
           <label
             class="sdr-choice"
             for="disabled-view-2"
-            ><input
-              id="disabled-view-2"
-              class="sdr-choice__input"
-              type="radio"
-              name="disabled-view"
-              value="grid"
-            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+            ><span class="sdr-choice__control"
+              ><input
+                id="disabled-view-2"
+                class="sdr-choice__input"
+                type="radio"
+                name="disabled-view"
+                value="grid" /></span
+            ><span class="sdr-choice__content"
+              ><span class="sdr-choice__label">Grilă</span></span
+            ></label
           >
         </div>
       </div>
