@@ -16,7 +16,7 @@ createRoot(document.getElementById('fixture')).render(<SdrProvider lang={locale}
   bundle: true,
   jsx: "automatic",
   format: "iife",
-  define: { "process.env.NODE_ENV": '"production"' },
+  define: { "process.env.NODE_ENV": '"production"', "process.env.SDR_DOCS_BASE": '"/"' },
 });
 
 /** Real React composition, served only through Playwright's per-test routing. */
