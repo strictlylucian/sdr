@@ -1,0 +1,10 @@
+---
+import { docsUrl } from '../docs-url';
+import { uiText } from '../i18n/messages';
+const { locale } = Astro.props;
+const ro = locale === 'ro';
+---
+<div class="not-content sdr-page-preview">
+  <div class="sdr-page-preview__toolbar"><strong>{uiText(locale, "PagePreview.completePage")}</strong><a href={docsUrl(`/examples/${locale}/page.html`)} target="_blank" rel="noreferrer">{uiText(locale, "PagePreview.openTheCompletePage")}</a></div>
+  <iframe src={docsUrl(`/examples/${locale}/page.html`)} title={uiText(locale, "PagePreview.pageCompleteServiceExample")} loading="lazy"></iframe>
+</div>

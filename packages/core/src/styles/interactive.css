@@ -1,0 +1,31 @@
+.sdr-details { border-block-end:var(--sdr-border-width) solid var(--sdr-divider); }
+.sdr-details > summary { padding:var(--sdr-space-4) 0; color:var(--sdr-link); font-weight:650; min-block-size:var(--sdr-control-height); }
+.sdr-details__content { padding-block-end:var(--sdr-space-5); padding-inline-start:var(--sdr-space-5); }
+.sdr-accordion { border-block-start:var(--sdr-border-width) solid var(--sdr-divider); }
+.sdr-accordion > [data-sdr-accordion-toggle] { border:0; padding-inline:0; justify-content:flex-start; text-align:start; margin-block-end:var(--sdr-space-2); }
+.sdr-details > summary { display:grid; grid-template-columns:var(--sdr-space-4) minmax(0,1fr); column-gap:var(--sdr-space-2); list-style:none; }
+.sdr-details > summary::-webkit-details-marker { display:none; }
+.sdr-details > summary::before { content:''; inline-size:var(--sdr-space-2); block-size:var(--sdr-space-2); margin-block-start:var(--sdr-space-2); justify-self:center; border-inline-end:var(--sdr-border-strong) solid currentColor; border-block-end:var(--sdr-border-strong) solid currentColor; transform:rotate(-45deg); }
+.sdr-details:dir(rtl) > summary::before { transform:rotate(45deg); }
+.sdr-details[open] > summary::before { transform:rotate(45deg); }
+.sdr-details:dir(rtl)[open] > summary::before { transform:rotate(-45deg); }
+.sdr-tabs__list { display:flex; flex-wrap:wrap; gap:var(--sdr-space-2); padding:0; margin:0; border-block-end:var(--sdr-border-strong) solid var(--sdr-divider); }
+.sdr-tabs__tab { padding:var(--sdr-space-3) var(--sdr-space-4); min-block-size:var(--sdr-control-height); background:transparent; color:var(--sdr-link); border:0; border-block-end:var(--sdr-border-strong) solid transparent; font:inherit; font-weight:650; }
+.sdr-tabs__tab[aria-selected="true"] { color:var(--sdr-text); border-block-end-color:var(--sdr-action); background:var(--sdr-subtle); }
+.sdr-tabs__panel { padding-block:var(--sdr-space-5); }
+.sdr-dialog { position:fixed; inset:0; margin:auto; inline-size:min(calc(100% - var(--sdr-space-6)),36rem); max-block-size:calc(100dvh - var(--sdr-space-6)); overflow:auto; overscroll-behavior:contain; padding:var(--sdr-group-gap); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius-lg); background:var(--sdr-surface); color:var(--sdr-text); box-shadow:var(--sdr-shadow); }
+.sdr-dialog::backdrop { background:#00000080; }
+.sdr-dialog__header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:var(--sdr-space-4); }
+.sdr-dialog__header > h2 { flex:1 1 12rem; min-inline-size:0; }
+.sdr-dialog__header > button { margin-inline-start:auto; padding-inline:0; border-inline-width:0; }
+.sdr-dialog__body { padding-block:var(--sdr-space-5); }
+.sdr-dialog--drawer { margin:0; margin-inline-start:auto; block-size:100dvh; max-block-size:100dvh; inline-size:min(100%,28rem); border-radius:0; }
+.sdr-menu { position:relative; }
+.sdr-menu > summary { list-style:none; }
+.sdr-menu__content { position:absolute; inset-block-start:100%; inset-inline-start:0; z-index:20; inline-size:12rem; max-inline-size:100%; padding:var(--sdr-space-2); background:var(--sdr-surface); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius); box-shadow:var(--sdr-shadow); }
+.sdr-menu__content a,.sdr-menu__content button { display:block; padding:var(--sdr-space-3); min-block-size:var(--sdr-control-height); }
+.sdr-tooltip { display:inline-flex; position:relative; }
+.sdr-tooltip::after { content:''; position:absolute; inset-inline:0; inset-block-end:100%; block-size:var(--sdr-space-2); }
+.sdr-tooltip__content { position:absolute; inset-block-end:calc(100% + var(--sdr-space-2)); inset-inline-start:0; z-index:30; padding:var(--sdr-space-2) var(--sdr-space-3); inline-size:max-content; max-inline-size:min(18rem,calc(100vw - var(--sdr-space-6))); background:var(--sdr-text); color:var(--sdr-surface); border-radius:var(--sdr-radius); font-size:var(--sdr-text-xs); box-shadow:var(--sdr-shadow); }
+.sdr-segmented { display:flex; flex-wrap:wrap; gap:var(--sdr-space-2); padding:var(--sdr-space-1); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius); }
+.sdr-exit { background:var(--sdr-danger); color:var(--sdr-surface); }

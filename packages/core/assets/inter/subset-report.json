@@ -1,0 +1,48 @@
+[
+  {
+    "file": "latin/InterVariable.woff2",
+    "sourceBytes": 352240,
+    "bytes": 129028,
+    "sha256": "e5d19b1aa317aa0ef8d2b96810be819e925692f4383af1577a8b06607725cc05",
+    "characters": 1085,
+    "glyphs": 1399,
+    "axes": {
+      "opsz": [
+        14.0,
+        32.0
+      ],
+      "wght": [
+        400.0,
+        750.0
+      ]
+    },
+    "outlineComparisons": 660,
+    "maximumOutlineDeltaFontUnits": 1.3505475507263895,
+    "maximumToleranceFontUnits": 2,
+    "romanianAndCombiningMarks": true,
+    "hinting": "preserved"
+  },
+  {
+    "file": "latin/InterVariable-Italic.woff2",
+    "sourceBytes": 387976,
+    "bytes": 140188,
+    "sha256": "62cd132dd76422059c982cb65a9d9c410619e35d8b49e24c044b8099448fd037",
+    "characters": 1085,
+    "glyphs": 1398,
+    "axes": {
+      "opsz": [
+        14.0,
+        32.0
+      ],
+      "wght": [
+        400.0,
+        750.0
+      ]
+    },
+    "outlineComparisons": 660,
+    "maximumOutlineDeltaFontUnits": 1.4027517933941454,
+    "maximumToleranceFontUnits": 2,
+    "romanianAndCombiningMarks": true,
+    "hinting": "preserved"
+  }
+]

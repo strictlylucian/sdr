@@ -1,0 +1,99 @@
+---
+title: "Breadcrumbs"
+description: "Breadcrumbs — SDR. Independent proposal."
+sidebar: {"order":4}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Explain a page location within an information hierarchy.
+
+## Example
+
+<Preview name="Breadcrumbs" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function BreadcrumbsExample() {
+  return (
+    <R.Breadcrumbs
+      label="Breadcrumb"
+      items={[
+        { label: 'Home', href: `/${locale}/` },
+        { label: 'Components', href: `/${locale}/components/`, current: true },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-breadcrumbs"
+    aria-label="Breadcrumb"
+  >
+    <ol>
+      <li><a href="/en/">Home</a></li>
+      <li><span aria-current="page">Components</span></li>
+    </ol>
+  </nav>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/breadcrumbs.html)
+
+
+
+## Usage
+
+Breadcrumbs represent hierarchy, not a history of completed form steps.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `items` | `NavigationItem[]` | Yes |
+| `label` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

@@ -1,0 +1,100 @@
+---
+title: "Text"
+description: "Text — SDR. Propunere independentă."
+sidebar: {"order":57}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Oferă dimensiuni consecvente pentru textul principal, introduceri și explicații.
+
+## Exemplu
+
+<Preview name="Text" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextExample() {
+  return (
+    <R.Stack>
+      <R.Text size="lg">Servicii digitale pentru fiecare.</R.Text>
+      <R.Text>
+        Păstrăm diacriticele: ă â î ș ț. Brașov, Iași, Târgu Mureș.
+      </R.Text>
+      <R.Text size="xs">
+        Informații suplimentare, într-un text ușor de citit.
+      </R.Text>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <p class="sdr-u-text-lg">Servicii digitale pentru fiecare.</p>
+    <p class="sdr-u-text-md">
+      Păstrăm diacriticele: ă â î ș ț. Brașov, Iași, Târgu Mureș.
+    </p>
+    <p class="sdr-u-text-xs">
+      Informații suplimentare, într-un text ușor de citit.
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/text.html)
+
+
+
+## Utilizare
+
+Instrucțiunile importante rămân lizibile; nu se micșorează doar ca să încapă într-un spațiu fix.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `size` | `"sm" \| "md" \| "lg" \| "xs" \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

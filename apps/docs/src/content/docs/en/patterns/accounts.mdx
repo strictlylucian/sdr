@@ -1,0 +1,418 @@
+---
+title: "Create an account"
+description: "Create an account — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Create accounts
+
+Do not require an account for a one-off task without evidence. Explain recovery, personal data use, and a route for people who cannot use the primary authentication method.
+
+<Preview name="AccountCreation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function AccountCreationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="account"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Create an account for your applications</h3>
+      <R.InsetText>
+        Demonstration account. Use fictional details; no real account is
+        created.
+      </R.InsetText>
+      <R.TextInput
+        label="Email"
+        type="email"
+        autoComplete="username"
+        name="account-email"
+        required
+      />
+      <R.PasswordCreationFields
+        required
+        showLabel="Show password"
+        hideLabel="Hide password"
+        label="Choose a password"
+        hint="Use a unique password. A password manager can help."
+      />
+      <div>
+        <R.Button type="submit">Simulate account creation</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Example completed. No accounts were created and no passwords were
+        stored.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="account"
+    class="sdr-stack"
+  >
+    <h3>Create an account for your applications</h3>
+    <div class="sdr-inset">
+      Demonstration account. Use fictional details; no real account is created.
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="account-email"
+        >Email</label
+      ><input
+        type="email"
+        autocomplete="username"
+        required=""
+        id="account-email"
+        class="sdr-input"
+        name="account-email"
+      />
+    </div>
+    <div
+      data-sdr-show-label="Show password"
+      data-sdr-hide-label="Hide password"
+      data-sdr-component="password"
+    >
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="password"
+          >Choose a password</label
+        >
+        <div
+          id="password-hint"
+          class="sdr-hint"
+        >
+          Use a unique password. A password manager can help.
+        </div>
+        <div class="sdr-input-group">
+          <input
+            autocomplete="new-password"
+            required=""
+            id="password"
+            aria-describedby="password-hint"
+            type="password"
+            class="sdr-input"
+            name="password"
+          /><button
+            type="button"
+            class="sdr-button sdr-button--secondary"
+            data-sdr-password-toggle="true"
+            aria-controls="password"
+            aria-pressed="false"
+            hidden=""
+          >
+            Show password
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Simulate account creation
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Example completed. No accounts were created and no passwords were stored.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-accounts.html)
+
+
+
+
+<div id="variant-passwords" className="sdr-component-variant">
+
+## Passwords
+
+Permit password managers, paste and reveal controls. Publish the actual password policy and use accessible authentication without memory puzzles.
+
+<Preview name="PasswordCreationFields" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PasswordCreationFieldsExample() {
+  return (
+    <R.PasswordCreationFields
+      showLabel="Show password"
+      hideLabel="Hide password"
+      label="Choose a password"
+      hint="Use a unique password. A password manager can help."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Show password"
+    data-sdr-hide-label="Hide password"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="password"
+        >Choose a password</label
+      >
+      <div
+        id="password-hint"
+        class="sdr-hint"
+      >
+        Use a unique password. A password manager can help.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          id="password"
+          aria-describedby="password-hint"
+          type="password"
+          class="sdr-input"
+          name="password"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Show password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-passwords.html)
+
+</div>
+
+
+<div id="variant-username" className="sdr-component-variant">
+
+## Create a username
+
+Prefer an existing identifier when appropriate. Explain uniqueness and permitted characters before submission and provide actionable errors.
+
+<Preview name="UsernameCreation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function UsernameCreationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="username"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <R.TextInput
+        label="Username"
+        name="new-username"
+        autoComplete="username"
+        required
+        hint="Choose a test username. A live service checks availability on the server."
+      />
+      <div>
+        <R.Button type="submit">Continue</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Example completed. The username was not registered.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="username"
+    class="sdr-stack"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="new-username"
+        >Username</label
+      >
+      <div
+        id="new-username-hint"
+        class="sdr-hint"
+      >
+        Choose a test username. A live service checks availability on the
+        server.
+      </div>
+      <input
+        autocomplete="username"
+        required=""
+        id="new-username"
+        aria-describedby="new-username-hint"
+        class="sdr-input"
+        name="new-username"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continue
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Example completed. The username was not registered.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-username.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

@@ -1,0 +1,174 @@
+---
+title: "Alert"
+description: "Alert — SDR. Independent proposal."
+sidebar: {"order":3}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Explain an important state with a title and a redundant text cue.
+
+## Example
+
+<Preview name="Alert" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function AlertExample() {
+  return (
+    <R.Stack>
+      <R.Alert
+        title="Documents received"
+        tone="success"
+      >
+        You can check your application status in your account.
+      </R.Alert>
+      <R.Alert
+        title="Check the deadline"
+        tone="warning"
+      >
+        Submit your application by the date shown in the service.
+      </R.Alert>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <div class="sdr-alert sdr-alert--success">
+      <p class="sdr-alert__title">Documents received</p>
+      <div>You can check your application status in your account.</div>
+    </div>
+    <div class="sdr-alert sdr-alert--warning">
+      <p class="sdr-alert__title">Check the deadline</p>
+      <div>Submit your application by the date shown in the service.</div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/alert.html)
+
+
+
+## Usage
+
+Static alerts are not live regions. Add role=status or role=alert only for appropriate dynamic updates.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `title` | `ReactNode` | Yes |
+| `tone` | `Tone \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-notification-banner" className="sdr-component-variant">
+
+## Notification banner
+
+NotificationBanner is an Alert alias for service-level messages and uses the same API.
+
+<Preview name="NotificationBanner" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function NotificationBannerExample() {
+  return (
+    <R.NotificationBanner title="Service updated">
+      You can continue your saved application.
+    </R.NotificationBanner>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-alert">
+    <p class="sdr-alert__title">Service updated</p>
+    <div>You can continue your saved application.</div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/notification-banner.html)
+
+
+
+### API · NotificationBanner
+
+| Property | Type | Required |
+|---|---|---|
+| `title` | `ReactNode` | Yes |
+| `tone` | `Tone \| undefined` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

@@ -1,0 +1,99 @@
+---
+title: "Cluster"
+description: "Cluster — SDR. Independent proposal."
+sidebar: {"order":10}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Wrap related controls while maintaining one gap token.
+
+## Example
+
+<Preview name="Cluster" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ClusterExample() {
+  return (
+    <R.Cluster>
+      <R.Button>Continue</R.Button>
+      <R.Button variant="secondary">Save for later</R.Button>
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <button
+      type="button"
+      class="sdr-button"
+    >
+      Continue</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--secondary"
+    >
+      Save for later
+    </button>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/cluster.html)
+
+
+
+## Usage
+
+Allow translated labels to wrap without clipping controls.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `gap` | `Space \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

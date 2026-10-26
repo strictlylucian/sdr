@@ -1,0 +1,90 @@
+---
+title: "Stack"
+description: "Stack — SDR. Independent proposal."
+sidebar: {"order":49}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Apply a single spacing token between vertical siblings.
+
+## Example
+
+<Preview name="Stack" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function StackExample() {
+  return (
+    <R.Stack gap={5}>
+      <R.Text>One group, one rhythm.</R.Text>
+      <R.Text>Spacing comes from token 5: 24 px at 16 px/rem.</R.Text>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack sdr-u-gap-5">
+    <p class="sdr-u-text-md">One group, one rhythm.</p>
+    <p class="sdr-u-text-md">Spacing comes from token 5: 24 px at 16 px/rem.</p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/stack.html)
+
+
+
+## Usage
+
+Use gap instead of independent child margins to avoid double spacing.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `gap` | `Space \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

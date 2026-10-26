@@ -1,0 +1,300 @@
+---
+title: "Payment card details"
+description: "Payment card details — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Use a qualified payment provider hosted flow or hosted fields. SDR does not implement card processing or collect real card data in documentation examples.
+
+<Preview name="PaymentCard" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PaymentCardExample() {
+  const [done, setDone] = useState(false);
+  const amount = new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: 'RON',
+  }).format(25);
+  return (
+    <form
+      data-sdr-pattern-demo="payment"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Pay the document fee</h3>
+      <R.SummaryList items={[{ key: 'Amount due', value: amount }]} />
+      <R.InsetText>
+        Demonstration only; no money is processed. Use only test card 4242 4242
+        4242 4242 and fictional details.
+      </R.InsetText>
+      <R.TextInput
+        label="Card number"
+        name="card-number"
+        inputMode="numeric"
+        autoComplete="cc-number"
+        defaultValue="4242 4242 4242 4242"
+        pattern="4242(?:\s|\x2D)*4242(?:\s|\x2D)*4242(?:\s|\x2D)*4242"
+        title="Use test card 4242 4242 4242 4242."
+        required
+      />
+      <R.Fieldset
+        legend="Expiry date"
+        hint="For example, 12 2030"
+      >
+        <div className="sdr-date">
+          <R.TextInput
+            label="Month"
+            name="card-exp-month"
+            inputMode="numeric"
+            autoComplete="cc-exp-month"
+            defaultValue="12"
+            pattern="0[1-9]|1[0-2]"
+            maxLength={2}
+            required
+          />
+          <R.TextInput
+            label="Year"
+            name="card-exp-year"
+            inputMode="numeric"
+            autoComplete="cc-exp-year"
+            defaultValue="2030"
+            pattern="20[0-9]{2}"
+            maxLength={4}
+            required
+          />
+        </div>
+      </R.Fieldset>
+      <R.TextInput
+        label="Name on card"
+        name="card-name"
+        autoComplete="cc-name"
+        defaultValue="ANA ȘERBAN"
+        required
+      />
+      <R.TextInput
+        label="Card security code"
+        name="card-security"
+        inputMode="numeric"
+        autoComplete="cc-csc"
+        defaultValue="123"
+        pattern="[0-9]{3,4}"
+        maxLength={4}
+        hint="The 3 digits on the back, or 4 digits on the front, depending on your card."
+        required
+      />
+      <div>
+        <R.Button type="submit">Simulate payment of 25.00 RON</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Test payment confirmed. No money was taken.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="payment"
+    class="sdr-stack"
+  >
+    <h3>Pay the document fee</h3>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Amount due</dt>
+        <dd>RON&nbsp;25.00</dd>
+      </div>
+    </dl>
+    <div class="sdr-inset">
+      Demonstration only; no money is processed. Use only test card 4242 4242
+      4242 4242 and fictional details.
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="card-number"
+        >Card number</label
+      ><input
+        inputmode="numeric"
+        autocomplete="cc-number"
+        pattern="4242(?:\s|\x2D)*4242(?:\s|\x2D)*4242(?:\s|\x2D)*4242"
+        title="Use test card 4242 4242 4242 4242."
+        required=""
+        id="card-number"
+        class="sdr-input"
+        name="card-number"
+        value="4242 4242 4242 4242"
+      />
+    </div>
+    <div class="sdr-field-group">
+      <fieldset
+        id="payment-card"
+        class="sdr-fieldset"
+        aria-describedby="payment-card-hint"
+      >
+        <legend class="sdr-legend">Expiry date</legend>
+        <div
+          class="sdr-hint"
+          id="payment-card-hint"
+        >
+          For example, 12 2030
+        </div>
+        <div class="sdr-date">
+          <div class="sdr-field">
+            <label
+              class="sdr-label"
+              for="card-exp-month"
+              >Month</label
+            ><input
+              inputmode="numeric"
+              autocomplete="cc-exp-month"
+              pattern="0[1-9]|1[0-2]"
+              maxlength="2"
+              required=""
+              id="card-exp-month"
+              class="sdr-input"
+              name="card-exp-month"
+              value="12"
+            />
+          </div>
+          <div class="sdr-field">
+            <label
+              class="sdr-label"
+              for="card-exp-year"
+              >Year</label
+            ><input
+              inputmode="numeric"
+              autocomplete="cc-exp-year"
+              pattern="20[0-9]{2}"
+              maxlength="4"
+              required=""
+              id="card-exp-year"
+              class="sdr-input"
+              name="card-exp-year"
+              value="2030"
+            />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="card-name"
+        >Name on card</label
+      ><input
+        autocomplete="cc-name"
+        required=""
+        id="card-name"
+        class="sdr-input"
+        name="card-name"
+        value="ANA ȘERBAN"
+      />
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="card-security"
+        >Card security code</label
+      >
+      <div
+        id="card-security-hint"
+        class="sdr-hint"
+      >
+        The 3 digits on the back, or 4 digits on the front, depending on your
+        card.
+      </div>
+      <input
+        inputmode="numeric"
+        autocomplete="cc-csc"
+        pattern="[0-9]{3,4}"
+        maxlength="4"
+        required=""
+        id="card-security"
+        aria-describedby="card-security-hint"
+        class="sdr-input"
+        name="card-security"
+        value="123"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Simulate payment of 25.00 RON
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Test payment confirmed. No money was taken.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-payment-cards.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

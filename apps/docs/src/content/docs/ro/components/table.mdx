@@ -1,0 +1,254 @@
+---
+title: "Tabel"
+description: "Tabel — SDR. Propunere independentă."
+sidebar: {"order":55}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează date structurate pe rânduri și coloane.
+
+## Exemplu
+
+<Preview name="Table" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TableExample() {
+  return (
+    <R.Table
+      caption="Programul ghișeului"
+      columns={[
+        { key: 'day', label: 'Zi' },
+        { key: 'hours', label: 'Program' },
+      ]}
+      rows={[
+        { id: 'monday', cells: { day: 'Luni', hours: '09:00–17:00' } },
+        { id: 'friday', cells: { day: 'Vineri', hours: '09:00–14:00' } },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    class="sdr-table-wrapper"
+    role="region"
+    aria-labelledby="table"
+    tabindex="0"
+  >
+    <table class="sdr-table">
+      <caption id="table">
+        Programul ghișeului
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Zi</th>
+          <th scope="col">Program</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Luni</th>
+          <td>09:00–17:00</td>
+        </tr>
+        <tr>
+          <th scope="row">Vineri</th>
+          <td>09:00–14:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/table.html)
+
+
+
+## Utilizare
+
+Antetele descriu coloanele. Dacă tabelul nu încape, se derulează în propriul container, care poate primi focus.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `caption` | `string` | Da |
+| `columns` | `TableColumn[]` | Da |
+| `rows` | `TableRow[]` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-data-table" className="sdr-component-variant">
+
+## Cu sortare
+
+Butoanele din antetele coloanelor sortează datele în browser. Pentru numere formatate, sortValues poate furniza valorile numerice folosite la sortare. Paginarea de pe server se implementează în aplicație.
+
+<Preview name="DataTable" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DataTableExample() {
+  return (
+    <R.DataTable
+      caption="Cereri pe localități"
+      columns={[
+        { key: 'city', label: 'Localitate', sortable: true },
+        { key: 'count', label: 'Cereri', sortable: true, type: 'number' },
+      ]}
+      rows={[
+        { id: 'brasov', cells: { city: 'Brașov', count: 42 } },
+        { id: 'iasi', cells: { city: 'Iași', count: 108 } },
+        { id: 'cluj', cells: { city: 'Cluj-Napoca', count: 7 } },
+      ]}
+      compareText={
+        new Intl.Collator(locale, { numeric: true, sensitivity: 'base' })
+          .compare
+      }
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="data-table"
+    class="sdr-table-wrapper"
+    role="region"
+    aria-labelledby="data-table"
+    tabindex="0"
+  >
+    <table class="sdr-table">
+      <caption id="data-table">
+        Cereri pe localități
+      </caption>
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            data-sdr-sort-type="text"
+          >
+            <button
+              type="button"
+              data-sdr-sort="true"
+            >
+              Localitate
+            </button>
+          </th>
+          <th
+            scope="col"
+            data-sdr-sort-type="number"
+          >
+            <button
+              type="button"
+              data-sdr-sort="true"
+            >
+              Cereri
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Brașov</td>
+          <td>42</td>
+        </tr>
+        <tr>
+          <td>Iași</td>
+          <td>108</td>
+        </tr>
+        <tr>
+          <td>Cluj-Napoca</td>
+          <td>7</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/data-table.html)
+
+
+
+### API · DataTable
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `caption` | `string` | Da |
+| `columns` | `TableColumn[]` | Da |
+| `rows` | `TableRow[]` | Da |
+| `compareText` | `((left: string, right: string) => number) \| undefined` | Nu |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

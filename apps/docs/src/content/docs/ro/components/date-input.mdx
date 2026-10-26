@@ -1,0 +1,820 @@
+---
+title: "Dată cu zi, lună și an"
+description: "Dată cu zi, lună și an — SDR. Propunere independentă."
+sidebar: {"order":21}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite introducerea unei date cunoscute, cum ar fi data nașterii, în trei câmpuri separate.
+
+## Exemplu
+
+<Preview name="DateInput" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DateInputExample() {
+  return (
+    <R.DateInput
+      legend="Data nașterii"
+      name="birth"
+      hint="De exemplu, 27 3 1990"
+      labels={{ day: 'Zi', month: 'Lună', year: 'An' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-hint"
+    >
+      <legend class="sdr-legend">Data nașterii</legend>
+      <p
+        id="date-input-hint"
+        class="sdr-hint"
+      >
+        De exemplu, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-day"
+            >Zi</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            maxlength="2"
+            id="date-input-day"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-day"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-month"
+            >Lună</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            maxlength="2"
+            id="date-input-month"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-month"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-year"
+            >An</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            maxlength="4"
+            id="date-input-year"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-year"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-input.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="DateInputError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DateInputErrorExample() {
+  return (
+    <R.DateInput
+      error="Scrie o dată de naștere validă."
+      legend="Data nașterii"
+      name="error-birth"
+      hint="De exemplu, 27 3 1990"
+      labels={{ day: 'Zi', month: 'Lună', year: 'An' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-error-hint date-input-error-error"
+    >
+      <legend class="sdr-legend">Data nașterii</legend>
+      <p
+        id="date-input-error-hint"
+        class="sdr-hint"
+      >
+        De exemplu, 27 3 1990
+      </p>
+      <p
+        id="date-input-error-error"
+        class="sdr-error"
+      >
+        Scrie o dată de naștere validă.
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-day"
+            >Zi</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            aria-invalid="true"
+            maxlength="2"
+            id="date-input-error-day"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-day"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-month"
+            >Lună</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            aria-invalid="true"
+            maxlength="2"
+            id="date-input-error-month"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-month"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-year"
+            >An</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            aria-invalid="true"
+            maxlength="4"
+            id="date-input-error-year"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-year"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-input-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="DateInputDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DateInputDisabledExample() {
+  return (
+    <R.DateInput
+      disabled
+      defaultValue={{ day: '27', month: '3', year: '1990' }}
+      legend="Data nașterii"
+      name="disabled-birth"
+      hint="De exemplu, 27 3 1990"
+      labels={{ day: 'Zi', month: 'Lună', year: 'An' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      class="sdr-fieldset"
+      aria-describedby="date-input-disabled-hint"
+    >
+      <legend class="sdr-legend">Data nașterii</legend>
+      <p
+        id="date-input-disabled-hint"
+        class="sdr-hint"
+      >
+        De exemplu, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-day"
+            >Zi</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            maxlength="2"
+            id="date-input-disabled-day"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-day"
+            value="27"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-month"
+            >Lună</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            maxlength="2"
+            id="date-input-disabled-month"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-month"
+            value="3"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-year"
+            >An</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            maxlength="4"
+            id="date-input-disabled-year"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-year"
+            value="1990"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-input-disabled.html)
+
+
+## Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="DateInputReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DateInputReadOnlyExample() {
+  return (
+    <R.DateInput
+      readOnly
+      defaultValue={{ day: '27', month: '3', year: '1990' }}
+      legend="Data nașterii"
+      name="readonly-birth"
+      hint="De exemplu, 27 3 1990"
+      labels={{ day: 'Zi', month: 'Lună', year: 'An' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-read-only-hint"
+    >
+      <legend class="sdr-legend">Data nașterii</legend>
+      <p
+        id="date-input-read-only-hint"
+        class="sdr-hint"
+      >
+        De exemplu, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-day"
+            >Zi</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            readonly=""
+            maxlength="2"
+            id="date-input-read-only-day"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-day"
+            value="27"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-month"
+            >Lună</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            readonly=""
+            maxlength="2"
+            id="date-input-read-only-month"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-month"
+            value="3"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-year"
+            >An</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            readonly=""
+            maxlength="4"
+            id="date-input-read-only-year"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-year"
+            value="1990"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-input-readonly.html)
+
+
+## Utilizare
+
+Validarea pe server verifică dacă data există și indică ce trebuie corectat: ziua, luna sau anul.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `legend` | `ReactNode` | Da |
+| `name` | `string` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+| `labels` | `{ day: string; month: string; year: string; }` | Da |
+| `disabled` | `boolean \| undefined` | Nu |
+| `readOnly` | `boolean \| undefined` | Nu |
+| `defaultValue` | `{ day: string; month: string; year: string; } \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-date-picker" className="sdr-component-variant">
+
+## Cu selector de dată
+
+DatePicker folosește input type=date, ca alternativă la cele trei câmpuri separate. Aspectul calendarului și comenzile disponibile depind de browser.
+
+<Preview name="DatePicker" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DatePickerExample() {
+  return (
+    <R.DatePicker
+      label="Data programării"
+      name="appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="appointment"
+      >Data programării</label
+    ><input
+      min="2026-10-25"
+      type="date"
+      id="appointment"
+      class="sdr-input"
+      name="appointment"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/date-picker.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="DatePickerError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DatePickerErrorExample() {
+  return (
+    <R.DatePicker
+      error="Alege o dată pentru programare."
+      label="Data programării"
+      name="error-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-appointment"
+      >Data programării</label
+    >
+    <div
+      id="error-appointment-error"
+      class="sdr-error"
+    >
+      Alege o dată pentru programare.
+    </div>
+    <input
+      min="2026-10-25"
+      type="date"
+      id="error-appointment"
+      aria-invalid="true"
+      aria-describedby="error-appointment-error"
+      class="sdr-input"
+      name="error-appointment"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-picker-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="DatePickerDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DatePickerDisabledExample() {
+  return (
+    <R.DatePicker
+      disabled
+      defaultValue="2026-11-05"
+      label="Data programării"
+      name="disabled-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-appointment"
+      >Data programării</label
+    ><input
+      disabled=""
+      min="2026-10-25"
+      type="date"
+      id="disabled-appointment"
+      class="sdr-input"
+      name="disabled-appointment"
+      value="2026-11-05"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-picker-disabled.html)
+
+
+### Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="DatePickerReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DatePickerReadOnlyExample() {
+  return (
+    <R.DatePicker
+      readOnly
+      defaultValue="2026-11-05"
+      label="Data programării"
+      name="readonly-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-appointment"
+      >Data programării</label
+    ><input
+      readonly=""
+      min="2026-10-25"
+      type="date"
+      id="readonly-appointment"
+      class="sdr-input"
+      name="readonly-appointment"
+      value="2026-11-05"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/date-picker-readonly.html)
+
+
+### API · DatePicker
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

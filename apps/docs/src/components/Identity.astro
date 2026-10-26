@@ -1,0 +1,35 @@
+---
+import { docsUrl } from '../docs-url';
+import { uiText } from '../i18n/messages';
+const { locale = 'ro' } = Astro.props;
+const ro = locale === 'ro';
+const sections = [
+  { path: 'foundations/typography', title: uiText(locale, "Identity.foundations"), description: uiText(locale, "Identity.typographyColourSpacingAndLayout") },
+  { path: 'components', title: uiText(locale, "Identity.components"), description: uiText(locale, "Identity.interfaceElementsExamplesAndAPIs") },
+  { path: 'patterns', title: uiText(locale, "Identity.servicePatterns"), description: uiText(locale, "Identity.formsChecksAndServiceJourneys") },
+  { path: 'accessibility', title: uiText(locale, "Identity.accessibility"), description: uiText(locale, "Identity.requirementsVerificationAndKnownLimitations") },
+  { path: 'foundations/themes', title: uiText(locale, "Identity.themesAndCustomisation"), description: uiText(locale, "Identity.visualThemesDensityAndUtilityClasses") },
+  { path: 'contributing', title: uiText(locale, "Identity.contributing"), description: uiText(locale, "Identity.developmentRulesAndReleaseRequirements") },
+];
+---
+<div class="not-content sdr-home">
+  <header class="sdr-home__intro">
+    <p class="sdr-home__context">{uiText(locale, "Identity.designAndDevelopmentDocumentation")}</p>
+    <div class="sdr-home__title">
+      <h1 id="_top" tabindex="-1">{uiText(locale, "Identity.romanianDesignSystem")}</h1>
+      <span class="sdr-home__proposal">{uiText(locale, "Identity.proposal")}</span>
+    </div>
+    <p class="sdr-home__lead">{uiText(locale, "Identity.componentsPatternsAndGuidanceForClearConsistentAndAccessible")}</p>
+    <div class="sdr-home__start"><a class="sdr-doc-button" href={docsUrl(`/${locale}/getting-started/`)}>{uiText(locale, "Identity.installationAndIntegration")}</a></div>
+    <nav class="sdr-home__language" aria-label={uiText(locale, "Identity.languageForThisPage")}><a href={docsUrl('/ro/')} lang="ro" hrefLang="ro" aria-current={ro ? 'page' : undefined}>Română</a><span aria-hidden="true">/</span><a href={docsUrl('/en/')} lang="en" hrefLang="en" aria-current={!ro ? 'page' : undefined}>English</a></nav>
+  </header>
+  <nav class="sdr-home__directory" aria-label={uiText(locale, "Identity.documentation")}>
+    {sections.map(section => <section><h2><a href={docsUrl(`/${locale}/${section.path}/`)}>{section.title}</a></h2><p>{section.description}</p></section>)}
+  </nav>
+  <aside class="sdr-home__status" aria-labelledby="project-status">
+    <h2 id="project-status">{uiText(locale, "Identity.aboutThisVersion")}</h2>
+    <p>{uiText(locale, "Identity.sdrIsAnIndependentProposalUnderDevelopmentTheLibrary")}</p>
+    <a href={docsUrl(`/${locale}/coverage/`)}>{uiText(locale, "Identity.viewFeaturesAndImplementationStatus")}</a>
+    <a href={docsUrl(`/${locale}/studies/institutional-identity/`)}>{uiText(locale, 'Identity.institutionalIdentityStudies')}</a>
+  </aside>
+</div>

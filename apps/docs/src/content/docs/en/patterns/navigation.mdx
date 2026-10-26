@@ -1,0 +1,105 @@
+---
+title: "Navigate a service"
+description: "Navigate a service — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Keep a stable service identity and name each navigation landmark. For client routing, update page title, history, focus and announcements together.
+
+<Preview name="ServiceNavigation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ServiceNavigationExample() {
+  return (
+    <R.ServiceNavigation
+      label="Service"
+      items={[
+        { label: 'Overview', href: `/${locale}/`, current: true },
+        { label: 'Components', href: `/${locale}/components/` },
+      ]}
+      menuLabel="Menu"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-navigation"
+    aria-label="Service"
+    data-sdr-component="service-navigation"
+  >
+    <div class="sdr-width-container">
+      <button
+        type="button"
+        class="sdr-navigation__toggle"
+        data-sdr-navigation-toggle="true"
+        aria-controls="service-navigation"
+        hidden=""
+      >
+        Menu
+      </button>
+      <ul
+        id="service-navigation"
+        data-sdr-navigation-links="true"
+      >
+        <li>
+          <a
+            href="/en/"
+            aria-current="page"
+            >Overview</a
+          >
+        </li>
+        <li><a href="/en/components/">Components</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-navigation.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

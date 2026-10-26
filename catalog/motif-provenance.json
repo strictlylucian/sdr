@@ -1,0 +1,17 @@
+{
+  "reviewed": "2026-10-26",
+  "source": "Vector reconstruction of the geometric ornament in the user-supplied reference. The supplied raster is not included in source or distributions.",
+  "implementation": "194 by 225 reference-pixel repeat, including the checked centre, unequal stitch widths, corner hooks, offset checked borders and full diamond tip wrapped across the repeat boundary. Integer geometry becomes two SVG path masks embedded in CSS; colours use SDR palette variables. No raster is loaded at build time or shipped.",
+  "implementationFiles": [
+    "tooling/build/motif-grid.mjs",
+    "tooling/build/motif.mjs"
+  ],
+  "colours": {
+    "rosette": "--sdr-flag-red",
+    "diamondAndBorders": "--sdr-flag-blue",
+    "ground": "--sdr-on-masthead"
+  },
+  "context": "https://ich.unesco.org/en/RL/01861",
+  "licence": "MIT for implementation code. Rights in the supplied reference are unconfirmed; vector reconstruction does not establish ownership of the referenced design.",
+  "attribution": "User-supplied reference; author and original licence unconfirmed. No claim of regional origin, symbolic meaning or exclusivity over traditional ornament."
+}

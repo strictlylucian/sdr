@@ -1,0 +1,33 @@
+---
+title: "Arhitectură și API"
+description: "Arhitectură și API — SDR. Propunere independentă."
+---
+
+## Organizarea proiectului
+
+- packages/core: tokenuri, stiluri și controlere pentru interacțiunile DOM; etichetele și formatarea aparțin aplicației.
+- packages/react: componente React cu tipuri TypeScript și grupuri de componente pentru formulare și pagini. React este dependență peer.
+- dist/portable: cele două fișiere de distribuție, sdr.css și sdr.js.
+- apps/docs: documentația Astro Starlight, în română și engleză, cu exemple React interactive și exemple HTML.
+- catalog: descrierile și recomandările pentru componente și modele de utilizare.
+
+Edițiile React și HTML folosesc aceleași stiluri și controlere, pornind de la elemente HTML native. Atributele data-sdr-* fac parte din API-ul public; nu depind de selectori CSS care urmăresc accidental structura paginii.
+
+## Inițializare și curățare
+
+SDR.init(root) inițializează atât elementul primit, cât și componentele din interiorul lui. Apelurile repetate nu dublează event listener-ele. Funcția returnată elimină doar comportamentele adăugate prin apelul respectiv. SDR.destroy(root) elimină comportamentele dintr-o secțiune. Conținutul HTML nou se inițializează după adăugarea în pagină. Inițializarea portabilă ignoră componentele gestionate de React.
+
+defaultSelected pentru Tabs și defaultPressed pentru ToggleButton stabilesc doar valorile inițiale. Nu sunt proprietăți controlate: componenta gestionează starea după inițializare. Taburile se reinițializează când configurația se schimbă. Navigarea, cererile de rețea, salvarea datelor, validarea și aplicarea preferințelor pentru cookie-uri sunt gestionate de aplicație.
+
+## Evenimente
+
+În ediția HTML, CookieBanner, Feedback și DismissibleChip emit sdr:action cu detail.action. Valorile sunt accept, reject, helpful, unhelpful și remove. În React există callback-uri echivalente. Toast emite sdr:dismiss după mutarea focusului. Event listener-ele aplicației se pot atașa unui container local și se elimină la demontarea lui.
+
+## Stiluri și personalizare
+
+Clasele au prefixul sdr-, iar variabilele CSS au prefixul --sdr-. Componentele folosesc proprietăți CSS logice, compatibile cu direcția textului. Variabilele și clasele de spațiere sunt generate din aceeași scară de valori. Tokenurile comune permit personalizarea consecventă a întregului serviciu.
+
+## Versiuni
+
+Versiunea 0.1.0-alpha.1 este experimentală. Modificările incompatibile sunt documentate. O versiune stabilă presupune revizuirea API-ului, testare cu persoane cu dizabilități, verificări manuale în browsere și cititoare de ecran și o politică de suport publicată.
+

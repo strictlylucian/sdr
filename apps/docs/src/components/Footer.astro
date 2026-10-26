@@ -1,0 +1,11 @@
+---
+import { uiText } from '../i18n/messages';
+import DefaultFooter from '@astrojs/starlight/components/Footer.astro';
+const locale = Astro.currentLocale ?? 'ro';
+---
+<div class="sdr-doc-footer">
+  <DefaultFooter />
+  <aside class="sdr-alert sdr-alert--warning sdr-doc-warning" aria-label={uiText(locale, "Footer.experimentalStatus")} data-pagefind-ignore>
+    <p><strong>{uiText(locale, "Footer.alphaIndependentProposal")}</strong> {uiText(locale, "Footer.experimentalImplementationWithoutAConformanceCertification")}</p>
+  </aside>
+</div>

@@ -1,0 +1,93 @@
+---
+title: "Detalii"
+description: "Detalii — SDR. Propunere independentă."
+sidebar: {"order":22}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează informații suplimentare când secțiunea este deschisă.
+
+## Exemplu
+
+<Preview name="Details" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DetailsExample() {
+  return (
+    <R.Details summary="Dacă locuiești în străinătate">
+      Poți introduce o adresă internațională.
+    </R.Details>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <details class="sdr-details">
+    <summary><span>Dacă locuiești în străinătate</span></summary>
+    <div class="sdr-details__content">
+      Poți introduce o adresă internațională.
+    </div>
+  </details>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/details.html)
+
+
+
+## Utilizare
+
+Informațiile necesare pentru completarea unei cereri rămân vizibile în pagină.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `summary` | `ReactNode` | Da |
+| `children` | `ReactNode` | Da |
+| `open` | `boolean \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

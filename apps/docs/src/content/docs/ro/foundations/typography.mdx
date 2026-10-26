@@ -1,0 +1,24 @@
+---
+title: "Tipografie"
+description: "Tipografie — SDR. Propunere independentă."
+---
+
+SDR folosește Inter 4.1 în bibliotecă și în documentație. Variantele variabile regular și italic sunt incluse direct în CSS, în format WOFF2, cu greutăți de la 400 la 750, intervalul folosit de componente. Fonturile sunt optimizate pentru caractere latine și Latin Extended, inclusiv nume internaționale, accente combinate, semne de punctuație și monede. Pentru alte alfabete se folosesc fonturile sistemului de operare. Dimensiunea optică, cifrele tabulare și hinting-ul sunt păstrate. Nu există cereri separate pentru fonturi, iar ediția portabilă păstrează cele două fișiere. Inter include diacriticele românești, inclusiv Ș/ș și Ț/ț cu virgulă dedesubt. Codul păstrează un font monospace. Familia poate fi schimbată prin --sdr-font pentru identitatea unei instituții.
+
+| Token | rem | Utilizare |
+|---|---|---|
+| xs | .875 | Note și etichete |
+| sm | 1 | Text suplimentar |
+| md | 1.125 | Text principal |
+| lg | 1.25 | Text introductiv |
+| xl | 1.5 | Titluri de subsecțiune |
+| 2xl | 2 | Titluri de secțiune |
+| 3xl | 3 | Titluri de pagină |
+| 4xl | 4 | Titluri mari de prezentare |
+
+Nivelul unui titlu reflectă structura documentului. Proprietatea size schimbă doar dimensiunea vizuală, independent de nivel. line-height este 1.6 pentru text și 1.25 pentru titluri. Titlurile pot ocupa mai multe rânduri. Prose limitează lățimea textului la 68ch, iar sdr-u-tabular aliniază cifrele folosind aceeași lățime pentru fiecare.
+
+Textele includ ă, â, î, ș și ț, precum și majusculele lor. Nume ca Șerban, Târgu Mureș și Dâmbovița ajută la verificarea unui font alternativ. Câmpurile păstrează textul Unicode introdus; normalizarea datelor se tratează separat de afișare.
+
+Textul din câmpuri are minimum 1rem. Țintele de accesibilitate includ mărirea textului la 200% și folosirea paginii la o lățime de 320 pixeli CSS. Linkurile sunt subliniate, pentru a putea fi recunoscute și fără culoare. Etichetele rămân vizibile după completare, spre deosebire de placeholder.
+

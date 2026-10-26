@@ -1,0 +1,280 @@
+---
+title: "Confirm contact details"
+description: "Confirm contact details — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Confirm a phone number
+
+Allow pasting one-time codes and use autocomplete=one-time-code. Provide resend, expiry and a voice or assisted route. Rate limiting belongs on the server.
+
+<Preview name="PhoneConfirmation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PhoneConfirmationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="phone-code"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Enter the code from your text message</h3>
+      <R.InsetText>
+        No text message is sent. The test code is 123456.
+      </R.InsetText>
+      <R.TextInput
+        label="Security code"
+        name="security-code"
+        type="text"
+        inputMode="numeric"
+        autoComplete="one-time-code"
+        pattern="123456"
+        title="The test code is 123456."
+        required
+      />
+      <div>
+        <R.Button type="submit">Verify number</R.Button>
+      </div>
+      <R.Details summary="Have you not received a code?">
+        This example does not send a text message. Use 123456. A live service
+        provides resend and support options here.
+      </R.Details>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        The test code is correct. No real number was verified.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="phone-code"
+    class="sdr-stack"
+  >
+    <h3>Enter the code from your text message</h3>
+    <div class="sdr-inset">
+      No text message is sent. The test code is 123456.
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="security-code"
+        >Security code</label
+      ><input
+        type="text"
+        inputmode="numeric"
+        autocomplete="one-time-code"
+        pattern="123456"
+        title="The test code is 123456."
+        required=""
+        id="security-code"
+        class="sdr-input"
+        name="security-code"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Verify number
+      </button>
+    </div>
+    <details class="sdr-details">
+      <summary><span>Have you not received a code?</span></summary>
+      <div class="sdr-details__content">
+        This example does not send a text message. Use 123456. A live service
+        provides resend and support options here.
+      </div>
+    </details>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      The test code is correct. No real number was verified.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-verify-contact.html)
+
+
+
+
+<div id="variant-confirm-email" className="sdr-component-variant">
+
+## Confirm an email address
+
+Show the destination address and allow correction. Explain expiry and resend. Link confirmation should reach a clear success page and preserve the interrupted task.
+
+<Preview name="EmailConfirmation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function EmailConfirmationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="email-confirm"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Check your email address</h3>
+      <p>
+        In a live service, the confirmation link is sent to{' '}
+        <strong>ana@example.invalid</strong>.
+      </p>
+      <R.InsetText>
+        This is an example. The button simulates following the email link; no
+        message is sent.
+      </R.InsetText>
+      <div>
+        <R.Button type="submit">Simulate confirmation</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Test confirmation succeeded. You can continue your application.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="email-confirm"
+    class="sdr-stack"
+  >
+    <h3>Check your email address</h3>
+    <p>
+      In a live service, the confirmation link is sent to
+      <strong>ana@example.invalid</strong>.
+    </p>
+    <div class="sdr-inset">
+      This is an example. The button simulates following the email link; no
+      message is sent.
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Simulate confirmation
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Test confirmation succeeded. You can continue your application.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-confirm-email.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

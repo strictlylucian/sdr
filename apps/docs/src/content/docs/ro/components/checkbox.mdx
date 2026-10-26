@@ -1,0 +1,701 @@
+---
+title: "Checkbox"
+description: "Checkbox — SDR. Propunere independentă."
+sidebar: {"order":16}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite bifarea uneia sau mai multor opțiuni independente.
+
+## Exemplu
+
+<Preview name="Checkbox" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CheckboxExample() {
+  return (
+    <R.Fieldset legend="Cum vrei să te contactăm?">
+      <R.Checkbox
+        name="contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="contact"
+        value="post"
+        label="Prin poștă"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="checkbox"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Cum vrei să te contactăm?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="contact"
+          ><input
+            id="contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="contact-2"
+          ><input
+            id="contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="contact"
+            value="post"
+          /><span class="sdr-choice__content"
+            ><span>Prin poștă</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/checkbox.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="CheckboxError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CheckboxErrorExample() {
+  return (
+    <R.Fieldset
+      error="Alege cel puțin o metodă de contact."
+      legend="Cum vrei să te contactăm?"
+    >
+      <R.Checkbox
+        name="error-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="error-contact"
+        value="post"
+        label="Prin poștă"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="checkbox-error"
+      class="sdr-fieldset"
+      aria-describedby="checkbox-error-error"
+    >
+      <legend class="sdr-legend">Cum vrei să te contactăm?</legend>
+      <div
+        class="sdr-error"
+        id="checkbox-error-error"
+      >
+        Alege cel puțin o metodă de contact.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact"
+          ><input
+            id="error-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="checkbox-error-error"
+            name="error-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact-2"
+          ><input
+            id="error-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="checkbox-error-error"
+            name="error-contact"
+            value="post"
+          /><span class="sdr-choice__content"
+            ><span>Prin poștă</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/checkbox-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="CheckboxDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CheckboxDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="Cum vrei să te contactăm?"
+    >
+      <R.Checkbox
+        name="disabled-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="disabled-contact"
+        value="post"
+        label="Prin poștă"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="checkbox-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Cum vrei să te contactăm?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-contact"
+          ><input
+            id="disabled-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="disabled-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-contact-2"
+          ><input
+            id="disabled-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="disabled-contact"
+            value="post"
+          /><span class="sdr-choice__content"
+            ><span>Prin poștă</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/checkbox-disabled.html)
+
+
+## Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="CheckboxReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CheckboxReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Cum vrei să te contactăm?', value: 'Email' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Cum vrei să te contactăm?</dt>
+      <dd>Email</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/checkbox-readonly.html)
+
+
+## Utilizare
+
+Opțiunile care răspund aceleiași întrebări se grupează cu Fieldset. Poate fi utilă și opțiunea „Niciuna dintre cele de mai sus”.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-switch" className="sdr-component-variant">
+
+## Switch
+
+Switch activează sau dezactivează o setare și păstrează semantica unui checkbox. Aplicația stabilește dacă modificarea se salvează imediat.
+
+<Preview name="Switch" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SwitchExample() {
+  return (
+    <R.Switch
+      name="notifications"
+      label="Primește notificări prin email"
+      hint="Te anunțăm când se schimbă starea cererii."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field">
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="notifications"
+      ><input
+        id="notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-describedby="notifications-hint"
+        name="notifications"
+      /><span class="sdr-choice__content"
+        ><span>Primește notificări prin email</span
+        ><span
+          id="notifications-hint"
+          class="sdr-hint"
+          >Te anunțăm când se schimbă starea cererii.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/switch.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="SwitchError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SwitchErrorExample() {
+  return (
+    <R.Switch
+      error="Confirmă opțiunea pentru notificări."
+      name="error-notifications"
+      label="Primește notificări prin email"
+      hint="Te anunțăm când se schimbă starea cererii."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field sdr-field sdr-field--error">
+    <p
+      id="error-notifications-error"
+      class="sdr-error"
+    >
+      Confirmă opțiunea pentru notificări.
+    </p>
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="error-notifications"
+      ><input
+        id="error-notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-invalid="true"
+        aria-describedby="error-notifications-hint error-notifications-error"
+        name="error-notifications"
+      /><span class="sdr-choice__content"
+        ><span>Primește notificări prin email</span
+        ><span
+          id="error-notifications-hint"
+          class="sdr-hint"
+          >Te anunțăm când se schimbă starea cererii.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/switch-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="SwitchDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SwitchDisabledExample() {
+  return (
+    <R.Switch
+      disabled
+      defaultChecked
+      name="disabled-notifications"
+      label="Primește notificări prin email"
+      hint="Te anunțăm când se schimbă starea cererii."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field">
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="disabled-notifications"
+      ><input
+        disabled=""
+        id="disabled-notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-describedby="disabled-notifications-hint"
+        name="disabled-notifications"
+        checked=""
+      /><span class="sdr-choice__content"
+        ><span>Primește notificări prin email</span
+        ><span
+          id="disabled-notifications-hint"
+          class="sdr-hint"
+          >Te anunțăm când se schimbă starea cererii.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/switch-disabled.html)
+
+
+### Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="SwitchReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SwitchReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Primește notificări prin email', value: 'Activate' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Primește notificări prin email</dt>
+      <dd>Activate</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/switch-readonly.html)
+
+
+### API · Switch
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

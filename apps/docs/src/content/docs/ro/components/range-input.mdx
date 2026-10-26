@@ -1,0 +1,315 @@
+---
+title: "Slider numeric"
+description: "Slider numeric — SDR. Propunere independentă."
+sidebar: {"order":53}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite alegerea unei valori aproximative dintr-un interval.
+
+## Exemplu
+
+<Preview name="RangeInput" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RangeInputExample() {
+  return (
+    <R.RangeInput
+      label="Raza de căutare, în kilometri"
+      name="radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="radius"
+      >Raza de căutare, în kilometri</label
+    ><input
+      min="1"
+      max="50"
+      id="radius"
+      class="sdr-range"
+      type="range"
+      name="radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/range-input.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="RangeInputError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RangeInputErrorExample() {
+  return (
+    <R.RangeInput
+      error="Alege o rază de căutare între 1 și 50 km."
+      label="Raza de căutare, în kilometri"
+      name="error-radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-radius"
+      >Raza de căutare, în kilometri</label
+    >
+    <div
+      id="error-radius-error"
+      class="sdr-error"
+    >
+      Alege o rază de căutare între 1 și 50 km.
+    </div>
+    <input
+      min="1"
+      max="50"
+      id="error-radius"
+      aria-invalid="true"
+      aria-describedby="error-radius-error"
+      class="sdr-range"
+      type="range"
+      name="error-radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/range-input-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="RangeInputDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RangeInputDisabledExample() {
+  return (
+    <R.RangeInput
+      disabled
+      label="Raza de căutare, în kilometri"
+      name="disabled-radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-radius"
+      >Raza de căutare, în kilometri</label
+    ><input
+      disabled=""
+      min="1"
+      max="50"
+      id="disabled-radius"
+      class="sdr-range"
+      type="range"
+      name="disabled-radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/range-input-disabled.html)
+
+
+## Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="RangeInputReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RangeInputReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Raza de căutare, în kilometri', value: '10 km' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Raza de căutare, în kilometri</dt>
+      <dd>10 km</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/range-input-readonly.html)
+
+
+## Utilizare
+
+Pentru valori exacte este mai potrivit un câmp numeric sau de text.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

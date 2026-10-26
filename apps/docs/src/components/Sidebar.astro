@@ -1,0 +1,11 @@
+---
+import DefaultSidebar from '@astrojs/starlight/components/Sidebar.astro';
+---
+<DefaultSidebar />
+<script>
+  import { updateSidebarSelection } from '../sidebar-selection';
+  updateSidebarSelection();
+  window.addEventListener('hashchange', updateSidebarSelection);
+  window.addEventListener('popstate', updateSidebarSelection);
+  document.addEventListener('astro:page-load', updateSidebarSelection);
+</script>

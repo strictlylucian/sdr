@@ -1,0 +1,57 @@
+Componentele SDR afișează conținutul furnizat de aplicație. Traducerile, alegerea limbii, formele de plural și formatarea datelor sau sumelor aparțin proiectului care folosește biblioteca. SDR nu include un provider de limbă, dicționare sau o dependență i18n.
+
+## Etichete și nume accesibile
+
+Etichetele, textele ajutătoare, erorile, titlurile și numele acțiunilor sunt proprietăți obișnuite ale componentelor. Controalele cu mai multe stări primesc și etichetele pentru fiecare stare. Valorile pot proveni din orice bibliotecă de traduceri sau pot fi texte simple.
+
+~~~tsx
+import { SdrProvider, PasswordInput } from '@sdr/react';
+
+<SdrProvider lang="ro">
+  <PasswordInput
+    label="Parolă"
+    showLabel="Afișează parola"
+    hideLabel="Ascunde parola"
+    name="password"
+  />
+</SdrProvider>
+~~~
+
+Atributul nativ lang indică limba pentru browser și tehnologiile asistive. Nu traduce conținutul și nu selectează un dicționar. Poate fi folosit orice cod de limbă. SdrProvider stabilește tema, densitatea și domeniul de aplicare al stilurilor.
+
+Accordion primește expandAllLabel/collapseAllLabel; DateInput primește etichetele day/month/year; dialogurile și notificările toast primesc closeLabel; navigarea serviciului primește menuLabel. Grupurile de câmpuri primesc, la rândul lor, legende, etichete și texte ajutătoare. Astfel, toate textele pot rămâne în sistemul de traduceri al aplicației.
+
+## Contorul de caractere și textele dinamice
+
+CharacterCount primește obligatoriu funcția formatCount(remaining). Valorile negative indică depășirea limitei. Aplicația gestionează formularea, pluralul și formatarea numerelor; SDR numără punctele de cod Unicode și actualizează regiunea live. Numărul punctelor de cod poate fi diferit de numărul caracterelor percepute vizual.
+
+În ediția HTML, SDR.init(root, options) acceptă formatCount(remaining, element). Elementul permite alegerea mesajelor aplicației pentru contoare diferite. Câmpurile de parolă citesc data-sdr-show-label/data-sdr-hide-label, iar acordeoanele citesc data-sdr-expand-label/data-sdr-collapse-label. Lipsa etichetelor sau a funcției necesare produce o eroare de integrare, fără alegerea automată a unei limbi. Inițializarea este descrisă în [Primii pași](/ro/getting-started/).
+
+Actualizarea etichetelor sau a funcției formatCount în React păstrează răspunsul, vizibilitatea parolei și secțiunile deschise. În HTML, aplicația gestionează actualizarea conținutului și ciclul de viață al interacțiunilor.
+
+## Traducerile documentației
+
+Documentația folosește i18next și fișiere JSON locale în română și engleză, în apps/docs/src/i18n/. ui.json conține interfața documentației, examples.json conține textele exemplelor, iar components.json conține etichetele comune și formele de plural pentru contoare. Starlight gestionează rutele pe limbi și traducerile propriei interfețe. Acest cod aparține documentației, nu pachetelor de componente.
+
+Definițiile componentelor și patternurilor, inclusiv ierarhia variantelor și explicațiile bilingve, sunt centralizate în catalog/data/. Modificarea unui titlu nu schimbă ID-urile sau ancorele rutelor. Ghidurile ample au versiuni separate în română și engleză. Fișierul I18N.md din proiect descrie sursele editabile.
+
+## Date, sume și sortare
+
+Aplicația poate folosi propriile funcții de formatare sau direct API-ul nativ Intl. SDR nu stabilește limba, moneda sau fusul orar.
+
+~~~ts
+const suma = new Intl.NumberFormat('ro-RO', {
+  style: 'currency', currency: 'RON'
+}).format(1250);
+const data = new Intl.DateTimeFormat('ro-RO', {
+  dateStyle: 'long', timeZone: 'Europe/Bucharest'
+}).format(new Date('2026-10-25T10:00:00Z'));
+~~~
+
+DataTable acceptă funcția compareText pentru ordinea de sortare aleasă de aplicație. Opțiunile de inițializare HTML acceptă aceeași funcție. Coloanele numerice compară valori numerice; un text formatat poate avea o valoare numerică de sortare separată.
+
+## Navigarea între limbi
+
+LanguageNavigation afișează linkurile furnizate, cu lang, hreflang și starea limbii curente. Nu generează rute, nu alege o limbă și nu încarcă traduceri. Linkurile către versiuni echivalente ale paginii păstrează contextul navigării.
+
+Câmpurile acceptă Unicode, inclusiv diacriticele românești. Fontul Inter este inclus în CSS. Paginile [Câmp text](/ro/components/text-input/), [Zonă de text](/ro/components/textarea/) și [Navigare între limbi](/ro/components/language-navigation/) descriu proprietățile componentelor.

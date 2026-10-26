@@ -1,0 +1,328 @@
+---
+title: "File Upload"
+description: "File Upload — SDR. Independent proposal."
+sidebar: {"order":22}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Attach documents using the native file chooser.
+
+## Example
+
+<Preview name="FileUpload" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FileUploadExample() {
+  return (
+    <R.FileUpload
+      label="Upload the document"
+      name="document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="document"
+      >Upload the document</label
+    >
+    <div
+      id="document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit.
+    </div>
+    <input
+      accept=".pdf,.jpg,.png"
+      id="document"
+      aria-describedby="document-hint"
+      type="file"
+      class="sdr-file"
+      name="document"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/file-upload.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="FileUploadError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FileUploadErrorExample() {
+  return (
+    <R.FileUpload
+      error="Choose a PDF, JPG or PNG file no larger than 10 MB."
+      label="Upload the document"
+      name="error-document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-document"
+      >Upload the document</label
+    >
+    <div
+      id="error-document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit.
+    </div>
+    <div
+      id="error-document-error"
+      class="sdr-error"
+    >
+      Choose a PDF, JPG or PNG file no larger than 10 MB.
+    </div>
+    <input
+      accept=".pdf,.jpg,.png"
+      id="error-document"
+      aria-invalid="true"
+      aria-describedby="error-document-hint error-document-error"
+      type="file"
+      class="sdr-file"
+      name="error-document"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/file-upload-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="FileUploadDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FileUploadDisabledExample() {
+  return (
+    <R.FileUpload
+      disabled
+      label="Upload the document"
+      name="disabled-document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-document"
+      >Upload the document</label
+    >
+    <div
+      id="disabled-document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG or PNG. Maximum 10 MB; the service must enforce the limit.
+    </div>
+    <input
+      disabled=""
+      accept=".pdf,.jpg,.png"
+      id="disabled-document"
+      aria-describedby="disabled-document-hint"
+      type="file"
+      class="sdr-file"
+      name="disabled-document"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/file-upload-disabled.html)
+
+
+## Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="FileUploadReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FileUploadReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Upload the document', value: 'document.pdf' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Upload the document</dt>
+      <dd>document.pdf</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/file-upload-readonly.html)
+
+
+## Usage
+
+accept is a hint, not validation. Enforce type, size and malware checks on the server.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

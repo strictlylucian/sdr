@@ -1,0 +1,145 @@
+---
+title: "Banner pentru cookie-uri"
+description: "Banner pentru cookie-uri — SDR. Propunere independentă."
+sidebar: {"order":7}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Oferă opțiuni separate de acceptare și refuz pentru cookie-urile opționale.
+
+## Exemplu
+
+<Preview name="CookieBanner" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CookieBannerExample() {
+  const [choice, setChoice] = useState('');
+  return (
+    <R.Stack>
+      {!choice && (
+        <R.CookieBanner
+          title="Preferințe pentru cookie-uri"
+          acceptLabel="Acceptă cookie-urile opționale"
+          rejectLabel="Refuză cookie-urile opționale"
+          onAccept={() =>
+            setChoice('Ai acceptat cookie-urile opționale în acest exemplu.')
+          }
+          onReject={() =>
+            setChoice('Ai refuzat cookie-urile opționale în acest exemplu.')
+          }
+        >
+          Folosim cookie-uri opționale doar dacă le accepți.
+        </R.CookieBanner>
+      )}
+      <p
+        role="status"
+        hidden={!choice}
+      >
+        {choice}
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <section
+      class="sdr-cookie"
+      aria-labelledby="cookie-banner"
+      data-sdr-component="actions"
+    >
+      <h2
+        id="cookie-banner"
+        class="sdr-heading-md"
+      >
+        Preferințe pentru cookie-uri
+      </h2>
+      <div>Folosim cookie-uri opționale doar dacă le accepți.</div>
+      <div class="sdr-cluster">
+        <button
+          data-sdr-action="accept"
+          type="button"
+          class="sdr-button"
+        >
+          Acceptă cookie-urile opționale</button
+        ><button
+          data-sdr-action="reject"
+          type="button"
+          class="sdr-button sdr-button--secondary"
+        >
+          Refuză cookie-urile opționale
+        </button>
+      </div>
+    </section>
+    <p
+      role="status"
+      hidden=""
+    ></p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/cookie-banner.html)
+
+
+
+## Utilizare
+
+Aplicația pornește scripturile opționale în funcție de alegere și salvează preferința. Componenta nu setează cookie-uri.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `title` | `string` | Da |
+| `children` | `ReactNode` | Da |
+| `acceptLabel` | `string` | Da |
+| `rejectLabel` | `string` | Da |
+| `onAccept` | `() => void` | Da |
+| `onReject` | `() => void` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

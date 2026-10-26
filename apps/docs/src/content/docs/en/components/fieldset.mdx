@@ -1,0 +1,443 @@
+---
+title: "Fieldset"
+description: "Fieldset — SDR. Independent proposal."
+sidebar: {"order":21}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Give related controls a shared question or legend.
+
+## Example
+
+<Preview name="Fieldset" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FieldsetExample() {
+  return (
+    <R.Fieldset legend="Contact details">
+      <R.TextInput
+        label="Email"
+        type="email"
+        name="email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        label="Phone number"
+        type="tel"
+        name="phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="fieldset"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Contact details</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="email"
+          >Email</label
+        ><input
+          type="email"
+          autocomplete="email"
+          id="email"
+          class="sdr-input"
+          name="email"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="phone"
+          >Phone number</label
+        ><input
+          type="tel"
+          autocomplete="tel"
+          id="phone"
+          class="sdr-input"
+          name="phone"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/fieldset.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="FieldsetError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FieldsetErrorExample() {
+  return (
+    <R.Fieldset
+      error="Choose a contact method."
+      legend="How would you like us to contact you?"
+    >
+      <R.Checkbox
+        name="error-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="error-contact"
+        value="post"
+        label="By post"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="fieldset-error"
+      class="sdr-fieldset"
+      aria-describedby="fieldset-error-error"
+    >
+      <legend class="sdr-legend">How would you like us to contact you?</legend>
+      <div
+        class="sdr-error"
+        id="fieldset-error-error"
+      >
+        Choose a contact method.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact"
+          ><input
+            id="error-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="fieldset-error-error"
+            name="error-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact-2"
+          ><input
+            id="error-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="fieldset-error-error"
+            name="error-contact"
+            value="post"
+          /><span class="sdr-choice__content"><span>By post</span></span></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/fieldset-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="FieldsetDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FieldsetDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="Contact details"
+    >
+      <R.TextInput
+        label="Email"
+        type="email"
+        name="disabled-email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        label="Phone number"
+        type="tel"
+        name="disabled-phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="fieldset-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Contact details</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="disabled-email"
+          >Email</label
+        ><input
+          type="email"
+          autocomplete="email"
+          id="disabled-email"
+          class="sdr-input"
+          name="disabled-email"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="disabled-phone"
+          >Phone number</label
+        ><input
+          type="tel"
+          autocomplete="tel"
+          id="disabled-phone"
+          class="sdr-input"
+          name="disabled-phone"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/fieldset-disabled.html)
+
+
+## Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="FieldsetReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FieldsetReadOnlyExample() {
+  return (
+    <R.Fieldset legend="Contact details">
+      <R.TextInput
+        readOnly
+        defaultValue="nume@exemplu.ro"
+        label="Email"
+        type="email"
+        name="readonly-email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        readOnly
+        defaultValue="0712 345 678"
+        label="Phone number"
+        type="tel"
+        name="readonly-phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="fieldset-read-only"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Contact details</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="readonly-email"
+          >Email</label
+        ><input
+          readonly=""
+          type="email"
+          autocomplete="email"
+          id="readonly-email"
+          class="sdr-input"
+          name="readonly-email"
+          value="nume@exemplu.ro"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="readonly-phone"
+          >Phone number</label
+        ><input
+          readonly=""
+          type="tel"
+          autocomplete="tel"
+          id="readonly-phone"
+          class="sdr-input"
+          name="readonly-phone"
+          value="0712 345 678"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/fieldset-readonly.html)
+
+
+## Usage
+
+Use a meaningful legend rather than visual grouping alone.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `legend` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

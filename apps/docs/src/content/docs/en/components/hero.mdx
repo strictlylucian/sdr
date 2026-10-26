@@ -1,0 +1,113 @@
+---
+title: "Hero"
+description: "Hero — SDR. Independent proposal."
+sidebar: {"order":27}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Introduce an editorial or documentation page with restrained cultural decoration.
+
+## Example
+
+<Preview name="Hero" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function HeroExample() {
+  return (
+    <R.Hero
+      kicker="SDR · Propunere / Proposal"
+      title="Clearer services. For everyone."
+      description="A shared language for Romanian digital experiences."
+    >
+      <R.ButtonLink href={`/${locale}/getting-started/`}>
+        Explore SDR
+      </R.ButtonLink>
+    </R.Hero>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <section class="sdr-hero">
+    <div class="sdr-hero__body">
+      <p class="sdr-kicker">SDR · Propunere / Proposal</p>
+      <h1>Clearer services. For everyone.</h1>
+      <p class="sdr-lead">
+        A shared language for Romanian digital experiences.
+      </p>
+      <a
+        href="/en/getting-started/"
+        class="sdr-button"
+        >Explore SDR</a
+      >
+    </div>
+    <div
+      class="sdr-motif"
+      aria-hidden="true"
+    ></div>
+  </section>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/hero.html)
+
+
+
+## Usage
+
+Avoid large decorative introductions inside transactional forms.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `title` | `ReactNode` | Yes |
+| `description` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+| `kicker` | `ReactNode` | No |
+| `decorative` | `boolean \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

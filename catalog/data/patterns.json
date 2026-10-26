@@ -1,0 +1,422 @@
+[
+  {
+    "slug": "addresses",
+    "title": {
+      "en": "Addresses",
+      "ro": "Adrese"
+    },
+    "example": "AddressFields",
+    "guidance": {
+      "en": "Support both Romanian and international addresses. Accept village names and free-text regions; do not make a postcode mandatory without service evidence.",
+      "ro": "Formularul poate accepta atât adrese din România, cât și din străinătate, inclusiv sate și regiuni introduse ca text. Codul poștal este obligatoriu doar dacă serviciul are nevoie de el."
+    }
+  },
+  {
+    "slug": "bank-details",
+    "title": {
+      "en": "Bank details",
+      "ro": "Date bancare"
+    },
+    "example": "BankDetailsFields",
+    "guidance": {
+      "en": "Explain why an account is needed. Accept pasted IBANs with spaces; normalise and validate on the server before use. Never infer account ownership from format alone.",
+      "ro": "Textul explică de ce este necesar contul bancar. Câmpul acceptă un IBAN copiat cu sau fără spații; normalizarea și validarea se fac pe server. Un format valid nu confirmă cine este titularul contului."
+    }
+  },
+  {
+    "slug": "dates",
+    "title": {
+      "en": "Dates",
+      "ro": "Date calendaristice"
+    },
+    "example": "DateInput",
+    "guidance": {
+      "en": "Use three fields for memorable dates, a native picker for appointments, and state the expected time zone for deadlines. Validate calendar correctness on the server.",
+      "ro": "Pentru date cunoscute, precum data nașterii, sunt potrivite câmpurile separate pentru zi, lună și an. Pentru programări poate fi mai util un calendar. Termenele cu oră precisă includ fusul orar, iar data se validează și pe server."
+    }
+  },
+  {
+    "slug": "email",
+    "title": {
+      "en": "Email addresses",
+      "ro": "Adrese de email"
+    },
+    "example": "EmailAddress",
+    "guidance": {
+      "en": "Use type=email and autocomplete=email. Let users paste. Confirm ownership with a link when required, rather than asking them to type the address twice.",
+      "ro": "Câmpul folosește type=email și autocomplete=email și permite lipirea textului. Dacă adresa trebuie verificată, un link de confirmare este mai util decât introducerea ei de două ori."
+    }
+  },
+  {
+    "slug": "equality",
+    "title": {
+      "en": "Equality information",
+      "ro": "Date despre egalitatea de șanse"
+    },
+    "example": "EqualityInformation",
+    "guidance": {
+      "en": "Explain the purpose, separate optional monitoring from eligibility and offer Prefer not to say. Research categories with affected Romanian communities.",
+      "ro": "Scopul colectării este explicat clar. Întrebările opționale pentru monitorizarea egalității de șanse sunt separate de condițiile de eligibilitate și includ „Prefer să nu răspund”. Categoriile se stabilesc împreună cu comunitățile vizate."
+    }
+  },
+  {
+    "slug": "names",
+    "title": {
+      "en": "Names",
+      "ro": "Nume"
+    },
+    "example": "NameFields",
+    "guidance": {
+      "en": "Ask for a full name unless splitting it is demonstrably necessary. Preserve diacritics, hyphens and multiple names; do not force Latin-only input.",
+      "ro": "Numele complet este suficient în multe formulare; separarea numelui de familie și a prenumelui are sens doar dacă serviciul are nevoie de ea. Câmpurile păstrează diacriticele, cratimele și numele multiple și acceptă și alte alfabete."
+    }
+  },
+  {
+    "slug": "identity",
+    "title": {
+      "en": "Personal identifiers",
+      "ro": "CNP și acte de identitate"
+    },
+    "example": "IdentityFields",
+    "guidance": {
+      "en": "Collect identifiers only for an explicit service need. Explain why a CNP is needed and provide an alternative route for eligible people without one.",
+      "ro": "Datele de identificare se cer doar când sunt necesare serviciului. Textul explică de ce este solicitat CNP-ul și ce alternative există pentru persoanele care au dreptul la serviciu, dar nu au CNP."
+    }
+  },
+  {
+    "slug": "passwords",
+    "title": {
+      "en": "Passwords",
+      "ro": "Parole"
+    },
+    "example": "PasswordCreationFields",
+    "guidance": {
+      "en": "Permit password managers, paste and reveal controls. Publish the actual password policy and use accessible authentication without memory puzzles.",
+      "ro": "Formularul permite folosirea managerilor de parole, lipirea textului și afișarea parolei. Cerințele pentru parolă sunt explicate înainte de completare. Autentificarea nu se bazează pe teste de memorie sau puzzle-uri."
+    }
+  },
+  {
+    "slug": "payment-cards",
+    "title": {
+      "en": "Payment card details",
+      "ro": "Plata cu cardul"
+    },
+    "example": "PaymentCard",
+    "guidance": {
+      "en": "Use a qualified payment provider hosted flow or hosted fields. SDR does not implement card processing or collect real card data in documentation examples.",
+      "ro": "Plata poate folosi pagina sau câmpurile securizate ale unui procesator de plăți specializat. SDR nu procesează plăți cu cardul, iar exemplele din documentație nu colectează date reale de card."
+    }
+  },
+  {
+    "slug": "phone",
+    "title": {
+      "en": "Phone numbers",
+      "ro": "Numere de telefon"
+    },
+    "example": "PhoneNumber",
+    "guidance": {
+      "en": "Use type=tel and autocomplete=tel. Accept international country codes, spaces and pasted numbers. Explain whether SMS or voice is required.",
+      "ro": "Câmpul folosește type=tel și autocomplete=tel. Acceptă prefixe internaționale, spații și numere copiate. Textul precizează dacă numărul va fi folosit pentru SMS-uri sau apeluri."
+    }
+  },
+  {
+    "slug": "eligibility",
+    "title": {
+      "en": "Check a service is suitable",
+      "ro": "Condiții de eligibilitate"
+    },
+    "example": "Eligibility",
+    "guidance": {
+      "en": "Explain eligibility, cost, documents and expected duration before collecting personal information. Provide a useful next step when the service is unsuitable.",
+      "ro": "Condițiile, costurile, documentele necesare și durata estimată sunt explicate înainte de colectarea datelor personale. Dacă persoana nu îndeplinește condițiile, pagina oferă o alternativă sau indică unde poate cere ajutor."
+    }
+  },
+  {
+    "slug": "check-answers",
+    "title": {
+      "en": "Check answers",
+      "ro": "Verificarea răspunsurilor"
+    },
+    "example": "CheckAnswers",
+    "guidance": {
+      "en": "Group answers under descriptive headings. Change links name the answer and return to the summary after editing. Explain the consequence of submission.",
+      "ro": "Răspunsurile sunt grupate sub titluri clare. Fiecare link de modificare precizează ce răspuns schimbă, iar după editare utilizatorul revine la rezumat. Textul explică ce se întâmplă după trimitere."
+    }
+  },
+  {
+    "slug": "tasks",
+    "title": {
+      "en": "Complete multiple tasks",
+      "ro": "Completarea mai multor activități"
+    },
+    "example": "TaskProgress",
+    "guidance": {
+      "en": "Use explicit statuses and prerequisites. Save progress on the server and support resuming from another device when the service requires it.",
+      "ro": "Lista arată starea fiecărei activități și ce trebuie completat înainte de a o începe. Progresul se salvează pe server, cu posibilitatea de a continua de pe alt dispozitiv dacă serviciul o cere."
+    }
+  },
+  {
+    "slug": "confirm-phone",
+    "title": {
+      "en": "Confirm a phone number",
+      "ro": "Confirmarea numărului de telefon"
+    },
+    "example": "PhoneConfirmation",
+    "guidance": {
+      "en": "Allow pasting one-time codes and use autocomplete=one-time-code. Provide resend, expiry and a voice or assisted route. Rate limiting belongs on the server.",
+      "ro": "Câmpul pentru cod permite lipirea și folosește autocomplete=one-time-code. Sunt explicate valabilitatea codului și retrimiterea lui. Pentru cei care nu pot primi SMS-uri este necesară o alternativă, precum un apel sau ajutor din partea echipei. Numărul de încercări se limitează pe server."
+    }
+  },
+  {
+    "slug": "confirm-email",
+    "title": {
+      "en": "Confirm an email address",
+      "ro": "Confirmarea adresei de email"
+    },
+    "example": "EmailConfirmation",
+    "guidance": {
+      "en": "Show the destination address and allow correction. Explain expiry and resend. Link confirmation should reach a clear success page and preserve the interrupted task.",
+      "ro": "Pagina arată adresa folosită și permite corectarea ei. Textul explică valabilitatea linkului și cum se poate retrimite mesajul. După confirmare, utilizatorul vede rezultatul și poate continua de unde a rămas."
+    }
+  },
+  {
+    "slug": "contact",
+    "title": {
+      "en": "Contact a service team",
+      "ro": "Contact și ajutor"
+    },
+    "example": "ContactSupport",
+    "guidance": {
+      "en": "Offer channels with opening hours, expected response times and accessibility arrangements. Make clear what information people should include.",
+      "ro": "Datele de contact includ programul, timpul estimat de răspuns și opțiunile accesibile de comunicare. Textul precizează ce informații sunt necesare pentru rezolvarea solicitării."
+    }
+  },
+  {
+    "slug": "username",
+    "title": {
+      "en": "Create a username",
+      "ro": "Alegerea unui nume de utilizator"
+    },
+    "example": "UsernameCreation",
+    "guidance": {
+      "en": "Prefer an existing identifier when appropriate. Explain uniqueness and permitted characters before submission and provide actionable errors.",
+      "ro": "Un identificator deja folosit poate evita crearea unui nume de utilizator separat, dacă se potrivește serviciului. Formularul explică dinainte caracterele permise și faptul că numele trebuie să fie disponibil. Erorile arată cum poate fi corectat."
+    }
+  },
+  {
+    "slug": "accounts",
+    "title": {
+      "en": "Create accounts",
+      "ro": "Crearea unui cont"
+    },
+    "example": "AccountCreation",
+    "guidance": {
+      "en": "Do not require an account for a one-off task without evidence. Explain recovery, personal data use, and a route for people who cannot use the primary authentication method.",
+      "ro": "Crearea unui cont se justifică prin nevoile serviciului, mai ales când este vorba de o singură solicitare. Textul explică recuperarea accesului, folosirea datelor personale și alternativele pentru cei care nu pot folosi metoda principală de autentificare."
+    }
+  },
+  {
+    "slug": "exit",
+    "title": {
+      "en": "Exit a page quickly",
+      "ro": "Ieșirea rapidă din pagină"
+    },
+    "example": "ExitThisPage",
+    "guidance": {
+      "en": "Research a safe destination, keep the action easy to reach, and explain that browser history remains. This alpha supplies a direct link without a keyboard shortcut.",
+      "ro": "Butonul de ieșire rămâne ușor de găsit. Destinația se alege împreună cu persoanele aflate în situații de risc, iar textul precizează că istoricul browserului nu este șters. Versiunea alpha oferă un link direct, fără scurtătură de tastatură."
+    }
+  },
+  {
+    "slug": "navigation",
+    "title": {
+      "en": "Navigate a service",
+      "ro": "Navigarea în serviciu"
+    },
+    "example": "ServiceNavigation",
+    "guidance": {
+      "en": "Keep a stable service identity and name each navigation landmark. For client routing, update page title, history, focus and announcements together.",
+      "ro": "Numele serviciului și denumirile zonelor de navigare rămân consecvente. Când navigarea se face fără reîncărcarea paginii, aplicația actualizează și titlul, istoricul, focusul și mesajele pentru cititoarele de ecran."
+    }
+  },
+  {
+    "slug": "validation",
+    "title": {
+      "en": "Recover from validation errors",
+      "ro": "Corectarea erorilor"
+    },
+    "example": "ValidationRecovery",
+    "guidance": {
+      "en": "Validate on submission, preserve answers and focus the linked error summary. Explain how to correct each field. Validate again on the server.",
+      "ro": "La trimiterea formularului, răspunsurile se păstrează, iar rezumatul erorilor oferă linkuri către câmpurile de corectat. Mesajele explică ce trebuie schimbat. Datele se validează din nou pe server."
+    }
+  },
+  {
+    "slug": "start",
+    "title": {
+      "en": "Start using a service",
+      "ro": "Pagina de început a serviciului"
+    },
+    "example": "StartPage",
+    "guidance": {
+      "en": "Explain eligibility, cost, documents, duration and assisted support before the start action. Link to the first meaningful question.",
+      "ro": "Înainte de butonul de începere apar condițiile de eligibilitate, costurile, documentele necesare, durata estimată și opțiunile de ajutor. Butonul duce la primul pas al formularului."
+    }
+  },
+  {
+    "slug": "confirmation",
+    "title": {
+      "en": "Confirmation pages",
+      "ro": "Confirmarea trimiterii"
+    },
+    "example": "ConfirmationPage",
+    "guidance": {
+      "en": "Show a stable reference, what happens next and how to get help. Provide a receipt through an appropriate channel; the browser page alone is not durable storage.",
+      "ro": "Pagina afișează numărul de referință, pașii următori și datele de contact pentru ajutor. O confirmare prin email sau alt canal potrivit poate fi păstrată; simpla afișare a paginii nu garantează acest lucru."
+    }
+  },
+  {
+    "slug": "cookies",
+    "title": {
+      "en": "Cookies pages",
+      "ro": "Informații despre cookie-uri"
+    },
+    "example": "CookieBanner",
+    "guidance": {
+      "en": "List cookie purposes, durations and providers. Optional scripts stay off until consent, and changing or withdrawing consent must be as easy as accepting.",
+      "ro": "Pagina descrie scopul, durata și furnizorul fiecărui cookie. Scripturile opționale pornesc doar după acord. Preferințele se pot modifica, iar acordul se poate retrage la fel de ușor cum a fost dat."
+    }
+  },
+  {
+    "slug": "interruption",
+    "title": {
+      "en": "Interruption pages",
+      "ro": "Întreruperea unui proces"
+    },
+    "example": "SessionExpired",
+    "guidance": {
+      "en": "Explain why the task is interrupted, what has been saved, and a clear way to continue or get help. Avoid automatic redirects that lose context.",
+      "ro": "Pagina explică de ce procesul a fost întrerupt, ce informații s-au salvat și cum se poate continua sau cere ajutor. Redirecționările automate pot face dificilă revenirea la pasul curent."
+    }
+  },
+  {
+    "slug": "not-found",
+    "title": {
+      "en": "Page not found",
+      "ro": "Pagina nu a fost găsită"
+    },
+    "example": "PageNotFound",
+    "guidance": {
+      "en": "Use a clear page title and an HTTP 404 response in the host. Offer service navigation and support without blaming the user.",
+      "ro": "Aplicația răspunde cu HTTP 404 și afișează un titlu clar. Pagina oferă linkuri către secțiunile utile și ajutor, fără să sugereze că utilizatorul este de vină."
+    }
+  },
+  {
+    "slug": "question",
+    "title": {
+      "en": "Question pages",
+      "ro": "Întrebări în formular"
+    },
+    "example": "QuestionPage",
+    "guidance": {
+      "en": "Ask one coherent question or related group. Use a visible heading, explain why sensitive information is needed and keep the primary action in the reading flow.",
+      "ro": "Pagina conține o întrebare sau un grup de întrebări strâns legate. Titlul este vizibil, iar cererea de date sensibile este însoțită de o explicație. Acțiunea principală apare după conținutul de completat."
+    }
+  },
+  {
+    "slug": "unavailable",
+    "title": {
+      "en": "Service unavailable",
+      "ro": "Serviciu indisponibil"
+    },
+    "example": "ServiceUnavailable",
+    "guidance": {
+      "en": "Return HTTP 503 where appropriate. Explain the issue, any evidence-based recovery time and alternative channels. Do not invent a restoration estimate.",
+      "ro": "Aplicația poate răspunde cu HTTP 503 când serviciul nu este disponibil. Mesajul explică problema și oferă alternative. Un termen de remediere apare doar dacă este cunoscut."
+    }
+  },
+  {
+    "slug": "step-by-step",
+    "title": {
+      "en": "Step-by-step navigation",
+      "ro": "Ghid pas cu pas"
+    },
+    "example": "StepByStep",
+    "guidance": {
+      "en": "Explain a multi-stage process as an ordered sequence with prerequisites and destinations. Do not confuse process guidance with a form progress indicator.",
+      "ro": "Ghidul prezintă etapele unui proces în ordine, cu informațiile necesare și linkuri către pașii respectivi. El explică procesul în ansamblu; indicatorul de progres arată doar unde se află utilizatorul într-un formular."
+    }
+  },
+  {
+    "slug": "service-problem",
+    "title": {
+      "en": "There is a problem with the service",
+      "ro": "Eroare a serviciului"
+    },
+    "example": "ServiceProblem",
+    "guidance": {
+      "en": "Separate a service failure from an answer error. Explain whether submission happened, avoid duplicate payments and provide a safe retry or support route.",
+      "ro": "Mesajul distinge o problemă tehnică de o eroare în datele completate. Precizează dacă cererea a fost trimisă și cum se poate încerca din nou sau cere ajutor, fără riscul unor plăți duplicate."
+    }
+  },
+  {
+    "slug": "uploads",
+    "title": {
+      "en": "Document submission",
+      "ro": "Trimiterea documentelor"
+    },
+    "example": "FileUpload",
+    "guidance": {
+      "en": "Publish allowed formats and size limits before selection. Validate uploads on the server, preserve other answers and show a receipt for each accepted document.",
+      "ro": "Formatele acceptate și dimensiunea maximă apar înainte de selectarea fișierelor. Documentele se validează pe server, celelalte răspunsuri se păstrează, iar fiecare încărcare reușită este confirmată."
+    }
+  },
+  {
+    "slug": "resume",
+    "title": {
+      "en": "Save and return",
+      "ro": "Salvarea și continuarea mai târziu"
+    },
+    "example": "SaveReturn",
+    "guidance": {
+      "en": "State when progress is saved and how long it is kept. Provide secure resumption without placing personal data in URLs. Explain expiry before it happens.",
+      "ro": "Textul precizează când se salvează progresul, cât timp este păstrat și cum poate fi reluată cererea în siguranță. Datele personale nu apar în URL-uri. Termenul de expirare este anunțat din timp."
+    }
+  },
+  {
+    "slug": "language",
+    "title": {
+      "en": "Choose a language",
+      "ro": "Alegerea limbii"
+    },
+    "example": "LanguageNavigation",
+    "guidance": {
+      "en": "Keep equivalent routes and preserve location. Use lang on the document and mark passages in other languages. Do not use national flags as language labels.",
+      "ro": "Schimbarea limbii păstrează, pe cât posibil, pagina și secțiunea curentă. Documentul are atributul lang, iar pasajele în alte limbi sunt marcate separat. Selectorul folosește numele limbilor, nu steaguri."
+    }
+  },
+  {
+    "slug": "search-filter",
+    "title": {
+      "en": "Search and filter",
+      "ro": "Căutare și filtrare"
+    },
+    "example": "SearchFilter",
+    "guidance": {
+      "en": "Persist queries and filters in shareable URLs, announce result counts, and offer clear filters when nothing matches. Sorting must retain the chosen filters.",
+      "ro": "URL-ul păstrează termenii de căutare și filtrele, astfel încât rezultatele să poată fi redeschise sau trimise altcuiva. Numărul de rezultate este anunțat și cititoarelor de ecran. Când nu există rezultate, filtrele pot fi șterse ușor. Sortarea păstrează filtrele selectate."
+    }
+  },
+  {
+    "slug": "assisted",
+    "title": {
+      "en": "Assisted digital support",
+      "ro": "Ajutor pentru folosirea serviciului"
+    },
+    "example": "AssistedSupport",
+    "guidance": {
+      "en": "Provide accessible offline or assisted routes with real hours, costs and response times. Include people with low digital confidence in research.",
+      "ro": "Serviciul oferă și ajutor prin telefon, la ghișeu sau prin alte canale accesibile, cu program, costuri și termene de răspuns clare. Testarea include și persoane care folosesc rar internetul sau au nevoie de ajutor la completare."
+    }
+  }
+]

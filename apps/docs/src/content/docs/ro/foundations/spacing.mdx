@@ -1,0 +1,93 @@
+---
+title: "Spațiere și layout"
+description: "Spațiere și layout — SDR. Propunere independentă."
+---
+
+Toate componentele folosesc aceeași scară de spațiere pentru gap, padding și margin. Verificările proiectului detectează valorile introduse în afara acestei scări. Excepția documentată este utilitarul care ascunde vizual conținutul destinat cititoarelor de ecran.
+
+| Token | rem | La 16 px/rem | Utilizare |
+|---|---|---|---|
+| 0 | 0 | 0 | Eliminarea spațiului |
+| 1 | .25 | 4 px | Separare discretă |
+| 2 | .5 | 8 px | Etichetă și text explicativ |
+| 3 | .75 | 12 px | Grupuri de controale |
+| 4 | 1 | 16 px | Spațiu la marginea conținutului |
+| 5 | 1.5 | 24 px | Grupuri de câmpuri |
+| 6 | 2 | 32 px | Coloane și zone de pagină |
+| 7 | 3 | 48 px | Secțiuni |
+| 8 | 4 | 64 px | Secțiuni mari de prezentare |
+| 9 | 6 | 96 px | Separarea unor zone ample |
+
+Valorile rem se adaptează dimensiunii de text alese în browser. Variabilele --sdr-field-gap, --sdr-group-gap, --sdr-section-gap și --sdr-layout-gap grupează distanțele după rol. Modificarea unei variabile actualizează toate componentele care o folosesc.
+
+Stack așază elementele pe verticală. Cluster le trece pe rândul următor când nu mai încap. Grid organizează elemente repetate în coloane, Container aliniază conținutul paginii, iar SidebarLayout așază navigarea lângă conținut. Folosirea gap evită cumularea marginilor elementelor vecine. Distanțele mai mici între elementele aceluiași grup le fac mai ușor de recunoscut ca grup.
+
+Grid cu columns=2 sau columns=3 limitează numărul de coloane și păstrează o lățime minimă de 16rem pentru fiecare. Numărul de coloane depinde de spațiul disponibil componentei, inclusiv într-un container îngust pe un ecran mare. SidebarLayout trece pe o singură coloană când cele două zone nu mai încap alături. Containerul principal are maximum 64rem, iar blocurile de text maximum 68ch. Tabelele late se derulează în propriul container, care are un nume accesibil și poate primi focus.
+
+Spațierea se adaptează la lățimea ecranului. De la 40rem, --sdr-group-gap crește de la 16px la 24px, --sdr-layout-gap de la 16px la 32px, iar --sdr-section-gap de la 32px la 48px. Stack fără gap explicit folosește distanța de grup. Valorile gap explicite și clasele utilitare numerotate păstrează distanța aleasă.
+
+## Structura unei pagini
+
+Header, navigarea serviciului și conținutul folosesc aceeași limită de 64rem (1024px la 16px/rem). Fundalurile pot ocupa ecranul, dar textul și controalele rămân centrate. Marginile laterale sunt 16px, apoi 32px de la 40rem. Container nu adaugă spațiu vertical. Un container plasat în alt container adaugă încă un rând de margini laterale și este rareori necesar.
+
+| Clasă | Rol |
+|---|---|
+| sdr-width-container / sdr-container | Două nume pentru același utilitar: lățime maximă, centrare și margini responsive. |
+| sdr-main-wrapper | Spațiu vertical pentru main: 32px, apoi 48px de la 40rem. |
+| sdr-main-wrapper--l | Împreună cu main-wrapper: spațiu superior de 48px/64px când lipsesc breadcrumbs sau linkul Înapoi. |
+| sdr-main-wrapper--auto-spacing | Adaugă spațiul superior mărit când main este primul copil al containerului; breadcrumbs sau linkul Înapoi apar înaintea lui. |
+| sdr-grid-row | Rând de coloane cu lățimi fracționare și spațiere comună. Coloanele trec pe rândul următor când nu mai încap, fără margini negative sau spații pentru coloane nefolosite. |
+| sdr-grid-column-… | Lățime completă pe mobil; lățimea fracționară aleasă se aplică de la 40rem. |
+| sdr-grid-column-…-from-desktop | Aplică fracția de la 64rem; poate suprascrie fracția pentru tabletă. |
+
+Fracții disponibile: full, one-half, one-third, two-thirds, one-quarter și three-quarters. Ordinea vizuală respectă ordinea HTML. Clasele sdr-u-width-* folosesc lățimea completă pe mobil și fracția aleasă de la 40rem; auto păstrează lățimea naturală. Un grid-row poate conține un alt grid-row, fără încă un container de pagină.
+
+### Adaptarea paginii
+
+Exemplul Page păstrează formularul și informațiile suplimentare pe o singură coloană până la 64rem. Variantele two-thirds-from-desktop și one-third-from-desktop le așază alături de la acest prag. Astfel, coloana de informații nu devine prea îngustă pe tabletă. În Header, numele și selectorul de limbă pot trece pe rânduri separate. Sub 40rem, navigarea principală are un buton Meniu. Ordinea de citire rămâne aceeași la orice lățime.
+
+### React
+
+~~~tsx
+<>
+  <R.Header serviceName="Servicii pentru comunitate" />
+  <R.ServiceNavigation
+    label="Serviciu"
+    items={navigationItems}
+  />
+  <R.Container>
+    <R.Breadcrumbs
+      label="Navigare"
+      items={breadcrumbs}
+    />
+    <main className="sdr-main-wrapper">
+      <div className="sdr-grid-row">
+        <section className="sdr-grid-column-two-thirds">
+          <h1>Solicită un document</h1>
+        </section>
+        <aside className="sdr-grid-column-one-third">Ajutor</aside>
+      </div>
+    </main>
+  </R.Container>
+</>;
+~~~
+
+### HTML
+
+~~~html
+<div class="sdr-width-container">
+  <main class="sdr-main-wrapper sdr-main-wrapper--l">
+    <div class="sdr-grid-row">
+      <section class="sdr-grid-column-two-thirds">
+        <h1>Solicită un document</h1>
+      </section>
+      <aside class="sdr-grid-column-one-third">Ajutor</aside>
+    </div>
+  </main>
+</div>
+~~~
+
+Header și ServiceNavigation includ deja containerul interior. Poziționarea lor în afara containerului principal păstrează alinierea comună. Navigarea laterală rămâne în coloana ei, fără container de pagină. Consultă [Page](/ro/components/page/) pentru exemplul complet, inclusiv footer aliniat.
+
+Tokenul --sdr-container pe rădăcina .sdr permite o altă lățime pentru serviciu. O valoare comună păstrează alinierea containerelor. La 40rem, --sdr-page-gutter trece la tokenul 6. Override-urile aplicației au prioritate când sunt declarate după CSS-ul bibliotecii, inclusiv la breakpoint.
+

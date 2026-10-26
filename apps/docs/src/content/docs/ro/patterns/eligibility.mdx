@@ -1,0 +1,217 @@
+---
+title: "Condiții de eligibilitate"
+description: "Condiții de eligibilitate — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+Condițiile, costurile, documentele necesare și durata estimată sunt explicate înainte de colectarea datelor personale. Dacă persoana nu îndeplinește condițiile, pagina oferă o alternativă sau indică unde poate cere ajutor.
+
+<Preview name="Eligibility" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function EligibilityExample() {
+  const [answer, setAnswer] = useState('');
+  return (
+    <form
+      data-sdr-pattern-demo="eligibility"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setAnswer(String(new FormData(form).get('resident')));
+        requestAnimationFrame(() =>
+          form
+            .querySelector<HTMLElement>(
+              '[data-sdr-pattern-outcome]:not([hidden])',
+            )!
+            .focus(),
+        );
+      }}
+    >
+      <R.InsetText>
+        Condiții demonstrative, nu reguli ale unui serviciu real.
+      </R.InsetText>
+      <R.Fieldset legend="Locuiești în localitatea în care depui cererea?">
+        <R.Radio
+          name="resident"
+          value="yes"
+          label="Da"
+          required
+        />
+        <R.Radio
+          name="resident"
+          value="no"
+          label="Nu"
+          required
+        />
+      </R.Fieldset>
+      <div>
+        <R.Button type="submit">Verifică</R.Button>
+      </div>
+      <div
+        data-sdr-pattern-outcome="yes"
+        tabIndex={-1}
+        hidden={answer !== 'yes'}
+      >
+        <R.Alert
+          tone="success"
+          title="Poți continua în acest exemplu"
+        >
+          <R.Link href={`/${locale}/patterns/start/`}>
+            Vezi documentele și pașii necesari
+          </R.Link>
+        </R.Alert>
+      </div>
+      <div
+        data-sdr-pattern-outcome="no"
+        tabIndex={-1}
+        hidden={answer !== 'no'}
+      >
+        <R.Alert
+          tone="warning"
+          title="Există o altă opțiune"
+        >
+          <R.Stack gap={3}>
+            <p>Poți cere ajutor pentru a găsi instituția potrivită.</p>
+            <R.Link href={`/${locale}/patterns/contact/`}>
+              Vezi opțiunile de contact
+            </R.Link>
+          </R.Stack>
+        </R.Alert>
+      </div>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="eligibility"
+    class="sdr-stack"
+  >
+    <div class="sdr-inset">
+      Condiții demonstrative, nu reguli ale unui serviciu real.
+    </div>
+    <div class="sdr-field-group">
+      <fieldset
+        id="eligibility"
+        class="sdr-fieldset"
+      >
+        <legend class="sdr-legend">
+          Locuiești în localitatea în care depui cererea?
+        </legend>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="resident"
+            ><input
+              required=""
+              id="resident"
+              class="sdr-choice__input"
+              type="radio"
+              name="resident"
+              value="yes"
+            /><span class="sdr-choice__content"><span>Da</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="resident-2"
+            ><input
+              required=""
+              id="resident-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="resident"
+              value="no"
+            /><span class="sdr-choice__content"><span>Nu</span></span></label
+          >
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Verifică
+      </button>
+    </div>
+    <div
+      data-sdr-pattern-outcome="yes"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--success">
+        <p class="sdr-alert__title">Poți continua în acest exemplu</p>
+        <div>
+          <a href="/ro/patterns/start/">Vezi documentele și pașii necesari</a>
+        </div>
+      </div>
+    </div>
+    <div
+      data-sdr-pattern-outcome="no"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--warning">
+        <p class="sdr-alert__title">Există o altă opțiune</p>
+        <div>
+          <div class="sdr-stack sdr-u-gap-3">
+            <p>Poți cere ajutor pentru a găsi instituția potrivită.</p>
+            <a href="/ro/patterns/contact/">Vezi opțiunile de contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-eligibility.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

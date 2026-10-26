@@ -1,0 +1,326 @@
+---
+title: "Select"
+description: "Select — SDR. Independent proposal."
+sidebar: {"order":44}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Choose one option using the platform-native control.
+
+## Example
+
+<Preview name="Select" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SelectExample() {
+  return (
+    <R.Select
+      label="County"
+      name="county"
+    >
+      <option value="">Choose a county</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="county"
+      >County</label
+    ><select
+      name="county"
+      id="county"
+      class="sdr-select"
+    >
+      <option value="">Choose a county</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/select.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="SelectError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SelectErrorExample() {
+  return (
+    <R.Select
+      error="Choose a county."
+      label="County"
+      name="error-county"
+    >
+      <option value="">Choose a county</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-county"
+      >County</label
+    >
+    <div
+      id="error-county-error"
+      class="sdr-error"
+    >
+      Choose a county.
+    </div>
+    <select
+      name="error-county"
+      id="error-county"
+      aria-invalid="true"
+      aria-describedby="error-county-error"
+      class="sdr-select"
+    >
+      <option value="">Choose a county</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/select-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="SelectDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SelectDisabledExample() {
+  return (
+    <R.Select
+      disabled
+      defaultValue="CJ"
+      label="County"
+      name="disabled-county"
+    >
+      <option value="">Choose a county</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-county"
+      >County</label
+    ><select
+      disabled=""
+      name="disabled-county"
+      id="disabled-county"
+      class="sdr-select"
+    >
+      <option value="">Choose a county</option>
+      <option
+        value="CJ"
+        selected=""
+      >
+        Cluj
+      </option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/select-disabled.html)
+
+
+## Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="SelectReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SelectReadOnlyExample() {
+  return <R.SummaryList items={[{ key: 'County', value: 'Cluj' }]} />;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>County</dt>
+      <dd>Cluj</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/select-readonly.html)
+
+
+## Usage
+
+Prefer radios for a small set. Do not preselect an answer without evidence.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

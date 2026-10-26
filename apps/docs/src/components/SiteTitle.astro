@@ -1,0 +1,8 @@
+---
+import { docsUrl } from '../docs-url';
+import { uiText } from '../i18n/messages';
+const locale = Astro.currentLocale ?? 'ro';
+---
+<a class="sdr-site-title" href={docsUrl(`/${locale}/`)}>
+  <span class="sdr-site-title__initials">SDR</span><span class="sdr-site-title__name">{uiText(locale, "SiteTitle.romanianDesignSystem")}</span>
+</a>

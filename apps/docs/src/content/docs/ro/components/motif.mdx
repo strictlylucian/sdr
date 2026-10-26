@@ -1,0 +1,130 @@
+---
+title: "Altiță"
+description: "Altiță — SDR. Propunere independentă."
+sidebar: {"order":4}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Bandă inspirată din broderia românească, cu rozete în opt colțuri, romburi și chenare cusute.
+
+## Exemplu
+
+<Preview name="Motif" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function MotifExample() {
+  return (
+    <R.Stack gap={5}>
+      <R.Stack gap={2}>
+        <R.Text size="xs">Mic · 24px</R.Text>
+        <R.Motif size="sm" />
+      </R.Stack>
+      <R.Stack gap={2}>
+        <R.Text size="xs">Mediu · 48px · implicit</R.Text>
+        <R.Motif />
+      </R.Stack>
+      <R.Stack gap={2}>
+        <R.Text size="xs">Mare · 64px</R.Text>
+        <R.Motif size="lg" />
+      </R.Stack>
+      <R.Stack gap={2}>
+        <R.Text size="xs">Foarte mare · 96px</R.Text>
+        <R.Motif size="xl" />
+      </R.Stack>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack sdr-u-gap-5">
+    <div class="sdr-stack sdr-u-gap-2">
+      <p class="sdr-u-text-xs">Mic · 24px</p>
+      <div
+        class="sdr-motif sdr-motif--sm"
+        aria-hidden="true"
+      ></div>
+    </div>
+    <div class="sdr-stack sdr-u-gap-2">
+      <p class="sdr-u-text-xs">Mediu · 48px · implicit</p>
+      <div
+        class="sdr-motif"
+        aria-hidden="true"
+      ></div>
+    </div>
+    <div class="sdr-stack sdr-u-gap-2">
+      <p class="sdr-u-text-xs">Mare · 64px</p>
+      <div
+        class="sdr-motif sdr-motif--lg"
+        aria-hidden="true"
+      ></div>
+    </div>
+    <div class="sdr-stack sdr-u-gap-2">
+      <p class="sdr-u-text-xs">Foarte mare · 96px</p>
+      <div
+        class="sdr-motif sdr-motif--xl"
+        aria-hidden="true"
+      ></div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/motif.html)
+
+
+
+## Utilizare
+
+Patru dimensiuni: sm (24px), md (48px, implicit), lg (64px) și xl (96px). Desenul se scalează proporțional. Decorul rămâne separat de text și controale.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

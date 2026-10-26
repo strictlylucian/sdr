@@ -1,0 +1,30 @@
+.sdr-alert { display:flex; flex-direction:column; gap:var(--sdr-space-3); padding:var(--sdr-space-5); border:var(--sdr-border-width) solid var(--sdr-info); border-inline-start-width:var(--sdr-space-1); background:var(--sdr-info-bg); color:var(--sdr-info); border-radius:var(--sdr-radius); }
+.sdr-alert--success { background:var(--sdr-success-bg); color:var(--sdr-success); border-color:var(--sdr-success); }
+.sdr-alert--warning { background:var(--sdr-warning-bg); color:var(--sdr-warning); border-color:var(--sdr-warning); }
+.sdr-alert--danger { background:var(--sdr-danger-bg); color:var(--sdr-danger); border-color:var(--sdr-danger); }
+.sdr-alert a { color:inherit; }
+.sdr-alert__title { font-weight:750; font-size:var(--sdr-text-lg); }
+.sdr-error-summary { padding:var(--sdr-space-5); border:var(--sdr-border-strong) solid var(--sdr-danger); display:flex; flex-direction:column; gap:var(--sdr-space-3); }
+.sdr-error-summary a { color:var(--sdr-danger); font-weight:650; }
+.sdr-warning { display:flex; align-items:start; gap:var(--sdr-space-3); font-weight:650; }
+.sdr-warning > :not(.sdr-warning__icon) { min-inline-size:0; }
+.sdr-warning__icon { display:grid; place-items:center; flex:none; inline-size:var(--sdr-space-6); block-size:var(--sdr-space-6); border-radius:50%; background:var(--sdr-text); color:var(--sdr-surface); }
+.sdr-tag,.sdr-badge,.sdr-chip { display:inline-flex; align-items:center; gap:var(--sdr-space-2); padding:var(--sdr-space-1) var(--sdr-space-3); border:var(--sdr-border-width) solid var(--sdr-border); border-radius:var(--sdr-radius); background:var(--sdr-subtle); color:var(--sdr-text); font-size:var(--sdr-text-xs); font-weight:650; line-height:1.5; }
+.sdr-tag--success { color:var(--sdr-success); background:var(--sdr-success-bg); border-color:var(--sdr-success); }
+.sdr-tag--warning { color:var(--sdr-warning); background:var(--sdr-warning-bg); border-color:var(--sdr-warning); }
+.sdr-tag--danger { color:var(--sdr-danger); background:var(--sdr-danger-bg); border-color:var(--sdr-danger); }
+.sdr-badge { border-radius:999px; min-inline-size:var(--sdr-space-5); justify-content:center; font-variant-numeric:tabular-nums; }
+.sdr-chip { border-radius:999px; }
+button.sdr-chip { min-block-size:var(--sdr-control-height); padding-inline:var(--sdr-space-4); }
+.sdr-phase { display:flex; align-items:start; flex-wrap:wrap; gap:var(--sdr-space-3); padding-block:var(--sdr-space-3); border-block-end:var(--sdr-border-width) solid var(--sdr-divider); font-size:var(--sdr-text-sm); }
+.sdr-classification { padding:var(--sdr-space-2) var(--sdr-space-4); background:var(--sdr-subtle); color:var(--sdr-text); text-align:center; font-size:var(--sdr-text-xs); font-weight:750; letter-spacing:.08em; border-block:var(--sdr-border-width) solid var(--sdr-border); }
+.sdr-cookie { display:flex; flex-direction:column; gap:var(--sdr-space-4); padding:var(--sdr-space-5); background:var(--sdr-subtle); border-block-end:var(--sdr-border-strong) solid var(--sdr-border); }
+.sdr-progress { display:flex; flex-direction:column; gap:var(--sdr-space-2); }
+.sdr-progress progress { inline-size:100%; block-size:var(--sdr-space-3); accent-color:var(--sdr-action); }
+.sdr-loading { display:inline-flex; align-items:center; gap:var(--sdr-space-3); }
+.sdr-loading::before { content:''; inline-size:var(--sdr-space-5); block-size:var(--sdr-space-5); border:var(--sdr-border-strong) solid var(--sdr-border); border-inline-end-color:transparent; border-radius:50%; }
+.sdr-skeleton { background:var(--sdr-subtle); border-radius:var(--sdr-radius); min-block-size:var(--sdr-space-5); }
+.sdr-toast { display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sdr-space-4); padding:var(--sdr-space-4); border:var(--sdr-border-width) solid var(--sdr-border); background:var(--sdr-surface); border-radius:var(--sdr-radius-lg); box-shadow:var(--sdr-shadow); }
+.sdr-toast > [role="status"] { flex:1 1 14rem; min-inline-size:0; }
+.sdr-toast > [data-sdr-dismiss] { margin-inline-start:auto; padding-inline:0; border-inline-width:0; }
+@media(prefers-reduced-motion:no-preference) { .sdr-loading::before { animation:sdr-spin 1s linear infinite; } @keyframes sdr-spin { to { transform:rotate(360deg); } } }

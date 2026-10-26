@@ -1,0 +1,119 @@
+---
+title: "Feedback"
+description: "Feedback — SDR. Independent proposal."
+sidebar: {"order":20}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Ask whether a page was helpful and acknowledge the answer.
+
+## Example
+
+<Preview name="Feedback" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function FeedbackExample() {
+  const [answered, setAnswered] = useState(false);
+  return (
+    <R.Stack>
+      <R.Feedback
+        question="Was this page helpful?"
+        yesLabel="Yes"
+        noLabel="No"
+        onAnswer={() => setAnswered(true)}
+      />
+      <p role="status">{answered && 'Thank you for your feedback.'}</p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <section
+      class="sdr-inset"
+      data-sdr-component="actions"
+    >
+      <div class="sdr-cluster">
+        <p>Was this page helpful?</p>
+        <button
+          data-sdr-action="helpful"
+          type="button"
+          class="sdr-button sdr-button--secondary"
+        >
+          Yes</button
+        ><button
+          data-sdr-action="unhelpful"
+          type="button"
+          class="sdr-button sdr-button--secondary"
+        >
+          No
+        </button>
+      </div>
+    </section>
+    <p role="status"></p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/feedback.html)
+
+
+
+## Usage
+
+The host implements collection and privacy controls. Do not ask for personal data here.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `question` | `string` | Yes |
+| `yesLabel` | `string` | Yes |
+| `noLabel` | `string` | Yes |
+| `onAnswer` | `(helpful: boolean) => void` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

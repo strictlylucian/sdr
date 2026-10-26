@@ -1,0 +1,110 @@
+---
+title: "Skip Link"
+description: "Skip Link — SDR. Independent proposal."
+sidebar: {"order":48}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Bypass repeated navigation using the keyboard.
+
+## Example
+
+<Preview name="SkipLink" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SkipLinkExample() {
+  return (
+    <R.Stack>
+      <R.SkipLink
+        href="#skip-example-target"
+        children="Skip to content"
+      />
+      <p>Use Tab to reveal the skip link.</p>
+      <div
+        id="skip-example-target"
+        tabIndex={-1}
+      >
+        Main example content
+      </div>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <a
+      tabindex="0"
+      class="sdr-skip sdr-visually-hidden"
+      href="#skip-example-target"
+      >Skip to content</a
+    >
+    <p>Use Tab to reveal the skip link.</p>
+    <div
+      id="skip-example-target"
+      tabindex="-1"
+    >
+      Main example content
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/skip-link.html)
+
+
+
+## Usage
+
+Place first in the page and provide a focusable main target. The preview demonstrates an isolated target.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `children` | `ReactNode` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

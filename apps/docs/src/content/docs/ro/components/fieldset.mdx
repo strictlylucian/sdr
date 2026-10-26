@@ -1,0 +1,445 @@
+---
+title: "Grup de câmpuri"
+description: "Grup de câmpuri — SDR. Propunere independentă."
+sidebar: {"order":29}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Grupează câmpurile care țin de aceeași întrebare sau categorie de informații.
+
+## Exemplu
+
+<Preview name="Fieldset" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FieldsetExample() {
+  return (
+    <R.Fieldset legend="Date de contact">
+      <R.TextInput
+        label="Email"
+        type="email"
+        name="email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        label="Număr de telefon"
+        type="tel"
+        name="phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="fieldset"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Date de contact</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="email"
+          >Email</label
+        ><input
+          type="email"
+          autocomplete="email"
+          id="email"
+          class="sdr-input"
+          name="email"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="phone"
+          >Număr de telefon</label
+        ><input
+          type="tel"
+          autocomplete="tel"
+          id="phone"
+          class="sdr-input"
+          name="phone"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/fieldset.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="FieldsetError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FieldsetErrorExample() {
+  return (
+    <R.Fieldset
+      error="Alege o metodă de contact."
+      legend="Cum vrei să te contactăm?"
+    >
+      <R.Checkbox
+        name="error-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="error-contact"
+        value="post"
+        label="Prin poștă"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="fieldset-error"
+      class="sdr-fieldset"
+      aria-describedby="fieldset-error-error"
+    >
+      <legend class="sdr-legend">Cum vrei să te contactăm?</legend>
+      <div
+        class="sdr-error"
+        id="fieldset-error-error"
+      >
+        Alege o metodă de contact.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact"
+          ><input
+            id="error-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="fieldset-error-error"
+            name="error-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact-2"
+          ><input
+            id="error-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="fieldset-error-error"
+            name="error-contact"
+            value="post"
+          /><span class="sdr-choice__content"
+            ><span>Prin poștă</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/fieldset-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="FieldsetDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FieldsetDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="Date de contact"
+    >
+      <R.TextInput
+        label="Email"
+        type="email"
+        name="disabled-email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        label="Număr de telefon"
+        type="tel"
+        name="disabled-phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="fieldset-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Date de contact</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="disabled-email"
+          >Email</label
+        ><input
+          type="email"
+          autocomplete="email"
+          id="disabled-email"
+          class="sdr-input"
+          name="disabled-email"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="disabled-phone"
+          >Număr de telefon</label
+        ><input
+          type="tel"
+          autocomplete="tel"
+          id="disabled-phone"
+          class="sdr-input"
+          name="disabled-phone"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/fieldset-disabled.html)
+
+
+## Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="FieldsetReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FieldsetReadOnlyExample() {
+  return (
+    <R.Fieldset legend="Date de contact">
+      <R.TextInput
+        readOnly
+        defaultValue="nume@exemplu.ro"
+        label="Email"
+        type="email"
+        name="readonly-email"
+        autoComplete="email"
+      />
+      <R.TextInput
+        readOnly
+        defaultValue="0712 345 678"
+        label="Număr de telefon"
+        type="tel"
+        name="readonly-phone"
+        autoComplete="tel"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="fieldset-read-only"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Date de contact</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="readonly-email"
+          >Email</label
+        ><input
+          readonly=""
+          type="email"
+          autocomplete="email"
+          id="readonly-email"
+          class="sdr-input"
+          name="readonly-email"
+          value="nume@exemplu.ro"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="readonly-phone"
+          >Număr de telefon</label
+        ><input
+          readonly=""
+          type="tel"
+          autocomplete="tel"
+          id="readonly-phone"
+          class="sdr-input"
+          name="readonly-phone"
+          value="0712 345 678"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/fieldset-readonly.html)
+
+
+## Utilizare
+
+Elementul legend denumește grupul și explică legătura dintre câmpuri, inclusiv pentru cititoarele de ecran.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `legend` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

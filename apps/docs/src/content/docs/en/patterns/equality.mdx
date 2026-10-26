@@ -1,0 +1,219 @@
+---
+title: "Equality information"
+description: "Equality information — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Explain the purpose, separate optional monitoring from eligibility and offer Prefer not to say. Research categories with affected Romanian communities.
+
+<Preview name="EqualityInformation" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function EqualityInformationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="equality"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <R.Fieldset
+        legend="Age group (optional)"
+        hint="An example monitoring question. Your answer does not affect eligibility."
+      >
+        <R.Radio
+          name="age-group"
+          value="under18"
+          label="Under 18"
+        />
+        <R.Radio
+          name="age-group"
+          value="adult"
+          label="18–64"
+        />
+        <R.Radio
+          name="age-group"
+          value="older"
+          label="65 or older"
+        />
+        <R.Radio
+          name="age-group"
+          value="private"
+          label="Prefer not to say"
+        />
+      </R.Fieldset>
+      <div>
+        <R.Button type="submit">Continue</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Example completed. No details were stored.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="equality"
+    class="sdr-stack"
+  >
+    <div class="sdr-field-group">
+      <fieldset
+        id="equality-information"
+        class="sdr-fieldset"
+        aria-describedby="equality-information-hint"
+      >
+        <legend class="sdr-legend">Age group (optional)</legend>
+        <div
+          class="sdr-hint"
+          id="equality-information-hint"
+        >
+          An example monitoring question. Your answer does not affect
+          eligibility.
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group"
+            ><input
+              id="age-group"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="under18"
+            /><span class="sdr-choice__content"
+              ><span>Under 18</span></span
+            ></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-2"
+            ><input
+              id="age-group-2"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="adult"
+            /><span class="sdr-choice__content"><span>18–64</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-3"
+            ><input
+              id="age-group-3"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="older"
+            /><span class="sdr-choice__content"
+              ><span>65 or older</span></span
+            ></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-4"
+            ><input
+              id="age-group-4"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="private"
+            /><span class="sdr-choice__content"
+              ><span>Prefer not to say</span></span
+            ></label
+          >
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continue
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Example completed. No details were stored.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-equality.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

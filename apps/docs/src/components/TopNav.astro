@@ -1,0 +1,8 @@
+---
+import { docsUrl } from '../docs-url';
+import { uiText } from '../i18n/messages';
+const locale = Astro.currentLocale ?? 'ro';
+const ro = locale === 'ro';
+const links = [{ path: 'getting-started', label: uiText(locale, "TopNav.getStarted") }, { path: 'foundations/typography', label: uiText(locale, "TopNav.foundations") }, { path: 'components', label: uiText(locale, "TopNav.components") }, { path: 'patterns', label: uiText(locale, "TopNav.servicePatterns") }, { path: 'accessibility', label: uiText(locale, "TopNav.accessibility") }];
+---
+<nav class="sdr-doc-nav" aria-label={uiText(locale, "TopNav.mainSections")}>{links.map(link => <a href={docsUrl(`/${locale}/${link.path}/`)} aria-current={Astro.url.pathname.includes(`/${link.path}/`) ? 'page' : undefined}>{link.label}</a>)}</nav>

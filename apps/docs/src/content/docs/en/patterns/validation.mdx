@@ -1,0 +1,187 @@
+---
+title: "Recover from validation errors"
+description: "Recover from validation errors — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Validate on submission, preserve answers and focus the linked error summary. Explain how to correct each field. Validate again on the server.
+
+<Preview name="ValidationRecovery" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ValidationRecoveryExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="validation"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <R.InsetText>
+        This example starts with an application error. Enter a name to continue.
+      </R.InsetText>
+      <div
+        data-sdr-pattern-summary
+        hidden={done}
+      >
+        <R.ErrorSummary
+          errors={[
+            { href: '#pattern-full-name', message: 'Enter your full name.' },
+          ]}
+          title="There is a problem"
+        />
+      </div>
+      <R.TextInput
+        id="pattern-full-name"
+        name="full-name"
+        label="Full name"
+        autoComplete="name"
+        required
+        error={done ? undefined : 'Enter your full name.'}
+        hint="Use a fictional name in this example."
+      />
+      <div>
+        <R.Button type="submit">Continue</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        The example error was corrected. No real application was submitted.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="validation"
+    class="sdr-stack"
+  >
+    <div class="sdr-inset">
+      This example starts with an application error. Enter a name to continue.
+    </div>
+    <div data-sdr-pattern-summary="true">
+      <div
+        class="sdr-error-summary"
+        aria-labelledby="validation-recovery"
+        tabindex="-1"
+      >
+        <h2
+          id="validation-recovery"
+          class="sdr-heading-md"
+        >
+          There is a problem
+        </h2>
+        <ul>
+          <li><a href="#pattern-full-name">Enter your full name.</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="pattern-full-name"
+        >Full name</label
+      >
+      <div
+        id="pattern-full-name-hint"
+        class="sdr-hint"
+      >
+        Use a fictional name in this example.
+      </div>
+      <div
+        id="pattern-full-name-error"
+        class="sdr-error"
+      >
+        Enter your full name.
+      </div>
+      <input
+        autocomplete="name"
+        required=""
+        id="pattern-full-name"
+        aria-invalid="true"
+        aria-describedby="pattern-full-name-hint pattern-full-name-error"
+        class="sdr-input"
+        name="full-name"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continue
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      The example error was corrected. No real application was submitted.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-validation.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

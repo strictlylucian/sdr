@@ -1,0 +1,261 @@
+---
+title: "Button"
+description: "Button — SDR. Independent proposal."
+sidebar: {"order":5}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Perform an action, such as saving an application.
+
+## Example
+
+<Preview name="Button" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ButtonExample() {
+  const [saved, setSaved] = useState(false);
+  return (
+    <R.Cluster>
+      <R.Button onClick={() => setSaved(true)}>Save application</R.Button>
+      <R.Button
+        variant="secondary"
+        onClick={() => setSaved(false)}
+      >
+        Reset
+      </R.Button>
+      <R.Button variant="tertiary">Review application</R.Button>
+      <R.Button variant="danger">Delete draft</R.Button>
+      <R.Button variant="danger-secondary">Remove attachment</R.Button>
+      <span role="status">
+        {saved && 'Application saved in this demonstration.'}
+      </span>
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <button
+      type="button"
+      class="sdr-button"
+    >
+      Save application</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--secondary"
+    >
+      Reset</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--tertiary"
+    >
+      Review application</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--danger"
+    >
+      Delete draft</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--danger-secondary"
+    >
+      Remove attachment</button
+    ><span role="status"></span>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/button.html)
+
+
+
+## Usage
+
+The primary variant emphasises the main action; secondary has a neutral background and tertiary has a link-like appearance. danger uses red for destructive actions; danger-secondary provides an outlined alternative. Labels describe the consequence, such as “Delete draft”. Keyboard focus and pressed states use yellow. Buttons default to type="button"; form submission uses type="submit". The application owns validation and action confirmation.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-button-link" className="sdr-component-variant">
+
+## Button link
+
+The navigation variant retains an anchor and href destination. Button styling emphasises the next step without changing link semantics.
+
+<Preview name="ButtonLink" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ButtonLinkExample() {
+  return (
+    <R.ButtonLink href={`/${locale}/getting-started/`}>
+      Start integrating
+    </R.ButtonLink>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a
+    href="/en/getting-started/"
+    class="sdr-button"
+    >Start integrating</a
+  >
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/button-link.html)
+
+
+
+### API · ButtonLink
+
+| Property | Type | Required |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | No |
+
+</div>
+
+
+<div id="variant-toggle-button" className="sdr-component-variant">
+
+## Toggle button
+
+The toggle variant exposes state through aria-pressed. defaultPressed sets the initial value; the label stays the same when toggled.
+
+<Preview name="ToggleButton" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ToggleButtonExample() {
+  return <R.ToggleButton>Pin to list</R.ToggleButton>;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <button
+    data-sdr-component="toggle"
+    aria-pressed="false"
+    type="button"
+    class="sdr-button sdr-button--secondary"
+  >
+    Pin to list
+  </button>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/toggle-button.html)
+
+
+
+### API · ToggleButton
+
+| Property | Type | Required |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | No |
+| `defaultPressed` | `boolean \| undefined` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

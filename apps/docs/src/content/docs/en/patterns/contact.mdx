@@ -1,0 +1,205 @@
+---
+title: "Contact and support"
+description: "Contact and support — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Contact a service team
+
+Offer channels with opening hours, expected response times and accessibility arrangements. Make clear what information people should include.
+
+<Preview name="ContactSupport" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ContactSupportExample() {
+  return (
+    <R.Stack>
+      <h3>Do you need help with your application?</h3>
+      <R.InsetText>
+        Fictional contact details for this example only.
+      </R.InsetText>
+      <R.SummaryList
+        items={[
+          { key: 'Email', value: 'ajutor@example.invalid' },
+          { key: 'Opening hours', value: 'Monday to Friday, 09:00–17:00' },
+          { key: 'Response time', value: 'Within 2 working days' },
+        ]}
+      />
+      <p>
+        Include your application reference if you have one. Do not send your
+        password or card details.
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Do you need help with your application?</h3>
+    <div class="sdr-inset">
+      Fictional contact details for this example only.
+    </div>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Email</dt>
+        <dd>ajutor@example.invalid</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Opening hours</dt>
+        <dd>Monday to Friday, 09:00–17:00</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Response time</dt>
+        <dd>Within 2 working days</dd>
+      </div>
+    </dl>
+    <p>
+      Include your application reference if you have one. Do not send your
+      password or card details.
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-contact.html)
+
+
+
+
+<div id="variant-assisted" className="sdr-component-variant">
+
+## Assisted digital support
+
+Provide accessible offline or assisted routes with real hours, costs and response times. Include people with low digital confidence in research.
+
+<Preview name="AssistedSupport" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function AssistedSupportExample() {
+  return (
+    <R.Stack>
+      <h3>Help completing the online form</h3>
+      <p>
+        You can get help at a service desk if you cannot use the online form.
+        You do not need your own device.
+      </p>
+      <R.SummaryList
+        items={[
+          {
+            key: 'Example location',
+            value: 'Service centre, 1 Example Street',
+          },
+          { key: 'Opening hours', value: 'Monday to Friday, 09:00–17:00' },
+          { key: 'Cost', value: 'Free support' },
+        ]}
+      />
+      <R.InsetText>
+        The address and opening hours are fictional. A live service confirms
+        support arrangements with the institution.
+      </R.InsetText>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Help completing the online form</h3>
+    <p>
+      You can get help at a service desk if you cannot use the online form. You
+      do not need your own device.
+    </p>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Example location</dt>
+        <dd>Service centre, 1 Example Street</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Opening hours</dt>
+        <dd>Monday to Friday, 09:00–17:00</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Cost</dt>
+        <dd>Free support</dd>
+      </div>
+    </dl>
+    <div class="sdr-inset">
+      The address and opening hours are fictional. A live service confirms
+      support arrangements with the institution.
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-assisted.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

@@ -1,0 +1,326 @@
+---
+title: "Listă de selecție"
+description: "Listă de selecție — SDR. Propunere independentă."
+sidebar: {"order":41}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite alegerea unei opțiuni dintr-o listă, folosind controlul nativ al browserului.
+
+## Exemplu
+
+<Preview name="Select" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SelectExample() {
+  return (
+    <R.Select
+      label="Județ"
+      name="county"
+    >
+      <option value="">Alege un județ</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="county"
+      >Județ</label
+    ><select
+      name="county"
+      id="county"
+      class="sdr-select"
+    >
+      <option value="">Alege un județ</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/select.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="SelectError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SelectErrorExample() {
+  return (
+    <R.Select
+      error="Alege un județ."
+      label="Județ"
+      name="error-county"
+    >
+      <option value="">Alege un județ</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-county"
+      >Județ</label
+    >
+    <div
+      id="error-county-error"
+      class="sdr-error"
+    >
+      Alege un județ.
+    </div>
+    <select
+      name="error-county"
+      id="error-county"
+      aria-invalid="true"
+      aria-describedby="error-county-error"
+      class="sdr-select"
+    >
+      <option value="">Alege un județ</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/select-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="SelectDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SelectDisabledExample() {
+  return (
+    <R.Select
+      disabled
+      defaultValue="CJ"
+      label="Județ"
+      name="disabled-county"
+    >
+      <option value="">Alege un județ</option>
+      <option value="CJ">Cluj</option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </R.Select>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-county"
+      >Județ</label
+    ><select
+      disabled=""
+      name="disabled-county"
+      id="disabled-county"
+      class="sdr-select"
+    >
+      <option value="">Alege un județ</option>
+      <option
+        value="CJ"
+        selected=""
+      >
+        Cluj
+      </option>
+      <option value="BV">Brașov</option>
+      <option value="IS">Iași</option>
+    </select>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/select-disabled.html)
+
+
+## Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="SelectReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SelectReadOnlyExample() {
+  return <R.SummaryList items={[{ key: 'Județ', value: 'Cluj' }]} />;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Județ</dt>
+      <dd>Cluj</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/select-readonly.html)
+
+
+## Utilizare
+
+Pentru câteva opțiuni, butoanele radio sunt de obicei mai ușor de parcurs. Un răspuns preselectat are nevoie de un motiv clar.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

@@ -1,0 +1,91 @@
+---
+title: "Nume"
+description: "Nume — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+Numele complet este suficient în multe formulare; separarea numelui de familie și a prenumelui are sens doar dacă serviciul are nevoie de ea. Câmpurile păstrează diacriticele, cratimele și numele multiple și acceptă și alte alfabete.
+
+<Preview name="NameFields" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function NameFieldsExample() {
+  return (
+    <R.NameFields
+      label="Nume complet"
+      hint="Scrie toate prenumele și numele de familie."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="full-name"
+      >Nume complet</label
+    >
+    <div
+      id="full-name-hint"
+      class="sdr-hint"
+    >
+      Scrie toate prenumele și numele de familie.
+    </div>
+    <input
+      autocomplete="name"
+      id="full-name"
+      aria-describedby="full-name-hint"
+      class="sdr-input"
+      name="full-name"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-names.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

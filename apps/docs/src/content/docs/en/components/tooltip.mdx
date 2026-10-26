@@ -1,0 +1,105 @@
+---
+title: "Tooltip"
+description: "Tooltip — SDR. Independent proposal."
+sidebar: {"order":61}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Show brief supporting text on hover or keyboard focus.
+
+## Example
+
+<Preview name="Tooltip" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TooltipExample() {
+  return (
+    <R.Tooltip
+      label="About the reference"
+      content="Find the reference in your confirmation email."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <span
+    class="sdr-tooltip"
+    data-sdr-component="tooltip"
+    ><button
+      type="button"
+      class="sdr-button sdr-button--secondary"
+      data-sdr-tooltip-trigger="true"
+      aria-describedby="tooltip"
+    >
+      About the reference</button
+    ><span
+      class="sdr-tooltip__content"
+      role="tooltip"
+      id="tooltip"
+      hidden=""
+      >Find the reference in your confirmation email.</span
+    ></span
+  >
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/tooltip.html)
+
+
+
+## Usage
+
+Never hide essential instructions or interactive controls inside a tooltip. Escape dismisses it.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `string` | Yes |
+| `content` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

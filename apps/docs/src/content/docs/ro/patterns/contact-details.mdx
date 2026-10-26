@@ -1,0 +1,290 @@
+---
+title: "Date de contact"
+description: "Date de contact — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Această pagină grupează mai multe situații ale aceluiași model. Fiecare secțiune are propriul exemplu și cod React și HTML.
+
+
+
+## Numere de telefon
+
+Câmpul folosește type=tel și autocomplete=tel. Acceptă prefixe internaționale, spații și numere copiate. Textul precizează dacă numărul va fi folosit pentru SMS-uri sau apeluri.
+
+<Preview name="PhoneNumber" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PhoneNumberExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="phone"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>La ce număr te putem contacta?</h3>
+      <R.TextInput
+        label="Număr de telefon"
+        type="tel"
+        name="phone"
+        autoComplete="tel"
+        required
+        hint="Te sunăm doar dacă avem întrebări despre cerere. Pentru numere din străinătate, include prefixul țării. Folosește date fictive în exemplu."
+      />
+      <div>
+        <R.Button type="submit">Continuă</R.Button>
+      </div>
+      <R.Link href={`/${locale}/patterns/contact-details/#variant-email`}>
+        Prefer să primesc răspunsul prin email
+      </R.Link>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Exemplu finalizat. Numărul nu a fost salvat și nu s-a trimis niciun SMS.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="phone"
+    class="sdr-stack"
+  >
+    <h3>La ce număr te putem contacta?</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="phone"
+        >Număr de telefon</label
+      >
+      <div
+        id="phone-hint"
+        class="sdr-hint"
+      >
+        Te sunăm doar dacă avem întrebări despre cerere. Pentru numere din
+        străinătate, include prefixul țării. Folosește date fictive în exemplu.
+      </div>
+      <input
+        type="tel"
+        autocomplete="tel"
+        required=""
+        id="phone"
+        aria-describedby="phone-hint"
+        class="sdr-input"
+        name="phone"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continuă
+      </button>
+    </div>
+    <a href="/ro/patterns/contact-details/#variant-email"
+      >Prefer să primesc răspunsul prin email</a
+    >
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Exemplu finalizat. Numărul nu a fost salvat și nu s-a trimis niciun SMS.
+    </p>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-contact-details.html)
+
+
+
+
+<div id="variant-email" className="sdr-component-variant">
+
+## Adrese de email
+
+Câmpul folosește type=email și autocomplete=email și permite lipirea textului. Dacă adresa trebuie verificată, un link de confirmare este mai util decât introducerea ei de două ori.
+
+<Preview name="EmailAddress" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function EmailAddressExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="email"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Unde îți trimitem răspunsul?</h3>
+      <R.TextInput
+        label="Adresa de email"
+        name="email-address"
+        type="email"
+        autoComplete="email"
+        required
+        spellCheck={false}
+        hint="Folosește o adresă de test, de exemplu ana@example.invalid. Nu trimitem emailuri din acest exemplu."
+      />
+      <div>
+        <R.Button type="submit">Continuă</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Exemplu finalizat. Nu s-a trimis niciun email.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="email"
+    class="sdr-stack"
+  >
+    <h3>Unde îți trimitem răspunsul?</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="email-address"
+        >Adresa de email</label
+      >
+      <div
+        id="email-address-hint"
+        class="sdr-hint"
+      >
+        Folosește o adresă de test, de exemplu ana@example.invalid. Nu trimitem
+        emailuri din acest exemplu.
+      </div>
+      <input
+        type="email"
+        autocomplete="email"
+        required=""
+        spellcheck="false"
+        id="email-address"
+        aria-describedby="email-address-hint"
+        class="sdr-input"
+        name="email-address"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continuă
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Exemplu finalizat. Nu s-a trimis niciun email.
+    </p>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-email.html)
+
+</div>
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

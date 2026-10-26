@@ -1,0 +1,139 @@
+---
+title: "Pagination"
+description: "Pagination — SDR. Independent proposal."
+sidebar: {"order":34}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Navigate a bounded collection using real links.
+
+## Example
+
+<Preview name="Pagination" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PaginationExample() {
+  return (
+    <R.Pagination
+      page={2}
+      pages={8}
+      label="Page"
+      previousLabel="Previous"
+      nextLabel="Next"
+      href={(page) => `?page=${page}`}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-pagination"
+    aria-label="Page"
+  >
+    <ul>
+      <li>
+        <a
+          href="?page=1"
+          rel="prev"
+          >← Previous</a
+        >
+      </li>
+      <li>
+        <a
+          href="?page=1"
+          aria-label="Page: 1"
+          >1</a
+        >
+      </li>
+      <li><span aria-current="page">2</span></li>
+      <li>
+        <a
+          href="?page=3"
+          aria-label="Page: 3"
+          >3</a
+        >
+      </li>
+      <li>
+        <span aria-hidden="true">…</span
+        ><a
+          href="?page=8"
+          aria-label="Page: 8"
+          >8</a
+        >
+      </li>
+      <li>
+        <a
+          href="?page=3"
+          rel="next"
+          >Next →</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pagination.html)
+
+
+
+## Usage
+
+Preserve filters in generated URLs and announce result changes in client-routed applications.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `page` | `number` | Yes |
+| `pages` | `number` | Yes |
+| `href` | `(page: number) => string` | Yes |
+| `label` | `string` | Yes |
+| `previousLabel` | `string` | Yes |
+| `nextLabel` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

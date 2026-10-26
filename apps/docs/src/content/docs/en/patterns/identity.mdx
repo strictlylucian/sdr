@@ -1,0 +1,91 @@
+---
+title: "Personal identifiers"
+description: "Personal identifiers — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Collect identifiers only for an explicit service need. Explain why a CNP is needed and provide an alternative route for eligible people without one.
+
+<Preview name="IdentityFields" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function IdentityFieldsExample() {
+  return (
+    <R.IdentityFields
+      label="Romanian personal numerical code (CNP)"
+      hint="The service must explain why this information is necessary."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="identity"
+      >Romanian personal numerical code (CNP)</label
+    >
+    <div
+      id="identity-hint"
+      class="sdr-hint"
+    >
+      The service must explain why this information is necessary.
+    </div>
+    <input
+      inputmode="numeric"
+      id="identity"
+      aria-describedby="identity-hint"
+      class="sdr-input"
+      name="identity"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-identity.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

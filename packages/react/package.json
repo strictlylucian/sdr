@@ -1,0 +1,41 @@
+{
+  "name": "@sdr/react",
+  "version": "0.1.0-alpha.1",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.ro.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=18.3.0",
+    "react-dom": ">=18.3.0"
+  },
+  "sideEffects": false,
+  "description": "React components for the independent Romanian Design System proposal",
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha"
+  },
+  "keywords": [
+    "design-system",
+    "romanian",
+    "react",
+    "accessibility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strictlylucian/sdr.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/strictlylucian/sdr/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/strictlylucian/sdr/issues"
+  }
+}

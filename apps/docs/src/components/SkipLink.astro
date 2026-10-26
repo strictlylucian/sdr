@@ -1,0 +1,15 @@
+<a class="sl-skip-link" href="#_top" tabindex="0">{Astro.locals.t('skipLink.label')}</a>
+
+<style>
+  .sl-skip-link {
+    clip: rect(0, 0, 0, 0);
+    position: fixed;
+    top: var(--sdr-space-3);
+    inset-inline-start: var(--sdr-space-3);
+  }
+  .sl-skip-link:focus {
+    clip: unset;
+    z-index: var(--sl-z-index-skiplink);
+    display: block;
+  }
+</style>

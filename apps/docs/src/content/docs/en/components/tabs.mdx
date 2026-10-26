@@ -1,0 +1,140 @@
+---
+title: "Tabs"
+description: "Tabs — SDR. Independent proposal."
+sidebar: {"order":53}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Switch between related peer panels with keyboard navigation.
+
+## Example
+
+<Preview name="Tabs" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TabsExample() {
+  return (
+    <R.Tabs
+      label="Application status"
+      items={[
+        {
+          id: 'active',
+          label: 'Active',
+          content: 'You have 2 applications under review.',
+        },
+        {
+          id: 'completed',
+          label: 'Completed',
+          content: 'You have no completed applications.',
+        },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    class="sdr-tabs"
+    data-sdr-component="tabs"
+    data-sdr-selected="0"
+  >
+    <div
+      class="sdr-tabs__list"
+      data-sdr-tablist="true"
+      aria-label="Application status"
+    >
+      <a
+        class="sdr-tabs__tab"
+        data-sdr-tab="true"
+        id="tabs-active-tab"
+        href="#tabs-active"
+        >Active</a
+      ><a
+        class="sdr-tabs__tab"
+        data-sdr-tab="true"
+        id="tabs-completed-tab"
+        href="#tabs-completed"
+        >Completed</a
+      >
+    </div>
+    <section
+      class="sdr-tabs__panel"
+      id="tabs-active"
+      data-sdr-panel="true"
+    >
+      <h3 class="sdr-visually-hidden">Active</h3>
+      You have 2 applications under review.
+    </section>
+    <section
+      class="sdr-tabs__panel"
+      id="tabs-completed"
+      data-sdr-panel="true"
+    >
+      <h3 class="sdr-visually-hidden">Completed</h3>
+      You have no completed applications.
+    </section>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/tabs.html)
+
+
+
+## Usage
+
+Use for peer content, not sequential form steps. Arrow keys, Home and End change the active panel.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `items` | `{ id: string; label: string; content: ReactNode; }[]` | Yes |
+| `label` | `string` | Yes |
+| `defaultSelected` | `number \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

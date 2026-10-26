@@ -1,0 +1,121 @@
+---
+title: "Timeline"
+description: "Timeline — SDR. Independent proposal."
+sidebar: {"order":59}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Present dated events in a meaningful sequence.
+
+## Example
+
+<Preview name="Timeline" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TimelineExample() {
+  return (
+    <R.Timeline
+      label="Application history"
+      items={[
+        {
+          date: '25.10.2026',
+          dateTime: '2026-10-25',
+          title: 'Application received',
+          description: 'We received your documents.',
+        },
+        { date: '26.10.2026', dateTime: '2026-10-26', title: 'Review started' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <ol
+    class="sdr-timeline"
+    aria-label="Application history"
+  >
+    <li>
+      <div class="sdr-stack sdr-u-gap-2">
+        <time
+          datetime="2026-10-25"
+          class="sdr-caption"
+          >25.10.2026</time
+        >
+        <h3 class="sdr-heading-sm">Application received</h3>
+        We received your documents.
+      </div>
+    </li>
+    <li>
+      <div class="sdr-stack sdr-u-gap-2">
+        <time
+          datetime="2026-10-26"
+          class="sdr-caption"
+          >26.10.2026</time
+        >
+        <h3 class="sdr-heading-sm">Review started</h3>
+      </div>
+    </li>
+  </ol>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/timeline.html)
+
+
+
+## Usage
+
+Use valid machine-readable dateTime values and localised visible dates.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `string` | Yes |
+| `items` | `{ title: string; date: string; dateTime: string; description?: ReactNode; }[]` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

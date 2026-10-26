@@ -1,0 +1,1131 @@
+---
+title: "Câmp de text"
+description: "Câmp de text — SDR. Propunere independentă."
+sidebar: {"order":15}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite introducerea unui răspuns scurt, cu etichetă vizibilă și text explicativ opțional.
+
+## Exemplu
+
+<Preview name="TextInput" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextInputExample() {
+  return (
+    <R.TextInput
+      label="Nume complet"
+      name="full-name"
+      autoComplete="name"
+      hint="Scrie numele așa cum apare în actul de identitate."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="full-name"
+      >Nume complet</label
+    >
+    <div
+      id="full-name-hint"
+      class="sdr-hint"
+    >
+      Scrie numele așa cum apare în actul de identitate.
+    </div>
+    <input
+      autocomplete="name"
+      id="full-name"
+      aria-describedby="full-name-hint"
+      class="sdr-input"
+      name="full-name"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/text-input.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="TextInputError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextInputErrorExample() {
+  return (
+    <R.TextInput
+      error="Scrie numele complet."
+      label="Nume complet"
+      name="error-full-name"
+      autoComplete="name"
+      hint="Scrie numele așa cum apare în actul de identitate."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-full-name"
+      >Nume complet</label
+    >
+    <div
+      id="error-full-name-hint"
+      class="sdr-hint"
+    >
+      Scrie numele așa cum apare în actul de identitate.
+    </div>
+    <div
+      id="error-full-name-error"
+      class="sdr-error"
+    >
+      Scrie numele complet.
+    </div>
+    <input
+      autocomplete="name"
+      id="error-full-name"
+      aria-invalid="true"
+      aria-describedby="error-full-name-hint error-full-name-error"
+      class="sdr-input"
+      name="error-full-name"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/text-input-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="TextInputDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextInputDisabledExample() {
+  return (
+    <R.TextInput
+      disabled
+      defaultValue="Șerban Popescu"
+      label="Nume complet"
+      name="disabled-full-name"
+      autoComplete="name"
+      hint="Scrie numele așa cum apare în actul de identitate."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-full-name"
+      >Nume complet</label
+    >
+    <div
+      id="disabled-full-name-hint"
+      class="sdr-hint"
+    >
+      Scrie numele așa cum apare în actul de identitate.
+    </div>
+    <input
+      disabled=""
+      autocomplete="name"
+      id="disabled-full-name"
+      aria-describedby="disabled-full-name-hint"
+      class="sdr-input"
+      name="disabled-full-name"
+      value="Șerban Popescu"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/text-input-disabled.html)
+
+
+## Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="TextInputReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextInputReadOnlyExample() {
+  return (
+    <R.TextInput
+      readOnly
+      defaultValue="Șerban Popescu"
+      label="Nume complet"
+      name="readonly-full-name"
+      autoComplete="name"
+      hint="Scrie numele așa cum apare în actul de identitate."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-full-name"
+      >Nume complet</label
+    >
+    <div
+      id="readonly-full-name-hint"
+      class="sdr-hint"
+    >
+      Scrie numele așa cum apare în actul de identitate.
+    </div>
+    <input
+      readonly=""
+      autocomplete="name"
+      id="readonly-full-name"
+      aria-describedby="readonly-full-name-hint"
+      class="sdr-input"
+      name="readonly-full-name"
+      value="Șerban Popescu"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/text-input-readonly.html)
+
+
+## Utilizare
+
+Câmpul acceptă diacritice și text copiat. autocomplete și inputMode se aleg în funcție de informația cerută.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-password-input" className="sdr-component-variant">
+
+## Parolă
+
+Câmpul permite afișarea și ascunderea parolei. autocomplete indică dacă este o parolă existentă sau una nouă. Lipirea textului și managerii de parole rămân disponibili.
+
+<Preview name="PasswordInput" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PasswordInputExample() {
+  return (
+    <R.PasswordInput
+      label="Parolă"
+      name="password"
+      autoComplete="new-password"
+      hint="Poți folosi un manager de parole."
+      showLabel="Afișează parola"
+      hideLabel="Ascunde parola"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Afișează parola"
+    data-sdr-hide-label="Ascunde parola"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="password"
+        >Parolă</label
+      >
+      <div
+        id="password-hint"
+        class="sdr-hint"
+      >
+        Poți folosi un manager de parole.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          id="password"
+          aria-describedby="password-hint"
+          type="password"
+          class="sdr-input"
+          name="password"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Afișează parola
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/password-input.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="PasswordInputError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PasswordInputErrorExample() {
+  return (
+    <R.PasswordInput
+      error="Parola trebuie să aibă cel puțin 12 caractere."
+      label="Parolă"
+      name="error-password"
+      autoComplete="new-password"
+      hint="Poți folosi un manager de parole."
+      showLabel="Afișează parola"
+      hideLabel="Ascunde parola"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Afișează parola"
+    data-sdr-hide-label="Ascunde parola"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="error-password"
+        >Parolă</label
+      >
+      <div
+        id="error-password-hint"
+        class="sdr-hint"
+      >
+        Poți folosi un manager de parole.
+      </div>
+      <div
+        id="error-password-error"
+        class="sdr-error"
+      >
+        Parola trebuie să aibă cel puțin 12 caractere.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          id="error-password"
+          aria-invalid="true"
+          aria-describedby="error-password-hint error-password-error"
+          type="password"
+          class="sdr-input"
+          name="error-password"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="error-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Afișează parola
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/password-input-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="PasswordInputDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PasswordInputDisabledExample() {
+  return (
+    <R.PasswordInput
+      disabled
+      defaultValue="Exemplu-parola-2026"
+      label="Parolă"
+      name="disabled-password"
+      autoComplete="new-password"
+      hint="Poți folosi un manager de parole."
+      showLabel="Afișează parola"
+      hideLabel="Ascunde parola"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Afișează parola"
+    data-sdr-hide-label="Ascunde parola"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="disabled-password"
+        >Parolă</label
+      >
+      <div
+        id="disabled-password-hint"
+        class="sdr-hint"
+      >
+        Poți folosi un manager de parole.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          disabled=""
+          id="disabled-password"
+          aria-describedby="disabled-password-hint"
+          type="password"
+          class="sdr-input"
+          name="disabled-password"
+          value="Exemplu-parola-2026"
+        /><button
+          type="button"
+          disabled=""
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="disabled-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Afișează parola
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/password-input-disabled.html)
+
+
+### Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="PasswordInputReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PasswordInputReadOnlyExample() {
+  return (
+    <R.PasswordInput
+      readOnly
+      defaultValue="Exemplu-parola-2026"
+      label="Parolă"
+      name="readonly-password"
+      autoComplete="new-password"
+      hint="Poți folosi un manager de parole."
+      showLabel="Afișează parola"
+      hideLabel="Ascunde parola"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Afișează parola"
+    data-sdr-hide-label="Ascunde parola"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="readonly-password"
+        >Parolă</label
+      >
+      <div
+        id="readonly-password-hint"
+        class="sdr-hint"
+      >
+        Poți folosi un manager de parole.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          readonly=""
+          id="readonly-password"
+          aria-describedby="readonly-password-hint"
+          type="password"
+          class="sdr-input"
+          name="readonly-password"
+          value="Exemplu-parola-2026"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="readonly-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Afișează parola
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/password-input-readonly.html)
+
+
+### API · PasswordInput
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+| `showLabel` | `string` | Da |
+| `hideLabel` | `string` | Da |
+
+</div>
+
+
+<div id="variant-time-input" className="sdr-component-variant">
+
+## Oră
+
+Câmpul folosește input type=time. Browserul furnizează interfața de selectare, iar valoarea nu include fusul orar.
+
+<Preview name="TimeInput" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TimeInputExample() {
+  return (
+    <R.TimeInput
+      label="Ora programării"
+      name="time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="time"
+      >Ora programării</label
+    ><input
+      type="time"
+      id="time"
+      class="sdr-input"
+      name="time"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/time-input.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="TimeInputError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TimeInputErrorExample() {
+  return (
+    <R.TimeInput
+      error="Alege o oră pentru programare."
+      label="Ora programării"
+      name="error-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-time"
+      >Ora programării</label
+    >
+    <div
+      id="error-time-error"
+      class="sdr-error"
+    >
+      Alege o oră pentru programare.
+    </div>
+    <input
+      type="time"
+      id="error-time"
+      aria-invalid="true"
+      aria-describedby="error-time-error"
+      class="sdr-input"
+      name="error-time"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/time-input-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="TimeInputDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TimeInputDisabledExample() {
+  return (
+    <R.TimeInput
+      disabled
+      defaultValue="10:30"
+      label="Ora programării"
+      name="disabled-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-time"
+      >Ora programării</label
+    ><input
+      disabled=""
+      type="time"
+      id="disabled-time"
+      class="sdr-input"
+      name="disabled-time"
+      value="10:30"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/time-input-disabled.html)
+
+
+### Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="TimeInputReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TimeInputReadOnlyExample() {
+  return (
+    <R.TimeInput
+      readOnly
+      defaultValue="10:30"
+      label="Ora programării"
+      name="readonly-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-time"
+      >Ora programării</label
+    ><input
+      readonly=""
+      type="time"
+      id="readonly-time"
+      class="sdr-input"
+      name="readonly-time"
+      value="10:30"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/time-input-readonly.html)
+
+
+### API · TimeInput
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+</div>
+
+
+<div id="variant-error-message" className="sdr-component-variant">
+
+## Cu mesaj de eroare
+
+Proprietatea error leagă mesajul de câmp și îl marchează ca invalid. ErrorMessage poate fi folosit și separat în formulare personalizate.
+
+<Preview name="ErrorMessage" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ErrorMessageExample() {
+  return (
+    <R.TextInput
+      label="Email"
+      type="email"
+      name="invalid-email"
+      defaultValue="alex@"
+      error="Scrie o adresă de email completă, de exemplu nume@exemplu.ro."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="email"
+      >Email</label
+    >
+    <div
+      id="email-error"
+      class="sdr-error"
+    >
+      Scrie o adresă de email completă, de exemplu nume@exemplu.ro.
+    </div>
+    <input
+      type="email"
+      id="email"
+      aria-invalid="true"
+      aria-describedby="email-error"
+      class="sdr-input"
+      name="invalid-email"
+      value="alex@"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/error-message.html)
+
+
+
+### API · ErrorMessage
+
+Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă descriu proprietățile disponibile.
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

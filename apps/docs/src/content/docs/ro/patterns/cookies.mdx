@@ -1,0 +1,125 @@
+---
+title: "Informații despre cookie-uri"
+description: "Informații despre cookie-uri — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+Pagina descrie scopul, durata și furnizorul fiecărui cookie. Scripturile opționale pornesc doar după acord. Preferințele se pot modifica, iar acordul se poate retrage la fel de ușor cum a fost dat.
+
+<Preview name="CookieBanner" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function CookieBannerExample() {
+  const [choice, setChoice] = useState('');
+  return (
+    <R.Stack>
+      {!choice && (
+        <R.CookieBanner
+          title="Preferințe pentru cookie-uri"
+          acceptLabel="Acceptă cookie-urile opționale"
+          rejectLabel="Refuză cookie-urile opționale"
+          onAccept={() =>
+            setChoice('Ai acceptat cookie-urile opționale în acest exemplu.')
+          }
+          onReject={() =>
+            setChoice('Ai refuzat cookie-urile opționale în acest exemplu.')
+          }
+        >
+          Folosim cookie-uri opționale doar dacă le accepți.
+        </R.CookieBanner>
+      )}
+      <p
+        role="status"
+        hidden={!choice}
+      >
+        {choice}
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <section
+      class="sdr-cookie"
+      aria-labelledby="cookie-banner"
+      data-sdr-component="actions"
+    >
+      <h2
+        id="cookie-banner"
+        class="sdr-heading-md"
+      >
+        Preferințe pentru cookie-uri
+      </h2>
+      <div>Folosim cookie-uri opționale doar dacă le accepți.</div>
+      <div class="sdr-cluster">
+        <button
+          data-sdr-action="accept"
+          type="button"
+          class="sdr-button"
+        >
+          Acceptă cookie-urile opționale</button
+        ><button
+          data-sdr-action="reject"
+          type="button"
+          class="sdr-button sdr-button--secondary"
+        >
+          Refuză cookie-urile opționale
+        </button>
+      </div>
+    </section>
+    <p
+      role="status"
+      hidden=""
+    ></p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-cookies.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

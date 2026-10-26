@@ -1,0 +1,21 @@
+---
+title: "Override classes"
+description: "Override classes — SDR. Independent proposal."
+---
+
+Overrides are generated from the same tokens as the components. Composition provides the base structure; utilities support local adjustments without a separate set of CSS values.
+
+- sdr-u-margin-0 through sdr-u-margin-9, and corresponding padding classes.
+- Logical sides: top, bottom, left, right, block and inline. Left and right map to inline-start and inline-end for localisation.
+- sdr-u-gap-0 through sdr-u-gap-9, plus row-gap and column-gap.
+- sdr-u-md-padding-5 and equivalent spacing classes apply at 48rem.
+- sdr-u-width-full, three-quarters, two-thirds, one-half, one-third, one-quarter and auto. Fractional widths become full width below 40rem; auto remains intrinsic.
+- sdr-u-text-xs through sdr-u-text-4xl; sdr-u-weight-regular, medium and bold.
+- sdr-u-text-start, center and end; sdr-u-tabular and sdr-u-measure.
+- sdr-u-display-block, inline, inline-block, none, flex and grid; sdr-u-hide-print.
+- sdr-visually-hidden stays available to assistive technology and becomes visible when focused.
+
+The canonical utility prefix is sdr-u-. Numbered spacing utilities retain their selected value; sdr-u-md-* applies the same adjustment from 48rem.
+
+Override declarations use !important, including zero resets. display-none also removes content from screen readers; sdr-visually-hidden keeps it available to assistive technology. Tokens are available in application CSS for continuity with component spacing.
+

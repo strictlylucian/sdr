@@ -1,0 +1,125 @@
+---
+title: "Cronologie"
+description: "Cronologie — SDR. Propunere independentă."
+sidebar: {"order":20}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează evenimente în ordinea în care au avut loc.
+
+## Exemplu
+
+<Preview name="Timeline" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TimelineExample() {
+  return (
+    <R.Timeline
+      label="Istoricul cererii"
+      items={[
+        {
+          date: '25.10.2026',
+          dateTime: '2026-10-25',
+          title: 'Cerere primită',
+          description: 'Am primit documentele tale.',
+        },
+        {
+          date: '26.10.2026',
+          dateTime: '2026-10-26',
+          title: 'Verificarea a început',
+        },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <ol
+    class="sdr-timeline"
+    aria-label="Istoricul cererii"
+  >
+    <li>
+      <div class="sdr-stack sdr-u-gap-2">
+        <time
+          datetime="2026-10-25"
+          class="sdr-caption"
+          >25.10.2026</time
+        >
+        <h3 class="sdr-heading-sm">Cerere primită</h3>
+        Am primit documentele tale.
+      </div>
+    </li>
+    <li>
+      <div class="sdr-stack sdr-u-gap-2">
+        <time
+          datetime="2026-10-26"
+          class="sdr-caption"
+          >26.10.2026</time
+        >
+        <h3 class="sdr-heading-sm">Verificarea a început</h3>
+      </div>
+    </li>
+  </ol>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/timeline.html)
+
+
+
+## Utilizare
+
+dateTime conține o valoare validă pentru procesare automată. Data vizibilă folosește formatul limbii alese.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `string` | Da |
+| `items` | `{ title: string; date: string; dateTime: string; description?: ReactNode; }[]` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

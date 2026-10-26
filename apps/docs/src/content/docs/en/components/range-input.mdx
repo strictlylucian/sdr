@@ -1,0 +1,315 @@
+---
+title: "Range Input"
+description: "Range Input — SDR. Independent proposal."
+sidebar: {"order":41}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Select an approximate value within a range.
+
+## Example
+
+<Preview name="RangeInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RangeInputExample() {
+  return (
+    <R.RangeInput
+      label="Search radius in kilometres"
+      name="radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="radius"
+      >Search radius in kilometres</label
+    ><input
+      min="1"
+      max="50"
+      id="radius"
+      class="sdr-range"
+      type="range"
+      name="radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/range-input.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="RangeInputError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RangeInputErrorExample() {
+  return (
+    <R.RangeInput
+      error="Choose a search radius between 1 and 50 km."
+      label="Search radius in kilometres"
+      name="error-radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-radius"
+      >Search radius in kilometres</label
+    >
+    <div
+      id="error-radius-error"
+      class="sdr-error"
+    >
+      Choose a search radius between 1 and 50 km.
+    </div>
+    <input
+      min="1"
+      max="50"
+      id="error-radius"
+      aria-invalid="true"
+      aria-describedby="error-radius-error"
+      class="sdr-range"
+      type="range"
+      name="error-radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/range-input-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="RangeInputDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RangeInputDisabledExample() {
+  return (
+    <R.RangeInput
+      disabled
+      label="Search radius in kilometres"
+      name="disabled-radius"
+      min={1}
+      max={50}
+      defaultValue={10}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-radius"
+      >Search radius in kilometres</label
+    ><input
+      disabled=""
+      min="1"
+      max="50"
+      id="disabled-radius"
+      class="sdr-range"
+      type="range"
+      name="disabled-radius"
+      value="10"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/range-input-disabled.html)
+
+
+## Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="RangeInputReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RangeInputReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Search radius in kilometres', value: '10 km' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Search radius in kilometres</dt>
+      <dd>10 km</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/range-input-readonly.html)
+
+
+## Usage
+
+Use a text or number field when exact precision matters.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

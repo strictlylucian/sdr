@@ -1,0 +1,292 @@
+---
+title: "Contact details"
+description: "Contact details — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Phone numbers
+
+Use type=tel and autocomplete=tel. Accept international country codes, spaces and pasted numbers. Explain whether SMS or voice is required.
+
+<Preview name="PhoneNumber" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PhoneNumberExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="phone"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Which number can we contact you on?</h3>
+      <R.TextInput
+        label="Phone number"
+        type="tel"
+        name="phone"
+        autoComplete="tel"
+        required
+        hint="We will only call about your application. Include the country code for numbers outside Romania. Use fictional details in this example."
+      />
+      <div>
+        <R.Button type="submit">Continue</R.Button>
+      </div>
+      <R.Link href={`/${locale}/patterns/contact-details/#variant-email`}>
+        I prefer an email response
+      </R.Link>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Example completed. No phone number was stored and no text message was
+        sent.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="phone"
+    class="sdr-stack"
+  >
+    <h3>Which number can we contact you on?</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="phone"
+        >Phone number</label
+      >
+      <div
+        id="phone-hint"
+        class="sdr-hint"
+      >
+        We will only call about your application. Include the country code for
+        numbers outside Romania. Use fictional details in this example.
+      </div>
+      <input
+        type="tel"
+        autocomplete="tel"
+        required=""
+        id="phone"
+        aria-describedby="phone-hint"
+        class="sdr-input"
+        name="phone"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continue
+      </button>
+    </div>
+    <a href="/en/patterns/contact-details/#variant-email"
+      >I prefer an email response</a
+    >
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Example completed. No phone number was stored and no text message was
+      sent.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-contact-details.html)
+
+
+
+
+<div id="variant-email" className="sdr-component-variant">
+
+## Email addresses
+
+Use type=email and autocomplete=email. Let users paste. Confirm ownership with a link when required, rather than asking them to type the address twice.
+
+<Preview name="EmailAddress" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function EmailAddressExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="email"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Where should we send your response?</h3>
+      <R.TextInput
+        label="Email address"
+        name="email-address"
+        type="email"
+        autoComplete="email"
+        required
+        spellCheck={false}
+        hint="Use a test address, for example ana@example.invalid. This example does not send emails."
+      />
+      <div>
+        <R.Button type="submit">Continue</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Example completed. No email was sent.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="email"
+    class="sdr-stack"
+  >
+    <h3>Where should we send your response?</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="email-address"
+        >Email address</label
+      >
+      <div
+        id="email-address-hint"
+        class="sdr-hint"
+      >
+        Use a test address, for example ana@example.invalid. This example does
+        not send emails.
+      </div>
+      <input
+        type="email"
+        autocomplete="email"
+        required=""
+        spellcheck="false"
+        id="email-address"
+        aria-describedby="email-address-hint"
+        class="sdr-input"
+        name="email-address"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continue
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Example completed. No email was sent.
+    </p>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-email.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

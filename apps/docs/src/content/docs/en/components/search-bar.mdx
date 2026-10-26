@@ -1,0 +1,369 @@
+---
+title: "Search Bar"
+description: "Search Bar — SDR. Independent proposal."
+sidebar: {"order":42}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Submit a labelled search query using a GET form.
+
+## Example
+
+<Preview name="SearchBar" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SearchBarExample() {
+  return (
+    <R.SearchBar
+      label="Search services"
+      action={`/${locale}/components/`}
+      buttonLabel="Search"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    role="search"
+    class="sdr-input-group"
+    action="/en/components/"
+    method="get"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="q"
+        >Search services</label
+      ><input
+        type="search"
+        id="q"
+        class="sdr-input"
+        name="q"
+      />
+    </div>
+    <button
+      class="sdr-button"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/search-bar.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="SearchBarError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SearchBarErrorExample() {
+  return (
+    <R.SearchBar
+      error="Enter the service you are looking for."
+      label="Search services"
+      action={`/${locale}/components/`}
+      buttonLabel="Search"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    role="search"
+    class="sdr-input-group"
+    action="/en/components/"
+    method="get"
+  >
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="q"
+        >Search services</label
+      >
+      <div
+        id="q-error"
+        class="sdr-error"
+      >
+        Enter the service you are looking for.
+      </div>
+      <input
+        type="search"
+        id="q"
+        aria-invalid="true"
+        aria-describedby="q-error"
+        class="sdr-input"
+        name="q"
+      />
+    </div>
+    <button
+      class="sdr-button"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/search-bar-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="SearchBarDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SearchBarDisabledExample() {
+  return (
+    <R.SearchBar
+      disabled
+      defaultValue="Passport"
+      label="Search services"
+      action={`/${locale}/components/`}
+      buttonLabel="Search"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    role="search"
+    class="sdr-input-group"
+    action="/en/components/"
+    method="get"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="q"
+        >Search services</label
+      ><input
+        disabled=""
+        type="search"
+        id="q"
+        class="sdr-input"
+        name="q"
+        value="Passport"
+      />
+    </div>
+    <button
+      class="sdr-button"
+      type="submit"
+      disabled=""
+    >
+      Search
+    </button>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/search-bar-disabled.html)
+
+
+## Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="SearchBarReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SearchBarReadOnlyExample() {
+  return (
+    <R.SearchBar
+      readOnly
+      defaultValue="Passport"
+      label="Search services"
+      action={`/${locale}/components/`}
+      buttonLabel="Search"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    role="search"
+    class="sdr-input-group"
+    action="/en/components/"
+    method="get"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="q"
+        >Search services</label
+      ><input
+        readonly=""
+        type="search"
+        id="q"
+        class="sdr-input"
+        name="q"
+        value="Passport"
+      />
+    </div>
+    <button
+      class="sdr-button"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/search-bar-readonly.html)
+
+
+## Usage
+
+The service must implement results, no-results states and query persistence.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+| `action` | `string` | Yes |
+| `buttonLabel` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

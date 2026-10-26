@@ -1,0 +1,19 @@
+---
+import { docsUrl } from '../docs-url';
+interface Props { src: string; alt: string; caption: string; originalLabel: string; }
+const { src, alt, caption, originalLabel } = Astro.props;
+---
+<figure class="sdr-study-plate">
+  <img class="sdr-study-plate__image" src={docsUrl(src)} alt={alt} width="2400" height="2100" loading="lazy" decoding="async" />
+  <figcaption class="sdr-study-plate__caption">
+    <p>{caption}</p>
+    <a href={docsUrl(src)}>{originalLabel}</a>
+  </figcaption>
+</figure>
+
+<style>
+  .sdr-study-plate { display:grid;gap:var(--sdr-space-3);margin:var(--sdr-space-5) 0;min-inline-size:0; }
+  .sdr-study-plate__image { display:block;inline-size:100%;max-inline-size:100%;block-size:auto;margin:0;border:var(--sdr-border-width) solid var(--sl-color-hairline); }
+  .sdr-study-plate__caption { display:grid;gap:var(--sdr-space-2);font-size:var(--sdr-text-xs);line-height:1.5;color:var(--sl-color-gray-2); }
+  .sdr-study-plate__caption p { margin:0; }
+</style>

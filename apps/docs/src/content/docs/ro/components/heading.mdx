@@ -1,0 +1,93 @@
+---
+title: "Titlu"
+description: "Titlu — SDR. Propunere independentă."
+sidebar: {"order":60}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Definește nivelul unui titlu separat de dimensiunea sa vizuală.
+
+## Exemplu
+
+<Preview name="Heading" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function HeadingExample() {
+  return (
+    <R.Stack>
+      <R.Heading level={2}>Un limbaj comun</R.Heading>
+      <R.Heading level={3}>Claritate în fiecare detaliu</R.Heading>
+      <R.Heading level={4}>Informații utile</R.Heading>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h2 class="sdr-heading">Un limbaj comun</h2>
+    <h3 class="sdr-heading">Claritate în fiecare detaliu</h3>
+    <h4 class="sdr-heading">Informații utile</h4>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/heading.html)
+
+
+
+## Utilizare
+
+level stabilește locul în structura paginii, iar size schimbă doar dimensiunea afișată.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `level` | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | Nu |
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

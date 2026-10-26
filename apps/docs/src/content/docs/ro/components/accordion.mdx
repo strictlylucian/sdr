@@ -1,0 +1,130 @@
+---
+title: "Acordeon"
+description: "Acordeon — SDR. Propunere independentă."
+sidebar: {"order":2}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Grupează secțiuni care pot fi deschise și închise separat.
+
+## Exemplu
+
+<Preview name="Accordion" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function AccordionExample() {
+  return (
+    <R.Accordion
+      label="Întrebări despre cerere"
+      items={[
+        {
+          id: 'documents',
+          title: 'Ce documente sunt necesare?',
+          content: 'Lista documentelor depinde de serviciul ales.',
+        },
+        {
+          id: 'timing',
+          title: 'Cât durează?',
+          content: 'Termenul este afișat înainte de începerea cererii.',
+        },
+      ]}
+      expandAllLabel="Deschide toate secțiunile"
+      collapseAllLabel="Închide toate secțiunile"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <section
+    class="sdr-accordion"
+    data-sdr-expand-label="Deschide toate secțiunile"
+    data-sdr-collapse-label="Închide toate secțiunile"
+    aria-label="Întrebări despre cerere"
+    data-sdr-component="accordion"
+  >
+    <button
+      data-sdr-accordion-toggle="true"
+      hidden=""
+      type="button"
+      class="sdr-button sdr-button--tertiary"
+    >
+      Deschide toate secțiunile
+    </button>
+    <details class="sdr-details">
+      <summary><span>Ce documente sunt necesare?</span></summary>
+      <div class="sdr-details__content">
+        Lista documentelor depinde de serviciul ales.
+      </div>
+    </details>
+    <details class="sdr-details">
+      <summary><span>Cât durează?</span></summary>
+      <div class="sdr-details__content">
+        Termenul este afișat înainte de începerea cererii.
+      </div>
+    </details>
+  </section>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/accordion.html)
+
+
+
+## Utilizare
+
+Pot fi deschise mai multe secțiuni simultan sau toate deodată. Informațiile esențiale rămân în afara acordeonului.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `{ id: string; title: ReactNode; content: ReactNode; open?: boolean; }[]` | Da |
+| `label` | `string` | Da |
+| `expandAllLabel` | `string` | Da |
+| `collapseAllLabel` | `string` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

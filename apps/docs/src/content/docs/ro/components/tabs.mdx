@@ -1,0 +1,140 @@
+---
+title: "Taburi"
+description: "Taburi — SDR. Propunere independentă."
+sidebar: {"order":56}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Organizează conținutul în panouri între care se poate comuta și din tastatură.
+
+## Exemplu
+
+<Preview name="Tabs" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TabsExample() {
+  return (
+    <R.Tabs
+      label="Starea cererilor"
+      items={[
+        {
+          id: 'active',
+          label: 'Active',
+          content: 'Ai 2 cereri în curs de verificare.',
+        },
+        {
+          id: 'completed',
+          label: 'Finalizate',
+          content: 'Nu ai cereri finalizate.',
+        },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    class="sdr-tabs"
+    data-sdr-component="tabs"
+    data-sdr-selected="0"
+  >
+    <div
+      class="sdr-tabs__list"
+      data-sdr-tablist="true"
+      aria-label="Starea cererilor"
+    >
+      <a
+        class="sdr-tabs__tab"
+        data-sdr-tab="true"
+        id="tabs-active-tab"
+        href="#tabs-active"
+        >Active</a
+      ><a
+        class="sdr-tabs__tab"
+        data-sdr-tab="true"
+        id="tabs-completed-tab"
+        href="#tabs-completed"
+        >Finalizate</a
+      >
+    </div>
+    <section
+      class="sdr-tabs__panel"
+      id="tabs-active"
+      data-sdr-panel="true"
+    >
+      <h3 class="sdr-visually-hidden">Active</h3>
+      Ai 2 cereri în curs de verificare.
+    </section>
+    <section
+      class="sdr-tabs__panel"
+      id="tabs-completed"
+      data-sdr-panel="true"
+    >
+      <h3 class="sdr-visually-hidden">Finalizate</h3>
+      Nu ai cereri finalizate.
+    </section>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/tabs.html)
+
+
+
+## Utilizare
+
+Taburile sunt potrivite pentru categorii de conținut de același nivel, nu pentru pașii unui formular. Tastele săgeată, Home și End schimbă panoul activ.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `{ id: string; label: string; content: ReactNode; }[]` | Da |
+| `label` | `string` | Da |
+| `defaultSelected` | `number \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

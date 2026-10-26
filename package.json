@@ -1,0 +1,57 @@
+{
+  "name": "romanian-design-system",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@sdr/docs",
+    "preview:lan": "npm run preview:lan --workspace=@sdr/docs",
+    "build": "node tooling/build/build.mjs && tsx tooling/docs/docs.mts && npm run build -w @sdr/docs",
+    "build:library": "node tooling/build/build.mjs",
+    "fonts:subset": "python tooling/fonts/subset-fonts.py",
+    "typecheck": "tsc --noEmit",
+    "check": "vitest run --project quality",
+    "test": "vitest run --project components",
+    "test:e2e": "playwright test",
+    "check:artifacts": "vitest run --project packages tests/packages/artifacts.test.ts",
+    "check:packages": "vitest run --project packages tests/packages/consumer.test.ts",
+    "docs:generate": "tsx tooling/docs/docs.mts",
+    "verify": "npm run build && npm run check && npm run typecheck && npm run test:coverage && npm run test:packages && npm run test:e2e",
+    "pack:release": "npm run build:library && npm run test:packages && node tooling/release/prepare-release.mjs",
+    "test:watch": "vitest --project components",
+    "test:coverage": "vitest run --project components --coverage",
+    "test:e2e:ui": "playwright test --ui",
+    "test:packages": "vitest run --project packages",
+    "build:pages": "node tooling/docs/build-pages.mjs",
+    "test:pages": "playwright test --config playwright.pages.config.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "axe-core": "^4.14.0",
+    "esbuild": "^0.28.2",
+    "http-server": "^14.1.1",
+    "jsdom": "^27.0.0",
+    "node": "^22.23.4",
+    "postcss": "^8.5.6",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strictlylucian/sdr.git"
+  }
+}

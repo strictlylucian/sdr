@@ -1,0 +1,214 @@
+---
+title: "Link"
+description: "Link — SDR. Independent proposal."
+sidebar: {"order":30}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Navigate to another page or an anchored section.
+
+## Example
+
+<Preview name="Link" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function LinkExample() {
+  return (
+    <R.Link href={`/${locale}/getting-started/`}>
+      Read the installation guide
+    </R.Link>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a href="/en/getting-started/">Read the installation guide</a>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/link.html)
+
+
+
+## Usage
+
+Write destination-specific text and preserve browser link behaviour.
+
+
+
+## API
+
+Accepts HTML attributes for its native element. See the typed source.
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-back-link" className="sdr-component-variant">
+
+## Back link
+
+The back-arrow variant receives an explicit destination. Navigation does not depend on browser history.
+
+<Preview name="BackLink" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function BackLinkExample() {
+  return (
+    <R.BackLink
+      href={`/${locale}/components/`}
+      children="Back"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a
+    href="/en/components/"
+    class="sdr-back"
+    ><span aria-hidden="true">←</span>Back</a
+  >
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/back-link.html)
+
+
+
+### API · BackLink
+
+| Property | Type | Required |
+|---|---|---|
+| `children` | `ReactNode` | Yes |
+
+</div>
+
+
+<div id="variant-back-to-top" className="sdr-component-variant">
+
+## Back to top
+
+The upward-arrow variant navigates to the document start anchor.
+
+<Preview name="BackToTop" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function BackToTopExample() {
+  return <R.BackToTop href="#_top">Back to top</R.BackToTop>;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a
+    href="#_top"
+    class="sdr-back"
+    >Back to top<span aria-hidden="true">↑</span></a
+  >
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/back-to-top.html)
+
+
+
+### API · BackToTop
+
+Accepts HTML attributes for its native element. See the typed source.
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

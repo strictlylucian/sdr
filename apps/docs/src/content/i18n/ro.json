@@ -1,0 +1,16 @@
+{
+  "search.label": "Caută în documentație",
+  "search.cancelLabel": "Închide căutarea",
+  "themeSelect.light": "Light",
+  "skipLink.label": "Mergi direct la conținut",
+  "themeSelect.dark": "Dark",
+  "themeSelect.auto": "Sistem",
+  "themeSelect.accessibleLabel": "Alege tema",
+  "languageSelect.accessibleLabel": "Alege limba",
+  "sidebarNav.accessibleLabel": "Navigare principală",
+  "page.previousLink": "Pagina anterioară",
+  "aside.note": "Notă",
+  "404.text": "Pagina nu a fost găsită. Verifică adresa sau folosește căutarea.",
+  "heading.anchorLabel": "Link către secțiunea „{{title}}”",
+  "search.devWarning": "Căutarea este disponibilă doar după build. Poate fi testată local în previzualizarea versiunii de producție."
+}

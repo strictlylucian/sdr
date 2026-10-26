@@ -1,0 +1,111 @@
+---
+title: "Navigare ierarhică"
+description: "Navigare ierarhică — SDR. Propunere independentă."
+sidebar: {"order":43}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează o structură de linkuri cu secțiuni care pot fi deschise și închise.
+
+## Exemplu
+
+<Preview name="TreeView" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TreeViewExample() {
+  return (
+    <R.TreeView
+      label="Structura documentelor"
+      items={[
+        {
+          label: 'Cereri',
+          children: [
+            { label: 'Cereri trimise', href: '#submitted' },
+            { label: 'Ciorne', href: '#drafts' },
+          ],
+        },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-tree"
+    aria-label="Structura documentelor"
+  >
+    <ul>
+      <li>
+        <details>
+          <summary>Cereri</summary>
+          <ul>
+            <li><a href="#submitted">Cereri trimise</a></li>
+            <li><a href="#drafts">Ciorne</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </nav>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/tree-view.html)
+
+
+
+## Utilizare
+
+Componenta folosește Tab, Enter și Space. Nu implementează modelul ARIA tree și comenzile sale cu tastele săgeată.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `TreeNode[]` | Da |
+| `label` | `string` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

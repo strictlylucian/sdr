@@ -1,0 +1,102 @@
+---
+title: "Text de conținut"
+description: "Text de conținut — SDR. Propunere independentă."
+sidebar: {"order":58}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Asigură o lățime de citire potrivită și spațiere consecventă pentru blocuri de text.
+
+## Exemplu
+
+<Preview name="Prose" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ProseExample() {
+  return (
+    <R.Prose>
+      <h2>Înainte de a începe</h2>
+      <p>
+        Pregătește documentele cerute de serviciu. Poți salva progresul dacă
+        serviciul oferă această opțiune.
+      </p>
+      <ul>
+        <li>Verifică eligibilitatea.</li>
+        <li>Asigură-te că ai acces la adresa de email.</li>
+      </ul>
+    </R.Prose>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-prose">
+    <h2>Înainte de a începe</h2>
+    <p>
+      Pregătește documentele cerute de serviciu. Poți salva progresul dacă
+      serviciul oferă această opțiune.
+    </p>
+    <ul>
+      <li>Verifică eligibilitatea.</li>
+      <li>Asigură-te că ai acces la adresa de email.</li>
+    </ul>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/prose.html)
+
+
+
+## Utilizare
+
+Conținutul păstrează structura HTML: titluri, paragrafe, liste și linkuri.
+
+
+
+## API
+
+Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă descriu proprietățile disponibile.
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

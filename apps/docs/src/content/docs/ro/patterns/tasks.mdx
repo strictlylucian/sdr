@@ -1,0 +1,279 @@
+---
+title: "Activități și reluarea cererii"
+description: "Activități și reluarea cererii — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Această pagină grupează mai multe situații ale aceluiași model. Fiecare secțiune are propriul exemplu și cod React și HTML.
+
+
+
+## Completarea mai multor activități
+
+Lista arată starea fiecărei activități și ce trebuie completat înainte de a o începe. Progresul se salvează pe server, cu posibilitatea de a continua de pe alt dispozitiv dacă serviciul o cere.
+
+<Preview name="TaskProgress" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TaskProgressExample() {
+  return (
+    <R.Stack>
+      <h3>Pregătește cererea</h3>
+      <R.TaskList
+        label="Etapele cererii"
+        items={[
+          {
+            title: 'Date personale',
+            href: `/${locale}/patterns/question/`,
+            status: 'Completat',
+            tone: 'success',
+          },
+          {
+            title: 'Documente',
+            href: `/${locale}/patterns/uploads/`,
+            status: 'În curs',
+            tone: 'warning',
+          },
+          {
+            title: 'Verifică și trimite',
+            status: 'Completează mai întâi documentele',
+          },
+        ]}
+      />
+      <p>
+        Linkurile deschid exemplele pașilor respectivi. Starea listei este
+        ilustrativă.
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Pregătește cererea</h3>
+    <ol
+      class="sdr-task-list"
+      aria-label="Etapele cererii"
+    >
+      <li>
+        <a
+          href="/ro/patterns/question/"
+          aria-describedby="task-progress-0"
+          >Date personale</a
+        ><span
+          id="task-progress-0"
+          class="sdr-tag sdr-tag--success"
+          >Completat</span
+        >
+      </li>
+      <li>
+        <a
+          href="/ro/patterns/uploads/"
+          aria-describedby="task-progress-1"
+          >Documente</a
+        ><span
+          id="task-progress-1"
+          class="sdr-tag sdr-tag--warning"
+          >În curs</span
+        >
+      </li>
+      <li>
+        <span>Verifică și trimite</span
+        ><span
+          id="task-progress-2"
+          class="sdr-tag"
+          >Completează mai întâi documentele</span
+        >
+      </li>
+    </ol>
+    <p>
+      Linkurile deschid exemplele pașilor respectivi. Starea listei este
+      ilustrativă.
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-tasks.html)
+
+
+
+
+<div id="variant-resume" className="sdr-component-variant">
+
+## Salvarea și continuarea mai târziu
+
+Textul precizează când se salvează progresul, cât timp este păstrat și cum poate fi reluată cererea în siguranță. Datele personale nu apar în URL-uri. Termenul de expirare este anunțat din timp.
+
+<Preview name="SaveReturn" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SaveReturnExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="resume"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Continuă mai târziu</h3>
+      <R.TextInput
+        id="saved-example-name"
+        name="saved-name"
+        label="Nume de test"
+        defaultValue="Ana Șerban"
+        autoComplete="off"
+      />
+      <div>
+        <R.Button type="submit">Salvează pentru mai târziu</R.Button>
+      </div>
+      <div
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        <R.Alert
+          tone="success"
+          title="Exemplul este pregătit pentru reluare"
+        >
+          <R.Stack gap={3}>
+            <p>
+              Datele rămân doar în această pagină. Nu sunt păstrate după
+              închidere sau reîncărcare.
+            </p>
+            <R.Link href="#saved-example-name">Continuă completarea</R.Link>
+          </R.Stack>
+        </R.Alert>
+      </div>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="resume"
+    class="sdr-stack"
+  >
+    <h3>Continuă mai târziu</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="saved-example-name"
+        >Nume de test</label
+      ><input
+        autocomplete="off"
+        id="saved-example-name"
+        class="sdr-input"
+        name="saved-name"
+        value="Ana Șerban"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Salvează pentru mai târziu
+      </button>
+    </div>
+    <div
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--success">
+        <p class="sdr-alert__title">Exemplul este pregătit pentru reluare</p>
+        <div>
+          <div class="sdr-stack sdr-u-gap-3">
+            <p>
+              Datele rămân doar în această pagină. Nu sunt păstrate după
+              închidere sau reîncărcare.
+            </p>
+            <a href="#saved-example-name">Continuă completarea</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-resume.html)
+
+</div>
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

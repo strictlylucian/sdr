@@ -1,0 +1,93 @@
+---
+title: "Heading"
+description: "Heading — SDR. Independent proposal."
+sidebar: {"order":26}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Express document hierarchy independently from visual heading size.
+
+## Example
+
+<Preview name="Heading" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function HeadingExample() {
+  return (
+    <R.Stack>
+      <R.Heading level={2}>A shared language</R.Heading>
+      <R.Heading level={3}>Clarity in every detail</R.Heading>
+      <R.Heading level={4}>Knowledge, trust, accessibility</R.Heading>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h2 class="sdr-heading">A shared language</h2>
+    <h3 class="sdr-heading">Clarity in every detail</h3>
+    <h4 class="sdr-heading">Knowledge, trust, accessibility</h4>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/heading.html)
+
+
+
+## Usage
+
+Choose level by document structure; size controls visual treatment only.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `level` | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | No |
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

@@ -1,0 +1,106 @@
+---
+title: "Check answers"
+description: "Check answers — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Group answers under descriptive headings. Change links name the answer and return to the summary after editing. Explain the consequence of submission.
+
+<Preview name="CheckAnswers" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function CheckAnswersExample() {
+  return (
+    <R.CheckAnswers
+      title="Check your answers"
+      items={[
+        {
+          key: 'Name',
+          value: 'Ana Șerban',
+          actions: (
+            <R.Link href={`/${locale}/patterns/names/`}>Change name</R.Link>
+          ),
+        },
+        { key: 'City', value: 'Brașov' },
+      ]}
+    >
+      <R.WarningText>This is an example with fictional data.</R.WarningText>
+    </R.CheckAnswers>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h2>Check your answers</h2>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Name</dt>
+        <dd>Ana Șerban</dd>
+        <dd class="sdr-summary__actions">
+          <a href="/en/patterns/names/">Change name</a>
+        </dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>City</dt>
+        <dd>Brașov</dd>
+      </div>
+    </dl>
+    <div class="sdr-warning">
+      <span
+        class="sdr-warning__icon"
+        aria-hidden="true"
+        >!</span
+      >
+      <p>This is an example with fictional data.</p>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-check-answers.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

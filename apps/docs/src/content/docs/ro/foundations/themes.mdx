@@ -1,0 +1,31 @@
+---
+title: "Culori, teme și densitate"
+description: "Culori, teme și densitate — SDR. Propunere independentă."
+---
+
+Cele patru teme — light, dark, heritage și contrast — folosesc aceleași roluri de culoare. Heritage combină un fundal cald, apropiat de hârtie, cu albastru închis și accente roșii. Contrast oferă o paletă cu contrast ridicat. Modul forced-colors al sistemului este tratat separat.
+
+În React, tema se stabilește prin proprietatea theme a SdrProvider. În HTML, se folosește data-sdr-theme pe un element cu clasa .sdr. Valoarea dark activează tema întunecată. Secțiunile pot avea teme diferite. Aplicația salvează preferința; biblioteca nu scrie în localStorage și nu aplică automat o temă globală. Exemplele din documentație urmează tema paginii, dar permit și alegerea unei alte teme pentru fiecare exemplu.
+
+Rolurile de culoare sunt canvas, surface, subtle, text, muted, border, divider, action, action-hover, on-action, link, focus, focus-gap, danger, success, warning, info și fundalurile asociate. Accentul decorativ are un rol separat de erori și linkuri. Valorile sunt definite în packages/core/src/tokens.ts. Erorile și acțiunile distructive folosesc #CA3535 în Light și Heritage. Dark folosește #D76868 pentru textul de eroare pe fundal întunecat, iar Contrast folosește #982828. Rolul semantic danger se adaptează temei; culoarea decorativă flag-red rămâne neschimbată.
+
+Butoanele principale folosesc același albastru ca header-ul și navigarea: #002B7F, în toate temele. Textul este alb, iar în tema dark conturul mai deschis păstrează vizibilă marginea butonului. Rolurile sunt button-bg, button-hover, on-button și button-border. La apăsare și la focus din tastatură se păstrează galbenul drapelului.
+
+Țintele de contrast sunt 4.5:1 pentru text obișnuit, 3:1 pentru text mare și 3:1 pentru contururile care ajută la identificarea controalelor. Liniile pur decorative nu au acest rol. Stările sunt descrise și prin text, nu doar prin culoare. Contrastul acțiunilor este verificat atât în starea obișnuită, cât și la hover. Indicatorul de focus are un contur separat de fundal.
+
+În modul comfortable, controalele au o înălțime minimă de 3rem; în compact, de 2.75rem. Modul compact nu micșorează textul sau indicatorii de focus. Combinațiile de teme și densități sunt verificate pe exemplele bibliotecii. Rezultatele automate nu înlocuiesc testarea paginilor complete ale unui serviciu.
+
+## Culorile drapelului
+
+Header-ul folosește culorile drapelului României, convertite din RGB în hexazecimal. Albastrul și linia roșie sunt aceleași în documentație și în componenta Header, inclusiv în tema dark. Galbenul evidențiază elementul care are focus.
+
+| Token | Hex | Rol |
+|---|---|---|
+| --sdr-flag-blue | #002B7F | Fundal header |
+| --sdr-flag-yellow | #FCD116 | Focus și apăsare |
+| --sdr-flag-red | #CE1126 | Linia de sub header |
+
+Valorile sunt definite în [anexa Legii nr. 176/2023](https://legislatie.just.ro/public/DetaliiDocument/271454). Exportul flagColours din @sdr/core oferă aceleași valori în JavaScript. Culorile semantice pentru text, stări și suprafețe sunt adaptate fiecărei teme pentru contrast.
+
+Butoanele au fundal galben când primesc focus din tastatură sau sunt apăsate. Butoanele toggle îl păstrează cât timp aria-pressed este true. Textul și conturul închise la culoare oferă contrast pe galben. Indicatorul de focus are un contur galben și unul interior închis, vizibile atât pe fundal deschis, cât și pe fundal întunecat. Linkul către conținut apare când primește focus și folosește aceleași culori.
+

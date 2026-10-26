@@ -1,0 +1,1131 @@
+---
+title: "Text Input"
+description: "Text Input — SDR. Independent proposal."
+sidebar: {"order":57}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Collect a short answer with a persistent label and optional hint.
+
+## Example
+
+<Preview name="TextInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextInputExample() {
+  return (
+    <R.TextInput
+      label="Full name"
+      name="full-name"
+      autoComplete="name"
+      hint="Enter your name as it appears on your identity document."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="full-name"
+      >Full name</label
+    >
+    <div
+      id="full-name-hint"
+      class="sdr-hint"
+    >
+      Enter your name as it appears on your identity document.
+    </div>
+    <input
+      autocomplete="name"
+      id="full-name"
+      aria-describedby="full-name-hint"
+      class="sdr-input"
+      name="full-name"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/text-input.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="TextInputError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextInputErrorExample() {
+  return (
+    <R.TextInput
+      error="Enter your full name."
+      label="Full name"
+      name="error-full-name"
+      autoComplete="name"
+      hint="Enter your name as it appears on your identity document."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-full-name"
+      >Full name</label
+    >
+    <div
+      id="error-full-name-hint"
+      class="sdr-hint"
+    >
+      Enter your name as it appears on your identity document.
+    </div>
+    <div
+      id="error-full-name-error"
+      class="sdr-error"
+    >
+      Enter your full name.
+    </div>
+    <input
+      autocomplete="name"
+      id="error-full-name"
+      aria-invalid="true"
+      aria-describedby="error-full-name-hint error-full-name-error"
+      class="sdr-input"
+      name="error-full-name"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/text-input-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="TextInputDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextInputDisabledExample() {
+  return (
+    <R.TextInput
+      disabled
+      defaultValue="Șerban Popescu"
+      label="Full name"
+      name="disabled-full-name"
+      autoComplete="name"
+      hint="Enter your name as it appears on your identity document."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-full-name"
+      >Full name</label
+    >
+    <div
+      id="disabled-full-name-hint"
+      class="sdr-hint"
+    >
+      Enter your name as it appears on your identity document.
+    </div>
+    <input
+      disabled=""
+      autocomplete="name"
+      id="disabled-full-name"
+      aria-describedby="disabled-full-name-hint"
+      class="sdr-input"
+      name="disabled-full-name"
+      value="Șerban Popescu"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/text-input-disabled.html)
+
+
+## Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="TextInputReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextInputReadOnlyExample() {
+  return (
+    <R.TextInput
+      readOnly
+      defaultValue="Șerban Popescu"
+      label="Full name"
+      name="readonly-full-name"
+      autoComplete="name"
+      hint="Enter your name as it appears on your identity document."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-full-name"
+      >Full name</label
+    >
+    <div
+      id="readonly-full-name-hint"
+      class="sdr-hint"
+    >
+      Enter your name as it appears on your identity document.
+    </div>
+    <input
+      readonly=""
+      autocomplete="name"
+      id="readonly-full-name"
+      aria-describedby="readonly-full-name-hint"
+      class="sdr-input"
+      name="readonly-full-name"
+      value="Șerban Popescu"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/text-input-readonly.html)
+
+
+## Usage
+
+Accept diacritics and paste. Choose autocomplete and inputMode for the actual question.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-password-input" className="sdr-component-variant">
+
+## Password
+
+The password variant adds value visibility controls. autocomplete can describe an existing or new password; paste and password managers remain available.
+
+<Preview name="PasswordInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PasswordInputExample() {
+  return (
+    <R.PasswordInput
+      label="Password"
+      name="password"
+      autoComplete="new-password"
+      hint="You can use a password manager."
+      showLabel="Show password"
+      hideLabel="Hide password"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Show password"
+    data-sdr-hide-label="Hide password"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="password"
+        >Password</label
+      >
+      <div
+        id="password-hint"
+        class="sdr-hint"
+      >
+        You can use a password manager.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          id="password"
+          aria-describedby="password-hint"
+          type="password"
+          class="sdr-input"
+          name="password"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Show password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/password-input.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="PasswordInputError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PasswordInputErrorExample() {
+  return (
+    <R.PasswordInput
+      error="Your password must contain at least 12 characters."
+      label="Password"
+      name="error-password"
+      autoComplete="new-password"
+      hint="You can use a password manager."
+      showLabel="Show password"
+      hideLabel="Hide password"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Show password"
+    data-sdr-hide-label="Hide password"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="error-password"
+        >Password</label
+      >
+      <div
+        id="error-password-hint"
+        class="sdr-hint"
+      >
+        You can use a password manager.
+      </div>
+      <div
+        id="error-password-error"
+        class="sdr-error"
+      >
+        Your password must contain at least 12 characters.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          id="error-password"
+          aria-invalid="true"
+          aria-describedby="error-password-hint error-password-error"
+          type="password"
+          class="sdr-input"
+          name="error-password"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="error-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Show password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/password-input-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="PasswordInputDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PasswordInputDisabledExample() {
+  return (
+    <R.PasswordInput
+      disabled
+      defaultValue="Exemplu-parola-2026"
+      label="Password"
+      name="disabled-password"
+      autoComplete="new-password"
+      hint="You can use a password manager."
+      showLabel="Show password"
+      hideLabel="Hide password"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Show password"
+    data-sdr-hide-label="Hide password"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="disabled-password"
+        >Password</label
+      >
+      <div
+        id="disabled-password-hint"
+        class="sdr-hint"
+      >
+        You can use a password manager.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          disabled=""
+          id="disabled-password"
+          aria-describedby="disabled-password-hint"
+          type="password"
+          class="sdr-input"
+          name="disabled-password"
+          value="Exemplu-parola-2026"
+        /><button
+          type="button"
+          disabled=""
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="disabled-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Show password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/password-input-disabled.html)
+
+
+### Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="PasswordInputReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PasswordInputReadOnlyExample() {
+  return (
+    <R.PasswordInput
+      readOnly
+      defaultValue="Exemplu-parola-2026"
+      label="Password"
+      name="readonly-password"
+      autoComplete="new-password"
+      hint="You can use a password manager."
+      showLabel="Show password"
+      hideLabel="Hide password"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-show-label="Show password"
+    data-sdr-hide-label="Hide password"
+    data-sdr-component="password"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="readonly-password"
+        >Password</label
+      >
+      <div
+        id="readonly-password-hint"
+        class="sdr-hint"
+      >
+        You can use a password manager.
+      </div>
+      <div class="sdr-input-group">
+        <input
+          autocomplete="new-password"
+          readonly=""
+          id="readonly-password"
+          aria-describedby="readonly-password-hint"
+          type="password"
+          class="sdr-input"
+          name="readonly-password"
+          value="Exemplu-parola-2026"
+        /><button
+          type="button"
+          class="sdr-button sdr-button--secondary"
+          data-sdr-password-toggle="true"
+          aria-controls="readonly-password"
+          aria-pressed="false"
+          hidden=""
+        >
+          Show password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/password-input-readonly.html)
+
+
+### API · PasswordInput
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+| `showLabel` | `string` | Yes |
+| `hideLabel` | `string` | Yes |
+
+</div>
+
+
+<div id="variant-time-input" className="sdr-component-variant">
+
+## Time
+
+The time variant uses input type=time. Its value has no time zone, and the picker interface is provided by the browser.
+
+<Preview name="TimeInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TimeInputExample() {
+  return (
+    <R.TimeInput
+      label="Appointment time"
+      name="time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="time"
+      >Appointment time</label
+    ><input
+      type="time"
+      id="time"
+      class="sdr-input"
+      name="time"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/time-input.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="TimeInputError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TimeInputErrorExample() {
+  return (
+    <R.TimeInput
+      error="Choose an appointment time."
+      label="Appointment time"
+      name="error-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-time"
+      >Appointment time</label
+    >
+    <div
+      id="error-time-error"
+      class="sdr-error"
+    >
+      Choose an appointment time.
+    </div>
+    <input
+      type="time"
+      id="error-time"
+      aria-invalid="true"
+      aria-describedby="error-time-error"
+      class="sdr-input"
+      name="error-time"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/time-input-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="TimeInputDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TimeInputDisabledExample() {
+  return (
+    <R.TimeInput
+      disabled
+      defaultValue="10:30"
+      label="Appointment time"
+      name="disabled-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-time"
+      >Appointment time</label
+    ><input
+      disabled=""
+      type="time"
+      id="disabled-time"
+      class="sdr-input"
+      name="disabled-time"
+      value="10:30"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/time-input-disabled.html)
+
+
+### Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="TimeInputReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TimeInputReadOnlyExample() {
+  return (
+    <R.TimeInput
+      readOnly
+      defaultValue="10:30"
+      label="Appointment time"
+      name="readonly-time"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-time"
+      >Appointment time</label
+    ><input
+      readonly=""
+      type="time"
+      id="readonly-time"
+      class="sdr-input"
+      name="readonly-time"
+      value="10:30"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/time-input-readonly.html)
+
+
+### API · TimeInput
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+</div>
+
+
+<div id="variant-error-message" className="sdr-component-variant">
+
+## With an error
+
+The error prop associates a message with a field and marks it invalid. ErrorMessage is also available as a text element for custom compositions.
+
+<Preview name="ErrorMessage" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ErrorMessageExample() {
+  return (
+    <R.TextInput
+      label="Email"
+      type="email"
+      name="invalid-email"
+      defaultValue="alex@"
+      error="Enter a complete email address, for example name@example.com."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="email"
+      >Email</label
+    >
+    <div
+      id="email-error"
+      class="sdr-error"
+    >
+      Enter a complete email address, for example name@example.com.
+    </div>
+    <input
+      type="email"
+      id="email"
+      aria-invalid="true"
+      aria-describedby="email-error"
+      class="sdr-input"
+      name="invalid-email"
+      value="alex@"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/error-message.html)
+
+
+
+### API · ErrorMessage
+
+Accepts HTML attributes for its native element. See the typed source.
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

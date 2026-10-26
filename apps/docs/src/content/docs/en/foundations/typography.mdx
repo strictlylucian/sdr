@@ -1,0 +1,24 @@
+---
+title: "Typography"
+description: "Typography — SDR. Independent proposal."
+---
+
+Inter 4.1 is the default typeface across the library and documentation. Its variable regular and italic WOFF2 faces are embedded directly in CSS, covering the UI weight range 400–750. The Latin and Latin Extended subsets retain international Latin-script names, combining accents, punctuation and currency symbols. Other scripts use the system font stack. Optical sizing, tabular numerals and hinting are preserved. There are no separate font requests, and portable delivery remains two files. Inter includes Romanian diacritics, including comma-below Ș/ș and Ț/ț. Code retains a monospace font. An institution can override the family through --sdr-font.
+
+| Token | rem | Role |
+|---|---|---|
+| xs | .875 | Captions and tags |
+| sm | 1 | Supporting text |
+| md | 1.125 | Body text |
+| lg | 1.25 | Lead text |
+| xl | 1.5 | Subsection headings |
+| 2xl | 2 | Section headings |
+| 3xl | 3 | Page headings |
+| 4xl | 4 | Editorial display |
+
+A heading's level describes document structure; its size prop controls visual size independently. Body line height is 1.6 and heading line height is 1.25. Headings can wrap across lines. Prose limits editorial width to 68ch, and the sdr-u-tabular utility provides tabular figures for numeric values.
+
+Romanian text includes ă, â, î, ș and ț, with corresponding capitals. Names such as Șerban, Târgu Mureș and Dâmbovița are useful samples when evaluating an alternative font. Controls preserve entered Unicode text; visual presentation and data normalisation are separate concerns.
+
+Inputs render text at least 1rem in size. The accessibility targets include 200% text resizing and reflow at 320 CSS pixels. Underlined links remain identifiable without colour. Visible labels provide a persistent reference that placeholders cannot offer.
+

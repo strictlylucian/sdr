@@ -1,0 +1,322 @@
+[
+  {
+    "name": "ButtonLink",
+    "parent": "Button",
+    "anchor": {
+      "ro": "variant-button-link",
+      "en": "variant-button-link"
+    },
+    "title": {
+      "ro": "Link cu aspect de buton",
+      "en": "Button link"
+    },
+    "guidance": {
+      "ro": "Varianta folosește un element a cu href, afișat ca buton pentru a evidenția o destinație importantă. Păstrează comportamentul unui link obișnuit.",
+      "en": "The navigation variant retains an anchor and href destination. Button styling emphasises the next step without changing link semantics."
+    }
+  },
+  {
+    "name": "ToggleButton",
+    "parent": "Button",
+    "anchor": {
+      "ro": "variant-toggle-button",
+      "en": "variant-toggle-button"
+    },
+    "title": {
+      "ro": "Buton toggle",
+      "en": "Toggle button"
+    },
+    "guidance": {
+      "ro": "aria-pressed arată dacă opțiunea este activă. defaultPressed stabilește starea inițială, iar eticheta rămâne aceeași la activare și dezactivare.",
+      "en": "The toggle variant exposes state through aria-pressed. defaultPressed sets the initial value; the label stays the same when toggled."
+    }
+  },
+  {
+    "name": "ActionChip",
+    "parent": "Chip",
+    "anchor": {
+      "ro": "variant-action-chip",
+      "en": "variant-action-chip"
+    },
+    "title": {
+      "ro": "Cu acțiune",
+      "en": "Action chip"
+    },
+    "guidance": {
+      "ro": "Varianta interactivă este un buton pentru o acțiune secundară. Chip-ul simplu afișează doar o etichetă.",
+      "en": "The interactive variant uses a button for a contextual action. A static chip remains a non-interactive label."
+    }
+  },
+  {
+    "name": "DismissibleChip",
+    "parent": "Chip",
+    "anchor": {
+      "ro": "variant-dismissible-chip",
+      "en": "variant-dismissible-chip"
+    },
+    "title": {
+      "ro": "Cu opțiune de eliminare",
+      "en": "Dismissible chip"
+    },
+    "guidance": {
+      "ro": "Varianta reprezintă un filtru selectat care poate fi eliminat. onRemove sau evenimentul ediției HTML transmite acțiunea către aplicație. Aplicația actualizează lista și mută focusul pe un element potrivit.",
+      "en": "The removable variant represents a selected filter. onRemove or the portable event reports the action; the application manages the list and focus destination."
+    }
+  },
+  {
+    "name": "PasswordInput",
+    "parent": "TextInput",
+    "anchor": {
+      "ro": "variant-password-input",
+      "en": "variant-password-input"
+    },
+    "title": {
+      "ro": "Parolă",
+      "en": "Password"
+    },
+    "guidance": {
+      "ro": "Câmpul permite afișarea și ascunderea parolei. autocomplete indică dacă este o parolă existentă sau una nouă. Lipirea textului și managerii de parole rămân disponibili.",
+      "en": "The password variant adds value visibility controls. autocomplete can describe an existing or new password; paste and password managers remain available."
+    }
+  },
+  {
+    "name": "TimeInput",
+    "parent": "TextInput",
+    "anchor": {
+      "ro": "variant-time-input",
+      "en": "variant-time-input"
+    },
+    "title": {
+      "ro": "Oră",
+      "en": "Time"
+    },
+    "guidance": {
+      "ro": "Câmpul folosește input type=time. Browserul furnizează interfața de selectare, iar valoarea nu include fusul orar.",
+      "en": "The time variant uses input type=time. Its value has no time zone, and the picker interface is provided by the browser."
+    }
+  },
+  {
+    "name": "ErrorMessage",
+    "parent": "TextInput",
+    "anchor": {
+      "ro": "variant-error-message",
+      "en": "variant-error-message"
+    },
+    "title": {
+      "ro": "Cu mesaj de eroare",
+      "en": "With an error"
+    },
+    "guidance": {
+      "ro": "Proprietatea error leagă mesajul de câmp și îl marchează ca invalid. ErrorMessage poate fi folosit și separat în formulare personalizate.",
+      "en": "The error prop associates a message with a field and marks it invalid. ErrorMessage is also available as a text element for custom compositions."
+    }
+  },
+  {
+    "name": "CharacterCount",
+    "parent": "Textarea",
+    "anchor": {
+      "ro": "variant-character-count",
+      "en": "variant-character-count"
+    },
+    "title": {
+      "ro": "Cu contor de caractere",
+      "en": "With character count"
+    },
+    "guidance": {
+      "ro": "CharacterCount adaugă un contor lângă Textarea. Numără puncte de cod Unicode, nu întotdeauna caracterele percepute vizual. Textul nu este tăiat automat; limita se verifică în aplicație și pe server.",
+      "en": "CharacterCount composes Textarea with counting for limited answers. It counts Unicode code points rather than grapheme clusters. Text is not truncated; limit validation belongs to the application and server."
+    }
+  },
+  {
+    "name": "DatePicker",
+    "parent": "DateInput",
+    "anchor": {
+      "ro": "variant-date-picker",
+      "en": "variant-date-picker"
+    },
+    "title": {
+      "ro": "Cu selector de dată",
+      "en": "Native date picker"
+    },
+    "guidance": {
+      "ro": "DatePicker folosește input type=date, ca alternativă la cele trei câmpuri separate. Aspectul calendarului și comenzile disponibile depind de browser.",
+      "en": "The native picker is an alternative to separate day, month and year fields. DatePicker uses input type=date; appearance and interaction depend on the browser."
+    }
+  },
+  {
+    "name": "Switch",
+    "parent": "Checkbox",
+    "anchor": {
+      "ro": "variant-switch",
+      "en": "variant-switch"
+    },
+    "title": {
+      "ro": "Switch",
+      "en": "Switch"
+    },
+    "guidance": {
+      "ro": "Switch activează sau dezactivează o setare și păstrează semantica unui checkbox. Aplicația stabilește dacă modificarea se salvează imediat.",
+      "en": "Switch is the setting-toggle variant and retains checkbox semantics. The application decides whether the change saves immediately."
+    }
+  },
+  {
+    "name": "SegmentedControl",
+    "parent": "Radio",
+    "anchor": {
+      "ro": "variant-segmented-control",
+      "en": "variant-segmented-control"
+    },
+    "title": {
+      "ro": "Control segmentat",
+      "en": "Segmented control"
+    },
+    "guidance": {
+      "ro": "Opțiunile radio sunt afișate ca moduri de vizualizare, de exemplu listă sau grilă. Se poate selecta un singur mod.",
+      "en": "This variant presents radio options as interface modes, such as list or grid. The group permits a single selection."
+    }
+  },
+  {
+    "name": "SideNavigation",
+    "parent": "ServiceNavigation",
+    "anchor": {
+      "ro": "variant-side-navigation",
+      "en": "variant-side-navigation"
+    },
+    "title": {
+      "ro": "Navigare laterală",
+      "en": "Side navigation"
+    },
+    "guidance": {
+      "ro": "Linkurile către secțiuni conexe sunt așezate vertical. Când pagina trece pe o singură coloană, ordinea de citire rămâne cea din HTML.",
+      "en": "The side variant arranges related links vertically. HTML order remains reading order when the page becomes a single column."
+    }
+  },
+  {
+    "name": "TableOfContents",
+    "parent": "ServiceNavigation",
+    "anchor": {
+      "ro": "variant-table-of-contents",
+      "en": "variant-table-of-contents"
+    },
+    "title": {
+      "ro": "Cuprins",
+      "en": "Table of contents"
+    },
+    "guidance": {
+      "ro": "Cuprinsul folosește navigarea laterală pentru linkuri către secțiunile paginii. Destinațiile sunt transmise prin items și corespund ancorelor din conținut.",
+      "en": "The contents variant uses side navigation with links to section anchors. Destinations come from page content and are supplied through items."
+    }
+  },
+  {
+    "name": "DataTable",
+    "parent": "Table",
+    "anchor": {
+      "ro": "variant-data-table",
+      "en": "variant-data-table"
+    },
+    "title": {
+      "ro": "Cu sortare",
+      "en": "Sortable table"
+    },
+    "guidance": {
+      "ro": "Butoanele din antetele coloanelor sortează datele în browser. Pentru numere formatate, sortValues poate furniza valorile numerice folosite la sortare. Paginarea de pe server se implementează în aplicație.",
+      "en": "DataTable adds local sorting through header buttons. Formatted numeric cells can supply sortValues; remote pagination remains an application concern."
+    }
+  },
+  {
+    "name": "DataList",
+    "parent": "SummaryList",
+    "anchor": {
+      "ro": "variant-data-list",
+      "en": "variant-data-list"
+    },
+    "title": {
+      "ro": "Fără acțiuni",
+      "en": "Without actions"
+    },
+    "guidance": {
+      "ro": "DataList este un alias pentru SummaryList, potrivit pentru perechi de denumiri și valori, fără linkuri de modificare.",
+      "en": "DataList is a SummaryList alias suited to descriptive key-value data without change links."
+    }
+  },
+  {
+    "name": "Drawer",
+    "parent": "Dialog",
+    "anchor": {
+      "ro": "variant-drawer",
+      "en": "variant-drawer"
+    },
+    "title": {
+      "ro": "Panou lateral",
+      "en": "Side panel"
+    },
+    "guidance": {
+      "ro": "Drawer deschide același dialog modal la marginea ecranului. Focusul rămâne în interior cât timp este deschis. Se închide cu Escape, cu butonul de închidere sau printr-un click în exterior.",
+      "en": "Drawer is the side variant of the same modal dialog. It contains focus and closes with Escape, its close button or an outside click."
+    }
+  },
+  {
+    "name": "NotificationBanner",
+    "parent": "Alert",
+    "anchor": {
+      "ro": "variant-notification-banner",
+      "en": "variant-notification-banner"
+    },
+    "title": {
+      "ro": "Banner de notificare",
+      "en": "Notification banner"
+    },
+    "guidance": {
+      "ro": "NotificationBanner este un alias pentru Alert, destinat mesajelor despre întregul serviciu. Folosește același API.",
+      "en": "NotificationBanner is an Alert alias for service-level messages and uses the same API."
+    }
+  },
+  {
+    "name": "Badge",
+    "parent": "Tag",
+    "anchor": {
+      "ro": "variant-badge",
+      "en": "variant-badge"
+    },
+    "title": {
+      "ro": "Badge numeric",
+      "en": "Numeric badge"
+    },
+    "guidance": {
+      "ro": "Badge afișează un număr într-un format compact. Textul alăturat explică ce se numără; pentru stări sunt potrivite etichetele text.",
+      "en": "Badge is the compact count variant. Nearby text gives the number context; status tags describe a state rather than a quantity."
+    }
+  },
+  {
+    "name": "BackLink",
+    "parent": "Link",
+    "anchor": {
+      "ro": "variant-back-link",
+      "en": "variant-back-link"
+    },
+    "title": {
+      "ro": "Înapoi",
+      "en": "Back link"
+    },
+    "guidance": {
+      "ro": "Linkul cu săgeată înapoi are o destinație explicită. Nu depinde de istoricul browserului.",
+      "en": "The back-arrow variant receives an explicit destination. Navigation does not depend on browser history."
+    }
+  },
+  {
+    "name": "BackToTop",
+    "parent": "Link",
+    "anchor": {
+      "ro": "variant-back-to-top",
+      "en": "variant-back-to-top"
+    },
+    "title": {
+      "ro": "Înapoi sus",
+      "en": "Back to top"
+    },
+    "guidance": {
+      "ro": "Linkul cu săgeată în sus duce la ancora de la începutul paginii.",
+      "en": "The upward-arrow variant navigates to the document start anchor."
+    }
+  }
+]

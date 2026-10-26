@@ -1,0 +1,770 @@
+---
+title: "Radio"
+description: "Radio — SDR. Independent proposal."
+sidebar: {"order":40}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Choose exactly one answer in a named group.
+
+## Example
+
+<Preview name="Radio" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RadioExample() {
+  return (
+    <R.Fieldset legend="Where do you live?">
+      <R.Radio
+        name="residence"
+        value="ro"
+        label="In Romania"
+      />
+      <R.Radio
+        name="residence"
+        value="abroad"
+        label="In another country"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="radio"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Where do you live?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="residence"
+          ><input
+            id="residence"
+            class="sdr-choice__input"
+            type="radio"
+            name="residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>In Romania</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="residence-2"
+          ><input
+            id="residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            name="residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>In another country</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/radio.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="RadioError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RadioErrorExample() {
+  return (
+    <R.Fieldset
+      error="Choose where you live."
+      legend="Where do you live?"
+    >
+      <R.Radio
+        name="error-residence"
+        value="ro"
+        label="In Romania"
+      />
+      <R.Radio
+        name="error-residence"
+        value="abroad"
+        label="In another country"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="radio-error"
+      class="sdr-fieldset"
+      aria-describedby="radio-error-error"
+    >
+      <legend class="sdr-legend">Where do you live?</legend>
+      <div
+        class="sdr-error"
+        id="radio-error-error"
+      >
+        Choose where you live.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-residence"
+          ><input
+            id="error-residence"
+            class="sdr-choice__input"
+            type="radio"
+            aria-invalid="true"
+            aria-describedby="radio-error-error"
+            name="error-residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>In Romania</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-residence-2"
+          ><input
+            id="error-residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            aria-invalid="true"
+            aria-describedby="radio-error-error"
+            name="error-residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>In another country</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/radio-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="RadioDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RadioDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="Where do you live?"
+    >
+      <R.Radio
+        name="disabled-residence"
+        value="ro"
+        label="In Romania"
+      />
+      <R.Radio
+        name="disabled-residence"
+        value="abroad"
+        label="In another country"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="radio-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Where do you live?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-residence"
+          ><input
+            id="disabled-residence"
+            class="sdr-choice__input"
+            type="radio"
+            name="disabled-residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>In Romania</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-residence-2"
+          ><input
+            id="disabled-residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            name="disabled-residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>In another country</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/radio-disabled.html)
+
+
+## Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="RadioReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function RadioReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Where do you live?', value: 'In Romania' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Where do you live?</dt>
+      <dd>In Romania</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/radio-readonly.html)
+
+
+## Usage
+
+All radios in a question must share a name; different questions need different names.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-segmented-control" className="sdr-component-variant">
+
+## Segmented control
+
+This variant presents radio options as interface modes, such as list or grid. The group permits a single selection.
+
+<Preview name="SegmentedControl" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SegmentedControlExample() {
+  return (
+    <R.SegmentedControl
+      legend="View"
+      name="view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'List' },
+        { value: 'grid', label: 'Grid' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="segmented-control"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">View</legend>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="view"
+            ><input
+              id="view"
+              class="sdr-choice__input"
+              type="radio"
+              name="view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>List</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="view-2"
+            ><input
+              id="view-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grid</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/segmented-control.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="SegmentedControlError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SegmentedControlErrorExample() {
+  return (
+    <R.SegmentedControl
+      error="Choose a view."
+      legend="View"
+      name="error-view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'List' },
+        { value: 'grid', label: 'Grid' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="segmented-control-error"
+      class="sdr-fieldset"
+      aria-describedby="segmented-control-error-error"
+    >
+      <legend class="sdr-legend">View</legend>
+      <div
+        class="sdr-error"
+        id="segmented-control-error-error"
+      >
+        Choose a view.
+      </div>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="error-view"
+            ><input
+              id="error-view"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="segmented-control-error-error"
+              name="error-view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>List</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="error-view-2"
+            ><input
+              id="error-view-2"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="segmented-control-error-error"
+              name="error-view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grid</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/segmented-control-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="SegmentedControlDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SegmentedControlDisabledExample() {
+  return (
+    <R.SegmentedControl
+      disabled
+      legend="View"
+      name="disabled-view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'List' },
+        { value: 'grid', label: 'Grid' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="segmented-control-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">View</legend>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="disabled-view"
+            ><input
+              id="disabled-view"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>List</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="disabled-view-2"
+            ><input
+              id="disabled-view-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grid</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/segmented-control-disabled.html)
+
+
+### Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="SegmentedControlReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SegmentedControlReadOnlyExample() {
+  return <R.SummaryList items={[{ key: 'View', value: 'List' }]} />;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>View</dt>
+      <dd>List</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/segmented-control-readonly.html)
+
+
+### API · SegmentedControl
+
+| Property | Type | Required |
+|---|---|---|
+| `legend` | `string` | Yes |
+| `name` | `string` | Yes |
+| `options` | `{ value: string; label: string; }[]` | Yes |
+| `defaultValue` | `string \| undefined` | No |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+| `disabled` | `boolean \| undefined` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

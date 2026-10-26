@@ -1,0 +1,76 @@
+---
+title: "Exit a page quickly"
+description: "Exit a page quickly — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Research a safe destination, keep the action easy to reach, and explain that browser history remains. This alpha supplies a direct link without a keyboard shortcut.
+
+<Preview name="ExitThisPage" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ExitThisPageExample() {
+  return (
+    <R.ExitThisPage href="https://www.wikipedia.org/">
+      Exit this page quickly
+    </R.ExitThisPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a
+    class="sdr-button sdr-exit"
+    href="https://www.wikipedia.org/"
+    rel="noreferrer"
+    >Exit this page quickly</a
+  >
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-exit.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

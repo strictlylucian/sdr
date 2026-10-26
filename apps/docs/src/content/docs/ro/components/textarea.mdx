@@ -1,0 +1,774 @@
+---
+title: "Zonă de text"
+description: "Zonă de text — SDR. Propunere independentă."
+sidebar: {"order":63}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite introducerea unui răspuns mai lung, pe mai multe rânduri.
+
+## Exemplu
+
+<Preview name="Textarea" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextareaExample() {
+  return (
+    <R.Textarea
+      id="message"
+      label="Cu ce te putem ajuta?"
+      name="message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message"
+      >Cu ce te putem ajuta?</label
+    ><textarea
+      name="message"
+      rows="4"
+      id="message"
+      class="sdr-textarea"
+    ></textarea>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/textarea.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="TextareaError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextareaErrorExample() {
+  return (
+    <R.Textarea
+      error="Scrie mesajul pe care vrei să îl trimiți."
+      id="message-error-example"
+      label="Cu ce te putem ajuta?"
+      name="error-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="message-error-example"
+      >Cu ce te putem ajuta?</label
+    >
+    <div
+      id="message-error-example-error"
+      class="sdr-error"
+    >
+      Scrie mesajul pe care vrei să îl trimiți.
+    </div>
+    <textarea
+      name="error-message"
+      rows="4"
+      id="message-error-example"
+      aria-invalid="true"
+      aria-describedby="message-error-example-error"
+      class="sdr-textarea"
+    ></textarea>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/textarea-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="TextareaDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextareaDisabledExample() {
+  return (
+    <R.Textarea
+      disabled
+      defaultValue="Doresc informații despre cererea depusă."
+      id="message-disabled"
+      label="Cu ce te putem ajuta?"
+      name="disabled-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message-disabled"
+      >Cu ce te putem ajuta?</label
+    ><textarea
+      disabled=""
+      name="disabled-message"
+      rows="4"
+      id="message-disabled"
+      class="sdr-textarea"
+    >
+Doresc informații despre cererea depusă.</textarea>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/textarea-disabled.html)
+
+
+## Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="TextareaReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TextareaReadOnlyExample() {
+  return (
+    <R.Textarea
+      readOnly
+      defaultValue="Doresc informații despre cererea depusă."
+      id="message-readonly"
+      label="Cu ce te putem ajuta?"
+      name="readonly-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message-readonly"
+      >Cu ce te putem ajuta?</label
+    ><textarea
+      readonly=""
+      name="readonly-message"
+      rows="4"
+      id="message-readonly"
+      class="sdr-textarea"
+    >
+Doresc informații despre cererea depusă.</textarea>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/textarea-readonly.html)
+
+
+## Utilizare
+
+Este potrivită când răspunsul nu încape într-un câmp simplu. O înălțime fixă nu trebuie să ascundă textul introdus.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-character-count" className="sdr-component-variant">
+
+## Cu contor de caractere
+
+CharacterCount adaugă un contor lângă Textarea. Numără puncte de cod Unicode, nu întotdeauna caracterele percepute vizual. Textul nu este tăiat automat; limita se verifică în aplicație și pe server.
+
+<Preview name="CharacterCount" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'ro',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    ro: {
+      translation: {
+        remaining_one: '{count} caracter rămas',
+        remaining_few: '{count} caractere rămase',
+        remaining_other: '{count} de caractere rămase',
+        over_one: 'Ai depășit limita cu {count} caracter',
+        over_few: 'Ai depășit limita cu {count} caractere',
+        over_other: 'Ai depășit limita cu {count} de caractere',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'ro';
+
+export function CharacterCountExample() {
+  return (
+    <R.CharacterCount
+      id="description"
+      label="Descrie situația"
+      name="description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description"
+        >Descrie situația</label
+      ><textarea
+        name="description"
+        id="description"
+        aria-describedby="description-count"
+        class="sdr-textarea"
+      ></textarea>
+    </div>
+    <p
+      id="description-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      200 de caractere rămase
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/character-count.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="CharacterCountError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'ro',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    ro: {
+      translation: {
+        remaining_one: '{count} caracter rămas',
+        remaining_few: '{count} caractere rămase',
+        remaining_other: '{count} de caractere rămase',
+        over_one: 'Ai depășit limita cu {count} caracter',
+        over_few: 'Ai depășit limita cu {count} caractere',
+        over_other: 'Ai depășit limita cu {count} de caractere',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'ro';
+
+export function CharacterCountErrorExample() {
+  return (
+    <R.CharacterCount
+      error="Descrierea trebuie să aibă cel mult 200 de caractere."
+      id="description-error-example"
+      label="Descrie situația"
+      name="error-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="description-error-example"
+        >Descrie situația</label
+      >
+      <div
+        id="description-error-example-error"
+        class="sdr-error"
+      >
+        Descrierea trebuie să aibă cel mult 200 de caractere.
+      </div>
+      <textarea
+        name="error-description"
+        id="description-error-example"
+        aria-invalid="true"
+        aria-describedby="description-error-example-error description-error-example-count"
+        class="sdr-textarea"
+      ></textarea>
+    </div>
+    <p
+      id="description-error-example-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      200 de caractere rămase
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/character-count-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="CharacterCountDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'ro',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    ro: {
+      translation: {
+        remaining_one: '{count} caracter rămas',
+        remaining_few: '{count} caractere rămase',
+        remaining_other: '{count} de caractere rămase',
+        over_one: 'Ai depășit limita cu {count} caracter',
+        over_few: 'Ai depășit limita cu {count} caractere',
+        over_other: 'Ai depășit limita cu {count} de caractere',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'ro';
+
+export function CharacterCountDisabledExample() {
+  return (
+    <R.CharacterCount
+      disabled
+      defaultValue="Doresc informații despre cererea depusă."
+      id="description-disabled"
+      label="Descrie situația"
+      name="disabled-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description-disabled"
+        >Descrie situația</label
+      ><textarea
+        disabled=""
+        name="disabled-description"
+        id="description-disabled"
+        aria-describedby="description-disabled-count"
+        class="sdr-textarea"
+      >
+Doresc informații despre cererea depusă.</textarea>
+    </div>
+    <p
+      id="description-disabled-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      160 de caractere rămase
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/character-count-disabled.html)
+
+
+### Read-only
+
+Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.
+
+<Preview name="CharacterCountReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'ro',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    ro: {
+      translation: {
+        remaining_one: '{count} caracter rămas',
+        remaining_few: '{count} caractere rămase',
+        remaining_other: '{count} de caractere rămase',
+        over_one: 'Ai depășit limita cu {count} caracter',
+        over_few: 'Ai depășit limita cu {count} caractere',
+        over_other: 'Ai depășit limita cu {count} de caractere',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'ro';
+
+export function CharacterCountReadOnlyExample() {
+  return (
+    <R.CharacterCount
+      readOnly
+      defaultValue="Doresc informații despre cererea depusă."
+      id="description-readonly"
+      label="Descrie situația"
+      name="readonly-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description-readonly"
+        >Descrie situația</label
+      ><textarea
+        readonly=""
+        name="readonly-description"
+        id="description-readonly"
+        aria-describedby="description-readonly-count"
+        class="sdr-textarea"
+      >
+Doresc informații despre cererea depusă.</textarea>
+    </div>
+    <p
+      id="description-readonly-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      160 de caractere rămase
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/character-count-readonly.html)
+
+
+### API · CharacterCount
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+| `limit` | `number` | Da |
+| `formatCount` | `(remaining: number) => string` | Da |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

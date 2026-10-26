@@ -1,0 +1,1413 @@
+[
+  {
+    "name": "Page",
+    "slug": "page",
+    "family": "templates",
+    "title": {
+      "en": "Page",
+      "ro": "Page"
+    },
+    "description": {
+      "en": "A complete service page composed from SDR components.",
+      "ro": "O pagină completă pentru un serviciu, construită din componentele SDR."
+    },
+    "caution": {
+      "en": "Use this composition as a starting point. Replace the fictional service content and implement your service validation and submission.",
+      "ro": "Exemplul poate fi adaptat unui serviciu real, cu propriul conținut și propriile reguli de validare și trimitere a formularului."
+    }
+  },
+  {
+    "name": "Button",
+    "slug": "button",
+    "family": "actions",
+    "title": {
+      "en": "Button",
+      "ro": "Buton"
+    },
+    "description": {
+      "en": "Perform an action, such as saving an application.",
+      "ro": "Declanșează o acțiune, de exemplu salvarea unei cereri."
+    },
+    "caution": {
+      "en": "The primary variant emphasises the main action; secondary has a neutral background and tertiary has a link-like appearance. danger uses red for destructive actions; danger-secondary provides an outlined alternative. Labels describe the consequence, such as “Delete draft”. Keyboard focus and pressed states use yellow. Buttons default to type=\"button\"; form submission uses type=\"submit\". The application owns validation and action confirmation.",
+      "ro": "Varianta primary evidențiază acțiunea principală; secondary are fundal neutru, iar tertiary are aspect de link. danger folosește roșu pentru acțiuni distructive, iar danger-secondary oferă o alternativă cu contur. Etichetele descriu consecința, de exemplu „Șterge ciorna”. Focusul de tastatură și starea apăsată folosesc galben. Butoanele sunt type=\"button\" implicit; trimiterea formularului folosește type=\"submit\". Validarea și confirmarea acțiunilor aparțin aplicației."
+    }
+  },
+  {
+    "name": "ButtonLink",
+    "slug": "button-link",
+    "family": "actions",
+    "title": {
+      "en": "Button Link",
+      "ro": "Link cu aspect de buton"
+    },
+    "description": {
+      "en": "Emphasise navigation to the next service step.",
+      "ro": "Evidențiază un link important, de exemplu trecerea la pasul următor."
+    },
+    "caution": {
+      "en": "Keep href meaningful; do not use links to mutate data.",
+      "ro": "Linkul are nevoie de o destinație href validă. Modificarea datelor se face printr-o acțiune, nu prin simpla accesare a unui link."
+    }
+  },
+  {
+    "name": "Link",
+    "slug": "link",
+    "family": "actions",
+    "title": {
+      "en": "Link",
+      "ro": "Link"
+    },
+    "description": {
+      "en": "Navigate to another page or an anchored section.",
+      "ro": "Duce la altă pagină sau la o secțiune din aceeași pagină."
+    },
+    "caution": {
+      "en": "Write destination-specific text and preserve browser link behaviour.",
+      "ro": "Textul linkului descrie destinația. Comportamentul obișnuit al browserului, inclusiv deschiderea într-un tab nou, rămâne disponibil."
+    }
+  },
+  {
+    "name": "ToggleButton",
+    "slug": "toggle-button",
+    "family": "actions",
+    "title": {
+      "en": "Toggle Button",
+      "ro": "Buton toggle"
+    },
+    "description": {
+      "en": "Toggle a persistent binary interface state.",
+      "ro": "Activează sau dezactivează o opțiune din interfață."
+    },
+    "caution": {
+      "en": "Keep the label stable; aria-pressed communicates the state. Initial state is uncontrolled.",
+      "ro": "Eticheta rămâne aceeași în ambele stări; aria-pressed indică dacă opțiunea este activă. defaultPressed stabilește doar starea inițială."
+    }
+  },
+  {
+    "name": "ActionChip",
+    "slug": "action-chip",
+    "family": "actions",
+    "title": {
+      "en": "Action Chip",
+      "ro": "Chip cu acțiune"
+    },
+    "description": {
+      "en": "Offer a compact contextual action beside filters.",
+      "ro": "Oferă o acțiune secundară într-un format compact, de exemplu lângă filtre."
+    },
+    "caution": {
+      "en": "Do not replace the primary service action with a chip.",
+      "ro": "Este potrivit pentru acțiuni secundare. Acțiunea principală a paginii rămâne un buton obișnuit."
+    }
+  },
+  {
+    "name": "DismissibleChip",
+    "slug": "dismissible-chip",
+    "family": "actions",
+    "title": {
+      "en": "Dismissible Chip",
+      "ro": "Chip care poate fi eliminat"
+    },
+    "description": {
+      "en": "Remove a selected filter while retaining a way to restore it.",
+      "ro": "Reprezintă un filtru selectat care poate fi eliminat și adăugat din nou."
+    },
+    "caution": {
+      "en": "The host must remove the item, announce the change and move focus to a useful destination.",
+      "ro": "Aplicația elimină filtrul, anunță schimbarea și mută focusul pe un element potrivit, de exemplu pe filtrul următor."
+    }
+  },
+  {
+    "name": "BackLink",
+    "slug": "back-link",
+    "family": "navigation",
+    "title": {
+      "en": "Back Link",
+      "ro": "Link înapoi"
+    },
+    "description": {
+      "en": "Return to a known previous service page.",
+      "ro": "Duce la pagina anterioară din parcursul serviciului."
+    },
+    "caution": {
+      "en": "Provide an explicit href; browser history can lead outside the service.",
+      "ro": "Destinația se stabilește prin href. Istoricul browserului poate trimite utilizatorul în afara serviciului."
+    }
+  },
+  {
+    "name": "BackToTop",
+    "slug": "back-to-top",
+    "family": "navigation",
+    "title": {
+      "en": "Back To Top",
+      "ro": "Înapoi sus"
+    },
+    "description": {
+      "en": "Return to the top of a long document.",
+      "ro": "Duce la începutul unei pagini lungi."
+    },
+    "caution": {
+      "en": "The target ID must exist. Avoid unnecessary animated scrolling.",
+      "ro": "ID-ul indicat în href trebuie să existe în pagină. Derularea animată nu este necesară."
+    }
+  },
+  {
+    "name": "SkipLink",
+    "slug": "skip-link",
+    "family": "navigation",
+    "title": {
+      "en": "Skip Link",
+      "ro": "Link către conținut"
+    },
+    "description": {
+      "en": "Bypass repeated navigation using the keyboard.",
+      "ro": "Permite accesul direct la conținut, sărind peste meniurile repetate."
+    },
+    "caution": {
+      "en": "Place first in the page and provide a focusable main target. The preview demonstrates an isolated target.",
+      "ro": "Linkul apare primul în ordinea de navigare cu tastatura. Destinația este zona principală a paginii și trebuie să poată primi focus. Exemplul folosește o destinație separată pentru demonstrație."
+    }
+  },
+  {
+    "name": "ExitThisPage",
+    "slug": "exit-this-page",
+    "family": "navigation",
+    "title": {
+      "en": "Exit This Page",
+      "ro": "Ieșire rapidă"
+    },
+    "description": {
+      "en": "Navigate immediately to a configured safe destination.",
+      "ro": "Deschide imediat o altă pagină, aleasă ca destinație sigură."
+    },
+    "caution": {
+      "en": "This link cannot clear browser history. Research the destination with people at risk. No triple-Shift shortcut is provided.",
+      "ro": "Linkul nu șterge istoricul browserului. Alegerea destinației necesită consultarea persoanelor aflate în situații de risc. Componenta nu include o scurtătură cu trei apăsări ale tastei Shift."
+    }
+  },
+  {
+    "name": "TextInput",
+    "slug": "text-input",
+    "family": "forms",
+    "title": {
+      "en": "Text Input",
+      "ro": "Câmp de text"
+    },
+    "description": {
+      "en": "Collect a short answer with a persistent label and optional hint.",
+      "ro": "Permite introducerea unui răspuns scurt, cu etichetă vizibilă și text explicativ opțional."
+    },
+    "caution": {
+      "en": "Accept diacritics and paste. Choose autocomplete and inputMode for the actual question.",
+      "ro": "Câmpul acceptă diacritice și text copiat. autocomplete și inputMode se aleg în funcție de informația cerută."
+    }
+  },
+  {
+    "name": "Textarea",
+    "slug": "textarea",
+    "family": "forms",
+    "title": {
+      "en": "Textarea",
+      "ro": "Zonă de text"
+    },
+    "description": {
+      "en": "Collect a longer free-text answer.",
+      "ro": "Permite introducerea unui răspuns mai lung, pe mai multe rânduri."
+    },
+    "caution": {
+      "en": "Do not request information already supplied elsewhere. Avoid fixed heights that clip text.",
+      "ro": "Este potrivită când răspunsul nu încape într-un câmp simplu. O înălțime fixă nu trebuie să ascundă textul introdus."
+    }
+  },
+  {
+    "name": "Select",
+    "slug": "select",
+    "family": "forms",
+    "title": {
+      "en": "Select",
+      "ro": "Listă de selecție"
+    },
+    "description": {
+      "en": "Choose one option using the platform-native control.",
+      "ro": "Permite alegerea unei opțiuni dintr-o listă, folosind controlul nativ al browserului."
+    },
+    "caution": {
+      "en": "Prefer radios for a small set. Do not preselect an answer without evidence.",
+      "ro": "Pentru câteva opțiuni, butoanele radio sunt de obicei mai ușor de parcurs. Un răspuns preselectat are nevoie de un motiv clar."
+    }
+  },
+  {
+    "name": "Checkbox",
+    "slug": "checkbox",
+    "family": "forms",
+    "title": {
+      "en": "Checkbox",
+      "ro": "Checkbox"
+    },
+    "description": {
+      "en": "Select zero or more independent options.",
+      "ro": "Permite bifarea uneia sau mai multor opțiuni independente."
+    },
+    "caution": {
+      "en": "Group related choices with Fieldset and include a none option where appropriate.",
+      "ro": "Opțiunile care răspund aceleiași întrebări se grupează cu Fieldset. Poate fi utilă și opțiunea „Niciuna dintre cele de mai sus”."
+    }
+  },
+  {
+    "name": "Radio",
+    "slug": "radio",
+    "family": "forms",
+    "title": {
+      "en": "Radio",
+      "ro": "Buton radio"
+    },
+    "description": {
+      "en": "Choose exactly one answer in a named group.",
+      "ro": "Permite alegerea unui singur răspuns dintr-un grup."
+    },
+    "caution": {
+      "en": "All radios in a question must share a name; different questions need different names.",
+      "ro": "Opțiunile aceleiași întrebări folosesc aceeași valoare name. Întrebările diferite folosesc valori name diferite."
+    }
+  },
+  {
+    "name": "Switch",
+    "slug": "switch",
+    "family": "forms",
+    "title": {
+      "en": "Switch",
+      "ro": "Switch"
+    },
+    "description": {
+      "en": "Enable or disable a setting.",
+      "ro": "Activează sau dezactivează o setare."
+    },
+    "caution": {
+      "en": "Name the enabled state. The host decides whether changes save immediately.",
+      "ro": "Eticheta descrie ce se întâmplă când setarea este activă. Aplicația stabilește dacă modificarea se salvează imediat."
+    }
+  },
+  {
+    "name": "Fieldset",
+    "slug": "fieldset",
+    "family": "forms",
+    "title": {
+      "en": "Fieldset",
+      "ro": "Grup de câmpuri"
+    },
+    "description": {
+      "en": "Give related controls a shared question or legend.",
+      "ro": "Grupează câmpurile care țin de aceeași întrebare sau categorie de informații."
+    },
+    "caution": {
+      "en": "Use a meaningful legend rather than visual grouping alone.",
+      "ro": "Elementul legend denumește grupul și explică legătura dintre câmpuri, inclusiv pentru cititoarele de ecran."
+    }
+  },
+  {
+    "name": "DateInput",
+    "slug": "date-input",
+    "family": "forms",
+    "title": {
+      "en": "Date Input",
+      "ro": "Dată cu zi, lună și an"
+    },
+    "description": {
+      "en": "Enter a memorable date as day, month and year.",
+      "ro": "Permite introducerea unei date cunoscute, cum ar fi data nașterii, în trei câmpuri separate."
+    },
+    "caution": {
+      "en": "Server validation must reject impossible dates and explain which part needs correction.",
+      "ro": "Validarea pe server verifică dacă data există și indică ce trebuie corectat: ziua, luna sau anul."
+    }
+  },
+  {
+    "name": "DatePicker",
+    "slug": "date-picker",
+    "family": "forms",
+    "title": {
+      "en": "Date Picker",
+      "ro": "Selector de dată"
+    },
+    "description": {
+      "en": "Choose a date with the browser-native date control.",
+      "ro": "Permite alegerea unei date din calendarul browserului."
+    },
+    "caution": {
+      "en": "Appearance and keyboard interaction vary by browser. Prefer DateInput for dates of birth.",
+      "ro": "Aspectul și comenzile de tastatură depind de browser. Pentru data nașterii, câmpurile separate din DateInput sunt de obicei mai potrivite."
+    }
+  },
+  {
+    "name": "TimeInput",
+    "slug": "time-input",
+    "family": "forms",
+    "title": {
+      "en": "Time Input",
+      "ro": "Câmp pentru oră"
+    },
+    "description": {
+      "en": "Enter a time using the native time control.",
+      "ro": "Permite introducerea unei ore prin controlul nativ al browserului."
+    },
+    "caution": {
+      "en": "Explain the time zone in service content; the control does not store a time zone.",
+      "ro": "Valoarea nu include fusul orar. Dacă ora se referă la un anumit fus, această informație apare în textul formularului."
+    }
+  },
+  {
+    "name": "FileUpload",
+    "slug": "file-upload",
+    "family": "forms",
+    "title": {
+      "en": "File Upload",
+      "ro": "Încărcare de fișiere"
+    },
+    "description": {
+      "en": "Attach documents using the native file chooser.",
+      "ro": "Permite atașarea documentelor prin selectorul de fișiere al browserului."
+    },
+    "caution": {
+      "en": "accept is a hint, not validation. Enforce type, size and malware checks on the server.",
+      "ro": "accept sugerează formatele permise, dar nu validează fișierul. Tipul, dimensiunea și conținutul se verifică pe server."
+    }
+  },
+  {
+    "name": "PasswordInput",
+    "slug": "password-input",
+    "family": "forms",
+    "title": {
+      "en": "Password Input",
+      "ro": "Câmp de parolă"
+    },
+    "description": {
+      "en": "Enter a password with an optional visibility toggle.",
+      "ro": "Permite introducerea unei parole, cu opțiunea de a o afișa sau ascunde."
+    },
+    "caution": {
+      "en": "Allow password managers and paste. Choose current-password or new-password autocomplete deliberately.",
+      "ro": "Câmpul permite lipirea textului și folosirea managerilor de parole. autocomplete poate fi current-password sau new-password, în funcție de formular."
+    }
+  },
+  {
+    "name": "CharacterCount",
+    "slug": "character-count",
+    "family": "forms",
+    "title": {
+      "en": "Character Count",
+      "ro": "Contor de caractere"
+    },
+    "description": {
+      "en": "Show remaining Unicode code points without silently truncating an answer.",
+      "ro": "Afișează câte caractere mai pot fi introduse, fără să taie automat răspunsul."
+    },
+    "caution": {
+      "en": "The limit is advisory until the host validates it. Code points are not grapheme clusters.",
+      "ro": "Limita este informativă până la verificarea în aplicație. Numărătoarea folosește puncte de cod Unicode; un caracter perceput vizual poate conține mai multe astfel de puncte."
+    }
+  },
+  {
+    "name": "RangeInput",
+    "slug": "range-input",
+    "family": "forms",
+    "title": {
+      "en": "Range Input",
+      "ro": "Slider numeric"
+    },
+    "description": {
+      "en": "Select an approximate value within a range.",
+      "ro": "Permite alegerea unei valori aproximative dintr-un interval."
+    },
+    "caution": {
+      "en": "Use a text or number field when exact precision matters.",
+      "ro": "Pentru valori exacte este mai potrivit un câmp numeric sau de text."
+    }
+  },
+  {
+    "name": "SearchBar",
+    "slug": "search-bar",
+    "family": "forms",
+    "title": {
+      "en": "Search Bar",
+      "ro": "Bară de căutare"
+    },
+    "description": {
+      "en": "Submit a labelled search query using a GET form.",
+      "ro": "Trimite termenii de căutare printr-un formular GET."
+    },
+    "caution": {
+      "en": "The service must implement results, no-results states and query persistence.",
+      "ro": "Aplicația afișează rezultatele, tratează căutările fără rezultate și păstrează termenii introduși."
+    }
+  },
+  {
+    "name": "SegmentedControl",
+    "slug": "segmented-control",
+    "family": "forms",
+    "title": {
+      "en": "Segmented Control",
+      "ro": "Control segmentat"
+    },
+    "description": {
+      "en": "Choose one view or mode from a small radio group.",
+      "ro": "Permite alegerea unui mod de afișare din câteva opțiuni."
+    },
+    "caution": {
+      "en": "Use form radios for questions; reserve this treatment for interface modes.",
+      "ro": "Este potrivit pentru schimbarea modului de afișare, de exemplu între listă și grilă. Pentru întrebările dintr-un formular sunt preferabile butoanele radio obișnuite."
+    }
+  },
+  {
+    "name": "Header",
+    "slug": "header",
+    "family": "navigation",
+    "title": {
+      "en": "Header",
+      "ro": "Header"
+    },
+    "description": {
+      "en": "Identify the service and present a consistent home link.",
+      "ro": "Afișează numele serviciului și un link către pagina sa principală."
+    },
+    "caution": {
+      "en": "No emblem is shown by default. Supply an institution emblem through the optional emblem prop; use an empty alt when the adjacent service name already identifies it.",
+      "ro": "Emblema este opțională și se transmite prin emblem. Dacă numele alăturat identifică deja instituția, imaginea poate avea alt gol, pentru a evita repetarea."
+    }
+  },
+  {
+    "name": "ServiceNavigation",
+    "slug": "service-navigation",
+    "family": "navigation",
+    "title": {
+      "en": "Service Navigation",
+      "ro": "Navigarea serviciului"
+    },
+    "description": {
+      "en": "Move between the main areas of a service.",
+      "ro": "Oferă acces la secțiunile principale ale serviciului."
+    },
+    "caution": {
+      "en": "Below 40rem, navigation with multiple links becomes a collapsible Menu. aria-expanded reports its state; Escape closes it and returns focus. At 40rem the links remain visible. Without JavaScript, all links remain available. menuLabel customises the toggle label.",
+      "ro": "Sub 40rem, navigarea cu mai multe linkuri se restrânge într-un meniu. aria-expanded indică dacă este deschis; Escape îl închide și readuce focusul pe buton. De la 40rem, linkurile sunt afișate permanent. Fără JavaScript, toate linkurile rămân vizibile. menuLabel schimbă textul butonului."
+    }
+  },
+  {
+    "name": "SideNavigation",
+    "slug": "side-navigation",
+    "family": "navigation",
+    "title": {
+      "en": "Side Navigation",
+      "ro": "Navigare laterală"
+    },
+    "description": {
+      "en": "Navigate related sections beside application content.",
+      "ro": "Afișează linkuri către secțiuni conexe, lângă conținutul paginii."
+    },
+    "caution": {
+      "en": "Preserve DOM reading order when collapsing to one column.",
+      "ro": "La trecerea pe o singură coloană, ordinea din HTML rămâne și ordinea de citire."
+    }
+  },
+  {
+    "name": "Breadcrumbs",
+    "slug": "breadcrumbs",
+    "family": "navigation",
+    "title": {
+      "en": "Breadcrumbs",
+      "ro": "Breadcrumbs"
+    },
+    "description": {
+      "en": "Explain a page location within an information hierarchy.",
+      "ro": "Arată unde se află pagina în structura site-ului."
+    },
+    "caution": {
+      "en": "Breadcrumbs represent hierarchy, not a history of completed form steps.",
+      "ro": "Breadcrumbs descrie ierarhia paginilor, nu pașii parcurși într-un formular."
+    }
+  },
+  {
+    "name": "Footer",
+    "slug": "footer",
+    "family": "navigation",
+    "title": {
+      "en": "Footer",
+      "ro": "Footer"
+    },
+    "description": {
+      "en": "Provide service ownership, policy and support links.",
+      "ro": "Afișează instituția responsabilă și linkuri către informații utile, politici și ajutor."
+    },
+    "caution": {
+      "en": "Supply real ownership and accessibility details in deployed services.",
+      "ro": "Într-un serviciu real, datele instituției și informațiile despre accesibilitate trebuie să fie complete și corecte."
+    }
+  },
+  {
+    "name": "LanguageNavigation",
+    "slug": "language-navigation",
+    "family": "navigation",
+    "title": {
+      "en": "Language Navigation",
+      "ro": "Selectarea limbii"
+    },
+    "description": {
+      "en": "Switch between equivalent language editions of a page.",
+      "ro": "Permite trecerea la aceeași pagină într-o altă limbă."
+    },
+    "caution": {
+      "en": "Use language names, not flags. Preserve page and section when possible.",
+      "ro": "Limbile sunt indicate prin nume, nu prin steaguri. Linkurile păstrează pagina și, unde este posibil, secțiunea curentă."
+    }
+  },
+  {
+    "name": "Pagination",
+    "slug": "pagination",
+    "family": "navigation",
+    "title": {
+      "en": "Pagination",
+      "ro": "Paginare"
+    },
+    "description": {
+      "en": "Navigate a bounded collection using real links.",
+      "ro": "Permite parcurgerea unei liste de rezultate împărțite pe pagini."
+    },
+    "caution": {
+      "en": "Preserve filters in generated URLs and announce result changes in client-routed applications.",
+      "ro": "URL-urile păstrează filtrele selectate. Dacă rezultatele se schimbă fără reîncărcarea paginii, aplicația anunță actualizarea și cititoarelor de ecran."
+    }
+  },
+  {
+    "name": "Stepper",
+    "slug": "stepper",
+    "family": "navigation",
+    "title": {
+      "en": "Stepper",
+      "ro": "Indicator de pași"
+    },
+    "description": {
+      "en": "Show location in a short linear process.",
+      "ro": "Arată pasul curent dintr-un proces scurt, parcurs în ordine."
+    },
+    "caution": {
+      "en": "Use TaskList for independent tasks. Supply explicit completion text where needed.",
+      "ro": "Pentru activități care pot fi completate separat este mai potrivit TaskList. Pașii finalizați sunt marcați și prin text."
+    }
+  },
+  {
+    "name": "TableOfContents",
+    "slug": "table-of-contents",
+    "family": "navigation",
+    "title": {
+      "en": "Table Of Contents",
+      "ro": "Cuprins"
+    },
+    "description": {
+      "en": "Navigate to sections within a long page.",
+      "ro": "Oferă acces direct la secțiunile unei pagini lungi."
+    },
+    "caution": {
+      "en": "Every anchor must match a visible heading ID.",
+      "ro": "Fiecare link indică ID-ul unui titlu vizibil din pagină."
+    }
+  },
+  {
+    "name": "TreeView",
+    "slug": "tree-view",
+    "family": "navigation",
+    "title": {
+      "en": "Tree View",
+      "ro": "Navigare ierarhică"
+    },
+    "description": {
+      "en": "Explore nested navigation using native disclosures.",
+      "ro": "Afișează o structură de linkuri cu secțiuni care pot fi deschise și închise."
+    },
+    "caution": {
+      "en": "This is disclosure navigation, not an ARIA tree widget; it uses Tab, Enter and Space rather than tree arrow-key navigation.",
+      "ro": "Componenta folosește Tab, Enter și Space. Nu implementează modelul ARIA tree și comenzile sale cu tastele săgeată."
+    }
+  },
+  {
+    "name": "Alert",
+    "slug": "alert",
+    "family": "feedback",
+    "title": {
+      "en": "Alert",
+      "ro": "Alertă"
+    },
+    "description": {
+      "en": "Explain an important state with a title and a redundant text cue.",
+      "ro": "Evidențiază un mesaj important prin titlu, text și culoare."
+    },
+    "caution": {
+      "en": "Static alerts are not live regions. Add role=status or role=alert only for appropriate dynamic updates.",
+      "ro": "Mesajele statice nu sunt anunțate automat. role=status sau role=alert sunt potrivite doar când contextul unei actualizări dinamice le justifică."
+    }
+  },
+  {
+    "name": "NotificationBanner",
+    "slug": "notification-banner",
+    "family": "feedback",
+    "title": {
+      "en": "Notification Banner",
+      "ro": "Banner de notificare"
+    },
+    "description": {
+      "en": "Highlight a service-level message above related content.",
+      "ro": "Afișează un mesaj despre serviciu deasupra conținutului relevant."
+    },
+    "caution": {
+      "en": "Do not use a banner instead of field-level validation.",
+      "ro": "Erorile de formular rămân lângă câmpurile la care se referă; un banner nu le înlocuiește."
+    }
+  },
+  {
+    "name": "ErrorMessage",
+    "slug": "error-message",
+    "family": "feedback",
+    "title": {
+      "en": "Error Message",
+      "ro": "Mesaj de eroare"
+    },
+    "description": {
+      "en": "Explain how to correct a specific answer.",
+      "ro": "Explică ce trebuie corectat într-un câmp."
+    },
+    "caution": {
+      "en": "Associate the message using aria-describedby and mark the input aria-invalid. Field components do this automatically.",
+      "ro": "aria-describedby leagă mesajul de câmp, iar aria-invalid marchează eroarea. Componentele de formular fac aceste asocieri automat."
+    }
+  },
+  {
+    "name": "ErrorSummary",
+    "slug": "error-summary",
+    "family": "feedback",
+    "title": {
+      "en": "Error Summary",
+      "ro": "Rezumatul erorilor"
+    },
+    "description": {
+      "en": "List linked validation errors at the start of a submitted form.",
+      "ro": "Afișează la începutul formularului erorile de validare, cu linkuri către câmpuri."
+    },
+    "caution": {
+      "en": "After failed submission, focus the summary and preserve entered answers. autoFocus is opt-in.",
+      "ro": "Dacă formularul conține erori, răspunsurile se păstrează, iar focusul se poate muta pe rezumat. Acest comportament se activează prin autoFocus."
+    }
+  },
+  {
+    "name": "Tag",
+    "slug": "tag",
+    "family": "feedback",
+    "title": {
+      "en": "Tag",
+      "ro": "Etichetă de stare"
+    },
+    "description": {
+      "en": "Describe the status of an application using text and colour.",
+      "ro": "Arată starea unei cereri prin text și culoare."
+    },
+    "caution": {
+      "en": "Tags are not interactive. Use an action or link for interaction.",
+      "ro": "Eticheta nu este interactivă. Pentru o acțiune sau navigare sunt potrivite un buton sau un link."
+    }
+  },
+  {
+    "name": "Badge",
+    "slug": "badge",
+    "family": "feedback",
+    "title": {
+      "en": "Badge",
+      "ro": "Badge"
+    },
+    "description": {
+      "en": "Display a small count next to a meaningful label.",
+      "ro": "Afișează un număr lângă elementul la care se referă."
+    },
+    "caution": {
+      "en": "Include what is being counted in surrounding text or the accessible name.",
+      "ro": "Textul alăturat sau numele accesibil explică ce reprezintă numărul, de exemplu mesaje necitite."
+    }
+  },
+  {
+    "name": "Chip",
+    "slug": "chip",
+    "family": "feedback",
+    "title": {
+      "en": "Chip",
+      "ro": "Chip"
+    },
+    "description": {
+      "en": "Present a compact category or selected filter label.",
+      "ro": "Afișează o categorie sau un filtru într-un format compact."
+    },
+    "caution": {
+      "en": "Use ActionChip or DismissibleChip when an action is available.",
+      "ro": "Pentru variante interactive sunt disponibile ActionChip și DismissibleChip."
+    }
+  },
+  {
+    "name": "WarningText",
+    "slug": "warning-text",
+    "family": "feedback",
+    "title": {
+      "en": "Warning Text",
+      "ro": "Avertisment"
+    },
+    "description": {
+      "en": "Explain a serious consequence before a user acts.",
+      "ro": "Explică o consecință importantă înainte de efectuarea unei acțiuni."
+    },
+    "caution": {
+      "en": "Write the consequence explicitly; the exclamation symbol is decorative.",
+      "ro": "Consecința este descrisă în text. Semnul exclamării este doar decorativ."
+    }
+  },
+  {
+    "name": "PhaseBanner",
+    "slug": "phase-banner",
+    "family": "feedback",
+    "title": {
+      "en": "Phase Banner",
+      "ro": "Banner pentru stadiul serviciului"
+    },
+    "description": {
+      "en": "Disclose the maturity and proposal status of a service.",
+      "ro": "Arată dacă serviciul este în testare sau în altă etapă de dezvoltare."
+    },
+    "caution": {
+      "en": "Keep proposal status visible; do not use a phase label to excuse blocking defects.",
+      "ro": "Stadiul rămâne vizibil, dar nu justifică probleme care împiedică folosirea serviciului."
+    }
+  },
+  {
+    "name": "ClassificationBanner",
+    "slug": "classification-banner",
+    "family": "feedback",
+    "title": {
+      "en": "Classification Banner",
+      "ro": "Banner de clasificare"
+    },
+    "description": {
+      "en": "Display a handling label supplied by the service owner.",
+      "ro": "Afișează nivelul de clasificare a informațiilor, stabilit de instituție."
+    },
+    "caution": {
+      "en": "Visual labels do not enforce access control or information security.",
+      "ro": "Bannerul este un marcaj vizual. Nu restricționează accesul și nu aplică măsuri de securitate."
+    }
+  },
+  {
+    "name": "Panel",
+    "slug": "panel",
+    "family": "feedback",
+    "title": {
+      "en": "Panel",
+      "ro": "Panou de confirmare"
+    },
+    "description": {
+      "en": "Confirm a completed action with a clear reference.",
+      "ro": "Confirmă finalizarea unei acțiuni și afișează numărul de referință."
+    },
+    "caution": {
+      "en": "Explain next steps outside the panel and provide a durable receipt through the service.",
+      "ro": "Pașii următori apar în afara panoului. Serviciul poate oferi și o confirmare care poate fi păstrată, de exemplu prin email."
+    }
+  },
+  {
+    "name": "EmptyState",
+    "slug": "empty-state",
+    "family": "feedback",
+    "title": {
+      "en": "Empty State",
+      "ro": "Empty state"
+    },
+    "description": {
+      "en": "Explain why a collection is empty and how to proceed.",
+      "ro": "Explică de ce nu există conținut sau rezultate și ce se poate face în continuare."
+    },
+    "caution": {
+      "en": "For filtered results, offer to change or clear filters rather than creating new content.",
+      "ro": "Când filtrele nu întorc rezultate, sunt utile opțiunile de modificare sau ștergere a filtrelor."
+    }
+  },
+  {
+    "name": "LoadingIndicator",
+    "slug": "loading-indicator",
+    "family": "feedback",
+    "title": {
+      "en": "Loading Indicator",
+      "ro": "Indicator de încărcare"
+    },
+    "description": {
+      "en": "Announce an ongoing operation without inventing progress.",
+      "ro": "Anunță că o operațiune este în curs."
+    },
+    "caution": {
+      "en": "Keep a meaningful label and replace it with a result or recoverable error.",
+      "ro": "Textul descrie operațiunea. La final, indicatorul este înlocuit cu rezultatul sau cu un mesaj care explică problema și pasul următor."
+    }
+  },
+  {
+    "name": "Skeleton",
+    "slug": "skeleton",
+    "family": "feedback",
+    "title": {
+      "en": "Skeleton",
+      "ro": "Skeleton"
+    },
+    "description": {
+      "en": "Reserve space for incoming content and announce loading once.",
+      "ro": "Păstrează spațiul pentru conținutul care se încarcă."
+    },
+    "caution": {
+      "en": "Hide decorative blocks from assistive technology and avoid simulated readable content.",
+      "ro": "Blocurile decorative sunt ascunse cititoarelor de ecran. Încărcarea se anunță o singură dată, fără text fals care să pară conținut real."
+    }
+  },
+  {
+    "name": "Progress",
+    "slug": "progress",
+    "family": "feedback",
+    "title": {
+      "en": "Progress",
+      "ro": "Bară de progres"
+    },
+    "description": {
+      "en": "Show measured progress using a native progress element.",
+      "ro": "Arată progresul unei operațiuni prin elementul HTML progress."
+    },
+    "caution": {
+      "en": "Omit value when progress is unknown; never estimate a percentage without evidence.",
+      "ro": "Când progresul nu este cunoscut, value se omite. Procentele afișate reflectă progresul măsurat."
+    }
+  },
+  {
+    "name": "Toast",
+    "slug": "toast",
+    "family": "feedback",
+    "title": {
+      "en": "Toast",
+      "ro": "Toast"
+    },
+    "description": {
+      "en": "Announce a non-blocking result with explicit dismissal.",
+      "ro": "Afișează o confirmare scurtă, fără să întrerupă lucrul în pagină."
+    },
+    "caution": {
+      "en": "No auto-dismiss timer. Provide a real returnFocusId. Persistent errors belong in the page.",
+      "ro": "Mesajul se închide manual. returnFocusId indică un element existent la care revine focusul. Erorile care necesită rezolvare rămân vizibile în pagină."
+    }
+  },
+  {
+    "name": "CookieBanner",
+    "slug": "cookie-banner",
+    "family": "feedback",
+    "title": {
+      "en": "Cookie Banner",
+      "ro": "Banner pentru cookie-uri"
+    },
+    "description": {
+      "en": "Offer separate accept and reject choices for optional cookies.",
+      "ro": "Oferă opțiuni separate de acceptare și refuz pentru cookie-urile opționale."
+    },
+    "caution": {
+      "en": "The host must gate optional scripts and store consent. This component never sets cookies itself.",
+      "ro": "Aplicația pornește scripturile opționale în funcție de alegere și salvează preferința. Componenta nu setează cookie-uri."
+    }
+  },
+  {
+    "name": "Feedback",
+    "slug": "feedback",
+    "family": "feedback",
+    "title": {
+      "en": "Feedback",
+      "ro": "Feedback despre pagină"
+    },
+    "description": {
+      "en": "Ask whether a page was helpful and acknowledge the answer.",
+      "ro": "Întreabă dacă pagina a fost utilă și confirmă primirea răspunsului."
+    },
+    "caution": {
+      "en": "The host implements collection and privacy controls. Do not ask for personal data here.",
+      "ro": "Aplicația colectează răspunsurile și gestionează protecția datelor. Această întrebare nu este destinată colectării datelor personale."
+    }
+  },
+  {
+    "name": "Details",
+    "slug": "details",
+    "family": "disclosure",
+    "title": {
+      "en": "Details",
+      "ro": "Detalii"
+    },
+    "description": {
+      "en": "Reveal supporting information when requested.",
+      "ro": "Afișează informații suplimentare când secțiunea este deschisă."
+    },
+    "caution": {
+      "en": "Keep information necessary to complete the task visible.",
+      "ro": "Informațiile necesare pentru completarea unei cereri rămân vizibile în pagină."
+    }
+  },
+  {
+    "name": "Accordion",
+    "slug": "accordion",
+    "family": "disclosure",
+    "title": {
+      "en": "Accordion",
+      "ro": "Acordeon"
+    },
+    "description": {
+      "en": "Group independent expandable sections using native details.",
+      "ro": "Grupează secțiuni care pot fi deschise și închise separat."
+    },
+    "caution": {
+      "en": "Users can open multiple sections or use the expand/collapse-all action. Keep essential information visible.",
+      "ro": "Pot fi deschise mai multe secțiuni simultan sau toate deodată. Informațiile esențiale rămân în afara acordeonului."
+    }
+  },
+  {
+    "name": "Tabs",
+    "slug": "tabs",
+    "family": "disclosure",
+    "title": {
+      "en": "Tabs",
+      "ro": "Taburi"
+    },
+    "description": {
+      "en": "Switch between related peer panels with keyboard navigation.",
+      "ro": "Organizează conținutul în panouri între care se poate comuta și din tastatură."
+    },
+    "caution": {
+      "en": "Use for peer content, not sequential form steps. Arrow keys, Home and End change the active panel.",
+      "ro": "Taburile sunt potrivite pentru categorii de conținut de același nivel, nu pentru pașii unui formular. Tastele săgeată, Home și End schimbă panoul activ."
+    }
+  },
+  {
+    "name": "Dialog",
+    "slug": "dialog",
+    "family": "disclosure",
+    "title": {
+      "en": "Dialog",
+      "ro": "Dialog modal"
+    },
+    "description": {
+      "en": "Focus a short task in a native modal dialog.",
+      "ro": "Deschide o fereastră modală pentru o acțiune scurtă sau o verificare."
+    },
+    "caution": {
+      "en": "Avoid nested dialogs. Escape or clicking outside closes it and returns focus to the trigger. JavaScript is required to open it.",
+      "ro": "Dialogurile nu se deschid unele în altele. Escape sau un click în exterior închide dialogul și readuce focusul pe butonul care l-a deschis. Deschiderea necesită JavaScript."
+    }
+  },
+  {
+    "name": "Drawer",
+    "slug": "drawer",
+    "family": "disclosure",
+    "title": {
+      "en": "Drawer",
+      "ro": "Panou lateral modal"
+    },
+    "description": {
+      "en": "Show supplementary details in a modal side panel.",
+      "ro": "Afișează detalii suplimentare într-un panou modal la marginea ecranului."
+    },
+    "caution": {
+      "en": "Keep the main task outside this modal panel. Escape or clicking outside closes it and returns focus to the trigger.",
+      "ro": "Activitatea principală rămâne în pagină. Escape sau un click în exterior închide panoul și readuce focusul pe butonul care l-a deschis."
+    }
+  },
+  {
+    "name": "PopoverMenu",
+    "slug": "popover-menu",
+    "family": "disclosure",
+    "title": {
+      "en": "Popover Menu",
+      "ro": "Meniu dropdown"
+    },
+    "description": {
+      "en": "Reveal a small group of ordinary links and actions.",
+      "ro": "Afișează un grup restrâns de linkuri și acțiuni."
+    },
+    "caution": {
+      "en": "Uses native disclosure navigation, not ARIA menu semantics. Tab moves between links; Escape closes.",
+      "ro": "Componenta folosește details nativ, nu modelul ARIA menu. Tab parcurge linkurile, iar Escape închide meniul."
+    }
+  },
+  {
+    "name": "Tooltip",
+    "slug": "tooltip",
+    "family": "disclosure",
+    "title": {
+      "en": "Tooltip",
+      "ro": "Tooltip"
+    },
+    "description": {
+      "en": "Show brief supporting text on hover or keyboard focus.",
+      "ro": "Afișează o explicație scurtă la hover sau când elementul primește focus."
+    },
+    "caution": {
+      "en": "Never hide essential instructions or interactive controls inside a tooltip. Escape dismisses it.",
+      "ro": "Tooltip-ul nu conține instrucțiuni esențiale sau controale interactive. Se închide cu Escape."
+    }
+  },
+  {
+    "name": "Card",
+    "slug": "card",
+    "family": "layout",
+    "title": {
+      "en": "Card",
+      "ro": "Card"
+    },
+    "description": {
+      "en": "Group a title, supporting content and a related action.",
+      "ro": "Grupează un titlu, informații și o acțiune despre același subiect."
+    },
+    "caution": {
+      "en": "Keep one clear subject. Link the title or action rather than making a nested interactive card.",
+      "ro": "Linkul se aplică titlului sau acțiunii. Un card întreg transformat în link nu trebuie să conțină alte elemente interactive."
+    }
+  },
+  {
+    "name": "Hero",
+    "slug": "hero",
+    "family": "layout",
+    "title": {
+      "en": "Hero",
+      "ro": "Hero"
+    },
+    "description": {
+      "en": "Introduce an editorial or documentation page with restrained cultural decoration.",
+      "ro": "Introduce o pagină de prezentare sau documentație, cu un decor discret."
+    },
+    "caution": {
+      "en": "Avoid large decorative introductions inside transactional forms.",
+      "ro": "Este potrivit pentru pagini de prezentare. În formulare, o introducere decorativă mare poate întârzia accesul la informația utilă."
+    }
+  },
+  {
+    "name": "PageHeader",
+    "slug": "page-header",
+    "family": "layout",
+    "title": {
+      "en": "Page Header",
+      "ro": "Header de pagină"
+    },
+    "description": {
+      "en": "Present the page title, description and related actions.",
+      "ro": "Afișează titlul, descrierea și acțiunile paginii."
+    },
+    "caution": {
+      "en": "Use one page-level heading in the surrounding document.",
+      "ro": "Pagina are un singur titlu principal h1."
+    }
+  },
+  {
+    "name": "InsetText",
+    "slug": "inset-text",
+    "family": "layout",
+    "title": {
+      "en": "Inset Text",
+      "ro": "Text evidențiat"
+    },
+    "description": {
+      "en": "Separate useful supporting information from surrounding prose.",
+      "ro": "Scoate în evidență informații suplimentare față de restul textului."
+    },
+    "caution": {
+      "en": "Use WarningText or Alert when the message has urgency or consequences.",
+      "ro": "Pentru avertismente sau mesaje urgente sunt mai potrivite WarningText și Alert."
+    }
+  },
+  {
+    "name": "Divider",
+    "slug": "divider",
+    "family": "layout",
+    "title": {
+      "en": "Divider",
+      "ro": "Separator"
+    },
+    "description": {
+      "en": "Mark a meaningful separation between content groups.",
+      "ro": "Delimitează grupuri de conținut printr-o linie."
+    },
+    "caution": {
+      "en": "Prefer spacing when a rule adds no meaning.",
+      "ro": "Dacă spațierea face deja separarea clară, linia nu mai este necesară."
+    }
+  },
+  {
+    "name": "Motif",
+    "slug": "motif",
+    "family": "layout",
+    "title": {
+      "en": "Motif",
+      "ro": "Altiță"
+    },
+    "description": {
+      "en": "A Romanian embroidery band with stepped eight-point rosettes, diamonds and stitched borders.",
+      "ro": "Bandă inspirată din broderia românească, cu rozete în opt colțuri, romburi și chenare cusute."
+    },
+    "caution": {
+      "en": "Four sizes: sm (24px), md (48px, default), lg (64px) and xl (96px). The pattern scales proportionally. Keep decoration separate from text and controls.",
+      "ro": "Patru dimensiuni: sm (24px), md (48px, implicit), lg (64px) și xl (96px). Desenul se scalează proporțional. Decorul rămâne separat de text și controale."
+    }
+  },
+  {
+    "name": "Heading",
+    "slug": "heading",
+    "family": "typography",
+    "title": {
+      "en": "Heading",
+      "ro": "Titlu"
+    },
+    "description": {
+      "en": "Express document hierarchy independently from visual heading size.",
+      "ro": "Definește nivelul unui titlu separat de dimensiunea sa vizuală."
+    },
+    "caution": {
+      "en": "Choose level by document structure; size controls visual treatment only.",
+      "ro": "level stabilește locul în structura paginii, iar size schimbă doar dimensiunea afișată."
+    }
+  },
+  {
+    "name": "Text",
+    "slug": "text",
+    "family": "typography",
+    "title": {
+      "en": "Text",
+      "ro": "Text"
+    },
+    "description": {
+      "en": "Use consistent body, supporting and lead text sizes.",
+      "ro": "Oferă dimensiuni consecvente pentru textul principal, introduceri și explicații."
+    },
+    "caution": {
+      "en": "Do not shrink essential instructions to fit a fixed container.",
+      "ro": "Instrucțiunile importante rămân lizibile; nu se micșorează doar ca să încapă într-un spațiu fix."
+    }
+  },
+  {
+    "name": "Prose",
+    "slug": "prose",
+    "family": "typography",
+    "title": {
+      "en": "Prose",
+      "ro": "Text de conținut"
+    },
+    "description": {
+      "en": "Apply a predictable reading measure and vertical rhythm to rich text.",
+      "ro": "Asigură o lățime de citire potrivită și spațiere consecventă pentru blocuri de text."
+    },
+    "caution": {
+      "en": "Keep semantic headings, lists and links in the content.",
+      "ro": "Conținutul păstrează structura HTML: titluri, paragrafe, liste și linkuri."
+    }
+  },
+  {
+    "name": "Grid",
+    "slug": "grid",
+    "family": "layout",
+    "title": {
+      "en": "Grid",
+      "ro": "Grid"
+    },
+    "description": {
+      "en": "Arrange repeated content with shared responsive gutters.",
+      "ro": "Aranjează elemente repetate în coloane care se adaptează spațiului disponibil."
+    },
+    "caution": {
+      "en": "Use source order that remains meaningful when the columns collapse.",
+      "ro": "Ordinea din HTML rămâne logică și atunci când elementele sunt afișate pe o singură coloană."
+    }
+  },
+  {
+    "name": "Stack",
+    "slug": "stack",
+    "family": "layout",
+    "title": {
+      "en": "Stack",
+      "ro": "Stack"
+    },
+    "description": {
+      "en": "Apply a single spacing token between vertical siblings.",
+      "ro": "Așază elementele unele sub altele, la distanțe egale."
+    },
+    "caution": {
+      "en": "Use gap instead of independent child margins to avoid double spacing.",
+      "ro": "gap controlează spațiul dintre elemente, fără cumularea marginilor individuale."
+    }
+  },
+  {
+    "name": "Cluster",
+    "slug": "cluster",
+    "family": "layout",
+    "title": {
+      "en": "Cluster",
+      "ro": "Cluster"
+    },
+    "description": {
+      "en": "Wrap related controls while maintaining one gap token.",
+      "ro": "Așază elementele pe rânduri, cu spațiere egală, și le trece pe rândul următor când nu mai încap."
+    },
+    "caution": {
+      "en": "Allow translated labels to wrap without clipping controls.",
+      "ro": "Etichetele mai lungi și traducerile pot ocupa mai multe rânduri, fără să taie textul sau controalele."
+    }
+  },
+  {
+    "name": "Container",
+    "slug": "container",
+    "family": "layout",
+    "title": {
+      "en": "Container",
+      "ro": "Container"
+    },
+    "description": {
+      "en": "Align content to shared responsive page gutters.",
+      "ro": "Aliniază conținutul la marginile comune ale paginii."
+    },
+    "caution": {
+      "en": "Avoid nesting containers unless an additional inset is intentional.",
+      "ro": "Containerele se includ unele în altele doar când este necesar un spațiu suplimentar la margini."
+    }
+  },
+  {
+    "name": "Section",
+    "slug": "section",
+    "family": "layout",
+    "title": {
+      "en": "Section",
+      "ro": "Secțiune"
+    },
+    "description": {
+      "en": "Separate major page regions with the section-spacing token.",
+      "ro": "Separă zonele principale ale paginii prin spațierea comună pentru secțiuni."
+    },
+    "caution": {
+      "en": "Give the section a heading or accessible label.",
+      "ro": "Secțiunea are un titlu sau un nume accesibil care îi descrie conținutul."
+    }
+  },
+  {
+    "name": "SidebarLayout",
+    "slug": "sidebar-layout",
+    "family": "layout",
+    "title": {
+      "en": "Sidebar Layout",
+      "ro": "Layout cu sidebar"
+    },
+    "description": {
+      "en": "Place contextual navigation beside content and stack it on narrow screens.",
+      "ro": "Afișează navigarea lângă conținut și o mută pe o singură coloană când spațiul este insuficient."
+    },
+    "caution": {
+      "en": "Do not move DOM order using CSS to create a different keyboard sequence.",
+      "ro": "Ordinea vizuală păstrează ordinea din HTML, astfel încât citirea și navigarea cu tastatura să urmeze același traseu."
+    }
+  },
+  {
+    "name": "SummaryList",
+    "slug": "summary-list",
+    "family": "data",
+    "title": {
+      "en": "Summary List",
+      "ro": "Rezumat de date"
+    },
+    "description": {
+      "en": "Present labelled answers with specific change links.",
+      "ro": "Afișează răspunsurile împreună cu denumirile lor și linkuri de modificare."
+    },
+    "caution": {
+      "en": "Change links must name the answer, such as Change address.",
+      "ro": "Fiecare link de modificare precizează răspunsul la care se referă, inclusiv când este citit separat de restul paginii."
+    }
+  },
+  {
+    "name": "DataList",
+    "slug": "data-list",
+    "family": "data",
+    "title": {
+      "en": "Data List",
+      "ro": "Listă de date"
+    },
+    "description": {
+      "en": "Present descriptive key-value data in a definition list.",
+      "ro": "Afișează perechi de denumiri și valori, fără acțiuni de modificare."
+    },
+    "caution": {
+      "en": "Use Table for comparisons across repeated columns.",
+      "ro": "Este un alias pentru SummaryList, potrivit pentru informații de consultat."
+    }
+  },
+  {
+    "name": "Table",
+    "slug": "table",
+    "family": "data",
+    "title": {
+      "en": "Table",
+      "ro": "Tabel"
+    },
+    "description": {
+      "en": "Compare structured information with explicit row and column headers.",
+      "ro": "Afișează date structurate pe rânduri și coloane."
+    },
+    "caution": {
+      "en": "Use a descriptive caption. Horizontal scrolling is limited to the labelled table region.",
+      "ro": "Antetele descriu coloanele. Dacă tabelul nu încape, se derulează în propriul container, care poate primi focus."
+    }
+  },
+  {
+    "name": "DataTable",
+    "slug": "data-table",
+    "family": "data",
+    "title": {
+      "en": "Data Table",
+      "ro": "Tabel cu sortare"
+    },
+    "description": {
+      "en": "Sort client-side tabular records by text or numeric columns.",
+      "ro": "Permite sortarea în browser după coloane de text sau numere."
+    },
+    "caution": {
+      "en": "Sorting is uncontrolled. Supply numeric sortValues for formatted numbers; remote paging and selection belong to the host.",
+      "ro": "Componenta gestionează sortarea intern. Pentru numere formatate se pot furniza valori numerice prin sortValues. Paginarea de pe server și selecția rândurilor se implementează în aplicație."
+    }
+  },
+  {
+    "name": "TaskList",
+    "slug": "task-list",
+    "family": "data",
+    "title": {
+      "en": "Task List",
+      "ro": "Listă de activități"
+    },
+    "description": {
+      "en": "Show progress across independent tasks with explicit statuses.",
+      "ro": "Arată starea unor activități care pot fi completate separat."
+    },
+    "caution": {
+      "en": "Unavailable tasks are text, not disabled links. Explain prerequisites in service content.",
+      "ro": "Activitățile care nu pot fi încă începute apar ca text, nu ca linkuri dezactivate. Explicațiile precizează ce trebuie completat mai întâi."
+    }
+  },
+  {
+    "name": "Timeline",
+    "slug": "timeline",
+    "family": "data",
+    "title": {
+      "en": "Timeline",
+      "ro": "Cronologie"
+    },
+    "description": {
+      "en": "Present dated events in a meaningful sequence.",
+      "ro": "Afișează evenimente în ordinea în care au avut loc."
+    },
+    "caution": {
+      "en": "Use valid machine-readable dateTime values and localised visible dates.",
+      "ro": "dateTime conține o valoare validă pentru procesare automată. Data vizibilă folosește formatul limbii alese."
+    }
+  }
+]

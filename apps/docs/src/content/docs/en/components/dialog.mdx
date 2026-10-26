@@ -1,0 +1,252 @@
+---
+title: "Dialog"
+description: "Dialog — SDR. Independent proposal."
+sidebar: {"order":15}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Focus a short task in a native modal dialog.
+
+## Example
+
+<Preview name="Dialog" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DialogExample() {
+  return (
+    <R.Dialog
+      trigger="Review document"
+      title="Document review"
+      closeLabel="Close"
+    >
+      <p>
+        Check that your document is complete and readable before submitting.
+      </p>
+    </R.Dialog>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div data-sdr-component="dialog">
+    <button
+      data-sdr-dialog-open="true"
+      aria-haspopup="dialog"
+      aria-controls="dialog"
+      hidden=""
+      type="button"
+      class="sdr-button"
+    >
+      Review document
+    </button>
+    <dialog
+      id="dialog"
+      class="sdr-dialog"
+      aria-labelledby="dialog-title"
+    >
+      <div class="sdr-dialog__header">
+        <h2
+          id="dialog-title"
+          class="sdr-heading-md"
+        >
+          Document review
+        </h2>
+        <button
+          data-sdr-dialog-close="true"
+          type="button"
+          class="sdr-button sdr-button--tertiary"
+        >
+          Close
+        </button>
+      </div>
+      <div class="sdr-dialog__body">
+        <p>
+          Check that your document is complete and readable before submitting.
+        </p>
+      </div>
+    </dialog>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/dialog.html)
+
+
+
+## Usage
+
+Avoid nested dialogs. Escape or clicking outside closes it and returns focus to the trigger. JavaScript is required to open it.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `trigger` | `string` | Yes |
+| `title` | `string` | Yes |
+| `children` | `ReactNode` | Yes |
+| `closeLabel` | `string` | Yes |
+| `drawer` | `boolean \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-drawer" className="sdr-component-variant">
+
+## Side panel
+
+Drawer is the side variant of the same modal dialog. It contains focus and closes with Escape, its close button or an outside click.
+
+<Preview name="Drawer" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DrawerExample() {
+  return (
+    <R.Drawer
+      trigger="Show details"
+      title="Application details"
+      closeLabel="Close"
+    >
+      <R.SummaryList
+        items={[
+          { key: 'Reference', value: 'SDR-0042' },
+          { key: 'Status', value: 'Under review' },
+        ]}
+      />
+    </R.Drawer>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div data-sdr-component="dialog">
+    <button
+      data-sdr-dialog-open="true"
+      aria-haspopup="dialog"
+      aria-controls="drawer"
+      hidden=""
+      type="button"
+      class="sdr-button"
+    >
+      Show details
+    </button>
+    <dialog
+      id="drawer"
+      class="sdr-dialog sdr-dialog--drawer"
+      aria-labelledby="drawer-title"
+    >
+      <div class="sdr-dialog__header">
+        <h2
+          id="drawer-title"
+          class="sdr-heading-md"
+        >
+          Application details
+        </h2>
+        <button
+          data-sdr-dialog-close="true"
+          type="button"
+          class="sdr-button sdr-button--tertiary"
+        >
+          Close
+        </button>
+      </div>
+      <div class="sdr-dialog__body">
+        <dl class="sdr-summary">
+          <div class="sdr-summary__row">
+            <dt>Reference</dt>
+            <dd>SDR-0042</dd>
+          </div>
+          <div class="sdr-summary__row">
+            <dt>Status</dt>
+            <dd>Under review</dd>
+          </div>
+        </dl>
+      </div>
+    </dialog>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/drawer.html)
+
+
+
+### API · Drawer
+
+| Property | Type | Required |
+|---|---|---|
+| `title` | `string` | Yes |
+| `children` | `ReactNode` | Yes |
+| `trigger` | `string` | Yes |
+| `closeLabel` | `string` | Yes |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

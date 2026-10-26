@@ -1,0 +1,367 @@
+---
+title: "Starea serviciului și pagini de eroare"
+description: "Starea serviciului și pagini de eroare — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Această pagină grupează mai multe situații ale aceluiași model. Fiecare secțiune are propriul exemplu și cod React și HTML.
+
+
+
+## Serviciu indisponibil
+
+Aplicația poate răspunde cu HTTP 503 când serviciul nu este disponibil. Mesajul explică problema și oferă alternative. Un termen de remediere apare doar dacă este cunoscut.
+
+<Preview name="ServiceUnavailable" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ServiceUnavailableExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Serviciul este în mentenanță"
+      returnHref={`/${locale}/patterns/start/`}
+      returnLabel="Revino la pagina serviciului"
+    >
+      <p>
+        În acest scenariu, serviciul este oprit pentru lucrări programate. Va fi
+        disponibil din nou pe 26 octombrie, la ora 09:00.
+      </p>
+      <p>
+        Dacă solicitarea este urgentă, poți folosi o altă modalitate de contact.{' '}
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          Vezi opțiunile de ajutor
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Serviciul este în mentenanță</h1>
+    <div class="sdr-prose">
+      <p>
+        În acest scenariu, serviciul este oprit pentru lucrări programate. Va fi
+        disponibil din nou pe 26 octombrie, la ora 09:00.
+      </p>
+      <p>
+        Dacă solicitarea este urgentă, poți folosi o altă modalitate de contact.
+        <a href="/ro/patterns/contact/">Vezi opțiunile de ajutor</a>
+      </p>
+    </div>
+    <div>
+      <a
+        href="/ro/patterns/start/"
+        class="sdr-button"
+        >Revino la pagina serviciului</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-service-status.html)
+
+
+
+
+<div id="variant-not-found" className="sdr-component-variant">
+
+## Pagina nu a fost găsită
+
+Aplicația răspunde cu HTTP 404 și afișează un titlu clar. Pagina oferă linkuri către secțiunile utile și ajutor, fără să sugereze că utilizatorul este de vină.
+
+<Preview name="PageNotFound" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PageNotFoundExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Pagina nu a fost găsită"
+      returnHref={`/${locale}/patterns/start/`}
+      returnLabel="Mergi la pagina serviciului"
+    >
+      <p>
+        Verifică dacă adresa este completă și corectă. Dacă ai folosit un link
+        salvat, pagina poate avea acum o altă adresă.
+      </p>
+      <p>
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          Cere ajutor dacă nu găsești informația căutată
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Pagina nu a fost găsită</h1>
+    <div class="sdr-prose">
+      <p>
+        Verifică dacă adresa este completă și corectă. Dacă ai folosit un link
+        salvat, pagina poate avea acum o altă adresă.
+      </p>
+      <p>
+        <a href="/ro/patterns/contact/"
+          >Cere ajutor dacă nu găsești informația căutată</a
+        >
+      </p>
+    </div>
+    <div>
+      <a
+        href="/ro/patterns/start/"
+        class="sdr-button"
+        >Mergi la pagina serviciului</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-not-found.html)
+
+</div>
+
+
+<div id="variant-service-problem" className="sdr-component-variant">
+
+## Eroare a serviciului
+
+Mesajul distinge o problemă tehnică de o eroare în datele completate. Precizează dacă cererea a fost trimisă și cum se poate încerca din nou sau cere ajutor, fără riscul unor plăți duplicate.
+
+<Preview name="ServiceProblem" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ServiceProblemExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Nu am putut trimite cererea"
+      returnHref={`/${locale}/patterns/question/`}
+      returnLabel="Revino la formular"
+    >
+      <p>
+        A apărut o problemă tehnică. Cererea nu a fost trimisă. Poți încerca din
+        nou.
+      </p>
+      <p>
+        Dacă problema persistă,{' '}
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          contactează echipa serviciului
+        </R.Link>
+        .
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Nu am putut trimite cererea</h1>
+    <div class="sdr-prose">
+      <p>
+        A apărut o problemă tehnică. Cererea nu a fost trimisă. Poți încerca din
+        nou.
+      </p>
+      <p>
+        Dacă problema persistă,
+        <a href="/ro/patterns/contact/">contactează echipa serviciului</a>.
+      </p>
+    </div>
+    <div>
+      <a
+        href="/ro/patterns/question/"
+        class="sdr-button"
+        >Revino la formular</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-service-problem.html)
+
+</div>
+
+
+<div id="variant-interruption" className="sdr-component-variant">
+
+## Întreruperea unui proces
+
+Pagina explică de ce procesul a fost întrerupt, ce informații s-au salvat și cum se poate continua sau cere ajutor. Redirecționările automate pot face dificilă revenirea la pasul curent.
+
+<Preview name="SessionExpired" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SessionExpiredExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Sesiunea s-a încheiat"
+      returnHref={`/${locale}/patterns/tasks/#variant-resume`}
+      returnLabel="Vezi cum poți relua cererea"
+    >
+      <p>
+        Sesiunea se închide după o perioadă de inactivitate, pentru protecția
+        datelor. Acest exemplu ilustrează mesajul afișat la revenire.
+      </p>
+      <p>
+        Dacă ai salvat cererea, o poți relua. Altfel, poți începe una nouă.{' '}
+        <R.Link href={`/${locale}/patterns/start/`}>
+          Începe o cerere nouă
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Sesiunea s-a încheiat</h1>
+    <div class="sdr-prose">
+      <p>
+        Sesiunea se închide după o perioadă de inactivitate, pentru protecția
+        datelor. Acest exemplu ilustrează mesajul afișat la revenire.
+      </p>
+      <p>
+        Dacă ai salvat cererea, o poți relua. Altfel, poți începe una nouă.
+        <a href="/ro/patterns/start/">Începe o cerere nouă</a>
+      </p>
+    </div>
+    <div>
+      <a
+        href="/ro/patterns/tasks/#variant-resume"
+        class="sdr-button"
+        >Vezi cum poți relua cererea</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-interruption.html)
+
+</div>
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

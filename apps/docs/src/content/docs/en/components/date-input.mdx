@@ -1,0 +1,820 @@
+---
+title: "Date Input"
+description: "Date Input — SDR. Independent proposal."
+sidebar: {"order":13}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Enter a memorable date as day, month and year.
+
+## Example
+
+<Preview name="DateInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DateInputExample() {
+  return (
+    <R.DateInput
+      legend="Date of birth"
+      name="birth"
+      hint="For example, 27 3 1990"
+      labels={{ day: 'Day', month: 'Month', year: 'Year' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-hint"
+    >
+      <legend class="sdr-legend">Date of birth</legend>
+      <p
+        id="date-input-hint"
+        class="sdr-hint"
+      >
+        For example, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-day"
+            >Day</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            maxlength="2"
+            id="date-input-day"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-day"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-month"
+            >Month</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            maxlength="2"
+            id="date-input-month"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-month"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-year"
+            >Year</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            maxlength="4"
+            id="date-input-year"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-year"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-input.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="DateInputError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DateInputErrorExample() {
+  return (
+    <R.DateInput
+      error="Enter a valid date of birth."
+      legend="Date of birth"
+      name="error-birth"
+      hint="For example, 27 3 1990"
+      labels={{ day: 'Day', month: 'Month', year: 'Year' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-error-hint date-input-error-error"
+    >
+      <legend class="sdr-legend">Date of birth</legend>
+      <p
+        id="date-input-error-hint"
+        class="sdr-hint"
+      >
+        For example, 27 3 1990
+      </p>
+      <p
+        id="date-input-error-error"
+        class="sdr-error"
+      >
+        Enter a valid date of birth.
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-day"
+            >Day</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            aria-invalid="true"
+            maxlength="2"
+            id="date-input-error-day"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-day"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-month"
+            >Month</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            aria-invalid="true"
+            maxlength="2"
+            id="date-input-error-month"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-month"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-error-year"
+            >Year</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            aria-invalid="true"
+            maxlength="4"
+            id="date-input-error-year"
+            aria-describedby="date-input-error-hint date-input-error-error"
+            class="sdr-input"
+            name="error-birth-year"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-input-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="DateInputDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DateInputDisabledExample() {
+  return (
+    <R.DateInput
+      disabled
+      defaultValue={{ day: '27', month: '3', year: '1990' }}
+      legend="Date of birth"
+      name="disabled-birth"
+      hint="For example, 27 3 1990"
+      labels={{ day: 'Day', month: 'Month', year: 'Year' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      class="sdr-fieldset"
+      aria-describedby="date-input-disabled-hint"
+    >
+      <legend class="sdr-legend">Date of birth</legend>
+      <p
+        id="date-input-disabled-hint"
+        class="sdr-hint"
+      >
+        For example, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-day"
+            >Day</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            maxlength="2"
+            id="date-input-disabled-day"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-day"
+            value="27"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-month"
+            >Month</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            maxlength="2"
+            id="date-input-disabled-month"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-month"
+            value="3"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-disabled-year"
+            >Year</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            maxlength="4"
+            id="date-input-disabled-year"
+            aria-describedby="date-input-disabled-hint"
+            class="sdr-input"
+            name="disabled-birth-year"
+            value="1990"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-input-disabled.html)
+
+
+## Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="DateInputReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DateInputReadOnlyExample() {
+  return (
+    <R.DateInput
+      readOnly
+      defaultValue={{ day: '27', month: '3', year: '1990' }}
+      legend="Date of birth"
+      name="readonly-birth"
+      hint="For example, 27 3 1990"
+      labels={{ day: 'Day', month: 'Month', year: 'Year' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-read-only-hint"
+    >
+      <legend class="sdr-legend">Date of birth</legend>
+      <p
+        id="date-input-read-only-hint"
+        class="sdr-hint"
+      >
+        For example, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-day"
+            >Day</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            readonly=""
+            maxlength="2"
+            id="date-input-read-only-day"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-day"
+            value="27"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-month"
+            >Month</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            readonly=""
+            maxlength="2"
+            id="date-input-read-only-month"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-month"
+            value="3"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-read-only-year"
+            >Year</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            readonly=""
+            maxlength="4"
+            id="date-input-read-only-year"
+            aria-describedby="date-input-read-only-hint"
+            class="sdr-input"
+            name="readonly-birth-year"
+            value="1990"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-input-readonly.html)
+
+
+## Usage
+
+Server validation must reject impossible dates and explain which part needs correction.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `legend` | `ReactNode` | Yes |
+| `name` | `string` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+| `labels` | `{ day: string; month: string; year: string; }` | Yes |
+| `disabled` | `boolean \| undefined` | No |
+| `readOnly` | `boolean \| undefined` | No |
+| `defaultValue` | `{ day: string; month: string; year: string; } \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-date-picker" className="sdr-component-variant">
+
+## Native date picker
+
+The native picker is an alternative to separate day, month and year fields. DatePicker uses input type=date; appearance and interaction depend on the browser.
+
+<Preview name="DatePicker" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DatePickerExample() {
+  return (
+    <R.DatePicker
+      label="Appointment date"
+      name="appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="appointment"
+      >Appointment date</label
+    ><input
+      min="2026-10-25"
+      type="date"
+      id="appointment"
+      class="sdr-input"
+      name="appointment"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/date-picker.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="DatePickerError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DatePickerErrorExample() {
+  return (
+    <R.DatePicker
+      error="Choose an appointment date."
+      label="Appointment date"
+      name="error-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-appointment"
+      >Appointment date</label
+    >
+    <div
+      id="error-appointment-error"
+      class="sdr-error"
+    >
+      Choose an appointment date.
+    </div>
+    <input
+      min="2026-10-25"
+      type="date"
+      id="error-appointment"
+      aria-invalid="true"
+      aria-describedby="error-appointment-error"
+      class="sdr-input"
+      name="error-appointment"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-picker-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="DatePickerDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DatePickerDisabledExample() {
+  return (
+    <R.DatePicker
+      disabled
+      defaultValue="2026-11-05"
+      label="Appointment date"
+      name="disabled-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-appointment"
+      >Appointment date</label
+    ><input
+      disabled=""
+      min="2026-10-25"
+      type="date"
+      id="disabled-appointment"
+      class="sdr-input"
+      name="disabled-appointment"
+      value="2026-11-05"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-picker-disabled.html)
+
+
+### Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="DatePickerReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DatePickerReadOnlyExample() {
+  return (
+    <R.DatePicker
+      readOnly
+      defaultValue="2026-11-05"
+      label="Appointment date"
+      name="readonly-appointment"
+      min="2026-10-25"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="readonly-appointment"
+      >Appointment date</label
+    ><input
+      readonly=""
+      min="2026-10-25"
+      type="date"
+      id="readonly-appointment"
+      class="sdr-input"
+      name="readonly-appointment"
+      value="2026-11-05"
+    />
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/date-picker-readonly.html)
+
+
+### API · DatePicker
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

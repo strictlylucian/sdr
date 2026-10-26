@@ -1,0 +1,41 @@
+---
+title: "Accessibility and evidence"
+description: "Accessibility and evidence — SDR. Independent proposal."
+---
+
+## Target and current status
+
+SDR targets WCAG 2.2 Level AA with stronger control-size and focus conventions. This alpha has no independent audit, disabled-participant study or conformance certification. Passing automated tests is evidence for the checks exercised, not a statement that every service built with SDR conforms.
+
+## Required verification
+
+- Native names, roles and states; visible labels; associated hints and errors.
+- Keyboard traversal, no traps, clear focus, modal Escape and focus restoration.
+- Tabs: Left/Right, Home/End and a single tab stop, including RTL direction.
+- Four themes, both densities, 200% text enlargement, 320 CSS-pixel reflow, forced colours and reduced motion.
+- Password paste and managers; one-time-code paste; no memory puzzle requirement.
+- No colour-only status, auto-dismissed important notifications or hidden essential instructions.
+
+## Browser and assistive-technology matrix
+
+Native interaction tests run in Chromium, Firefox and WebKit through npm run test:e2e. Chromium also runs catalogue-wide axe scans and responsive checks. Component, controller and contrast tests run with npm test. Their actual results must be read from the run output and generated reports. Manual NVDA with Firefox/Chrome, VoiceOver with Safari/iOS, TalkBack with Android, speech input and switch access remain unverified until recorded in a release evidence report.
+
+## Known implementation boundaries
+
+DatePicker and TimeInput use browser-native interfaces. TreeView is disclosure navigation, not an ARIA tree. PopoverMenu is a disclosure with ordinary Tab navigation, not an ARIA menu. CharacterCount counts Unicode code points. DataTable supports local sorting, not remote paging or an editable grid. ExitThisPage is a direct navigation link without a keyboard shortcut. Accordion uses native details with an expand/collapse-all action.
+
+## European mapping
+
+Track applicable EN 301 549 requirements separately, including documentation and support requirements. WCAG alone does not cover the entire standard. Each adopting service owns an accurate accessibility statement, feedback route and whole-journey assessment.
+
+References: [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [European Commission standards guidance](https://digital-strategy.ec.europa.eu/en/policies/web-accessibility-directive-standards-and-harmonisation).
+
+## Automated tests and reports
+
+Component and portable-controller tests use Vitest with React Testing Library, user-event and jest-dom. They cover accessible labels, descriptions, native form semantics, refs, callbacks, controlled input, Unicode, keyboard interaction, rerendering and cleanup. npm run test:coverage checks every runtime TypeScript file in core and React, including unimported files, against enforced thresholds: 90% lines, statements and functions, and 85% branches. Reports are available in coverage/.
+
+Playwright Test runs native dialog, focus, navigation and form journeys in Chromium, Firefox and WebKit. Chromium also checks the complete bilingual React/HTML catalogue with axe and responsive layouts. Traces and screenshots are retained on failure; HTML and JUnit reports are written to playwright-report/ and test-results/. npm run test:packages installs the actual archives in a separate TypeScript and server-rendering consumer.
+
+npm run verify builds the project and runs all release checks. The reports describe the fixtures exercised in that run; they do not establish accessibility certification or replace manual assistive-technology testing.
+
+

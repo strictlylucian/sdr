@@ -1,0 +1,106 @@
+---
+title: "Features and implementation status"
+description: "Features and implementation status — SDR. Independent proposal."
+---
+Status reviewed on 25 October 2026. All components are experimental. An implementation does not represent accessibility certification or validation in a real service.
+
+## Library
+
+63 documented components and examples, with variants included on their component pages, React and HTML examples, four themes and two densities.
+
+| Component | Purpose |
+|---|---|
+| [Page](/en/components/page/) | A complete service page composed from SDR components. |
+| [Accordion](/en/components/accordion/) | Group independent expandable sections using native details. |
+| [Alert](/en/components/alert/) | Explain an important state with a title and a redundant text cue. |
+| ↳ [Notification banner](/en/components/alert/#variant-notification-banner) | Variant · Alert |
+| [Breadcrumbs](/en/components/breadcrumbs/) | Explain a page location within an information hierarchy. |
+| [Button](/en/components/button/) | Perform an action, such as saving an application. |
+| ↳ [Button link](/en/components/button/#variant-button-link) | Variant · Button |
+| ↳ [Toggle button](/en/components/button/#variant-toggle-button) | Variant · Button |
+| [Card](/en/components/card/) | Group a title, supporting content and a related action. |
+| [Checkbox](/en/components/checkbox/) | Select zero or more independent options. |
+| ↳ [Switch](/en/components/checkbox/#variant-switch) | Variant · Checkbox |
+| [Chip](/en/components/chip/) | Present a compact category or selected filter label. |
+| ↳ [Action chip](/en/components/chip/#variant-action-chip) | Variant · Chip |
+| ↳ [Dismissible chip](/en/components/chip/#variant-dismissible-chip) | Variant · Chip |
+| [Classification Banner](/en/components/classification-banner/) | Display a handling label supplied by the service owner. |
+| [Cluster](/en/components/cluster/) | Wrap related controls while maintaining one gap token. |
+| [Container](/en/components/container/) | Align content to shared responsive page gutters. |
+| [Cookie Banner](/en/components/cookie-banner/) | Offer separate accept and reject choices for optional cookies. |
+| [Date Input](/en/components/date-input/) | Enter a memorable date as day, month and year. |
+| ↳ [Native date picker](/en/components/date-input/#variant-date-picker) | Variant · Date Input |
+| [Details](/en/components/details/) | Reveal supporting information when requested. |
+| [Dialog](/en/components/dialog/) | Focus a short task in a native modal dialog. |
+| ↳ [Side panel](/en/components/dialog/#variant-drawer) | Variant · Dialog |
+| [Divider](/en/components/divider/) | Mark a meaningful separation between content groups. |
+| [Empty State](/en/components/empty-state/) | Explain why a collection is empty and how to proceed. |
+| [Error Summary](/en/components/error-summary/) | List linked validation errors at the start of a submitted form. |
+| [Exit This Page](/en/components/exit-this-page/) | Navigate immediately to a configured safe destination. |
+| [Feedback](/en/components/feedback/) | Ask whether a page was helpful and acknowledge the answer. |
+| [Fieldset](/en/components/fieldset/) | Give related controls a shared question or legend. |
+| [File Upload](/en/components/file-upload/) | Attach documents using the native file chooser. |
+| [Footer](/en/components/footer/) | Provide service ownership, policy and support links. |
+| [Grid](/en/components/grid/) | Arrange repeated content with shared responsive gutters. |
+| [Header](/en/components/header/) | Identify the service and present a consistent home link. |
+| [Heading](/en/components/heading/) | Express document hierarchy independently from visual heading size. |
+| [Hero](/en/components/hero/) | Introduce an editorial or documentation page with restrained cultural decoration. |
+| [Inset Text](/en/components/inset-text/) | Separate useful supporting information from surrounding prose. |
+| [Language Navigation](/en/components/language-navigation/) | Switch between equivalent language editions of a page. |
+| [Link](/en/components/link/) | Navigate to another page or an anchored section. |
+| ↳ [Back link](/en/components/link/#variant-back-link) | Variant · Link |
+| ↳ [Back to top](/en/components/link/#variant-back-to-top) | Variant · Link |
+| [Loading Indicator](/en/components/loading-indicator/) | Announce an ongoing operation without inventing progress. |
+| [Motif](/en/components/motif/) | A Romanian embroidery band with stepped eight-point rosettes, diamonds and stitched borders. |
+| [Page Header](/en/components/page-header/) | Present the page title, description and related actions. |
+| [Pagination](/en/components/pagination/) | Navigate a bounded collection using real links. |
+| [Panel](/en/components/panel/) | Confirm a completed action with a clear reference. |
+| [Phase Banner](/en/components/phase-banner/) | Disclose the maturity and proposal status of a service. |
+| [Popover Menu](/en/components/popover-menu/) | Reveal a small group of ordinary links and actions. |
+| [Progress](/en/components/progress/) | Show measured progress using a native progress element. |
+| [Prose](/en/components/prose/) | Apply a predictable reading measure and vertical rhythm to rich text. |
+| [Radio](/en/components/radio/) | Choose exactly one answer in a named group. |
+| ↳ [Segmented control](/en/components/radio/#variant-segmented-control) | Variant · Radio |
+| [Range Input](/en/components/range-input/) | Select an approximate value within a range. |
+| [Search Bar](/en/components/search-bar/) | Submit a labelled search query using a GET form. |
+| [Section](/en/components/section/) | Separate major page regions with the section-spacing token. |
+| [Select](/en/components/select/) | Choose one option using the platform-native control. |
+| [Service Navigation](/en/components/service-navigation/) | Move between the main areas of a service. |
+| ↳ [Side navigation](/en/components/service-navigation/#variant-side-navigation) | Variant · Service Navigation |
+| ↳ [Table of contents](/en/components/service-navigation/#variant-table-of-contents) | Variant · Service Navigation |
+| [Sidebar Layout](/en/components/sidebar-layout/) | Place contextual navigation beside content and stack it on narrow screens. |
+| [Skeleton](/en/components/skeleton/) | Reserve space for incoming content and announce loading once. |
+| [Skip Link](/en/components/skip-link/) | Bypass repeated navigation using the keyboard. |
+| [Stack](/en/components/stack/) | Apply a single spacing token between vertical siblings. |
+| [Stepper](/en/components/stepper/) | Show location in a short linear process. |
+| [Summary List](/en/components/summary-list/) | Present labelled answers with specific change links. |
+| ↳ [Without actions](/en/components/summary-list/#variant-data-list) | Variant · Summary List |
+| [Table](/en/components/table/) | Compare structured information with explicit row and column headers. |
+| ↳ [Sortable table](/en/components/table/#variant-data-table) | Variant · Table |
+| [Tabs](/en/components/tabs/) | Switch between related peer panels with keyboard navigation. |
+| [Tag](/en/components/tag/) | Describe the status of an application using text and colour. |
+| ↳ [Numeric badge](/en/components/tag/#variant-badge) | Variant · Tag |
+| [Task List](/en/components/task-list/) | Show progress across independent tasks with explicit statuses. |
+| [Text](/en/components/text/) | Use consistent body, supporting and lead text sizes. |
+| [Text Input](/en/components/text-input/) | Collect a short answer with a persistent label and optional hint. |
+| ↳ [Password](/en/components/text-input/#variant-password-input) | Variant · Text Input |
+| ↳ [Time](/en/components/text-input/#variant-time-input) | Variant · Text Input |
+| ↳ [With an error](/en/components/text-input/#variant-error-message) | Variant · Text Input |
+| [Textarea](/en/components/textarea/) | Collect a longer free-text answer. |
+| ↳ [With character count](/en/components/textarea/#variant-character-count) | Variant · Textarea |
+| [Timeline](/en/components/timeline/) | Present dated events in a meaningful sequence. |
+| [Toast](/en/components/toast/) | Announce a non-blocking result with explicit dismissal. |
+| [Tooltip](/en/components/tooltip/) | Show brief supporting text on hover or keyboard focus. |
+| [Tree View](/en/components/tree-view/) | Explore nested navigation using native disclosures. |
+| [Warning Text](/en/components/warning-text/) | Explain a serious consequence before a user acts. |
+
+## Service patterns
+
+26 patterns cover questions, validation, navigation, documents, checking answers and confirmation. Personal details, addresses and conventions are adapted to Romanian services. Each service must research these patterns with the people who use it.
+
+Variants are grouped within their parent patterns, with distinct examples and source for each scenario.
+
+## Known boundaries
+
+There is no editable or virtualised grid, custom combobox, custom calendar or ARIA tree widget yet. The date picker is native, hierarchical navigation uses disclosures, and the menu uses ordinary links. Tables sort locally. The host implements persistence, server validation and business actions.
+

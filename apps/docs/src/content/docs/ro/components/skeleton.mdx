@@ -1,0 +1,100 @@
+---
+title: "Skeleton"
+description: "Skeleton — SDR. Propunere independentă."
+sidebar: {"order":52}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Păstrează spațiul pentru conținutul care se încarcă.
+
+## Exemplu
+
+<Preview name="Skeleton" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SkeletonExample() {
+  return <R.Skeleton label="Se încarcă cererile" />;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    role="status"
+    class="sdr-stack sdr-u-gap-3"
+  >
+    <span class="sdr-visually-hidden">Se încarcă cererile</span>
+    <div
+      class="sdr-skeleton"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="sdr-skeleton"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="sdr-skeleton"
+      aria-hidden="true"
+    ></div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/skeleton.html)
+
+
+
+## Utilizare
+
+Blocurile decorative sunt ascunse cititoarelor de ecran. Încărcarea se anunță o singură dată, fără text fals care să pară conținut real.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `string` | Da |
+| `lines` | `number \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

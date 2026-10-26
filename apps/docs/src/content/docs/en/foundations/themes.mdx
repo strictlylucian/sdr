@@ -1,0 +1,31 @@
+---
+title: "Colour, themes and density"
+description: "Colour, themes and density — SDR. Independent proposal."
+---
+
+Four named themes share the same semantic roles: light, dark, heritage and contrast. Heritage uses warm paper neutrals, deep blue interactions and a restrained red cultural accent. Contrast is an explicit high-contrast palette; platform forced-colours preferences remain separately supported.
+
+The theme prop on SdrProvider configures React appearance; data-sdr-theme on an HTML .sdr boundary configures portable appearance. For example, dark selects the dark palette. Sections can have different themes. Preference persistence belongs to the application; the library does not write to localStorage or apply a global theme automatically. Interactive documentation examples follow page appearance by default and also allow individual theme selection.
+
+Roles include canvas, surface, subtle, text, muted, border, divider, action, action-hover, on-action, link, focus, focus-gap, danger, success, warning, info, and their background roles. Decorative accent is separate from error and link roles. Tokens are centrally authored in packages/core/src/tokens.ts. Errors and destructive actions use #CA3535 in Light and Heritage. Dark uses #D76868 for error text on dark surfaces; Contrast uses #982828. The semantic danger role adapts to the theme, while the decorative flag-red primitive stays unchanged.
+
+Primary buttons use the same #002B7F blue as the header and navigation across all themes, with white text. A lighter border keeps the button boundary visible in dark mode. The roles are button-bg, button-hover, on-button and button-border. Pressed and keyboard-focus states retain flag yellow.
+
+Text contrast targets 4.5:1, large text 3:1 and meaningful control boundaries 3:1. Decorative dividers are not control boundaries. Status colours accompany text. Action colour pairs include both normal and hover states. Focus uses an offset perimeter and gap to remain distinguishable across surfaces.
+
+Comfortable controls are at least 3rem high; compact controls are at least 2.75rem high. Density never shrinks text or keyboard focus indicators. Theme and density matrices are tested in the component previews. Automated pair checks do not replace checking rendered combinations in complete services.
+
+## Flag colours
+
+The header identity uses the Romanian flag RGB values expressed as hex colours. The blue and red rule are identical in the documentation and Header component, including dark appearance. Yellow marks keyboard focus within the header.
+
+| Token | Hex | Role |
+|---|---|---|
+| --sdr-flag-blue | #002B7F | Header background |
+| --sdr-flag-yellow | #FCD116 | Focus and pressed states |
+| --sdr-flag-red | #CE1126 | Header rule |
+
+The values are defined in [the annex to Law 176/2023](https://legislatie.just.ro/public/DetaliiDocument/271454). The flagColours export from @sdr/core exposes the same values in JavaScript. Semantic text, status and surface colours adapt to each theme for contrast.
+
+Buttons use flag yellow for keyboard focus and while pressed. Toggle buttons retain this state while aria-pressed is true. Dark text and borders provide contrast against yellow; the focus indicator combines a yellow ring with a dark inner edge for light and dark surfaces. The skip-to-content link becomes visible on focus and uses the same colour pair.
+

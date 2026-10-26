@@ -1,0 +1,41 @@
+---
+title: "Accesibilitate și verificări"
+description: "Accesibilitate și verificări — SDR. Propunere independentă."
+---
+
+## Obiectiv și stadiu
+
+SDR urmărește WCAG 2.2, nivel AA, cu cerințe suplimentare pentru dimensiunea controalelor și vizibilitatea focusului. Versiunea alpha nu are audit independent, testare cu participanți cu dizabilități sau certificare. Testele automate confirmă doar verificările efectuate pe exemple; nu demonstrează conformitatea unui serviciu construit cu SDR.
+
+## Ce se verifică
+
+- Nume, roluri și stări ale elementelor native; etichete vizibile; explicații și erori asociate câmpurilor.
+- Navigare cu tastatura fără blocaje, focus vizibil, închiderea dialogurilor cu Escape și revenirea focusului.
+- Taburi: tastele Stânga/Dreapta, Home/End și un singur element accesibil cu Tab, inclusiv pentru text de la dreapta la stânga.
+- Patru teme, două densități, text mărit la 200%, layout la 320 pixeli CSS, forced-colors și preferința pentru mișcare redusă.
+- Folosirea managerilor de parole și lipirea parolelor sau codurilor, fără cerințe inutile de memorare.
+- Stări explicate și prin text, mesaje importante fără închidere automată și instrucțiuni esențiale afișate permanent.
+
+## Browsere și tehnologii asistive
+
+npm run test:e2e verifică interacțiunile native în Chromium, Firefox și WebKit. În Chromium sunt verificate și accesibilitatea și layout-urile întregului catalog. npm test rulează testele componentelor, interacțiunilor HTML și contrastului. Rezultatele sunt disponibile în jurnalele fiecărei rulări. NVDA cu Firefox/Chrome, VoiceOver cu Safari/iOS, TalkBack cu Android, dictarea și dispozitivele de acces cu comutatoare nu au fost încă verificate. Rezultatele acestor verificări vor fi consemnate în raportul versiunii.
+
+## Limite cunoscute
+
+DatePicker și TimeInput folosesc interfețele browserului. TreeView oferă navigare cu secțiuni care se deschid, fără modelul ARIA tree. PopoverMenu folosește Tab pentru navigare, fără modelul ARIA menu. CharacterCount numără puncte de cod Unicode. DataTable sortează în browser, fără paginare pe server sau celule editabile. ExitThisPage este un link fără scurtătură de tastatură. Accordion folosește details nativ și un buton pentru deschiderea sau închiderea tuturor secțiunilor.
+
+## Cerințe europene
+
+EN 301 549 include și cerințe pentru documentație și suport, pe lângă cele acoperite de WCAG. Evaluarea unui serviciu include cerințele aplicabile, întregul parcurs de utilizare, declarația de accesibilitate și o modalitate de a semnala probleme.
+
+Referințe: [WCAG 2.2](https://www.w3.org/TR/WCAG22/) și [ghidul Comisiei Europene](https://digital-strategy.ec.europa.eu/en/policies/web-accessibility-directive-standards-and-harmonisation).
+
+## Teste automate și rapoarte
+
+Componentele React și interacțiunile ediției HTML sunt testate cu Vitest, React Testing Library, user-event și jest-dom. Testele verifică etichetele și descrierile accesibile, formularele native, ref-urile, callback-urile, câmpurile controlate, Unicode, tastatura, actualizarea proprietăților și eliberarea resurselor. npm run test:coverage include toate fișierele TypeScript din core și React, inclusiv cele neimportate de teste. Pragurile obligatorii sunt 90% pentru linii, instrucțiuni și funcții și 85% pentru ramuri. Rapoartele sunt generate în coverage/.
+
+Playwright Test verifică dialogurile native, focusul, navigarea și formularele în Chromium, Firefox și WebKit. În Chromium sunt verificate și toate exemplele React/HTML în ambele limbi, cu axe și la dimensiuni diferite. La eșec sunt păstrate capturi și trase de execuție. Rapoartele HTML și JUnit sunt generate în playwright-report/ și test-results/. npm run test:packages instalează arhivele reale într-o aplicație separată, pentru verificarea tipurilor și randarea pe server.
+
+npm run verify construiește proiectul și rulează toate verificările de lansare. Rapoartele descriu exemplele testate în rularea respectivă; nu reprezintă o certificare de accesibilitate și nu înlocuiesc verificările manuale cu tehnologii asistive.
+
+

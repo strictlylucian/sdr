@@ -1,0 +1,6 @@
+---
+import ComponentDemo from './ComponentDemo';
+import PagePreview from './PagePreview.astro';
+const { name, locale } = Astro.props;
+---
+{name === 'Page' ? <PagePreview locale={locale} /> : <div class="not-content"><ComponentDemo name={name} locale={locale} client:load /></div>}

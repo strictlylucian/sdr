@@ -1,0 +1,159 @@
+---
+title: "Addresses"
+description: "Addresses — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Support both Romanian and international addresses. Accept village names and free-text regions; do not make a postcode mandatory without service evidence.
+
+<Preview name="AddressFields" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function AddressFieldsExample() {
+  return (
+    <R.AddressFields
+      international
+      legend="Address"
+      labels={{
+        line1: 'Street and number',
+        line2: 'Building, entrance, floor, apartment (optional)',
+        city: 'City, town or village',
+        region: 'Region (if applicable)',
+        postcode: 'Postcode (if applicable)',
+        country: 'Country',
+      }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="address-fields"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Address</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-line1"
+          >Street and number</label
+        ><input
+          autocomplete="address-line1"
+          id="address-line1"
+          class="sdr-input"
+          name="address-line1"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-line2"
+          >Building, entrance, floor, apartment (optional)</label
+        ><input
+          autocomplete="address-line2"
+          id="address-line2"
+          class="sdr-input"
+          name="address-line2"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-city"
+          >City, town or village</label
+        ><input
+          autocomplete="address-level2"
+          id="address-city"
+          class="sdr-input"
+          name="address-city"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-region"
+          >Region (if applicable)</label
+        ><input
+          autocomplete="address-level1"
+          id="address-region"
+          class="sdr-input"
+          name="address-region"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-postcode"
+          >Postcode (if applicable)</label
+        ><input
+          autocomplete="postal-code"
+          id="address-postcode"
+          class="sdr-input"
+          name="address-postcode"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-country"
+          >Country</label
+        ><input
+          autocomplete="country-name"
+          id="address-country"
+          class="sdr-input"
+          name="address-country"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-addresses.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

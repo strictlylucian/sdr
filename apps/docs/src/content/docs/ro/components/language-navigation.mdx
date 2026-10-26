@@ -1,0 +1,124 @@
+---
+title: "Selectarea limbii"
+description: "Selectarea limbii — SDR. Propunere independentă."
+sidebar: {"order":50}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite trecerea la aceeași pagină într-o altă limbă.
+
+## Exemplu
+
+<Preview name="LanguageNavigation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function LanguageNavigationExample() {
+  return (
+    <R.LanguageNavigation
+      label="Limbă"
+      items={[
+        {
+          lang: 'ro',
+          label: 'Română',
+          href: '/ro/components/language-navigation/',
+          current: locale === 'ro',
+        },
+        {
+          lang: 'en',
+          label: 'English',
+          href: '/en/components/language-navigation/',
+          current: locale === 'en',
+        },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-language"
+    aria-label="Limbă"
+  >
+    <ul>
+      <li>
+        <a
+          href="/ro/components/language-navigation/"
+          lang="ro"
+          hreflang="ro"
+          aria-current="page"
+          >Română</a
+        >
+      </li>
+      <li>
+        <a
+          href="/en/components/language-navigation/"
+          lang="en"
+          hreflang="en"
+          >English</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/language-navigation.html)
+
+
+
+## Utilizare
+
+Limbile sunt indicate prin nume, nu prin steaguri. Linkurile păstrează pagina și, unde este posibil, secțiunea curentă.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `string` | Da |
+| `items` | `{ label: string; lang: string; href: string; current?: boolean; }[]` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

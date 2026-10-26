@@ -1,0 +1,221 @@
+---
+title: "Date despre egalitatea de șanse"
+description: "Date despre egalitatea de șanse — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+Scopul colectării este explicat clar. Întrebările opționale pentru monitorizarea egalității de șanse sunt separate de condițiile de eligibilitate și includ „Prefer să nu răspund”. Categoriile se stabilesc împreună cu comunitățile vizate.
+
+<Preview name="EqualityInformation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function EqualityInformationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="equality"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <R.Fieldset
+        legend="Grupă de vârstă (opțional)"
+        hint="Întrebare demonstrativă pentru monitorizarea accesului la servicii. Răspunsul nu afectează eligibilitatea."
+      >
+        <R.Radio
+          name="age-group"
+          value="under18"
+          label="Sub 18 ani"
+        />
+        <R.Radio
+          name="age-group"
+          value="adult"
+          label="18–64 de ani"
+        />
+        <R.Radio
+          name="age-group"
+          value="older"
+          label="65 de ani sau mai mult"
+        />
+        <R.Radio
+          name="age-group"
+          value="private"
+          label="Prefer să nu răspund"
+        />
+      </R.Fieldset>
+      <div>
+        <R.Button type="submit">Continuă</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Exemplu finalizat. Nu s-au salvat date.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="equality"
+    class="sdr-stack"
+  >
+    <div class="sdr-field-group">
+      <fieldset
+        id="equality-information"
+        class="sdr-fieldset"
+        aria-describedby="equality-information-hint"
+      >
+        <legend class="sdr-legend">Grupă de vârstă (opțional)</legend>
+        <div
+          class="sdr-hint"
+          id="equality-information-hint"
+        >
+          Întrebare demonstrativă pentru monitorizarea accesului la servicii.
+          Răspunsul nu afectează eligibilitatea.
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group"
+            ><input
+              id="age-group"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="under18"
+            /><span class="sdr-choice__content"
+              ><span>Sub 18 ani</span></span
+            ></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-2"
+            ><input
+              id="age-group-2"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="adult"
+            /><span class="sdr-choice__content"
+              ><span>18–64 de ani</span></span
+            ></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-3"
+            ><input
+              id="age-group-3"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="older"
+            /><span class="sdr-choice__content"
+              ><span>65 de ani sau mai mult</span></span
+            ></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="age-group-4"
+            ><input
+              id="age-group-4"
+              class="sdr-choice__input"
+              type="radio"
+              aria-describedby="equality-information-hint"
+              name="age-group"
+              value="private"
+            /><span class="sdr-choice__content"
+              ><span>Prefer să nu răspund</span></span
+            ></label
+          >
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Continuă
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Exemplu finalizat. Nu s-au salvat date.
+    </p>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-equality.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

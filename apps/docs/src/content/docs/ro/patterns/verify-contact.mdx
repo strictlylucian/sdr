@@ -1,0 +1,280 @@
+---
+title: "Confirmarea datelor de contact"
+description: "Confirmarea datelor de contact — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Această pagină grupează mai multe situații ale aceluiași model. Fiecare secțiune are propriul exemplu și cod React și HTML.
+
+
+
+## Confirmarea numărului de telefon
+
+Câmpul pentru cod permite lipirea și folosește autocomplete=one-time-code. Sunt explicate valabilitatea codului și retrimiterea lui. Pentru cei care nu pot primi SMS-uri este necesară o alternativă, precum un apel sau ajutor din partea echipei. Numărul de încercări se limitează pe server.
+
+<Preview name="PhoneConfirmation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PhoneConfirmationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="phone-code"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Introdu codul din SMS</h3>
+      <R.InsetText>
+        Exemplu fără trimitere de SMS. Codul de test este 123456.
+      </R.InsetText>
+      <R.TextInput
+        label="Cod de verificare"
+        name="security-code"
+        type="text"
+        inputMode="numeric"
+        autoComplete="one-time-code"
+        pattern="123456"
+        title="Codul de test este 123456."
+        required
+      />
+      <div>
+        <R.Button type="submit">Verifică numărul</R.Button>
+      </div>
+      <R.Details summary="Nu ai primit codul?">
+        În acest exemplu nu se trimite un SMS. Folosește codul 123456. Într-un
+        serviciu real, aici apar opțiunile de retrimitere sau ajutor.
+      </R.Details>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Codul de test este corect. Nu s-a verificat un număr real.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="phone-code"
+    class="sdr-stack"
+  >
+    <h3>Introdu codul din SMS</h3>
+    <div class="sdr-inset">
+      Exemplu fără trimitere de SMS. Codul de test este 123456.
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="security-code"
+        >Cod de verificare</label
+      ><input
+        type="text"
+        inputmode="numeric"
+        autocomplete="one-time-code"
+        pattern="123456"
+        title="Codul de test este 123456."
+        required=""
+        id="security-code"
+        class="sdr-input"
+        name="security-code"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Verifică numărul
+      </button>
+    </div>
+    <details class="sdr-details">
+      <summary><span>Nu ai primit codul?</span></summary>
+      <div class="sdr-details__content">
+        În acest exemplu nu se trimite un SMS. Folosește codul 123456. Într-un
+        serviciu real, aici apar opțiunile de retrimitere sau ajutor.
+      </div>
+    </details>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Codul de test este corect. Nu s-a verificat un număr real.
+    </p>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-verify-contact.html)
+
+
+
+
+<div id="variant-confirm-email" className="sdr-component-variant">
+
+## Confirmarea adresei de email
+
+Pagina arată adresa folosită și permite corectarea ei. Textul explică valabilitatea linkului și cum se poate retrimite mesajul. După confirmare, utilizatorul vede rezultatul și poate continua de unde a rămas.
+
+<Preview name="EmailConfirmation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function EmailConfirmationExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="email-confirm"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Verifică adresa de email</h3>
+      <p>
+        Într-un serviciu real, linkul de confirmare este trimis la{' '}
+        <strong>ana@example.invalid</strong>.
+      </p>
+      <R.InsetText>
+        Acesta este un exemplu. Butonul simulează deschiderea linkului din
+        email; nu trimite mesaje.
+      </R.InsetText>
+      <div>
+        <R.Button type="submit">Simulează confirmarea</R.Button>
+      </div>
+      <p
+        role="status"
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        Confirmarea de test a reușit. Poți continua cererea.
+      </p>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="email-confirm"
+    class="sdr-stack"
+  >
+    <h3>Verifică adresa de email</h3>
+    <p>
+      Într-un serviciu real, linkul de confirmare este trimis la
+      <strong>ana@example.invalid</strong>.
+    </p>
+    <div class="sdr-inset">
+      Acesta este un exemplu. Butonul simulează deschiderea linkului din email;
+      nu trimite mesaje.
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Simulează confirmarea
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      Confirmarea de test a reușit. Poți continua cererea.
+    </p>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-confirm-email.html)
+
+</div>
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

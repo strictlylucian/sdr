@@ -1,0 +1,338 @@
+[
+  {
+    "component": "TextInput",
+    "example": "TextInputError",
+    "slug": "text-input-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Textarea",
+    "example": "TextareaError",
+    "slug": "textarea-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Select",
+    "example": "SelectError",
+    "slug": "select-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Checkbox",
+    "example": "CheckboxError",
+    "slug": "checkbox-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Radio",
+    "example": "RadioError",
+    "slug": "radio-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Switch",
+    "example": "SwitchError",
+    "slug": "switch-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "Fieldset",
+    "example": "FieldsetError",
+    "slug": "fieldset-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "DateInput",
+    "example": "DateInputError",
+    "slug": "date-input-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "DatePicker",
+    "example": "DatePickerError",
+    "slug": "date-picker-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "TimeInput",
+    "example": "TimeInputError",
+    "slug": "time-input-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "FileUpload",
+    "example": "FileUploadError",
+    "slug": "file-upload-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "PasswordInput",
+    "example": "PasswordInputError",
+    "slug": "password-input-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "CharacterCount",
+    "example": "CharacterCountError",
+    "slug": "character-count-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "RangeInput",
+    "example": "RangeInputError",
+    "slug": "range-input-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "SearchBar",
+    "example": "SearchBarError",
+    "slug": "search-bar-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "SegmentedControl",
+    "example": "SegmentedControlError",
+    "slug": "segmented-control-error",
+    "state": "error",
+    "native": true
+  },
+  {
+    "component": "TextInput",
+    "example": "TextInputDisabled",
+    "slug": "text-input-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Textarea",
+    "example": "TextareaDisabled",
+    "slug": "textarea-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Select",
+    "example": "SelectDisabled",
+    "slug": "select-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Checkbox",
+    "example": "CheckboxDisabled",
+    "slug": "checkbox-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Radio",
+    "example": "RadioDisabled",
+    "slug": "radio-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Switch",
+    "example": "SwitchDisabled",
+    "slug": "switch-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "Fieldset",
+    "example": "FieldsetDisabled",
+    "slug": "fieldset-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "DateInput",
+    "example": "DateInputDisabled",
+    "slug": "date-input-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "DatePicker",
+    "example": "DatePickerDisabled",
+    "slug": "date-picker-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "TimeInput",
+    "example": "TimeInputDisabled",
+    "slug": "time-input-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "FileUpload",
+    "example": "FileUploadDisabled",
+    "slug": "file-upload-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "PasswordInput",
+    "example": "PasswordInputDisabled",
+    "slug": "password-input-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "CharacterCount",
+    "example": "CharacterCountDisabled",
+    "slug": "character-count-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "RangeInput",
+    "example": "RangeInputDisabled",
+    "slug": "range-input-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "SearchBar",
+    "example": "SearchBarDisabled",
+    "slug": "search-bar-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "SegmentedControl",
+    "example": "SegmentedControlDisabled",
+    "slug": "segmented-control-disabled",
+    "state": "disabled",
+    "native": true
+  },
+  {
+    "component": "TextInput",
+    "example": "TextInputReadOnly",
+    "slug": "text-input-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "Textarea",
+    "example": "TextareaReadOnly",
+    "slug": "textarea-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "Select",
+    "example": "SelectReadOnly",
+    "slug": "select-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "Checkbox",
+    "example": "CheckboxReadOnly",
+    "slug": "checkbox-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "Radio",
+    "example": "RadioReadOnly",
+    "slug": "radio-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "Switch",
+    "example": "SwitchReadOnly",
+    "slug": "switch-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "Fieldset",
+    "example": "FieldsetReadOnly",
+    "slug": "fieldset-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "DateInput",
+    "example": "DateInputReadOnly",
+    "slug": "date-input-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "DatePicker",
+    "example": "DatePickerReadOnly",
+    "slug": "date-picker-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "TimeInput",
+    "example": "TimeInputReadOnly",
+    "slug": "time-input-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "FileUpload",
+    "example": "FileUploadReadOnly",
+    "slug": "file-upload-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "PasswordInput",
+    "example": "PasswordInputReadOnly",
+    "slug": "password-input-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "CharacterCount",
+    "example": "CharacterCountReadOnly",
+    "slug": "character-count-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "RangeInput",
+    "example": "RangeInputReadOnly",
+    "slug": "range-input-readonly",
+    "state": "readOnly",
+    "native": false
+  },
+  {
+    "component": "SearchBar",
+    "example": "SearchBarReadOnly",
+    "slug": "search-bar-readonly",
+    "state": "readOnly",
+    "native": true
+  },
+  {
+    "component": "SegmentedControl",
+    "example": "SegmentedControlReadOnly",
+    "slug": "segmented-control-readonly",
+    "state": "readOnly",
+    "native": false
+  }
+]

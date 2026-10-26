@@ -1,0 +1,14 @@
+{
+  "reviewed": "2026-10-25",
+  "scope": "Internal research provenance for independent SDR examples. No upstream component code, branding or service claims are copied into public documentation.",
+  "references": [
+    {"url":"https://design-system.service.gov.uk/patterns/payment-card-details/","adaptation":"Single-page field ordering, cardholder name, expiry and plain-language security-code label; SDR-only test-card simulation, hosted provider guidance for production."},
+    {"url":"https://design-system.service.gov.uk/patterns/phone-numbers/","adaptation":"Labelled tel field, tel autocomplete, flexible input without masking and an explanation of contact purpose."},
+    {"url":"https://design-system.service.gov.uk/patterns/confirm-a-phone-number/","adaptation":"Text one-time-code field, numeric keyboard, clear resend/help context; fixed test code and no real SMS."},
+    {"url":"https://design-system.service.gov.uk/patterns/service-unavailable-pages/","adaptation":"Planned maintenance with known example availability and a support route."},
+    {"url":"https://design-system.service.gov.uk/patterns/page-not-found-pages/","adaptation":"Plain missing-page explanation, address check and recovery links without blame or technical error jargon."},
+    {"url":"https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/","adaptation":"Unexpected submission failure with an explicit outcome, retry and support links; distinct from maintenance."},
+    {"url":"https://design-system.service.gov.uk/patterns/create-accounts/","adaptation":"Separate account creation from sign-in, explain account need, permit password managers and avoid duplicate entry."},
+    {"url":"https://design-system.service.gov.uk/patterns/confirmation-pages/","adaptation":"Application reference, concrete next steps and response timeframe."}
+  ]
+}

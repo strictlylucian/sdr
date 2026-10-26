@@ -1,0 +1,180 @@
+---
+title: "Summary List"
+description: "Summary List — SDR. Independent proposal."
+sidebar: {"order":51}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Present labelled answers with specific change links.
+
+## Example
+
+<Preview name="SummaryList" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SummaryListExample() {
+  return (
+    <R.SummaryList
+      items={[
+        {
+          key: 'Name',
+          value: 'Ana Șerban',
+          actions: <R.Link href="#change-name">Change name</R.Link>,
+        },
+        { key: 'City', value: 'Brașov' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Name</dt>
+      <dd>Ana Șerban</dd>
+      <dd class="sdr-summary__actions">
+        <a href="#change-name">Change name</a>
+      </dd>
+    </div>
+    <div class="sdr-summary__row">
+      <dt>City</dt>
+      <dd>Brașov</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/summary-list.html)
+
+
+
+## Usage
+
+Change links must name the answer, such as Change address.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `items` | `SummaryItem[]` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-data-list" className="sdr-component-variant">
+
+## Without actions
+
+DataList is a SummaryList alias suited to descriptive key-value data without change links.
+
+<Preview name="DataList" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DataListExample() {
+  return (
+    <R.DataList
+      items={[
+        { key: 'Reference', value: 'SDR-0042' },
+        { key: 'Status', value: <R.Tag tone="success">Received</R.Tag> },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Reference</dt>
+      <dd>SDR-0042</dd>
+    </div>
+    <div class="sdr-summary__row">
+      <dt>Status</dt>
+      <dd><span class="sdr-tag sdr-tag--success">Received</span></dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/data-list.html)
+
+
+
+### API · DataList
+
+| Property | Type | Required |
+|---|---|---|
+| `items` | `SummaryItem[]` | Yes |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

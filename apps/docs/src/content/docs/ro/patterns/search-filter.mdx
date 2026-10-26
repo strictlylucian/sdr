@@ -1,0 +1,261 @@
+---
+title: "Căutare și filtrare"
+description: "Căutare și filtrare — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+URL-ul păstrează termenii de căutare și filtrele, astfel încât rezultatele să poată fi redeschise sau trimise altcuiva. Numărul de rezultate este anunțat și cititoarelor de ecran. Când nu există rezultate, filtrele pot fi șterse ușor. Sortarea păstrează filtrele selectate.
+
+<Preview name="SearchFilter" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SearchFilterExample() {
+  const [filter, setFilter] = useState({ query: '', category: '' });
+  const items = [
+    {
+      id: 'residence',
+      label: 'Adeverință de domiciliu',
+      category: 'documents',
+    },
+    { id: 'copy', label: 'Copie de document', category: 'documents' },
+    { id: 'tax', label: 'Plata unei taxe', category: 'payments' },
+  ];
+  const visible = items.filter(
+    (item) =>
+      (!filter.category || item.category === filter.category) &&
+      item.label
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .includes(
+          filter.query.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase(),
+        ),
+  );
+  return (
+    <form
+      data-sdr-pattern-demo="search"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        setFilter({
+          query: String(data.get('query')),
+          category: String(data.get('category')),
+        });
+      }}
+      onReset={() => setFilter({ query: '', category: '' })}
+    >
+      <R.TextInput
+        label="Caută un serviciu"
+        type="search"
+        name="query"
+        autoComplete="off"
+      />
+      <R.Select
+        label="Categorie"
+        name="category"
+      >
+        <option value="">Toate categoriile</option>
+        <option value="documents">Documente</option>
+        <option value="payments">Plăți</option>
+      </R.Select>
+      <R.Cluster>
+        <R.Button type="submit">Caută</R.Button>
+        <R.Button
+          variant="secondary"
+          type="reset"
+        >
+          Șterge filtrele
+        </R.Button>
+      </R.Cluster>
+      <p
+        role="status"
+        data-sdr-search-count
+      >{`Rezultate: ${visible.length}`}</p>
+      <p
+        data-sdr-search-empty
+        hidden={visible.length !== 0}
+      >
+        Nu am găsit rezultate. Încearcă alți termeni sau șterge filtrele.
+      </p>
+      <R.Grid
+        columns={2}
+        data-sdr-search-results
+        hidden={visible.length === 0}
+      >
+        {items.map((item) => (
+          <div
+            key={item.id}
+            data-sdr-search-item
+            data-category={item.category}
+            data-search-label={item.label}
+            hidden={!visible.includes(item)}
+          >
+            <R.Card
+              title={item.label}
+              footer={
+                <R.Link href={`/${locale}/patterns/start/`}>Vezi pașii</R.Link>
+              }
+            >
+              Serviciu demonstrativ.
+            </R.Card>
+          </div>
+        ))}
+      </R.Grid>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="search"
+    class="sdr-stack"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="query"
+        >Caută un serviciu</label
+      ><input
+        type="search"
+        autocomplete="off"
+        id="query"
+        class="sdr-input"
+        name="query"
+      />
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="category"
+        >Categorie</label
+      ><select
+        name="category"
+        id="category"
+        class="sdr-select"
+      >
+        <option value="">Toate categoriile</option>
+        <option value="documents">Documente</option>
+        <option value="payments">Plăți</option>
+      </select>
+    </div>
+    <div class="sdr-cluster sdr-u-gap-3">
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Caută</button
+      ><button
+        type="reset"
+        class="sdr-button sdr-button--secondary"
+      >
+        Șterge filtrele
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-search-count="true"
+    >
+      Rezultate: 3
+    </p>
+    <p
+      data-sdr-search-empty="true"
+      hidden=""
+    >
+      Nu am găsit rezultate. Încearcă alți termeni sau șterge filtrele.
+    </p>
+    <div
+      data-sdr-search-results="true"
+      class="sdr-grid sdr-grid--2"
+    >
+      <div
+        data-sdr-search-item="true"
+        data-category="documents"
+        data-search-label="Adeverință de domiciliu"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Adeverință de domiciliu</h3>
+          <div>Serviciu demonstrativ.</div>
+          <div class="sdr-card__footer">
+            <a href="/ro/patterns/start/">Vezi pașii</a>
+          </div>
+        </article>
+      </div>
+      <div
+        data-sdr-search-item="true"
+        data-category="documents"
+        data-search-label="Copie de document"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Copie de document</h3>
+          <div>Serviciu demonstrativ.</div>
+          <div class="sdr-card__footer">
+            <a href="/ro/patterns/start/">Vezi pașii</a>
+          </div>
+        </article>
+      </div>
+      <div
+        data-sdr-search-item="true"
+        data-category="payments"
+        data-search-label="Plata unei taxe"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Plata unei taxe</h3>
+          <div>Serviciu demonstrativ.</div>
+          <div class="sdr-card__footer">
+            <a href="/ro/patterns/start/">Vezi pașii</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-search-filter.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

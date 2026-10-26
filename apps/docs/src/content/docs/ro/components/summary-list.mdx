@@ -1,0 +1,180 @@
+---
+title: "Rezumat de date"
+description: "Rezumat de date — SDR. Propunere independentă."
+sidebar: {"order":47}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează răspunsurile împreună cu denumirile lor și linkuri de modificare.
+
+## Exemplu
+
+<Preview name="SummaryList" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SummaryListExample() {
+  return (
+    <R.SummaryList
+      items={[
+        {
+          key: 'Nume',
+          value: 'Ana Șerban',
+          actions: <R.Link href="#change-name">Modifică numele</R.Link>,
+        },
+        { key: 'Localitate', value: 'Brașov' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Nume</dt>
+      <dd>Ana Șerban</dd>
+      <dd class="sdr-summary__actions">
+        <a href="#change-name">Modifică numele</a>
+      </dd>
+    </div>
+    <div class="sdr-summary__row">
+      <dt>Localitate</dt>
+      <dd>Brașov</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/summary-list.html)
+
+
+
+## Utilizare
+
+Fiecare link de modificare precizează răspunsul la care se referă, inclusiv când este citit separat de restul paginii.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `SummaryItem[]` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-data-list" className="sdr-component-variant">
+
+## Fără acțiuni
+
+DataList este un alias pentru SummaryList, potrivit pentru perechi de denumiri și valori, fără linkuri de modificare.
+
+<Preview name="DataList" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DataListExample() {
+  return (
+    <R.DataList
+      items={[
+        { key: 'Numărul cererii', value: 'SDR-0042' },
+        { key: 'Stare', value: <R.Tag tone="success">Primită</R.Tag> },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Numărul cererii</dt>
+      <dd>SDR-0042</dd>
+    </div>
+    <div class="sdr-summary__row">
+      <dt>Stare</dt>
+      <dd><span class="sdr-tag sdr-tag--success">Primită</span></dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/data-list.html)
+
+
+
+### API · DataList
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `SummaryItem[]` | Da |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

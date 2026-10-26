@@ -1,0 +1,695 @@
+---
+title: "Checkbox"
+description: "Checkbox — SDR. Independent proposal."
+sidebar: {"order":7}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Select zero or more independent options.
+
+## Example
+
+<Preview name="Checkbox" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function CheckboxExample() {
+  return (
+    <R.Fieldset legend="How would you like us to contact you?">
+      <R.Checkbox
+        name="contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="contact"
+        value="post"
+        label="By post"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="checkbox"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">How would you like us to contact you?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="contact"
+          ><input
+            id="contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="contact-2"
+          ><input
+            id="contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="contact"
+            value="post"
+          /><span class="sdr-choice__content"><span>By post</span></span></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/checkbox.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="CheckboxError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function CheckboxErrorExample() {
+  return (
+    <R.Fieldset
+      error="Choose at least one contact method."
+      legend="How would you like us to contact you?"
+    >
+      <R.Checkbox
+        name="error-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="error-contact"
+        value="post"
+        label="By post"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="checkbox-error"
+      class="sdr-fieldset"
+      aria-describedby="checkbox-error-error"
+    >
+      <legend class="sdr-legend">How would you like us to contact you?</legend>
+      <div
+        class="sdr-error"
+        id="checkbox-error-error"
+      >
+        Choose at least one contact method.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact"
+          ><input
+            id="error-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="checkbox-error-error"
+            name="error-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-contact-2"
+          ><input
+            id="error-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            aria-invalid="true"
+            aria-describedby="checkbox-error-error"
+            name="error-contact"
+            value="post"
+          /><span class="sdr-choice__content"><span>By post</span></span></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/checkbox-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="CheckboxDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function CheckboxDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="How would you like us to contact you?"
+    >
+      <R.Checkbox
+        name="disabled-contact"
+        value="email"
+        label="Email"
+      />
+      <R.Checkbox
+        name="disabled-contact"
+        value="post"
+        label="By post"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="checkbox-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">How would you like us to contact you?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-contact"
+          ><input
+            id="disabled-contact"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="disabled-contact"
+            value="email"
+          /><span class="sdr-choice__content"><span>Email</span></span></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-contact-2"
+          ><input
+            id="disabled-contact-2"
+            class="sdr-choice__input"
+            type="checkbox"
+            name="disabled-contact"
+            value="post"
+          /><span class="sdr-choice__content"><span>By post</span></span></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/checkbox-disabled.html)
+
+
+## Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="CheckboxReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function CheckboxReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'How would you like us to contact you?', value: 'Email' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>How would you like us to contact you?</dt>
+      <dd>Email</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/checkbox-readonly.html)
+
+
+## Usage
+
+Group related choices with Fieldset and include a none option where appropriate.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-switch" className="sdr-component-variant">
+
+## Switch
+
+Switch is the setting-toggle variant and retains checkbox semantics. The application decides whether the change saves immediately.
+
+<Preview name="Switch" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SwitchExample() {
+  return (
+    <R.Switch
+      name="notifications"
+      label="Receive email notifications"
+      hint="We will tell you when your application status changes."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field">
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="notifications"
+      ><input
+        id="notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-describedby="notifications-hint"
+        name="notifications"
+      /><span class="sdr-choice__content"
+        ><span>Receive email notifications</span
+        ><span
+          id="notifications-hint"
+          class="sdr-hint"
+          >We will tell you when your application status changes.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/switch.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="SwitchError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SwitchErrorExample() {
+  return (
+    <R.Switch
+      error="Confirm your notification preference."
+      name="error-notifications"
+      label="Receive email notifications"
+      hint="We will tell you when your application status changes."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field sdr-field sdr-field--error">
+    <p
+      id="error-notifications-error"
+      class="sdr-error"
+    >
+      Confirm your notification preference.
+    </p>
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="error-notifications"
+      ><input
+        id="error-notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-invalid="true"
+        aria-describedby="error-notifications-hint error-notifications-error"
+        name="error-notifications"
+      /><span class="sdr-choice__content"
+        ><span>Receive email notifications</span
+        ><span
+          id="error-notifications-hint"
+          class="sdr-hint"
+          >We will tell you when your application status changes.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/switch-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="SwitchDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SwitchDisabledExample() {
+  return (
+    <R.Switch
+      disabled
+      defaultChecked
+      name="disabled-notifications"
+      label="Receive email notifications"
+      hint="We will tell you when your application status changes."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-choice-field">
+    <label
+      class="sdr-choice sdr-choice--switch"
+      for="disabled-notifications"
+      ><input
+        disabled=""
+        id="disabled-notifications"
+        class="sdr-choice__input"
+        type="checkbox"
+        role="switch"
+        aria-describedby="disabled-notifications-hint"
+        name="disabled-notifications"
+        checked=""
+      /><span class="sdr-choice__content"
+        ><span>Receive email notifications</span
+        ><span
+          id="disabled-notifications-hint"
+          class="sdr-hint"
+          >We will tell you when your application status changes.</span
+        ></span
+      ></label
+    >
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/switch-disabled.html)
+
+
+### Read-only
+
+This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.
+
+<Preview name="SwitchReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SwitchReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Receive email notifications', value: 'Enabled' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Receive email notifications</dt>
+      <dd>Enabled</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/switch-readonly.html)
+
+
+### API · Switch
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

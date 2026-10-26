@@ -1,0 +1,91 @@
+---
+title: "Confirmation pages"
+description: "Confirmation pages — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Show a stable reference, what happens next and how to get help. Provide a receipt through an appropriate channel; the browser page alone is not durable storage.
+
+<Preview name="ConfirmationPage" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ConfirmationPageExample() {
+  return (
+    <R.ConfirmationPage
+      title="Application received"
+      reference="SDR-2026-0042"
+      referenceLabel="Reference"
+    >
+      <h2>What happens next</h2>
+      <p>
+        In this example, a response is sent by email within 5 working days. Keep
+        your application reference.
+      </p>
+    </R.ConfirmationPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <div class="sdr-panel">
+      <h2>Application received</h2>
+      <p>Reference: <strong>SDR-2026-0042</strong></p>
+    </div>
+    <div class="sdr-prose">
+      <h2>What happens next</h2>
+      <p>
+        In this example, a response is sent by email within 5 working days. Keep
+        your application reference.
+      </p>
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-confirmation.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

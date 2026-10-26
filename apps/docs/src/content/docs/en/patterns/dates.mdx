@@ -1,0 +1,134 @@
+---
+title: "Dates"
+description: "Dates — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Use three fields for memorable dates, a native picker for appointments, and state the expected time zone for deadlines. Validate calendar correctness on the server.
+
+<Preview name="DateInput" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DateInputExample() {
+  return (
+    <R.DateInput
+      legend="Date of birth"
+      name="birth"
+      hint="For example, 27 3 1990"
+      labels={{ day: 'Day', month: 'Month', year: 'Year' }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      class="sdr-fieldset"
+      aria-describedby="date-input-hint"
+    >
+      <legend class="sdr-legend">Date of birth</legend>
+      <p
+        id="date-input-hint"
+        class="sdr-hint"
+      >
+        For example, 27 3 1990
+      </p>
+      <div class="sdr-date">
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-day"
+            >Day</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-day"
+            maxlength="2"
+            id="date-input-day"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-day"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-month"
+            >Month</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-month"
+            maxlength="2"
+            id="date-input-month"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-month"
+          />
+        </div>
+        <div class="sdr-field">
+          <label
+            class="sdr-label"
+            for="date-input-year"
+            >Year</label
+          ><input
+            inputmode="numeric"
+            autocomplete="bday-year"
+            maxlength="4"
+            id="date-input-year"
+            aria-describedby="date-input-hint"
+            class="sdr-input"
+            name="birth-year"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-dates.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

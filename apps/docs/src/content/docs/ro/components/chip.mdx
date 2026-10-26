@@ -1,0 +1,260 @@
+---
+title: "Chip"
+description: "Chip — SDR. Propunere independentă."
+sidebar: {"order":17}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Afișează o categorie sau un filtru într-un format compact.
+
+## Exemplu
+
+<Preview name="Chip" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ChipExample() {
+  return (
+    <R.Cluster>
+      <R.Chip>Brașov</R.Chip>
+      <R.Chip>Servicii locale</R.Chip>
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <span class="sdr-chip">Brașov</span
+    ><span class="sdr-chip">Servicii locale</span>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/chip.html)
+
+
+
+## Utilizare
+
+Pentru variante interactive sunt disponibile ActionChip și DismissibleChip.
+
+
+
+## API
+
+Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă descriu proprietățile disponibile.
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-action-chip" className="sdr-component-variant">
+
+## Cu acțiune
+
+Varianta interactivă este un buton pentru o acțiune secundară. Chip-ul simplu afișează doar o etichetă.
+
+<Preview name="ActionChip" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ActionChipExample() {
+  const [count, setCount] = useState(0);
+  return (
+    <R.Cluster>
+      <R.ActionChip onClick={() => setCount(count + 1)}>
+        Adaugă un filtru
+      </R.ActionChip>
+      <span role="status">{count}</span>
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <button
+      type="button"
+      class="sdr-chip"
+    >
+      Adaugă un filtru</button
+    ><span role="status">0</span>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/action-chip.html)
+
+
+
+### API · ActionChip
+
+Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă descriu proprietățile disponibile.
+
+</div>
+
+
+<div id="variant-dismissible-chip" className="sdr-component-variant">
+
+## Cu opțiune de eliminare
+
+Varianta reprezintă un filtru selectat care poate fi eliminat. onRemove sau evenimentul ediției HTML transmite acțiunea către aplicație. Aplicația actualizează lista și mută focusul pe un element potrivit.
+
+<Preview name="DismissibleChip" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DismissibleChipExample() {
+  const [visible, setVisible] = useState(true);
+  return (
+    <R.Cluster>
+      <R.Button
+        id="restore-filter"
+        variant="secondary"
+        onClick={() => setVisible(true)}
+      >
+        Adaugă filtrul din nou
+      </R.Button>
+      {visible && (
+        <R.DismissibleChip
+          removeLabel="Elimină filtrul Brașov"
+          onRemove={() => {
+            setVisible(false);
+            document.getElementById('restore-filter')?.focus();
+          }}
+        >
+          Brașov
+        </R.DismissibleChip>
+      )}
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <button
+      id="restore-filter"
+      type="button"
+      class="sdr-button sdr-button--secondary"
+    >
+      Adaugă filtrul din nou</button
+    ><button
+      class="sdr-chip"
+      type="button"
+      aria-label="Elimină filtrul Brașov"
+      data-sdr-component="actions"
+      data-sdr-action="remove"
+    >
+      Brașov<span aria-hidden="true">×</span>
+    </button>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/dismissible-chip.html)
+
+
+
+### API · DismissibleChip
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `children` | `ReactNode` | Da |
+| `onRemove` | `() => void` | Da |
+| `removeLabel` | `string` | Da |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

@@ -1,0 +1,252 @@
+---
+title: "Dialog modal"
+description: "Dialog modal — SDR. Propunere independentă."
+sidebar: {"order":23}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Deschide o fereastră modală pentru o acțiune scurtă sau o verificare.
+
+## Exemplu
+
+<Preview name="Dialog" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DialogExample() {
+  return (
+    <R.Dialog
+      trigger="Verifică documentul"
+      title="Verificarea documentului"
+      closeLabel="Închide"
+    >
+      <p>
+        Verifică dacă documentul este complet și lizibil înainte de trimitere.
+      </p>
+    </R.Dialog>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div data-sdr-component="dialog">
+    <button
+      data-sdr-dialog-open="true"
+      aria-haspopup="dialog"
+      aria-controls="dialog"
+      hidden=""
+      type="button"
+      class="sdr-button"
+    >
+      Verifică documentul
+    </button>
+    <dialog
+      id="dialog"
+      class="sdr-dialog"
+      aria-labelledby="dialog-title"
+    >
+      <div class="sdr-dialog__header">
+        <h2
+          id="dialog-title"
+          class="sdr-heading-md"
+        >
+          Verificarea documentului
+        </h2>
+        <button
+          data-sdr-dialog-close="true"
+          type="button"
+          class="sdr-button sdr-button--tertiary"
+        >
+          Închide
+        </button>
+      </div>
+      <div class="sdr-dialog__body">
+        <p>
+          Verifică dacă documentul este complet și lizibil înainte de trimitere.
+        </p>
+      </div>
+    </dialog>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/dialog.html)
+
+
+
+## Utilizare
+
+Dialogurile nu se deschid unele în altele. Escape sau un click în exterior închide dialogul și readuce focusul pe butonul care l-a deschis. Deschiderea necesită JavaScript.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `trigger` | `string` | Da |
+| `title` | `string` | Da |
+| `children` | `ReactNode` | Da |
+| `closeLabel` | `string` | Da |
+| `drawer` | `boolean \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-drawer" className="sdr-component-variant">
+
+## Panou lateral
+
+Drawer deschide același dialog modal la marginea ecranului. Focusul rămâne în interior cât timp este deschis. Se închide cu Escape, cu butonul de închidere sau printr-un click în exterior.
+
+<Preview name="Drawer" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function DrawerExample() {
+  return (
+    <R.Drawer
+      trigger="Vezi detaliile"
+      title="Detaliile cererii"
+      closeLabel="Închide"
+    >
+      <R.SummaryList
+        items={[
+          { key: 'Numărul cererii', value: 'SDR-0042' },
+          { key: 'Stare', value: 'În curs de verificare' },
+        ]}
+      />
+    </R.Drawer>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div data-sdr-component="dialog">
+    <button
+      data-sdr-dialog-open="true"
+      aria-haspopup="dialog"
+      aria-controls="drawer"
+      hidden=""
+      type="button"
+      class="sdr-button"
+    >
+      Vezi detaliile
+    </button>
+    <dialog
+      id="drawer"
+      class="sdr-dialog sdr-dialog--drawer"
+      aria-labelledby="drawer-title"
+    >
+      <div class="sdr-dialog__header">
+        <h2
+          id="drawer-title"
+          class="sdr-heading-md"
+        >
+          Detaliile cererii
+        </h2>
+        <button
+          data-sdr-dialog-close="true"
+          type="button"
+          class="sdr-button sdr-button--tertiary"
+        >
+          Închide
+        </button>
+      </div>
+      <div class="sdr-dialog__body">
+        <dl class="sdr-summary">
+          <div class="sdr-summary__row">
+            <dt>Numărul cererii</dt>
+            <dd>SDR-0042</dd>
+          </div>
+          <div class="sdr-summary__row">
+            <dt>Stare</dt>
+            <dd>În curs de verificare</dd>
+          </div>
+        </dl>
+      </div>
+    </dialog>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/drawer.html)
+
+
+
+### API · Drawer
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `title` | `string` | Da |
+| `children` | `ReactNode` | Da |
+| `trigger` | `string` | Da |
+| `closeLabel` | `string` | Da |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

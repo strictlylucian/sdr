@@ -1,0 +1,33 @@
+---
+title: "Architecture and contracts"
+description: "Architecture and contracts — SDR. Independent proposal."
+---
+
+## Package boundaries
+
+- packages/core: tokens, styles and DOM enhancement controllers; application-owned labels and formatters.
+- packages/react: typed React components and service compositions. React remains a peer dependency.
+- dist/portable: exactly sdr.css and sdr.js.
+- apps/docs: Astro Starlight, bilingual MDX, live React examples and portable HTML examples.
+- catalog: component guidance and service-pattern guidance.
+
+Both adapters use the same styles and enhancement controllers. Native HTML is the baseline. Data attributes are an explicit public enhancement contract, not selectors tied to incidental document structure.
+
+## Lifecycle
+
+SDR.init(root) enhances opted-in descendants and the root itself. Repeated initialisation does not duplicate listeners. The returned disposer releases only components mounted by that call. SDR.destroy(root) releases every enhanced component in a removed subtree. Call init again after inserting HTML. React-owned roots are skipped by the portable initializer.
+
+Uncontrolled enhancements accept initial state. Tabs defaultSelected and ToggleButton defaultPressed are initial values, not controlled props. React reinitialises tabs when its item configuration changes. Host applications own routing, network requests, storage, validation, analytics and consent enforcement.
+
+## Events
+
+CookieBanner, Feedback and DismissibleChip emit sdr:action with detail.action in the portable edition. Actions are accept, reject, helpful, unhelpful and remove. React exposes corresponding callbacks. Toast emits sdr:dismiss after moving focus to the configured destination. Listen on a local container and remove host handlers when disposing it.
+
+## Styling contract
+
+Component classes start sdr- and tokens start --sdr-. Components use logical properties. One spacing source generates variables, layout gaps and override classes. Tokens and shared primitives provide consistent customisation points across a service.
+
+## Versioning
+
+0.1.0-alpha.1 is experimental. Breaking alpha changes must be documented. A stable release requires API review, disabled-user research, manual browser and screen-reader qualification and a published support policy.
+

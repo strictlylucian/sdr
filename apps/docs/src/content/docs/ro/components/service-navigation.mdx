@@ -1,0 +1,282 @@
+---
+title: "Navigarea serviciului"
+description: "Navigarea serviciului — SDR. Propunere independentă."
+sidebar: {"order":44}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Oferă acces la secțiunile principale ale serviciului.
+
+## Exemplu
+
+<Preview name="ServiceNavigation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ServiceNavigationExample() {
+  return (
+    <R.ServiceNavigation
+      label="Serviciu"
+      items={[
+        { label: 'Prezentare', href: `/${locale}/`, current: true },
+        { label: 'Componente', href: `/${locale}/components/` },
+      ]}
+      menuLabel="Meniu"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-navigation"
+    aria-label="Serviciu"
+    data-sdr-component="service-navigation"
+  >
+    <div class="sdr-width-container">
+      <button
+        type="button"
+        class="sdr-navigation__toggle"
+        data-sdr-navigation-toggle="true"
+        aria-controls="service-navigation"
+        hidden=""
+      >
+        Meniu
+      </button>
+      <ul
+        id="service-navigation"
+        data-sdr-navigation-links="true"
+      >
+        <li>
+          <a
+            href="/ro/"
+            aria-current="page"
+            >Prezentare</a
+          >
+        </li>
+        <li><a href="/ro/components/">Componente</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/service-navigation.html)
+
+
+
+## Utilizare
+
+Sub 40rem, navigarea cu mai multe linkuri se restrânge într-un meniu. aria-expanded indică dacă este deschis; Escape îl închide și readuce focusul pe buton. De la 40rem, linkurile sunt afișate permanent. Fără JavaScript, toate linkurile rămân vizibile. menuLabel schimbă textul butonului.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `NavigationItem[]` | Da |
+| `label` | `string` | Da |
+| `side` | `boolean \| undefined` | Nu |
+| `menuLabel` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-side-navigation" className="sdr-component-variant">
+
+## Navigare laterală
+
+Linkurile către secțiuni conexe sunt așezate vertical. Când pagina trece pe o singură coloană, ordinea de citire rămâne cea din HTML.
+
+<Preview name="SideNavigation" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SideNavigationExample() {
+  return (
+    <R.SideNavigation
+      label="Secțiuni"
+      items={[
+        { label: 'Date personale', href: '#personal', current: true },
+        { label: 'Documente', href: '#documents' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-navigation sdr-navigation--side"
+    aria-label="Secțiuni"
+  >
+    <ul>
+      <li>
+        <a
+          href="#personal"
+          aria-current="page"
+          >Date personale</a
+        >
+      </li>
+      <li><a href="#documents">Documente</a></li>
+    </ul>
+  </nav>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/side-navigation.html)
+
+
+
+### API · SideNavigation
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `NavigationItem[]` | Da |
+| `label` | `string` | Da |
+
+</div>
+
+
+<div id="variant-table-of-contents" className="sdr-component-variant">
+
+## Cuprins
+
+Cuprinsul folosește navigarea laterală pentru linkuri către secțiunile paginii. Destinațiile sunt transmise prin items și corespund ancorelor din conținut.
+
+<Preview name="TableOfContents" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function TableOfContentsExample() {
+  return (
+    <R.TableOfContents
+      label="Pe această pagină"
+      items={[
+        { label: 'Utilizare', href: '#usage' },
+        { label: 'Accesibilitate', href: '#accessibility' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav
+    class="sdr-navigation sdr-navigation--side"
+    aria-label="Pe această pagină"
+  >
+    <ul>
+      <li><a href="#usage">Utilizare</a></li>
+      <li><a href="#accessibility">Accesibilitate</a></li>
+    </ul>
+  </nav>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/table-of-contents.html)
+
+
+
+### API · TableOfContents
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `items` | `NavigationItem[]` | Da |
+| `label` | `string` | Da |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

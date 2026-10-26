@@ -1,0 +1,90 @@
+---
+title: "Banner pentru stadiul serviciului"
+description: "Banner pentru stadiul serviciului — SDR. Propunere independentă."
+sidebar: {"order":8}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Arată dacă serviciul este în testare sau în altă etapă de dezvoltare.
+
+## Exemplu
+
+<Preview name="PhaseBanner" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function PhaseBannerExample() {
+  return (
+    <R.PhaseBanner phase="Propunere / Proposal">
+      Inițiativă independentă, în curs de dezvoltare.
+    </R.PhaseBanner>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-phase">
+    <span class="sdr-tag">Propunere / Proposal</span>
+    <div>Inițiativă independentă, în curs de dezvoltare.</div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/phase-banner.html)
+
+
+
+## Utilizare
+
+Stadiul rămâne vizibil, dar nu justifică probleme care împiedică folosirea serviciului.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `phase` | `string` | Da |
+| `children` | `ReactNode` | Da |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

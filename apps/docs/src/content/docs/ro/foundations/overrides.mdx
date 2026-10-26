@@ -1,0 +1,21 @@
+---
+title: "Clase utilitare și override-uri"
+description: "Clase utilitare și override-uri — SDR. Propunere independentă."
+---
+
+Clasele utilitare sunt generate din aceleași tokenuri ca și componentele. Ele permit ajustări locale ale layout-ului, fără introducerea unui set separat de valori CSS.
+
+- sdr-u-margin-0 până la sdr-u-margin-9 și clasele echivalente pentru padding.
+- Direcții: top, bottom, left, right, block și inline. Left și right corespund proprietăților logice inline-start și inline-end.
+- sdr-u-gap-0 până la sdr-u-gap-9, precum și row-gap și column-gap.
+- sdr-u-md-padding-5 și variantele echivalente se aplică de la 48rem.
+- sdr-u-width-full, three-quarters, two-thirds, one-half, one-third, one-quarter și auto. Sub 40rem, lățimile fracționare devin 100%; auto păstrează lățimea naturală.
+- sdr-u-text-xs până la sdr-u-text-4xl; sdr-u-weight-regular, medium și bold.
+- sdr-u-text-start, center și end; sdr-u-tabular și sdr-u-measure.
+- sdr-u-display-block, inline, inline-block, none, flex și grid; sdr-u-hide-print.
+- sdr-visually-hidden ascunde vizual conținutul, dar îl păstrează pentru cititoarele de ecran. Conținutul devine vizibil dacă primește focus.
+
+Prefixul canonic al utilitarelor este sdr-u-. Clasele numerotate păstrează valoarea aleasă; sdr-u-md-* aplică aceeași ajustare de la 48rem.
+
+Override-urile folosesc !important, inclusiv pentru resetarea la zero. display-none ascunde conținutul și cititoarelor de ecran; sdr-visually-hidden îl păstrează accesibil acestora. Variabilele CSS pot fi folosite și în stilurile aplicației, pentru aceeași spațiere ca în componente.
+

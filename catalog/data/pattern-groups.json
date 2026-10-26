@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "service-status",
+    "primary": "unavailable",
+    "variants": [
+      "not-found",
+      "service-problem",
+      "interruption"
+    ],
+    "title": {
+      "ro": "Starea serviciului și pagini de eroare",
+      "en": "Service status and error pages"
+    }
+  },
+  {
+    "slug": "contact-details",
+    "primary": "phone",
+    "variants": [
+      "email"
+    ],
+    "title": {
+      "ro": "Date de contact",
+      "en": "Contact details"
+    }
+  },
+  {
+    "slug": "verify-contact",
+    "primary": "confirm-phone",
+    "variants": [
+      "confirm-email"
+    ],
+    "title": {
+      "ro": "Confirmarea datelor de contact",
+      "en": "Confirm contact details"
+    }
+  },
+  {
+    "slug": "accounts",
+    "primary": "accounts",
+    "variants": [
+      "passwords",
+      "username"
+    ],
+    "title": {
+      "ro": "Crearea unui cont",
+      "en": "Create an account"
+    }
+  },
+  {
+    "slug": "tasks",
+    "primary": "tasks",
+    "variants": [
+      "resume"
+    ],
+    "title": {
+      "ro": "Activități și reluarea cererii",
+      "en": "Tasks and returning to an application"
+    }
+  },
+  {
+    "slug": "contact",
+    "primary": "contact",
+    "variants": [
+      "assisted"
+    ],
+    "title": {
+      "ro": "Contact și ajutor",
+      "en": "Contact and support"
+    }
+  }
+]

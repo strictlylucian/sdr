@@ -1,0 +1,257 @@
+---
+title: "Search and filter"
+description: "Search and filter — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Persist queries and filters in shareable URLs, announce result counts, and offer clear filters when nothing matches. Sorting must retain the chosen filters.
+
+<Preview name="SearchFilter" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SearchFilterExample() {
+  const [filter, setFilter] = useState({ query: '', category: '' });
+  const items = [
+    { id: 'residence', label: 'Proof of residence', category: 'documents' },
+    { id: 'copy', label: 'Document copy', category: 'documents' },
+    { id: 'tax', label: 'Pay a fee', category: 'payments' },
+  ];
+  const visible = items.filter(
+    (item) =>
+      (!filter.category || item.category === filter.category) &&
+      item.label
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .includes(
+          filter.query.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase(),
+        ),
+  );
+  return (
+    <form
+      data-sdr-pattern-demo="search"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        setFilter({
+          query: String(data.get('query')),
+          category: String(data.get('category')),
+        });
+      }}
+      onReset={() => setFilter({ query: '', category: '' })}
+    >
+      <R.TextInput
+        label="Find a service"
+        type="search"
+        name="query"
+        autoComplete="off"
+      />
+      <R.Select
+        label="Category"
+        name="category"
+      >
+        <option value="">All categories</option>
+        <option value="documents">Documents</option>
+        <option value="payments">Payments</option>
+      </R.Select>
+      <R.Cluster>
+        <R.Button type="submit">Search</R.Button>
+        <R.Button
+          variant="secondary"
+          type="reset"
+        >
+          Clear filters
+        </R.Button>
+      </R.Cluster>
+      <p
+        role="status"
+        data-sdr-search-count
+      >{`Results: ${visible.length}`}</p>
+      <p
+        data-sdr-search-empty
+        hidden={visible.length !== 0}
+      >
+        No results found. Try another search or clear the filters.
+      </p>
+      <R.Grid
+        columns={2}
+        data-sdr-search-results
+        hidden={visible.length === 0}
+      >
+        {items.map((item) => (
+          <div
+            key={item.id}
+            data-sdr-search-item
+            data-category={item.category}
+            data-search-label={item.label}
+            hidden={!visible.includes(item)}
+          >
+            <R.Card
+              title={item.label}
+              footer={
+                <R.Link href={`/${locale}/patterns/start/`}>View steps</R.Link>
+              }
+            >
+              Example service.
+            </R.Card>
+          </div>
+        ))}
+      </R.Grid>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="search"
+    class="sdr-stack"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="query"
+        >Find a service</label
+      ><input
+        type="search"
+        autocomplete="off"
+        id="query"
+        class="sdr-input"
+        name="query"
+      />
+    </div>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="category"
+        >Category</label
+      ><select
+        name="category"
+        id="category"
+        class="sdr-select"
+      >
+        <option value="">All categories</option>
+        <option value="documents">Documents</option>
+        <option value="payments">Payments</option>
+      </select>
+    </div>
+    <div class="sdr-cluster sdr-u-gap-3">
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Search</button
+      ><button
+        type="reset"
+        class="sdr-button sdr-button--secondary"
+      >
+        Clear filters
+      </button>
+    </div>
+    <p
+      role="status"
+      data-sdr-search-count="true"
+    >
+      Results: 3
+    </p>
+    <p
+      data-sdr-search-empty="true"
+      hidden=""
+    >
+      No results found. Try another search or clear the filters.
+    </p>
+    <div
+      data-sdr-search-results="true"
+      class="sdr-grid sdr-grid--2"
+    >
+      <div
+        data-sdr-search-item="true"
+        data-category="documents"
+        data-search-label="Proof of residence"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Proof of residence</h3>
+          <div>Example service.</div>
+          <div class="sdr-card__footer">
+            <a href="/en/patterns/start/">View steps</a>
+          </div>
+        </article>
+      </div>
+      <div
+        data-sdr-search-item="true"
+        data-category="documents"
+        data-search-label="Document copy"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Document copy</h3>
+          <div>Example service.</div>
+          <div class="sdr-card__footer">
+            <a href="/en/patterns/start/">View steps</a>
+          </div>
+        </article>
+      </div>
+      <div
+        data-sdr-search-item="true"
+        data-category="payments"
+        data-search-label="Pay a fee"
+      >
+        <article class="sdr-card">
+          <h3 class="sdr-heading-md">Pay a fee</h3>
+          <div>Example service.</div>
+          <div class="sdr-card__footer">
+            <a href="/en/patterns/start/">View steps</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-search-filter.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

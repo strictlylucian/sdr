@@ -1,0 +1,93 @@
+---
+title: "Spacing and layout"
+description: "Spacing and layout — SDR. Independent proposal."
+---
+
+Spacing is a contract. Every component gap, padding and margin uses the shared scale. The source checker rejects arbitrary authored spacing in library and documentation styles, with a documented exception for the off-screen accessibility utility.
+
+| Token | rem | At 16 px/rem | Intended role |
+|---|---|---|---|
+| 0 | 0 | 0 | Reset |
+| 1 | .25 | 4 px | Fine separation |
+| 2 | .5 | 8 px | Label and hint |
+| 3 | .75 | 12 px | Control group |
+| 4 | 1 | 16 px | Content inset |
+| 5 | 1.5 | 24 px | Form group |
+| 6 | 2 | 32 px | Layout gutter |
+| 7 | 3 | 48 px | Section |
+| 8 | 4 | 64 px | Large editorial section |
+| 9 | 6 | 96 px | Major editorial separation |
+
+The source uses rem so user font preferences are preserved. Semantic aliases include --sdr-field-gap, --sdr-group-gap, --sdr-section-gap and --sdr-layout-gap. A single shared alias controls all components in that role.
+
+Stack arranges vertical groups, Cluster allows actions to wrap, Grid arranges repeated content, Container aligns page gutters and SidebarLayout positions contextual navigation. Gap-based spacing avoids accumulating adjacent child margins. Smaller spaces within groups help distinguish them from neighbouring groups.
+
+Grid with columns=2 or columns=3 caps the column count while retaining a 16rem minimum for each column. The actual count follows the space available to the component, including a narrow container on a wide screen. SidebarLayout stacks when navigation and content no longer fit side by side. The main container is capped at 64rem and prose at 68ch. Tables scroll inside their own labelled, keyboard-focusable region.
+
+Semantic spacing is responsive: --sdr-group-gap changes from 16px to 24px, --sdr-layout-gap from 16px to 32px, and --sdr-section-gap from 32px to 48px at 40rem. Stack without an explicit gap follows group spacing; the gap prop and numbered utilities retain the selected value.
+
+## Page structure
+
+Header, service navigation and content share a 64rem limit (1024px at 16px/rem). Backgrounds may span the screen while text and controls stay centred. Side gutters are 16px, increasing to 32px at 40rem. Container adds no vertical spacing. Nested page containers add the side gutters again and are rarely needed for page structure.
+
+| Class | Purpose |
+|---|---|
+| sdr-width-container / sdr-container | Aliases for the same maximum width, centring and responsive gutters. |
+| sdr-main-wrapper | Main vertical spacing: 32px, then 48px from 40rem. |
+| sdr-main-wrapper--l | Combine with main-wrapper for 48px/64px top spacing when there are no breadcrumbs or back link. |
+| sdr-main-wrapper--auto-spacing | Increase top spacing when main is the first child of its container; place breadcrumbs or back link before main. |
+| sdr-grid-row | Wrapping fractional grid with the shared gap token, without negative margins or gaps for unused columns. |
+| sdr-grid-column-… | Full width on mobile; chosen fraction from 40rem. |
+| sdr-grid-column-…-from-desktop | Apply the fraction from 64rem; can override the tablet fraction. |
+
+Available fractions: full, one-half, one-third, two-thirds, one-quarter and three-quarters. Visual order follows HTML order. The sdr-u-width-* utilities use full width on mobile and the chosen fraction from 40rem; auto retains intrinsic sizing. Nested grids use another grid-row without another width-container.
+
+### Page adaptation
+
+The Page example keeps its form and supporting information in one column below 64rem. The two-thirds-from-desktop and one-third-from-desktop variants place them side by side from that breakpoint, avoiding a cramped support column on tablets. Header allows the service name and language options to wrap; main navigation has a Menu button below 40rem. Reading order remains the same at every width.
+
+### React
+
+~~~tsx
+<>
+  <R.Header serviceName="Servicii pentru comunitate" />
+  <R.ServiceNavigation
+    label="Serviciu"
+    items={navigationItems}
+  />
+  <R.Container>
+    <R.Breadcrumbs
+      label="Navigare"
+      items={breadcrumbs}
+    />
+    <main className="sdr-main-wrapper">
+      <div className="sdr-grid-row">
+        <section className="sdr-grid-column-two-thirds">
+          <h1>Solicită un document</h1>
+        </section>
+        <aside className="sdr-grid-column-one-third">Ajutor</aside>
+      </div>
+    </main>
+  </R.Container>
+</>;
+~~~
+
+### HTML
+
+~~~html
+<div class="sdr-width-container">
+  <main class="sdr-main-wrapper sdr-main-wrapper--l">
+    <div class="sdr-grid-row">
+      <section class="sdr-grid-column-two-thirds">
+        <h1>Solicită un document</h1>
+      </section>
+      <aside class="sdr-grid-column-one-third">Ajutor</aside>
+    </div>
+  </main>
+</div>
+~~~
+
+Header and ServiceNavigation already include the inner container. Placing them outside the main page container preserves the shared alignment. Side navigation stays inside its column without a page container. See the [Page](/en/components/page/) example for the complete composition, including an aligned footer.
+
+The --sdr-container token on the .sdr root supports a different service width. A shared value preserves container alignment. At 40rem, --sdr-page-gutter switches to spacing token 6. Application overrides take precedence when declared after the library CSS, including at the breakpoint.
+

@@ -1,0 +1,768 @@
+---
+title: "Buton radio"
+description: "Buton radio — SDR. Propunere independentă."
+sidebar: {"order":13}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite alegerea unui singur răspuns dintr-un grup.
+
+## Exemplu
+
+<Preview name="Radio" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RadioExample() {
+  return (
+    <R.Fieldset legend="Unde locuiești?">
+      <R.Radio
+        name="residence"
+        value="ro"
+        label="În România"
+      />
+      <R.Radio
+        name="residence"
+        value="abroad"
+        label="În altă țară"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="radio"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Unde locuiești?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="residence"
+          ><input
+            id="residence"
+            class="sdr-choice__input"
+            type="radio"
+            name="residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>În România</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="residence-2"
+          ><input
+            id="residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            name="residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>În altă țară</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/radio.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="RadioError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RadioErrorExample() {
+  return (
+    <R.Fieldset
+      error="Alege unde locuiești."
+      legend="Unde locuiești?"
+    >
+      <R.Radio
+        name="error-residence"
+        value="ro"
+        label="În România"
+      />
+      <R.Radio
+        name="error-residence"
+        value="abroad"
+        label="În altă țară"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="radio-error"
+      class="sdr-fieldset"
+      aria-describedby="radio-error-error"
+    >
+      <legend class="sdr-legend">Unde locuiești?</legend>
+      <div
+        class="sdr-error"
+        id="radio-error-error"
+      >
+        Alege unde locuiești.
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-residence"
+          ><input
+            id="error-residence"
+            class="sdr-choice__input"
+            type="radio"
+            aria-invalid="true"
+            aria-describedby="radio-error-error"
+            name="error-residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>În România</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="error-residence-2"
+          ><input
+            id="error-residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            aria-invalid="true"
+            aria-describedby="radio-error-error"
+            name="error-residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>În altă țară</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/radio-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="RadioDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RadioDisabledExample() {
+  return (
+    <R.Fieldset
+      disabled
+      legend="Unde locuiești?"
+    >
+      <R.Radio
+        name="disabled-residence"
+        value="ro"
+        label="În România"
+      />
+      <R.Radio
+        name="disabled-residence"
+        value="abroad"
+        label="În altă țară"
+      />
+    </R.Fieldset>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="radio-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Unde locuiești?</legend>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-residence"
+          ><input
+            id="disabled-residence"
+            class="sdr-choice__input"
+            type="radio"
+            name="disabled-residence"
+            value="ro"
+          /><span class="sdr-choice__content"
+            ><span>În România</span></span
+          ></label
+        >
+      </div>
+      <div class="sdr-choice-field">
+        <label
+          class="sdr-choice"
+          for="disabled-residence-2"
+          ><input
+            id="disabled-residence-2"
+            class="sdr-choice__input"
+            type="radio"
+            name="disabled-residence"
+            value="abroad"
+          /><span class="sdr-choice__content"
+            ><span>În altă țară</span></span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/radio-disabled.html)
+
+
+## Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="RadioReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function RadioReadOnlyExample() {
+  return (
+    <R.SummaryList items={[{ key: 'Unde locuiești?', value: 'În România' }]} />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Unde locuiești?</dt>
+      <dd>În România</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/radio-readonly.html)
+
+
+## Utilizare
+
+Opțiunile aceleiași întrebări folosesc aceeași valoare name. Întrebările diferite folosesc valori name diferite.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-segmented-control" className="sdr-component-variant">
+
+## Control segmentat
+
+Opțiunile radio sunt afișate ca moduri de vizualizare, de exemplu listă sau grilă. Se poate selecta un singur mod.
+
+<Preview name="SegmentedControl" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SegmentedControlExample() {
+  return (
+    <R.SegmentedControl
+      legend="Afișare"
+      name="view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'Listă' },
+        { value: 'grid', label: 'Grilă' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="segmented-control"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Afișare</legend>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="view"
+            ><input
+              id="view"
+              class="sdr-choice__input"
+              type="radio"
+              name="view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>Listă</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="view-2"
+            ><input
+              id="view-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/segmented-control.html)
+
+
+### Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="SegmentedControlError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SegmentedControlErrorExample() {
+  return (
+    <R.SegmentedControl
+      error="Alege un mod de afișare."
+      legend="Afișare"
+      name="error-view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'Listă' },
+        { value: 'grid', label: 'Grilă' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group sdr-field--error">
+    <fieldset
+      id="segmented-control-error"
+      class="sdr-fieldset"
+      aria-describedby="segmented-control-error-error"
+    >
+      <legend class="sdr-legend">Afișare</legend>
+      <div
+        class="sdr-error"
+        id="segmented-control-error-error"
+      >
+        Alege un mod de afișare.
+      </div>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="error-view"
+            ><input
+              id="error-view"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="segmented-control-error-error"
+              name="error-view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>Listă</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="error-view-2"
+            ><input
+              id="error-view-2"
+              class="sdr-choice__input"
+              type="radio"
+              aria-invalid="true"
+              aria-describedby="segmented-control-error-error"
+              name="error-view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/segmented-control-error.html)
+
+
+### Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="SegmentedControlDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SegmentedControlDisabledExample() {
+  return (
+    <R.SegmentedControl
+      disabled
+      legend="Afișare"
+      name="disabled-view"
+      defaultValue="list"
+      options={[
+        { value: 'list', label: 'Listă' },
+        { value: 'grid', label: 'Grilă' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      disabled=""
+      id="segmented-control-disabled"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Afișare</legend>
+      <div class="sdr-segmented">
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="disabled-view"
+            ><input
+              id="disabled-view"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-view"
+              checked=""
+              value="list"
+            /><span class="sdr-choice__content"><span>Listă</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="disabled-view-2"
+            ><input
+              id="disabled-view-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="disabled-view"
+              value="grid"
+            /><span class="sdr-choice__content"><span>Grilă</span></span></label
+          >
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/segmented-control-disabled.html)
+
+
+### Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="SegmentedControlReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function SegmentedControlReadOnlyExample() {
+  return <R.SummaryList items={[{ key: 'Afișare', value: 'Listă' }]} />;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Afișare</dt>
+      <dd>Listă</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/segmented-control-readonly.html)
+
+
+### API · SegmentedControl
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `legend` | `string` | Da |
+| `name` | `string` | Da |
+| `options` | `{ value: string; label: string; }[]` | Da |
+| `defaultValue` | `string \| undefined` | Nu |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+| `disabled` | `boolean \| undefined` | Nu |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

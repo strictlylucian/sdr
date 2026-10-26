@@ -1,0 +1,101 @@
+---
+title: "Stepper"
+description: "Stepper — SDR. Independent proposal."
+sidebar: {"order":50}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Show location in a short linear process.
+
+## Example
+
+<Preview name="Stepper" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function StepperExample() {
+  return (
+    <R.Stepper
+      label="Application steps"
+      steps={[
+        { label: 'Personal details', status: 'Completed' },
+        { label: 'Documents', current: true },
+        { label: 'Review' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <nav aria-label="Application steps">
+    <ol class="sdr-stepper">
+      <li>
+        <span>Personal details</span
+        ><span class="sdr-visually-hidden">Completed</span>
+      </li>
+      <li aria-current="step"><span>Documents</span></li>
+      <li><span>Review</span></li>
+    </ol>
+  </nav>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/stepper.html)
+
+
+
+## Usage
+
+Use TaskList for independent tasks. Supply explicit completion text where needed.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `steps` | `{ label: string; href?: string; current?: boolean; status?: string; }[]` | Yes |
+| `label` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

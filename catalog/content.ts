@@ -1,0 +1,6 @@
+import { readFileSync } from 'node:fs';
+
+export const localisationContent = {
+  ro: readFileSync(new URL('./content/ro/localisation.md', import.meta.url), 'utf8'),
+  en: readFileSync(new URL('./content/en/localisation.md', import.meta.url), 'utf8'),
+};

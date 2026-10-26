@@ -1,0 +1,217 @@
+---
+title: "Check a service is suitable"
+description: "Check a service is suitable — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Explain eligibility, cost, documents and expected duration before collecting personal information. Provide a useful next step when the service is unsuitable.
+
+<Preview name="Eligibility" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function EligibilityExample() {
+  const [answer, setAnswer] = useState('');
+  return (
+    <form
+      data-sdr-pattern-demo="eligibility"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setAnswer(String(new FormData(form).get('resident')));
+        requestAnimationFrame(() =>
+          form
+            .querySelector<HTMLElement>(
+              '[data-sdr-pattern-outcome]:not([hidden])',
+            )!
+            .focus(),
+        );
+      }}
+    >
+      <R.InsetText>
+        Illustrative conditions, not rules for a real service.
+      </R.InsetText>
+      <R.Fieldset legend="Do you live in the area where you are applying?">
+        <R.Radio
+          name="resident"
+          value="yes"
+          label="Yes"
+          required
+        />
+        <R.Radio
+          name="resident"
+          value="no"
+          label="No"
+          required
+        />
+      </R.Fieldset>
+      <div>
+        <R.Button type="submit">Check</R.Button>
+      </div>
+      <div
+        data-sdr-pattern-outcome="yes"
+        tabIndex={-1}
+        hidden={answer !== 'yes'}
+      >
+        <R.Alert
+          tone="success"
+          title="You can continue in this example"
+        >
+          <R.Link href={`/${locale}/patterns/start/`}>
+            View required documents and steps
+          </R.Link>
+        </R.Alert>
+      </div>
+      <div
+        data-sdr-pattern-outcome="no"
+        tabIndex={-1}
+        hidden={answer !== 'no'}
+      >
+        <R.Alert
+          tone="warning"
+          title="There is another option"
+        >
+          <R.Stack gap={3}>
+            <p>You can get help finding the right institution.</p>
+            <R.Link href={`/${locale}/patterns/contact/`}>
+              View contact options
+            </R.Link>
+          </R.Stack>
+        </R.Alert>
+      </div>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="eligibility"
+    class="sdr-stack"
+  >
+    <div class="sdr-inset">
+      Illustrative conditions, not rules for a real service.
+    </div>
+    <div class="sdr-field-group">
+      <fieldset
+        id="eligibility"
+        class="sdr-fieldset"
+      >
+        <legend class="sdr-legend">
+          Do you live in the area where you are applying?
+        </legend>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="resident"
+            ><input
+              required=""
+              id="resident"
+              class="sdr-choice__input"
+              type="radio"
+              name="resident"
+              value="yes"
+            /><span class="sdr-choice__content"><span>Yes</span></span></label
+          >
+        </div>
+        <div class="sdr-choice-field">
+          <label
+            class="sdr-choice"
+            for="resident-2"
+            ><input
+              required=""
+              id="resident-2"
+              class="sdr-choice__input"
+              type="radio"
+              name="resident"
+              value="no"
+            /><span class="sdr-choice__content"><span>No</span></span></label
+          >
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Check
+      </button>
+    </div>
+    <div
+      data-sdr-pattern-outcome="yes"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--success">
+        <p class="sdr-alert__title">You can continue in this example</p>
+        <div>
+          <a href="/en/patterns/start/">View required documents and steps</a>
+        </div>
+      </div>
+    </div>
+    <div
+      data-sdr-pattern-outcome="no"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--warning">
+        <p class="sdr-alert__title">There is another option</p>
+        <div>
+          <div class="sdr-stack sdr-u-gap-3">
+            <p>You can get help finding the right institution.</p>
+            <a href="/en/patterns/contact/">View contact options</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-eligibility.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

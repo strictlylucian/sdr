@@ -1,0 +1,136 @@
+---
+title: "Task List"
+description: "Task List — SDR. Independent proposal."
+sidebar: {"order":55}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Show progress across independent tasks with explicit statuses.
+
+## Example
+
+<Preview name="TaskList" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TaskListExample() {
+  return (
+    <R.TaskList
+      label="Tasks to complete"
+      items={[
+        {
+          title: 'Personal details',
+          href: '#personal',
+          status: 'Completed',
+          tone: 'success',
+        },
+        {
+          title: 'Documents',
+          href: '#documents',
+          status: 'In progress',
+          tone: 'warning',
+        },
+        { title: 'Submit application', status: 'Cannot start yet' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <ol
+    class="sdr-task-list"
+    aria-label="Tasks to complete"
+  >
+    <li>
+      <a
+        href="#personal"
+        aria-describedby="task-list-0"
+        >Personal details</a
+      ><span
+        id="task-list-0"
+        class="sdr-tag sdr-tag--success"
+        >Completed</span
+      >
+    </li>
+    <li>
+      <a
+        href="#documents"
+        aria-describedby="task-list-1"
+        >Documents</a
+      ><span
+        id="task-list-1"
+        class="sdr-tag sdr-tag--warning"
+        >In progress</span
+      >
+    </li>
+    <li>
+      <span>Submit application</span
+      ><span
+        id="task-list-2"
+        class="sdr-tag"
+        >Cannot start yet</span
+      >
+    </li>
+  </ol>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/task-list.html)
+
+
+
+## Usage
+
+Unavailable tasks are text, not disabled links. Explain prerequisites in service content.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `string` | Yes |
+| `items` | `{ title: string; href?: string; status: string; tone?: Tone; }[]` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

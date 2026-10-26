@@ -1,0 +1,276 @@
+---
+title: "Tasks and returning to an application"
+description: "Tasks and returning to an application — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Complete multiple tasks
+
+Use explicit statuses and prerequisites. Save progress on the server and support resuming from another device when the service requires it.
+
+<Preview name="TaskProgress" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TaskProgressExample() {
+  return (
+    <R.Stack>
+      <h3>Prepare your application</h3>
+      <R.TaskList
+        label="Application tasks"
+        items={[
+          {
+            title: 'Personal details',
+            href: `/${locale}/patterns/question/`,
+            status: 'Completed',
+            tone: 'success',
+          },
+          {
+            title: 'Documents',
+            href: `/${locale}/patterns/uploads/`,
+            status: 'In progress',
+            tone: 'warning',
+          },
+          { title: 'Check and submit', status: 'Complete the documents first' },
+        ]}
+      />
+      <p>
+        Links open the corresponding step examples. The task statuses are
+        illustrative.
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Prepare your application</h3>
+    <ol
+      class="sdr-task-list"
+      aria-label="Application tasks"
+    >
+      <li>
+        <a
+          href="/en/patterns/question/"
+          aria-describedby="task-progress-0"
+          >Personal details</a
+        ><span
+          id="task-progress-0"
+          class="sdr-tag sdr-tag--success"
+          >Completed</span
+        >
+      </li>
+      <li>
+        <a
+          href="/en/patterns/uploads/"
+          aria-describedby="task-progress-1"
+          >Documents</a
+        ><span
+          id="task-progress-1"
+          class="sdr-tag sdr-tag--warning"
+          >In progress</span
+        >
+      </li>
+      <li>
+        <span>Check and submit</span
+        ><span
+          id="task-progress-2"
+          class="sdr-tag"
+          >Complete the documents first</span
+        >
+      </li>
+    </ol>
+    <p>
+      Links open the corresponding step examples. The task statuses are
+      illustrative.
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-tasks.html)
+
+
+
+
+<div id="variant-resume" className="sdr-component-variant">
+
+## Save and return
+
+State when progress is saved and how long it is kept. Provide secure resumption without placing personal data in URLs. Explain expiry before it happens.
+
+<Preview name="SaveReturn" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SaveReturnExample() {
+  const [done, setDone] = useState(false);
+  return (
+    <form
+      data-sdr-pattern-demo="resume"
+      className="sdr-stack"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        setDone(true);
+        requestAnimationFrame(() =>
+          form
+            .closest('[data-sdr-pattern-demo]')!
+            .querySelector<HTMLElement>('[data-sdr-pattern-result]')!
+            .focus(),
+        );
+      }}
+    >
+      <h3>Continue later</h3>
+      <R.TextInput
+        id="saved-example-name"
+        name="saved-name"
+        label="Test name"
+        defaultValue="Ana Șerban"
+        autoComplete="off"
+      />
+      <div>
+        <R.Button type="submit">Save for later</R.Button>
+      </div>
+      <div
+        data-sdr-pattern-result
+        tabIndex={-1}
+        hidden={!done}
+      >
+        <R.Alert
+          tone="success"
+          title="The example is ready to resume"
+        >
+          <R.Stack gap={3}>
+            <p>
+              Details remain only on this page. They are not kept after closing
+              or reloading it.
+            </p>
+            <R.Link href="#saved-example-name">Continue editing</R.Link>
+          </R.Stack>
+        </R.Alert>
+      </div>
+    </form>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <form
+    data-sdr-pattern-demo="resume"
+    class="sdr-stack"
+  >
+    <h3>Continue later</h3>
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="saved-example-name"
+        >Test name</label
+      ><input
+        autocomplete="off"
+        id="saved-example-name"
+        class="sdr-input"
+        name="saved-name"
+        value="Ana Șerban"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="sdr-button"
+      >
+        Save for later
+      </button>
+    </div>
+    <div
+      data-sdr-pattern-result="true"
+      tabindex="-1"
+      hidden=""
+    >
+      <div class="sdr-alert sdr-alert--success">
+        <p class="sdr-alert__title">The example is ready to resume</p>
+        <div>
+          <div class="sdr-stack sdr-u-gap-3">
+            <p>
+              Details remain only on this page. They are not kept after closing
+              or reloading it.
+            </p>
+            <a href="#saved-example-name">Continue editing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-resume.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

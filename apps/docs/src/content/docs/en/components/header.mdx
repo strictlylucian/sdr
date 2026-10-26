@@ -1,0 +1,115 @@
+---
+title: "Header"
+description: "Header — SDR. Independent proposal."
+sidebar: {"order":25}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Identify the service and present a consistent home link.
+
+## Example
+
+<Preview name="Header" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function HeaderExample() {
+  return (
+    <R.Header
+      serviceName="Community services"
+      href={`/${locale}/`}
+    >
+      <R.Tag>Propunere / Proposal</R.Tag>
+    </R.Header>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <header class="sdr-header">
+    <div class="sdr-width-container sdr-header__inner">
+      <a
+        class="sdr-brand"
+        href="/en/"
+        >Community services</a
+      ><span class="sdr-tag">Propunere / Proposal</span>
+    </div>
+  </header>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/header.html)
+
+
+
+## Usage
+
+No emblem is shown by default. Supply an institution emblem through the optional emblem prop; use an empty alt when the adjacent service name already identifies it.
+
+The emblem is optional. Omitting it leaves no empty logo space. The example path represents an institution-provided asset; the library does not bundle official insignia.
+
+~~~tsx
+<R.Header
+  serviceName="Servicii pentru comunitate"
+  emblem={
+    <img
+      src="/institution-emblem.svg"
+      alt=""
+      width={48}
+      height={48}
+    />
+  }
+/>;
+~~~
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `serviceName` | `string` | Yes |
+| `href` | `string \| undefined` | No |
+| `emblem` | `ReactNode` | No |
+| `children` | `ReactNode` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

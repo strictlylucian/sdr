@@ -1,0 +1,95 @@
+---
+title: "Step-by-step navigation"
+description: "Step-by-step navigation — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Example
+
+Explain a multi-stage process as an ordered sequence with prerequisites and destinations. Do not confuse process guidance with a form progress indicator.
+
+<Preview name="StepByStep" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function StepByStepExample() {
+  return (
+    <R.StepByStep
+      title="How to apply"
+      steps={[
+        {
+          title: 'Check eligibility',
+          content: 'Read the conditions before starting.',
+        },
+        { title: 'Prepare documents', content: 'Check accepted formats.' },
+        { title: 'Review and submit', content: 'Keep your reference number.' },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h2>How to apply</h2>
+    <ol class="sdr-stack sdr-step-by-step">
+      <li>
+        <h3>Check eligibility</h3>
+        <div>Read the conditions before starting.</div>
+      </li>
+      <li>
+        <h3>Prepare documents</h3>
+        <div>Check accepted formats.</div>
+      </li>
+      <li>
+        <h3>Review and submit</h3>
+        <div>Keep your reference number.</div>
+      </li>
+    </ol>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-step-by-step.html)
+
+
+
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

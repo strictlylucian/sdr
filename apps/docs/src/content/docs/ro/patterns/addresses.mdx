@@ -1,0 +1,159 @@
+---
+title: "Adrese"
+description: "Adrese — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+
+
+
+## Exemplu
+
+Formularul poate accepta atât adrese din România, cât și din străinătate, inclusiv sate și regiuni introduse ca text. Codul poștal este obligatoriu doar dacă serviciul are nevoie de el.
+
+<Preview name="AddressFields" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function AddressFieldsExample() {
+  return (
+    <R.AddressFields
+      international
+      legend="Adresa"
+      labels={{
+        line1: 'Stradă și număr',
+        line2: 'Bloc, scară, etaj, apartament (opțional)',
+        city: 'Localitate',
+        region: 'Regiune (dacă este cazul)',
+        postcode: 'Cod poștal (dacă este cazul)',
+        country: 'Țară',
+      }}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field-group">
+    <fieldset
+      id="address-fields"
+      class="sdr-fieldset"
+    >
+      <legend class="sdr-legend">Adresa</legend>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-line1"
+          >Stradă și număr</label
+        ><input
+          autocomplete="address-line1"
+          id="address-line1"
+          class="sdr-input"
+          name="address-line1"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-line2"
+          >Bloc, scară, etaj, apartament (opțional)</label
+        ><input
+          autocomplete="address-line2"
+          id="address-line2"
+          class="sdr-input"
+          name="address-line2"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-city"
+          >Localitate</label
+        ><input
+          autocomplete="address-level2"
+          id="address-city"
+          class="sdr-input"
+          name="address-city"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-region"
+          >Regiune (dacă este cazul)</label
+        ><input
+          autocomplete="address-level1"
+          id="address-region"
+          class="sdr-input"
+          name="address-region"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-postcode"
+          >Cod poștal (dacă este cazul)</label
+        ><input
+          autocomplete="postal-code"
+          id="address-postcode"
+          class="sdr-input"
+          name="address-postcode"
+        />
+      </div>
+      <div class="sdr-field">
+        <label
+          class="sdr-label"
+          for="address-country"
+          >Țară</label
+        ><input
+          autocomplete="country-name"
+          id="address-country"
+          class="sdr-input"
+          name="address-country"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-addresses.html)
+
+
+
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

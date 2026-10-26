@@ -1,0 +1,367 @@
+---
+title: "Service status and error pages"
+description: "Service status and error pages — SDR. Independent proposal."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page groups related scenarios within one pattern. Each section has its own example and React and HTML source.
+
+
+
+## Service unavailable
+
+Return HTTP 503 where appropriate. Explain the issue, any evidence-based recovery time and alternative channels. Do not invent a restoration estimate.
+
+<Preview name="ServiceUnavailable" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ServiceUnavailableExample() {
+  return (
+    <R.ServiceStatusPage
+      title="The service is undergoing maintenance"
+      returnHref={`/${locale}/patterns/start/`}
+      returnLabel="Return to the service page"
+    >
+      <p>
+        In this scenario, the service is closed for planned maintenance. It will
+        be available again on 26 October at 09:00.
+      </p>
+      <p>
+        If your request is urgent, you can use another contact method.{' '}
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          View support options
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>The service is undergoing maintenance</h1>
+    <div class="sdr-prose">
+      <p>
+        In this scenario, the service is closed for planned maintenance. It will
+        be available again on 26 October at 09:00.
+      </p>
+      <p>
+        If your request is urgent, you can use another contact method.
+        <a href="/en/patterns/contact/">View support options</a>
+      </p>
+    </div>
+    <div>
+      <a
+        href="/en/patterns/start/"
+        class="sdr-button"
+        >Return to the service page</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-service-status.html)
+
+
+
+
+<div id="variant-not-found" className="sdr-component-variant">
+
+## Page not found
+
+Use a clear page title and an HTTP 404 response in the host. Offer service navigation and support without blaming the user.
+
+<Preview name="PageNotFound" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function PageNotFoundExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Page not found"
+      returnHref={`/${locale}/patterns/start/`}
+      returnLabel="Go to the service page"
+    >
+      <p>
+        Check that the address is complete and correct. If you used a saved
+        link, the page may have moved.
+      </p>
+      <p>
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          Get help finding the information
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Page not found</h1>
+    <div class="sdr-prose">
+      <p>
+        Check that the address is complete and correct. If you used a saved
+        link, the page may have moved.
+      </p>
+      <p>
+        <a href="/en/patterns/contact/">Get help finding the information</a>
+      </p>
+    </div>
+    <div>
+      <a
+        href="/en/patterns/start/"
+        class="sdr-button"
+        >Go to the service page</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-not-found.html)
+
+</div>
+
+
+<div id="variant-service-problem" className="sdr-component-variant">
+
+## There is a problem with the service
+
+Separate a service failure from an answer error. Explain whether submission happened, avoid duplicate payments and provide a safe retry or support route.
+
+<Preview name="ServiceProblem" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function ServiceProblemExample() {
+  return (
+    <R.ServiceStatusPage
+      title="We could not submit your application"
+      returnHref={`/${locale}/patterns/question/`}
+      returnLabel="Return to the form"
+    >
+      <p>
+        There was a technical problem. Your application was not submitted. You
+        can try again.
+      </p>
+      <p>
+        If the problem continues,{' '}
+        <R.Link href={`/${locale}/patterns/contact/`}>
+          contact the service team
+        </R.Link>
+        .
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>We could not submit your application</h1>
+    <div class="sdr-prose">
+      <p>
+        There was a technical problem. Your application was not submitted. You
+        can try again.
+      </p>
+      <p>
+        If the problem continues,
+        <a href="/en/patterns/contact/">contact the service team</a>.
+      </p>
+    </div>
+    <div>
+      <a
+        href="/en/patterns/question/"
+        class="sdr-button"
+        >Return to the form</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-service-problem.html)
+
+</div>
+
+
+<div id="variant-interruption" className="sdr-component-variant">
+
+## Interruption pages
+
+Explain why the task is interrupted, what has been saved, and a clear way to continue or get help. Avoid automatic redirects that lose context.
+
+<Preview name="SessionExpired" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function SessionExpiredExample() {
+  return (
+    <R.ServiceStatusPage
+      title="Your session has ended"
+      returnHref={`/${locale}/patterns/tasks/#variant-resume`}
+      returnLabel="See how to return to your application"
+    >
+      <p>
+        A session ends after inactivity to protect personal information. This
+        example shows the message displayed when someone returns.
+      </p>
+      <p>
+        If you saved your application, you can return to it. Otherwise, you can
+        start a new one.{' '}
+        <R.Link href={`/${locale}/patterns/start/`}>
+          Start a new application
+        </R.Link>
+      </p>
+    </R.ServiceStatusPage>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h1>Your session has ended</h1>
+    <div class="sdr-prose">
+      <p>
+        A session ends after inactivity to protect personal information. This
+        example shows the message displayed when someone returns.
+      </p>
+      <p>
+        If you saved your application, you can return to it. Otherwise, you can
+        start a new one.
+        <a href="/en/patterns/start/">Start a new application</a>
+      </p>
+    </div>
+    <div>
+      <a
+        href="/en/patterns/tasks/#variant-resume"
+        class="sdr-button"
+        >See how to return to your application</a
+      >
+    </div>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/pattern-interruption.html)
+
+</div>
+
+
+## Service integration
+
+Examples use library components. Server validation, messaging, payment processing and persistence are implemented by the application. Demonstration interactions stay local and do not persist after reload. JavaScript setup is documented once in [Get started](/en/getting-started/). Accessibility details are in [the accessibility guide](/en/accessibility/).
+

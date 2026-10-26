@@ -1,0 +1,261 @@
+---
+title: "Buton"
+description: "Buton — SDR. Propunere independentă."
+sidebar: {"order":12}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Declanșează o acțiune, de exemplu salvarea unei cereri.
+
+## Exemplu
+
+<Preview name="Button" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ButtonExample() {
+  const [saved, setSaved] = useState(false);
+  return (
+    <R.Cluster>
+      <R.Button onClick={() => setSaved(true)}>Salvează cererea</R.Button>
+      <R.Button
+        variant="secondary"
+        onClick={() => setSaved(false)}
+      >
+        Resetează
+      </R.Button>
+      <R.Button variant="tertiary">Verifică cererea</R.Button>
+      <R.Button variant="danger">Șterge ciorna</R.Button>
+      <R.Button variant="danger-secondary">Elimină fișierul</R.Button>
+      <span role="status">
+        {saved && 'Cererea a fost salvată doar în acest exemplu.'}
+      </span>
+    </R.Cluster>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-cluster sdr-u-gap-3">
+    <button
+      type="button"
+      class="sdr-button"
+    >
+      Salvează cererea</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--secondary"
+    >
+      Resetează</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--tertiary"
+    >
+      Verifică cererea</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--danger"
+    >
+      Șterge ciorna</button
+    ><button
+      type="button"
+      class="sdr-button sdr-button--danger-secondary"
+    >
+      Elimină fișierul</button
+    ><span role="status"></span>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/button.html)
+
+
+
+## Utilizare
+
+Varianta primary evidențiază acțiunea principală; secondary are fundal neutru, iar tertiary are aspect de link. danger folosește roșu pentru acțiuni distructive, iar danger-secondary oferă o alternativă cu contur. Etichetele descriu consecința, de exemplu „Șterge ciorna”. Focusul de tastatură și starea apăsată folosesc galben. Butoanele sunt type="button" implicit; trimiterea formularului folosește type="submit". Validarea și confirmarea acțiunilor aparțin aplicației.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+<div id="variant-button-link" className="sdr-component-variant">
+
+## Link cu aspect de buton
+
+Varianta folosește un element a cu href, afișat ca buton pentru a evidenția o destinație importantă. Păstrează comportamentul unui link obișnuit.
+
+<Preview name="ButtonLink" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ButtonLinkExample() {
+  return (
+    <R.ButtonLink href={`/${locale}/getting-started/`}>
+      Începe integrarea
+    </R.ButtonLink>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <a
+    href="/ro/getting-started/"
+    class="sdr-button"
+    >Începe integrarea</a
+  >
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/button-link.html)
+
+
+
+### API · ButtonLink
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | Nu |
+
+</div>
+
+
+<div id="variant-toggle-button" className="sdr-component-variant">
+
+## Buton toggle
+
+aria-pressed arată dacă opțiunea este activă. defaultPressed stabilește starea inițială, iar eticheta rămâne aceeași la activare și dezactivare.
+
+<Preview name="ToggleButton" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ToggleButtonExample() {
+  return <R.ToggleButton>Fixează în listă</R.ToggleButton>;
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <button
+    data-sdr-component="toggle"
+    aria-pressed="false"
+    type="button"
+    class="sdr-button sdr-button--secondary"
+  >
+    Fixează în listă
+  </button>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide varianta portabilă](/examples/ro/toggle-button.html)
+
+
+
+### API · ToggleButton
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "danger" \| "danger-secondary" \| undefined` | Nu |
+| `defaultPressed` | `boolean \| undefined` | Nu |
+
+</div>
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

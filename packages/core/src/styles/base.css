@@ -1,0 +1,31 @@
+.sdr, .sdr *, .sdr *::before, .sdr *::after { box-sizing: border-box; }
+.sdr { font-family: var(--sdr-font); font-optical-sizing:auto; font-size: var(--sdr-text-md); line-height: var(--sdr-leading); color: var(--sdr-text); background: var(--sdr-surface); overflow-wrap: anywhere; }
+.sdr :where(h1,h2,h3,h4,h5,h6,p,ul,ol,dl,figure,blockquote) { margin: 0; }
+.sdr :where(button,input,select,textarea) { font: inherit; color: inherit; }
+.sdr :where(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline: var(--sdr-focus-width) solid var(--sdr-focus); outline-offset: var(--sdr-focus-offset); box-shadow: 0 0 0 var(--sdr-focus-offset) var(--sdr-focus-gap); }
+.sdr :where(a) { color: var(--sdr-link); text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: .08em; }
+.sdr :where(a:hover) { text-decoration-thickness: .15em; }
+.sdr :where(button,summary) { cursor: pointer; }
+.sdr :where(button:disabled,input:disabled,select:disabled,textarea:disabled) { cursor: not-allowed; opacity: .65; }
+.sdr [hidden] { display: none !important; }
+.sdr :where(ul,ol) { padding-inline-start: var(--sdr-space-5); }
+.sdr :where(code,pre,kbd) { font-family: var(--sdr-mono); }
+.sdr :where(pre) { overflow: auto; padding: var(--sdr-space-4); background: var(--sdr-subtle); border-radius: var(--sdr-radius); }
+.sdr :where(img,svg) { max-inline-size: 100%; }
+.sdr :where(h1,h2,h3,h4,h5,h6,.sdr-heading) { font-weight: 700; line-height: var(--sdr-leading-heading); letter-spacing: normal; text-wrap: balance; scroll-margin-block: var(--sdr-space-6); }
+.sdr :where(h1), .sdr-heading-xl { font-size: clamp(2rem, 4vw, 2.5rem); }
+.sdr :where(h2), .sdr-heading-lg { font-size: var(--sdr-text-2xl); }
+.sdr :where(h3), .sdr-heading-md { font-size: var(--sdr-text-xl); }
+.sdr :where(h4,h5,h6), .sdr-heading-sm { font-size: var(--sdr-text-lg); }
+.sdr-body { font-size: var(--sdr-text-md); }
+.sdr-lead { font-size: var(--sdr-text-lg); max-inline-size: var(--sdr-measure); }
+.sdr-caption, .sdr-hint { color: var(--sdr-muted); font-size: var(--sdr-text-sm); }
+.sdr-kicker { color: var(--sdr-accent); font-size: var(--sdr-text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.sdr-prose { max-inline-size: var(--sdr-measure); }
+.sdr-prose > * + * { margin-block-start: var(--sdr-space-4); }
+.sdr-prose > :where(h2,h3) { margin-block-start: var(--sdr-space-6); }
+.sdr-visually-hidden:not(:focus):not(:active) { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.sdr-divider { border: 0; border-block-start: var(--sdr-border-width) solid var(--sdr-divider); margin-block: var(--sdr-space-5); margin-inline:0; }
+.sdr-icon { inline-size: 1.25em; block-size: 1.25em; flex: none; vertical-align: -.2em; }
+@media (forced-colors: active) { .sdr { --sdr-border:ButtonText;--sdr-divider:CanvasText;--sdr-focus:Highlight;--sdr-focus-gap:Canvas; } .sdr-motif { display:none; } }
+@media print { .sdr { background: white; color: black; } .sdr :where(dialog,button,[data-sdr-component="toast"]) { display: none; } .sdr a { color: black; } }

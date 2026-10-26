@@ -1,0 +1,254 @@
+---
+title: "Table"
+description: "Table — SDR. Independent proposal."
+sidebar: {"order":52}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Compare structured information with explicit row and column headers.
+
+## Example
+
+<Preview name="Table" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TableExample() {
+  return (
+    <R.Table
+      caption="Counter opening hours"
+      columns={[
+        { key: 'day', label: 'Day' },
+        { key: 'hours', label: 'Hours' },
+      ]}
+      rows={[
+        { id: 'monday', cells: { day: 'Monday', hours: '09:00–17:00' } },
+        { id: 'friday', cells: { day: 'Friday', hours: '09:00–14:00' } },
+      ]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    class="sdr-table-wrapper"
+    role="region"
+    aria-labelledby="table"
+    tabindex="0"
+  >
+    <table class="sdr-table">
+      <caption id="table">
+        Counter opening hours
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Day</th>
+          <th scope="col">Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Monday</th>
+          <td>09:00–17:00</td>
+        </tr>
+        <tr>
+          <th scope="row">Friday</th>
+          <td>09:00–14:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/table.html)
+
+
+
+## Usage
+
+Use a descriptive caption. Horizontal scrolling is limited to the labelled table region.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `caption` | `string` | Yes |
+| `columns` | `TableColumn[]` | Yes |
+| `rows` | `TableRow[]` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-data-table" className="sdr-component-variant">
+
+## Sortable table
+
+DataTable adds local sorting through header buttons. Formatted numeric cells can supply sortValues; remote pagination remains an application concern.
+
+<Preview name="DataTable" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function DataTableExample() {
+  return (
+    <R.DataTable
+      caption="Applications by city"
+      columns={[
+        { key: 'city', label: 'City', sortable: true },
+        { key: 'count', label: 'Applications', sortable: true, type: 'number' },
+      ]}
+      rows={[
+        { id: 'brasov', cells: { city: 'Brașov', count: 42 } },
+        { id: 'iasi', cells: { city: 'Iași', count: 108 } },
+        { id: 'cluj', cells: { city: 'Cluj-Napoca', count: 7 } },
+      ]}
+      compareText={
+        new Intl.Collator(locale, { numeric: true, sensitivity: 'base' })
+          .compare
+      }
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="data-table"
+    class="sdr-table-wrapper"
+    role="region"
+    aria-labelledby="data-table"
+    tabindex="0"
+  >
+    <table class="sdr-table">
+      <caption id="data-table">
+        Applications by city
+      </caption>
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            data-sdr-sort-type="text"
+          >
+            <button
+              type="button"
+              data-sdr-sort="true"
+            >
+              City
+            </button>
+          </th>
+          <th
+            scope="col"
+            data-sdr-sort-type="number"
+          >
+            <button
+              type="button"
+              data-sdr-sort="true"
+            >
+              Applications
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Brașov</td>
+          <td>42</td>
+        </tr>
+        <tr>
+          <td>Iași</td>
+          <td>108</td>
+        </tr>
+        <tr>
+          <td>Cluj-Napoca</td>
+          <td>7</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/data-table.html)
+
+
+
+### API · DataTable
+
+| Property | Type | Required |
+|---|---|---|
+| `caption` | `string` | Yes |
+| `columns` | `TableColumn[]` | Yes |
+| `rows` | `TableRow[]` | Yes |
+| `compareText` | `((left: string, right: string) => number) \| undefined` | No |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

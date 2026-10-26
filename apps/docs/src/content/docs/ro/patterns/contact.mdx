@@ -1,0 +1,201 @@
+---
+title: "Contact și ajutor"
+description: "Contact și ajutor — SDR. Propunere independentă."
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Această pagină grupează mai multe situații ale aceluiași model. Fiecare secțiune are propriul exemplu și cod React și HTML.
+
+
+
+## Contact și ajutor
+
+Datele de contact includ programul, timpul estimat de răspuns și opțiunile accesibile de comunicare. Textul precizează ce informații sunt necesare pentru rezolvarea solicitării.
+
+<Preview name="ContactSupport" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function ContactSupportExample() {
+  return (
+    <R.Stack>
+      <h3>Ai nevoie de ajutor cu cererea?</h3>
+      <R.InsetText>Date de contact fictive, doar pentru exemplu.</R.InsetText>
+      <R.SummaryList
+        items={[
+          { key: 'Email', value: 'ajutor@example.invalid' },
+          { key: 'Program', value: 'Luni–vineri, 09:00–17:00' },
+          { key: 'Timp de răspuns', value: 'În cel mult 2 zile lucrătoare' },
+        ]}
+      />
+      <p>
+        Menționează numărul cererii, dacă îl ai. Nu trimite parola sau datele
+        cardului.
+      </p>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Ai nevoie de ajutor cu cererea?</h3>
+    <div class="sdr-inset">Date de contact fictive, doar pentru exemplu.</div>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Email</dt>
+        <dd>ajutor@example.invalid</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Program</dt>
+        <dd>Luni–vineri, 09:00–17:00</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Timp de răspuns</dt>
+        <dd>În cel mult 2 zile lucrătoare</dd>
+      </div>
+    </dl>
+    <p>
+      Menționează numărul cererii, dacă îl ai. Nu trimite parola sau datele
+      cardului.
+    </p>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-contact.html)
+
+
+
+
+<div id="variant-assisted" className="sdr-component-variant">
+
+## Ajutor pentru folosirea serviciului
+
+Serviciul oferă și ajutor prin telefon, la ghișeu sau prin alte canale accesibile, cu program, costuri și termene de răspuns clare. Testarea include și persoane care folosesc rar internetul sau au nevoie de ajutor la completare.
+
+<Preview name="AssistedSupport" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function AssistedSupportExample() {
+  return (
+    <R.Stack>
+      <h3>Ajutor pentru completarea online</h3>
+      <p>
+        Poți primi ajutor la ghișeu dacă nu poți folosi formularul online. Nu
+        este nevoie să ai un dispozitiv propriu.
+      </p>
+      <R.SummaryList
+        items={[
+          {
+            key: 'Locație de exemplu',
+            value: 'Centrul de servicii, Strada Exemplului nr. 1',
+          },
+          { key: 'Program', value: 'Luni–vineri, 09:00–17:00' },
+          { key: 'Cost', value: 'Asistență gratuită' },
+        ]}
+      />
+      <R.InsetText>
+        Adresa și programul sunt fictive. Într-un serviciu real, opțiunile de
+        sprijin sunt verificate cu instituția.
+      </R.InsetText>
+    </R.Stack>
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-stack">
+    <h3>Ajutor pentru completarea online</h3>
+    <p>
+      Poți primi ajutor la ghișeu dacă nu poți folosi formularul online. Nu este
+      nevoie să ai un dispozitiv propriu.
+    </p>
+    <dl class="sdr-summary">
+      <div class="sdr-summary__row">
+        <dt>Locație de exemplu</dt>
+        <dd>Centrul de servicii, Strada Exemplului nr. 1</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Program</dt>
+        <dd>Luni–vineri, 09:00–17:00</dd>
+      </div>
+      <div class="sdr-summary__row">
+        <dt>Cost</dt>
+        <dd>Asistență gratuită</dd>
+      </div>
+    </dl>
+    <div class="sdr-inset">
+      Adresa și programul sunt fictive. Într-un serviciu real, opțiunile de
+      sprijin sunt verificate cu instituția.
+    </div>
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/pattern-assisted.html)
+
+</div>
+
+
+## Integrarea într-un serviciu
+
+Exemplele folosesc componentele bibliotecii. Validarea pe server, trimiterea mesajelor, procesarea plăților și salvarea datelor sunt implementate de aplicație. Interacțiunile demonstrative sunt locale și nu salvează date după reîncărcare. Încărcarea JavaScript-ului este descrisă o singură dată în [Instalare și integrare](/ro/getting-started/). Detaliile despre accesibilitate se găsesc în [ghidul de accesibilitate](/ro/accessibility/).
+

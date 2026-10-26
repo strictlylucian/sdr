@@ -1,0 +1,328 @@
+---
+title: "Încărcare de fișiere"
+description: "Încărcare de fișiere — SDR. Propunere independentă."
+sidebar: {"order":36}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Permite atașarea documentelor prin selectorul de fișiere al browserului.
+
+## Exemplu
+
+<Preview name="FileUpload" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FileUploadExample() {
+  return (
+    <R.FileUpload
+      label="Încarcă documentul"
+      name="document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG sau PNG, de maximum 10 MB."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="document"
+      >Încarcă documentul</label
+    >
+    <div
+      id="document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG sau PNG, de maximum 10 MB.
+    </div>
+    <input
+      accept=".pdf,.jpg,.png"
+      id="document"
+      aria-describedby="document-hint"
+      type="file"
+      class="sdr-file"
+      name="document"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/file-upload.html)
+
+
+## Stare de eroare
+
+Mesajul de eroare este asociat controlului prin aria-describedby, iar aria-invalid indică starea. În React, proprietatea error activează prezentarea; aplicația stabilește regulile de validare și momentul afișării mesajului. Ediția HTML folosește aceeași structură și aceleași clase CSS.
+
+<Preview name="FileUploadError" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FileUploadErrorExample() {
+  return (
+    <R.FileUpload
+      error="Alege un fișier PDF, JPG sau PNG de cel mult 10 MB."
+      label="Încarcă documentul"
+      name="error-document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG sau PNG, de maximum 10 MB."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="error-document"
+      >Încarcă documentul</label
+    >
+    <div
+      id="error-document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG sau PNG, de maximum 10 MB.
+    </div>
+    <div
+      id="error-document-error"
+      class="sdr-error"
+    >
+      Alege un fișier PDF, JPG sau PNG de cel mult 10 MB.
+    </div>
+    <input
+      accept=".pdf,.jpg,.png"
+      id="error-document"
+      aria-invalid="true"
+      aria-describedby="error-document-hint error-document-error"
+      type="file"
+      class="sdr-file"
+      name="error-document"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/file-upload-error.html)
+
+
+## Disabled
+
+Atributul disabled dezactivează controlul, îl exclude din navigarea cu Tab și din datele trimise cu formularul. La grupuri, disabled se aplică pe fieldset. Un control indisponibil poate avea o explicație vizibilă în apropiere.
+
+<Preview name="FileUploadDisabled" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FileUploadDisabledExample() {
+  return (
+    <R.FileUpload
+      disabled
+      label="Încarcă documentul"
+      name="disabled-document"
+      accept=".pdf,.jpg,.png"
+      hint="PDF, JPG sau PNG, de maximum 10 MB."
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="disabled-document"
+      >Încarcă documentul</label
+    >
+    <div
+      id="disabled-document-hint"
+      class="sdr-hint"
+    >
+      PDF, JPG sau PNG, de maximum 10 MB.
+    </div>
+    <input
+      disabled=""
+      accept=".pdf,.jpg,.png"
+      id="disabled-document"
+      aria-describedby="disabled-document-hint"
+      type="file"
+      class="sdr-file"
+      name="disabled-document"
+    />
+  </div>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/file-upload-disabled.html)
+
+
+## Read-only
+
+Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.
+
+<Preview name="FileUploadReadOnly" locale="ro" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'ro';
+
+export function FileUploadReadOnlyExample() {
+  return (
+    <R.SummaryList
+      items={[{ key: 'Încarcă documentul', value: 'document.pdf' }]}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="ro"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <dl class="sdr-summary">
+    <div class="sdr-summary__row">
+      <dt>Încarcă documentul</dt>
+      <dd>document.pdf</dd>
+    </div>
+  </dl>
+</div>
+~~~
+
+[Configurare inițială](/ro/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Deschide exemplul portabil](/examples/ro/file-upload-readonly.html)
+
+
+## Utilizare
+
+accept sugerează formatele permise, dar nu validează fișierul. Tipul, dimensiunea și conținutul se verifică pe server.
+
+
+
+## API
+
+| Proprietate | Tip | Obligatorie |
+|---|---|---|
+| `label` | `ReactNode` | Da |
+| `hint` | `ReactNode` | Nu |
+| `error` | `ReactNode` | Nu |
+| `id` | `string \| undefined` | Nu |
+
+Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.
+
+
+
+## Accesibilitate
+
+Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în [ghidul de accesibilitate](/ro/accessibility/).
+
+## Versiune și contribuții
+
+0.1.0-alpha.1 · API experimental. Exemplele folosesc aceeași versiune ca biblioteca. Procesul de contribuție este descris în [Contribuții](/ro/contributing/).
+

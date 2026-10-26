@@ -1,0 +1,130 @@
+---
+title: "Accordion"
+description: "Accordion — SDR. Independent proposal."
+sidebar: {"order":2}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Group independent expandable sections using native details.
+
+## Example
+
+<Preview name="Accordion" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function AccordionExample() {
+  return (
+    <R.Accordion
+      label="Application questions"
+      items={[
+        {
+          id: 'documents',
+          title: 'Which documents do I need?',
+          content: 'The required documents depend on the selected service.',
+        },
+        {
+          id: 'timing',
+          title: 'How long does it take?',
+          content: 'The timeframe is shown before you start the application.',
+        },
+      ]}
+      expandAllLabel="Expand all sections"
+      collapseAllLabel="Collapse all sections"
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <section
+    class="sdr-accordion"
+    data-sdr-expand-label="Expand all sections"
+    data-sdr-collapse-label="Collapse all sections"
+    aria-label="Application questions"
+    data-sdr-component="accordion"
+  >
+    <button
+      data-sdr-accordion-toggle="true"
+      hidden=""
+      type="button"
+      class="sdr-button sdr-button--tertiary"
+    >
+      Expand all sections
+    </button>
+    <details class="sdr-details">
+      <summary><span>Which documents do I need?</span></summary>
+      <div class="sdr-details__content">
+        The required documents depend on the selected service.
+      </div>
+    </details>
+    <details class="sdr-details">
+      <summary><span>How long does it take?</span></summary>
+      <div class="sdr-details__content">
+        The timeframe is shown before you start the application.
+      </div>
+    </details>
+  </section>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/accordion.html)
+
+
+
+## Usage
+
+Users can open multiple sections or use the expand/collapse-all action. Keep essential information visible.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `items` | `{ id: string; title: ReactNode; content: ReactNode; open?: boolean; }[]` | Yes |
+| `label` | `string` | Yes |
+| `expandAllLabel` | `string` | Yes |
+| `collapseAllLabel` | `string` | Yes |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+

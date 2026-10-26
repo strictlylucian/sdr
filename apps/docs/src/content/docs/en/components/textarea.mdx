@@ -1,0 +1,766 @@
+---
+title: "Textarea"
+description: "Textarea — SDR. Independent proposal."
+sidebar: {"order":58}
+---
+
+import Preview from '../../../../components/Preview.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Collect a longer free-text answer.
+
+## Example
+
+<Preview name="Textarea" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextareaExample() {
+  return (
+    <R.Textarea
+      id="message"
+      label="How can we help?"
+      name="message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message"
+      >How can we help?</label
+    ><textarea
+      name="message"
+      rows="4"
+      id="message"
+      class="sdr-textarea"
+    ></textarea>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/textarea.html)
+
+
+## Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="TextareaError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextareaErrorExample() {
+  return (
+    <R.Textarea
+      error="Enter the message you want to send."
+      id="message-error-example"
+      label="How can we help?"
+      name="error-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field sdr-field--error">
+    <label
+      class="sdr-label"
+      for="message-error-example"
+      >How can we help?</label
+    >
+    <div
+      id="message-error-example-error"
+      class="sdr-error"
+    >
+      Enter the message you want to send.
+    </div>
+    <textarea
+      name="error-message"
+      rows="4"
+      id="message-error-example"
+      aria-invalid="true"
+      aria-describedby="message-error-example-error"
+      class="sdr-textarea"
+    ></textarea>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/textarea-error.html)
+
+
+## Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="TextareaDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextareaDisabledExample() {
+  return (
+    <R.Textarea
+      disabled
+      defaultValue="I would like information about my application."
+      id="message-disabled"
+      label="How can we help?"
+      name="disabled-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message-disabled"
+      >How can we help?</label
+    ><textarea
+      disabled=""
+      name="disabled-message"
+      rows="4"
+      id="message-disabled"
+      class="sdr-textarea"
+    >
+I would like information about my application.</textarea>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/textarea-disabled.html)
+
+
+## Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="TextareaReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+
+const locale = 'en';
+
+export function TextareaReadOnlyExample() {
+  return (
+    <R.Textarea
+      readOnly
+      defaultValue="I would like information about my application."
+      id="message-readonly"
+      label="How can we help?"
+      name="readonly-message"
+      rows={4}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div class="sdr-field">
+    <label
+      class="sdr-label"
+      for="message-readonly"
+      >How can we help?</label
+    ><textarea
+      readonly=""
+      name="readonly-message"
+      rows="4"
+      id="message-readonly"
+      class="sdr-textarea"
+    >
+I would like information about my application.</textarea>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/textarea-readonly.html)
+
+
+## Usage
+
+Do not request information already supplied elsewhere. Avoid fixed heights that clip text.
+
+
+
+## API
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+
+Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
+
+
+<div id="variant-character-count" className="sdr-component-variant">
+
+## With character count
+
+CharacterCount composes Textarea with counting for limited answers. It counts Unicode code points rather than grapheme clusters. Text is not truncated; limit validation belongs to the application and server.
+
+<Preview name="CharacterCount" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'en',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    en: {
+      translation: {
+        remaining_one: '{count} character remaining',
+        remaining_other: '{count} characters remaining',
+        over_one: 'You are {count} character over the limit',
+        over_other: 'You are {count} characters over the limit',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'en';
+
+export function CharacterCountExample() {
+  return (
+    <R.CharacterCount
+      id="description"
+      label="Describe the situation"
+      name="description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description"
+        >Describe the situation</label
+      ><textarea
+        name="description"
+        id="description"
+        aria-describedby="description-count"
+        class="sdr-textarea"
+      ></textarea>
+    </div>
+    <p
+      id="description-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      200 characters remaining
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable variant](/examples/en/character-count.html)
+
+
+### Error state
+
+The error message is associated with the control through aria-describedby, and aria-invalid exposes its state. In React, error enables this presentation; the application owns validation rules and when messages appear. The HTML edition uses the same structure and CSS classes.
+
+<Preview name="CharacterCountError" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'en',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    en: {
+      translation: {
+        remaining_one: '{count} character remaining',
+        remaining_other: '{count} characters remaining',
+        over_one: 'You are {count} character over the limit',
+        over_other: 'You are {count} characters over the limit',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'en';
+
+export function CharacterCountErrorExample() {
+  return (
+    <R.CharacterCount
+      error="The description must contain no more than 200 characters."
+      id="description-error-example"
+      label="Describe the situation"
+      name="error-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field sdr-field--error">
+      <label
+        class="sdr-label"
+        for="description-error-example"
+        >Describe the situation</label
+      >
+      <div
+        id="description-error-example-error"
+        class="sdr-error"
+      >
+        The description must contain no more than 200 characters.
+      </div>
+      <textarea
+        name="error-description"
+        id="description-error-example"
+        aria-invalid="true"
+        aria-describedby="description-error-example-error description-error-example-count"
+        class="sdr-textarea"
+      ></textarea>
+    </div>
+    <p
+      id="description-error-example-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      200 characters remaining
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/character-count-error.html)
+
+
+### Disabled
+
+The disabled attribute disables the control and excludes it from Tab navigation and submitted form data. Groups use disabled on the fieldset. A visible explanation can describe why a control is unavailable.
+
+<Preview name="CharacterCountDisabled" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'en',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    en: {
+      translation: {
+        remaining_one: '{count} character remaining',
+        remaining_other: '{count} characters remaining',
+        over_one: 'You are {count} character over the limit',
+        over_other: 'You are {count} characters over the limit',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'en';
+
+export function CharacterCountDisabledExample() {
+  return (
+    <R.CharacterCount
+      disabled
+      defaultValue="I would like information about my application."
+      id="description-disabled"
+      label="Describe the situation"
+      name="disabled-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description-disabled"
+        >Describe the situation</label
+      ><textarea
+        disabled=""
+        name="disabled-description"
+        id="description-disabled"
+        aria-describedby="description-disabled-count"
+        class="sdr-textarea"
+      >
+I would like information about my application.</textarea>
+    </div>
+    <p
+      id="description-disabled-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      154 characters remaining
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/character-count-disabled.html)
+
+
+### Read-only
+
+The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.
+
+<Preview name="CharacterCountReadOnly" locale="en" />
+
+
+<div className="sdr-example-code">
+<Tabs>
+<TabItem label="React">
+
+
+~~~tsx
+import { useState } from 'react';
+import * as R from '@sdr/react';
+import { createInstance } from 'i18next';
+
+// Application-owned translations; SDR only receives the formatter callback.
+const i18n = createInstance();
+void i18n.init({
+  lng: 'en',
+  initAsync: false,
+  fallbackLng: false,
+  resources: {
+    en: {
+      translation: {
+        remaining_one: '{count} character remaining',
+        remaining_other: '{count} characters remaining',
+        over_one: 'You are {count} character over the limit',
+        over_other: 'You are {count} characters over the limit',
+      },
+    },
+  },
+  interpolation: { prefix: '{', suffix: '}', escapeValue: false },
+});
+const formatCount = (remaining: number) =>
+  i18n.t(remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
+
+const locale = 'en';
+
+export function CharacterCountReadOnlyExample() {
+  return (
+    <R.CharacterCount
+      readOnly
+      defaultValue="I would like information about my application."
+      id="description-readonly"
+      label="Describe the situation"
+      name="readonly-description"
+      limit={200}
+      formatCount={(remaining) => formatCount(remaining)}
+    />
+  );
+}
+~~~
+
+</TabItem>
+<TabItem label="HTML">
+
+
+~~~html
+<div
+  lang="en"
+  data-sdr-theme="light"
+  data-sdr-density="comfortable"
+  class="sdr"
+>
+  <div
+    data-sdr-component="character-count"
+    data-sdr-limit="200"
+    class="sdr-stack sdr-u-gap-2"
+  >
+    <div class="sdr-field">
+      <label
+        class="sdr-label"
+        for="description-readonly"
+        >Describe the situation</label
+      ><textarea
+        readonly=""
+        name="readonly-description"
+        id="description-readonly"
+        aria-describedby="description-readonly-count"
+        class="sdr-textarea"
+      >
+I would like information about my application.</textarea>
+    </div>
+    <p
+      id="description-readonly-count"
+      class="sdr-character-count"
+      data-sdr-count="true"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      154 characters remaining
+    </p>
+  </div>
+</div>
+~~~
+
+[Initial setup](/en/getting-started/)
+
+</TabItem>
+</Tabs>
+</div>
+
+
+[Open the portable example](/examples/en/character-count-readonly.html)
+
+
+### API · CharacterCount
+
+| Property | Type | Required |
+|---|---|---|
+| `label` | `ReactNode` | Yes |
+| `hint` | `ReactNode` | No |
+| `error` | `ReactNode` | No |
+| `id` | `string \| undefined` | No |
+| `limit` | `number` | Yes |
+| `formatCount` | `(remaining: number) => string` | Yes |
+
+</div>
+
+
+## Accessibility
+
+Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in [the accessibility guide](/en/accessibility/).
+
+## Version and contributions
+
+0.1.0-alpha.1 · Experimental API. Examples use the same version as the library. The contribution process is described in [Contributing](/en/contributing/).
+
