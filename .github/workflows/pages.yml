@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
         with:
@@ -28,8 +28,8 @@ jobs:
       - run: npm run build:pages
       - run: npm run check
       - run: npm run typecheck
-      - run: npx playwright install --with-deps chromium
-      - run: npm run test:pages -- --project=chromium
+      - name: Check Pages in installed Chrome
+        run: npx playwright test --config playwright.pages.config.ts --project=chromium
       - uses: actions/upload-pages-artifact@v4
         with:
           path: output/pages/sdr
