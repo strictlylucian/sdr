@@ -17,7 +17,7 @@ export default defineConfig({
     components: { SkipLink: './src/components/SkipLink.astro', SiteTitle: './src/components/SiteTitle.astro', Hero: './src/components/Hero.astro', SocialIcons: './src/components/TopNav.astro', Footer: './src/components/Footer.astro', Sidebar: './src/components/Sidebar.astro' },
     sidebar: [
       { label: uiText('ro', "navigation.Starthere"), translations: { en: uiText('en', "navigation.Starthere") }, items: [
-        { slug: 'getting-started' }, { slug: 'architecture' }, { slug: 'coverage' },
+        { slug: 'about' }, { slug: 'getting-started' }, { slug: 'architecture' }, { slug: 'coverage' },
       ] },
       { label: uiText('ro', "Identity.foundations"), translations: { en: uiText('en', "Identity.foundations") }, items: [{ autogenerate: { directory: 'foundations' } }] },
       { label: uiText('ro', "Identity.components"), translations: { en: uiText('en', "Identity.components") }, items: [{ autogenerate: { directory: 'components' } }], collapsed: true },

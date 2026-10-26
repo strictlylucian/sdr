@@ -137,5 +137,7 @@
   "docs.readOnlyStateGuidance": "The readOnly prop (readonly in HTML) keeps the value visible and included in submitted form data. Text fields remain focusable and their contents can be selected and copied, but not edited. Native date and time widgets retain the browser’s navigation behaviour. Date groups and Fieldset examples apply the state to each text field.",
   "docs.staticStateGuidance": "This control has no native HTML readonly attribute. The example uses SummaryList to display a fixed value. The application manages any value that must be submitted separately; disabled excludes a control from form data.",
   "navigation.experimentalStudies": "Experimental studies",
-  "Identity.institutionalIdentityStudies": "Explore the experimental institutional identity studies"
+  "Identity.institutionalIdentityStudies": "Explore the experimental institutional identity studies",
+  "Identity.aboutProject": "About the project",
+  "Identity.projectMotivation": "SDR proposes a shared design and development language for Romania’s digital public services. Its aim is to reduce repeated work and help teams build consistent, accessible and usable services faster."
 }

@@ -1,5 +1,6 @@
-import { localisationContent } from './content';
+import { localisationContent, projectContent } from './content';
 export const guidesEn: Record<string, { title: string; body: string }> = {
+  about: { title: 'About the project', body: projectContent.en },
   'getting-started': { title: 'Get started', body: `
 SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system.
 

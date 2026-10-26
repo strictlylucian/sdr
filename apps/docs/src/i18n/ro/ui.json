@@ -137,5 +137,7 @@
   "docs.readOnlyStateGuidance": "Atributul readOnly (readonly în HTML) păstrează valoarea vizibilă și inclusă în datele formularului. Câmpurile de text pot primi focus, iar conținutul poate fi selectat și copiat, fără a putea fi modificat. Navigarea câmpurilor native de dată și oră urmează comportamentul browserului. La grupul de dată și la Fieldset, starea se aplică fiecărui câmp de text.",
   "docs.staticStateGuidance": "Acest control nu are un atribut readonly nativ în HTML. Pentru o valoare care nu poate fi modificată, exemplul folosește SummaryList. Dacă valoarea trebuie trimisă, aplicația o gestionează separat; disabled exclude controlul din datele formularului.",
   "navigation.experimentalStudies": "Studii experimentale",
-  "Identity.institutionalIdentityStudies": "Vezi studiile experimentale de identitate instituțională"
+  "Identity.institutionalIdentityStudies": "Vezi studiile experimentale de identitate instituțională",
+  "Identity.aboutProject": "Despre proiect",
+  "Identity.projectMotivation": "SDR propune un limbaj comun de design și dezvoltare pentru serviciile publice digitale din România. Scopul este reducerea muncii repetate și construirea mai rapidă a unor servicii coerente, accesibile și ușor de folosit."
 }

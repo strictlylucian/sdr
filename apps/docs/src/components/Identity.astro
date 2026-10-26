@@ -23,6 +23,10 @@ const sections = [
     <div class="sdr-home__start"><a class="sdr-doc-button" href={docsUrl(`/${locale}/getting-started/`)}>{uiText(locale, "Identity.installationAndIntegration")}</a></div>
     <nav class="sdr-home__language" aria-label={uiText(locale, "Identity.languageForThisPage")}><a href={docsUrl('/ro/')} lang="ro" hrefLang="ro" aria-current={ro ? 'page' : undefined}>Română</a><span aria-hidden="true">/</span><a href={docsUrl('/en/')} lang="en" hrefLang="en" aria-current={!ro ? 'page' : undefined}>English</a></nav>
   </header>
+  <section class="sdr-home__about" aria-labelledby="about-project">
+    <h2 id="about-project"><a href={docsUrl(`/${locale}/about/`)}>{uiText(locale, 'Identity.aboutProject')}</a></h2>
+    <p>{uiText(locale, 'Identity.projectMotivation')}</p>
+  </section>
   <nav class="sdr-home__directory" aria-label={uiText(locale, "Identity.documentation")}>
     {sections.map(section => <section><h2><a href={docsUrl(`/${locale}/${section.path}/`)}>{section.title}</a></h2><p>{section.description}</p></section>)}
   </nav>
