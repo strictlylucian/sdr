@@ -10,7 +10,8 @@ Experimental SDR — Sistem de Design Românesc, an independent proposal. Packag
 - Romanian/English documentation with React/HTML snippets, interactive previews and source-derived API tables.
 - Component variants and pattern scenarios under canonical parent pages. Removed the 64 compatibility URLs and duplicate `sdr-!-*` utility aliases; use parent-page anchors and `sdr-u-*`.
 - Generated inventories remove obsolete documentation pages, duplicate examples and old build assets after successful publication.
-- Error, disabled and native read-only form states; fixed-value examples for controls without native readonly support.
+- Error, disabled and native read-only form states; fixed-value examples for controls without native readonly support. Each state has a stable anchor and a nested sidebar link.
+- Radio error outlines retain their circular shape; native switch controls remain square and errors stay inside control bounds. Error rails start at the first text line’s capital height.
 - Stable fieldset error rails, associated messages and preserved answers during validation updates.
 - Shared semantic error/destructive-action palette, with theme-specific contrast adaptations.
 - Documentation-only i18next and JSON-backed catalogue, variants, scenarios and form-state definitions. Applications own library labels, translations and formatters.

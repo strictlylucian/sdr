@@ -87,3 +87,5 @@ Pattern compositions keep primary actions at their natural width, use the date-f
 Native disabled/readOnly attributes retain browser and form-data semantics. Controls without native readonly support use documented fixed-value SummaryList examples. Error rails begin at the first text row and end at the final control or compound-group boundary. A stable wrapper around fieldsets keeps native legend geometry separate from the rail and preserves entered values during error changes.
 
 The error/destructive palette uses #CA3535, #D76868 in Dark and #982828 in Contrast. Decorative flag colours keep their separate role. Original institutional identity boards belong to the experimental studies section of the docs; they do not supply a default library emblem.
+
+Form error outlines follow native control geometry without increasing the visible size. Radio outlines are circular; checkbox and switch controls share square bounds. The error rail uses cap-height and line-height units to start at the first line’s ink, with a separate small-text metric for individual-choice messages. Form states have stable nested sidebar destinations under their component or variant.

@@ -1,5 +1,6 @@
+import { writeGenerated } from './write-generated.mts';
 import { uiText } from '../../apps/docs/src/i18n/messages';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir } from 'node:fs/promises';
 import { guidesEn } from '../../catalog/guides-en';
 import { guidesRo } from '../../catalog/guides-ro';
 import { orderedComponents } from '../../catalog/components';
@@ -56,9 +57,9 @@ ${uiText(locale, "docs-guides.thereIsNoEditableOrVirtualisedGridCustom")}
   for (const [path, guide] of Object.entries(guides)) {
     const target = `${root}/${locale}/${path}.mdx`;
     await mkdir(target.slice(0, target.lastIndexOf('/')), { recursive: true });
-    await writeFile(target, `---\ntitle: ${JSON.stringify(guide.title)}\ndescription: ${JSON.stringify(`${guide.title} — SDR. ${uiText(locale, "docs-guides.independentProposal")}`)}\n---\n${await formatGuide(guide.body)}\n`);
+    await writeGenerated(target, `---\ntitle: ${JSON.stringify(guide.title)}\ndescription: ${JSON.stringify(`${guide.title} — SDR. ${uiText(locale, "docs-guides.independentProposal")}`)}\n---\n${await formatGuide(guide.body)}\n`);
   }
-  await writeFile(`${root}/${locale}/index.mdx`, `---
+  await writeGenerated(`${root}/${locale}/index.mdx`, `---
 title: ${uiText(locale, "docs-guides.romanianDesignSystem")}
 description: ${uiText(locale, "docs-guides.componentsPatternsAndGuidanceForRomanianDigitalServices")}
 template: splash

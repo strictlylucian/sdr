@@ -15,8 +15,11 @@ for (const locale of ['ro', 'en'] as Locale[]) for (const edition of ['react', '
       for (const theme of ['light', 'dark', 'heritage', 'contrast']) {
         await root.evaluate((node, theme) => { (node as HTMLElement).dataset.sdrTheme = theme; }, theme);
         const errorColour = await root.locator('.sdr-error').first().evaluate(node => getComputedStyle(node).color);
-        await expect(root.locator('.sdr-field--error').first()).toHaveCSS('border-inline-start-color', errorColour);
-        await expect(root.locator('.sdr-field--error').first()).toHaveCSS('border-inline-start-width', '4px');
+        const rail = await root.locator('.sdr-field--error').first().evaluate(node => {
+          const style = getComputedStyle(node, '::before');
+          return { colour: style.borderInlineStartColor, width: style.borderInlineStartWidth };
+        });
+        expect(rail).toEqual({ colour: errorColour, width: '4px' });
         for (const input of await root.locator('.sdr-input,.sdr-select,.sdr-textarea,.sdr-file').all()) await expect(input).toHaveCSS('border-color', errorColour);
       }
     }
