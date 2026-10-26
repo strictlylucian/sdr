@@ -1,3 +1,4 @@
+import { mountFormStudy } from '../studies/controller';
 import { uiText, countText } from '../i18n/messages';
 import './pattern-forms';
 /* Example host wiring. This is documentation code, not part of the two-file library. */
@@ -38,3 +39,5 @@ for (const trigger of document.querySelectorAll('[data-sdr-toast-show]')) {
     toast.hidden = false;
   });
 }
+
+document.querySelectorAll('[data-form-study]').forEach(root => mountFormStudy(root));

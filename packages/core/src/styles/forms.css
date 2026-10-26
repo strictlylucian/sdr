@@ -11,7 +11,7 @@
 .sdr :is(button,a.sdr-button,summary.sdr-button):is(:active,:focus-visible,[aria-pressed="true"]):not(:disabled):not([aria-disabled="true"]) { background:var(--sdr-pressed-bg); color:var(--sdr-on-pressed); border-color:var(--sdr-pressed-border); }
 .sdr-field { display: flex; flex-direction: column; gap: var(--sdr-field-gap); min-inline-size: 0; }
 .sdr-field-group { min-inline-size:0; }
-.sdr-label,.sdr-legend { font-weight: 650; }
+.sdr-label { font-weight: 650; }
 .sdr-input,.sdr-select,.sdr-textarea { inline-size: 100%; min-block-size: var(--sdr-control-height); padding: var(--sdr-control-padding); border: var(--sdr-border-strong) solid var(--sdr-border); border-radius: var(--sdr-radius); background: var(--sdr-surface); font-size: max(1rem,1em); line-height: 1.5; }
 .sdr-textarea { resize: vertical; min-block-size: 8rem; }
 .sdr-input[aria-invalid="true"],.sdr-select[aria-invalid="true"],.sdr-textarea[aria-invalid="true"] { border-color: var(--sdr-danger); }

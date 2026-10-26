@@ -61,6 +61,7 @@ for (const locale of ['ro', 'en']) {
     await expect(page.locator('[data-sdr-variant="ToggleButton"]')).toHaveAttribute('href', `/sdr/${locale}/components/button/#variant-toggle-button`);
     await page.locator('.sdr-example-code').first().getByRole('tab', { name: 'HTML', exact: true }).click();
     await expect(page.locator('.sdr-example-code').first().getByRole('link')).toHaveAttribute('href', `/sdr/${locale}/getting-started/`);
+    await page.waitForFunction(() => !document.querySelector('astro-island[ssr]'));
     await page.goto(`/sdr/${locale}/components/page/`);
     const frame = page.frameLocator('iframe');
     await expect(frame.locator('h1')).toBeVisible();
@@ -72,3 +73,21 @@ for (const locale of ['ro', 'en']) {
     expect(errors).toEqual([]);
   });
 }
+
+for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their header, single notice and back link under the deployment prefix`, async ({ page }) => {
+  await page.goto(`/sdr/${locale}/reality/criminal-record/`);
+  await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
+  const root = page.locator('[data-form-study]');
+  await expect(root.locator('[data-study-next]')).toBeEnabled();
+  await expect(root.locator('.sdr-header')).toBeVisible();
+  await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
+  await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
+  await root.locator('.sdr-back').click();
+  await expect(page).toHaveURL(new RegExp(`/sdr/${locale}/reality/$`));
+  await page.goto(`/sdr/examples/${locale}/study-criminal-record.html`);
+  await page.setViewportSize({ width: 320, height: 900 });
+  await expect(page.locator('[data-study-next]')).toBeEnabled();
+  await expect(page.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
+  await page.locator('[data-sdr-navigation-toggle]').click();
+  await expect(page.locator('[data-sdr-navigation-links]')).toBeVisible();
+});

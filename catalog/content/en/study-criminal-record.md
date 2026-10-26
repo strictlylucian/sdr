@@ -1,0 +1,17 @@
+In the PDF published by Constanța County Police, questions sit inside a continuous paragraph, details use blank lines and the personal number has individual character boxes. The inspected page is a scan without selectable text.
+
+## What SDR proposes
+
+Personal details, address and the reason for applying become three steps. One identifier field offers a numeric keyboard, dates use native controls and answers can be checked before finishing.
+
+## Mapping to the original
+
+| Published document | Proposal |
+| --- | --- |
+| Identity, previous name, parents, birth details | Personal details step, with one birth date field. |
+| Address, document series, number and personal number | Address and document are grouped; the personal number moves to identity. |
+| Purpose | An open question with room for an answer. |
+| Declaration, date and signature | Date and demonstration confirmation, neither a signature nor legal consent to processing. |
+| Registration, issued certificate and verification result | Institutional fields, excluded from the applicant journey. |
+
+The study covers an individual applying on their own behalf. Representation, identity checks, issuance and signing are not implemented. [MAI already provides an electronic service](https://hub.mai.gov.ro/serviciu/view?id=88); this study only explores redesigning the published document.

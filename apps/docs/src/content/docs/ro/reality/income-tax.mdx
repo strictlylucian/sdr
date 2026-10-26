@@ -1,0 +1,32 @@
+---
+title: "Formularul 230: un beneficiar"
+sidebar: { order: 2 }
+---
+import FormStudy from '../../../../components/FormStudy.astro';
+
+Modelul ANAF din 2025 reunește pe prima pagină identificarea contribuabilului, mai multe destinații posibile ale sumei și datele împuternicitului. Dimensiunea fixă impune rubrici mici, abrevieri și note de subsol. Acesta este un studiu de interfață pentru un scenariu, nu un înlocuitor al formularului fiscal.
+
+## Ce propune SDR
+
+Contribuabilul și beneficiarul au pași separați. Limita de 3,5% și explicația pentru suma necunoscută apar lângă câmpuri. Opțiunea pe doi ani și acordul de comunicare către beneficiar sunt alegeri distincte, nebifate implicit. Răspunsurile pot fi verificate înainte de încheiere.
+
+## Corespondența cu originalul
+
+| În document | În propunere |
+| --- | --- |
+| An și secțiunea I | An fiscal, nume, inițiala tatălui, identificator, adresă fiscală și contact. |
+| Secțiunea II, susținerea unei entități | Denumire, cod fiscal, IBAN, procent, sumă și cele două opțiuni. |
+| Declarația contribuabilului | Confirmare demonstrativă, fără valoare de semnătură. |
+| Bursa privată, împuternicit, anexe pentru alți beneficiari | În afara scenariului demonstrat. Rămân parte din formularul oficial, unde sunt aplicabile. |
+| Înregistrare fiscală și semnături | Nu sunt simulate ca operațiuni îndeplinite. |
+
+Identificatorii și datele organizației nu sunt verificate în registre. Validarea IBAN, verificările fiscale, calculul sumei, depunerea și semnarea nu sunt implementate. Exemplul nu stabilește eligibilitatea sau termenul de depunere. Pentru o solicitare reală, consultă [formularul și instrucțiunile ANAF](https://static.anaf.ro/static/10/Anaf/formulare/230_OPANAF_103_2025.pdf).
+
+
+## Formularul publicat
+
+<FormStudy id="income-tax" locale="ro" part="original" />
+
+## Propunerea SDR
+
+<FormStudy id="income-tax" locale="ro" part="proposal" />

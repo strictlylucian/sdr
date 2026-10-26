@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Bilingual comparisons of three official Romanian forms with independent SDR demonstrations, including source images, field mapping, validation and answer review.
+- Heading size utilities now share the complete heading typography. Fieldset legends use the same weight, leading and wrapping rules as headings.
+
 ## 0.1.0-alpha.1
 
 Experimental SDR — Sistem de Design Românesc, an independent proposal. First alpha release of the core and React packages. Documentation has a GitHub Pages deployment workflow.

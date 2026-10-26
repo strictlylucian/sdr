@@ -1,0 +1,32 @@
+---
+title: "Form 230: one beneficiary"
+sidebar: { order: 2 }
+---
+import FormStudy from '../../../../components/FormStudy.astro';
+
+ANAF’s 2025 model puts taxpayer details, several allocation options and representative details on the first page. The fixed size leads to small boxes, abbreviations and footnotes. This is an interface study for one scenario, rather than a replacement tax form.
+
+## What SDR proposes
+
+Taxpayer and recipient details have separate steps. The 3.5% limit and guidance about an unknown amount sit beside their fields. The two-year option and permission to disclose details are separate choices, both initially unchecked. Answers can be reviewed before finishing.
+
+## Mapping to the original
+
+| Published document | Proposal |
+| --- | --- |
+| Year and section I | Tax year, names, father’s initial, identifier, tax address and contact details. |
+| Section II, support for an organisation | Name, tax number, IBAN, percentage, amount and two options. |
+| Taxpayer declaration | Demonstration confirmation without signature status. |
+| Private scholarships, representative, additional recipient annexes | Outside the demonstrated scenario; these remain part of the official form where applicable. |
+| Tax registration and signatures | Not simulated as completed operations. |
+
+Identifiers and organisation details are not checked against registers. IBAN validation, tax checks, amount calculation, submission and signing are not implemented. The example does not establish eligibility or a filing deadline. Consult the [ANAF form and instructions](https://static.anaf.ro/static/10/Anaf/formulare/230_OPANAF_103_2025.pdf) for a real request.
+
+
+## Published form
+
+<FormStudy id="income-tax" locale="en" part="original" />
+
+## SDR proposal
+
+<FormStudy id="income-tax" locale="en" part="proposal" />

@@ -14,11 +14,12 @@ export default defineConfig({
     customCss: ['./src/styles/docs.css'],
     routeMiddleware: './src/sidebar-middleware.ts',
     expressiveCode: { plugins: [focusCodeBlocks()] },
-    components: { SkipLink: './src/components/SkipLink.astro', SiteTitle: './src/components/SiteTitle.astro', Hero: './src/components/Hero.astro', SocialIcons: './src/components/TopNav.astro', Footer: './src/components/Footer.astro', Sidebar: './src/components/Sidebar.astro' },
+    components: { PageTitle: './src/components/PageTitle.astro', SkipLink: './src/components/SkipLink.astro', SiteTitle: './src/components/SiteTitle.astro', Hero: './src/components/Hero.astro', SocialIcons: './src/components/TopNav.astro', Footer: './src/components/Footer.astro', Sidebar: './src/components/Sidebar.astro' },
     sidebar: [
       { label: uiText('ro', "navigation.Starthere"), translations: { en: uiText('en', "navigation.Starthere") }, items: [
         { slug: 'about' }, { slug: 'getting-started' }, { slug: 'architecture' }, { slug: 'coverage' },
       ] },
+      { label: uiText('ro', 'navigation.reality'), translations: { en: uiText('en', 'navigation.reality') }, items: [{ autogenerate: { directory: 'reality' } }], collapsed: true },
       { label: uiText('ro', "Identity.foundations"), translations: { en: uiText('en', "Identity.foundations") }, items: [{ autogenerate: { directory: 'foundations' } }] },
       { label: uiText('ro', "Identity.components"), translations: { en: uiText('en', "Identity.components") }, items: [{ autogenerate: { directory: 'components' } }], collapsed: true },
       { label: uiText('ro', "Identity.servicePatterns"), translations: { en: uiText('en', "Identity.servicePatterns") }, items: [{ autogenerate: { directory: 'patterns' } }], collapsed: true },

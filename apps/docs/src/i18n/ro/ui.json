@@ -8,9 +8,6 @@
   "ComponentDemo.density": "Densitate",
   "ComponentDemo.comfortable": "Normală",
   "ComponentDemo.compact": "Compactă",
-  "Footer.experimentalStatus": "Statut experimental",
-  "Footer.alphaIndependentProposal": "Alpha · Propunere independentă.",
-  "Footer.experimentalImplementationWithoutAConformanceCertification": "Implementare experimentală, fără certificare de conformitate.",
   "Identity.foundations": "Principii de bază",
   "Identity.typographyColourSpacingAndLayout": "Tipografie, culori, spațiere și structură.",
   "Identity.components": "Componente",
@@ -139,5 +136,8 @@
   "navigation.experimentalStudies": "Studii experimentale",
   "Identity.institutionalIdentityStudies": "Vezi studiile experimentale de identitate instituțională",
   "Identity.aboutProject": "Despre proiect",
-  "Identity.projectMotivation": "SDR propune un limbaj comun de design și dezvoltare pentru serviciile publice digitale din România. Scopul este reducerea muncii repetate și construirea mai rapidă a unor servicii coerente, accesibile și ușor de folosit."
+  "Identity.projectMotivation": "SDR propune un limbaj comun de design și dezvoltare pentru serviciile publice digitale din România. Scopul este reducerea muncii repetate și construirea mai rapidă a unor servicii coerente, accesibile și ușor de folosit.",
+  "navigation.reality": "Realitatea de azi / Cu SDR",
+  "Identity.realityDescription": "Formulare publicate de instituții, recreate cu SDR.",
+  "DocsNotice.disclaimer": "Alpha · Propunere independentă, fără certificare de conformitate. Folosește date inventate în exemple; acestea nu trimit solicitări către instituții."
 }

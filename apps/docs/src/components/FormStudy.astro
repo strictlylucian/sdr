@@ -1,0 +1,27 @@
+---
+import { docsUrl } from '../docs-url';
+import { studyText as t } from '../i18n/messages';
+import { getFormStudy, type Locale, type StudyId } from '../studies/forms';
+import StudyDemo from '../studies/StudyDemo';
+interface Props { id: StudyId; locale: Locale; part: 'original' | 'proposal'; }
+const { id, locale, part } = Astro.props;
+const study = getFormStudy(id);
+---
+{part === 'original' && <section aria-label={t(locale, 'original')}>
+  <p><strong>{study.institution}</strong></p>
+  <p>{t(locale, study.edition)}</p>
+  <figure class="sdr-form-source">
+    <a href={study.source}><img src={docsUrl(`/studies/forms/${id}.webp`)} alt={`${t(locale, 'original')}: ${t(locale, study.title)} — ${study.institution}`} width="983" height="1390" loading="lazy" decoding="async" /></a>
+    <figcaption>{t(locale, 'verified')} <a href={study.source}>{t(locale, 'openOriginal')}</a></figcaption>
+  </figure>
+</section>}
+{part === 'proposal' && <section aria-label={t(locale, 'proposal')}>
+  <p><a href={docsUrl(`/examples/${locale}/study-${id}.html`)}>{t(locale, 'openDemo')}</a></p>
+  <div class="not-content sdr-form-study"><StudyDemo id={id} locale={locale} client:load /></div>
+</section>}
+<style>
+  .sdr-form-source { display:grid;gap:var(--sdr-space-3);margin:var(--sdr-space-5) 0; }
+  .sdr-form-source img { display:block;inline-size:100%;max-inline-size:32rem;block-size:auto;margin:0;border:var(--sdr-border-width) solid var(--sl-color-hairline); }
+  .sdr-form-source figcaption { font-size:var(--sdr-text-sm);color:var(--sl-color-gray-2); }
+  .sdr-form-study { border:var(--sdr-border-width) solid var(--sl-color-hairline); }
+</style>

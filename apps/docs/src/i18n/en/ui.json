@@ -8,9 +8,6 @@
   "ComponentDemo.density": "Density",
   "ComponentDemo.comfortable": "Comfortable",
   "ComponentDemo.compact": "Compact",
-  "Footer.experimentalStatus": "Experimental status",
-  "Footer.alphaIndependentProposal": "Alpha · Independent proposal.",
-  "Footer.experimentalImplementationWithoutAConformanceCertification": "Experimental implementation, without a conformance certification.",
   "Identity.foundations": "Foundations",
   "Identity.typographyColourSpacingAndLayout": "Typography, colour, spacing and layout.",
   "Identity.components": "Components",
@@ -139,5 +136,8 @@
   "navigation.experimentalStudies": "Experimental studies",
   "Identity.institutionalIdentityStudies": "Explore the experimental institutional identity studies",
   "Identity.aboutProject": "About the project",
-  "Identity.projectMotivation": "SDR proposes a shared design and development language for Romania’s digital public services. Its aim is to reduce repeated work and help teams build consistent, accessible and usable services faster."
+  "Identity.projectMotivation": "SDR proposes a shared design and development language for Romania’s digital public services. Its aim is to reduce repeated work and help teams build consistent, accessible and usable services faster.",
+  "navigation.reality": "Today / With SDR",
+  "Identity.realityDescription": "Forms published by institutions, recreated with SDR.",
+  "DocsNotice.disclaimer": "Alpha · Independent proposal, without conformance certification. Use fictional details in examples; they do not submit requests to institutions."
 }

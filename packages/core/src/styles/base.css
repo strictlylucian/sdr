@@ -12,7 +12,7 @@
 .sdr :where(code,pre,kbd) { font-family: var(--sdr-mono); }
 .sdr :where(pre) { overflow: auto; padding: var(--sdr-space-4); background: var(--sdr-subtle); border-radius: var(--sdr-radius); }
 .sdr :where(img,svg) { max-inline-size: 100%; }
-.sdr :where(h1,h2,h3,h4,h5,h6,.sdr-heading) { font-weight: 700; line-height: var(--sdr-leading-heading); letter-spacing: normal; text-wrap: balance; scroll-margin-block: var(--sdr-space-6); }
+.sdr :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm,.sdr-legend) { font-weight: 700; line-height: var(--sdr-leading-heading); letter-spacing: normal; text-wrap: balance; scroll-margin-block: var(--sdr-space-6); }
 .sdr :where(h1), .sdr-heading-xl { font-size: clamp(2rem, 4vw, 2.5rem); }
 .sdr :where(h2), .sdr-heading-lg { font-size: var(--sdr-text-2xl); }
 .sdr :where(h3), .sdr-heading-md { font-size: var(--sdr-text-xl); }

@@ -1,3 +1,5 @@
+import { writeFormStudies } from './docs-form-studies.mts';
+import { formStudies } from '../../apps/docs/src/studies/forms';
 import { writeGenerated } from './write-generated.mts';
 import { uiText } from '../../apps/docs/src/i18n/messages';
 import { mkdir } from 'node:fs/promises';
@@ -133,7 +135,7 @@ ${uiText(locale, "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFo
   await prunePages(root + '/' + locale + '/components', ['index', ...ordered.map(item => item.slug)], '.mdx');
   await writePatternDocs(locale, page, sourceTabs, imports);
   await prunePages('apps/docs/public/examples/' + locale, [
-    ...components.map(item => item.slug), ...states.map(item => item.slug), ...patternEntries.map(item => patternExampleSlug(item.slug)),
+    ...formStudies.map(item => 'study-' + item.id), ...components.map(item => item.slug), ...states.map(item => item.slug), ...patternEntries.map(item => patternExampleSlug(item.slug)),
   ], '.html');
 }
 await mkdir('apps/docs/src/data', { recursive: true });
@@ -143,3 +145,5 @@ await writeGenerated('apps/docs/public/qa-manifest.json', JSON.stringify({ state
   return { name: item.name, slug: item.slug, docsPath };
 }), patterns: patterns.map(item => item.slug), patternExamples: patternEntries.map(item => ({ name: item.example, slug: patternExampleSlug(item.slug), docsPath: { ro: patternHref(item.slug, 'ro'), en: patternHref(item.slug, 'en') } })) }));
 console.log(`Generated ${orderedComponents('en').length} component pages, ${componentVariants.length} nested variants and ${patterns.length} pattern pages in each language.`);
+
+await writeFormStudies();
