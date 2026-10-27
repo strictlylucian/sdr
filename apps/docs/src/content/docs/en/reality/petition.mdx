@@ -6,6 +6,17 @@ import FormStudy from '../../../../components/FormStudy.astro';
 
 The Ministry of Defence sectoral pension office’s form is a scanned page with boxes for identification, correspondence and petition details. Fields have fixed widths and writing space is limited by the sheet. The inspected scan contains no selectable text.
 
+## Why a digital journey is needed
+
+This is a scan of a form designed for a sheet of paper. It asks for information without providing the tools of a digital form:
+
+- **The scanned text and boxes are not semantic form fields.** The document supplies neither selectable text nor a labelled, keyboard-operable set of controls. A screen reader cannot use the scan as an ordinary sequence of questions and answers.
+- **Fixed widths restrict the person’s answers.** Names, document details and address elements must fit the printed boxes. The petition itself has one fixed rectangle, although the length needed to explain an issue varies from person to person.
+- **The page cannot guide correction as information is entered.** It does not provide contextual hints, associated error messages or a structured final check. Problems may instead be discovered later in whichever submission process uses the document.
+- **Recreating the sheet as another fixed layout would retain these constraints.** A digital alternative needs readable, reflowing questions and expandable writing space, followed by a real handling and acknowledgement process.
+
+SDR addresses the data-entry structure and reading experience. A pilot would need to connect that interface to the institution’s petition workflow and test whether the wording and requested information are clear and necessary.
+
 ## What SDR proposes
 
 Identity, address and describing the request have separate steps. Labels sit above controls, widths adapt to the screen and the petition has a resizable text area. Errors are associated with questions and answers can be reviewed.

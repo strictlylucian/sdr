@@ -1,4 +1,15 @@
-ANAF’s 2025 model puts taxpayer details, several allocation options and representative details on the first page. The fixed size leads to small boxes, abbreviations and footnotes. This is an interface study for one scenario, rather than a replacement tax form.
+ANAF’s 2025 model is an interactive PDF with selectable text and fillable fields. It puts taxpayer details, several allocation options and representative details on the first page. The fixed size leads to small boxes, abbreviations and footnotes. The study follows the single-beneficiary scenario.
+
+## Why a digital journey is needed
+
+The problem is the fixed-page interaction model, not simply the appearance of an official document:
+
+- **Different scenarios compete for space on one sheet.** Taxpayer details, private scholarships, organisations, representatives and signatures are presented together. Someone supporting one organisation still has to work out which other sections do not apply.
+- **Reading and writing space are constrained by the page.** Small boxes, dense headings and long lines work poorly on a narrow screen. Zooming a fixed layout does not give the same reading flow as responsive questions.
+- **Guidance is separated from the decision.** Percentage, amount and multi-year options refer to explanatory notes elsewhere on the page. People must move between fields and footnotes to understand what an answer means.
+- **Fillable fields retain the fixed document layout.** This source already supports digital entry. The improvement explored here is a responsive browser journey with questions and guidance organised around the person’s scenario, while institutional submission and processing remain integration work.
+
+The SDR study focuses on one beneficiary and places the relevant questions and explanations together. A production service would also need the other official scenarios, tax rules and submission integrations; the interface prototype does not supply them.
 
 ## What SDR proposes
 

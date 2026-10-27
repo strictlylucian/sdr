@@ -1,5 +1,16 @@
 În PDF-ul publicat de IPJ Constanța, întrebările sunt inserate într-un paragraf, datele se completează pe linii, iar CNP-ul are căsuțe separate. Pagina inspectată este scanată, fără text selectabil.
 
+## De ce este nevoie de un parcurs digital
+
+Publicarea scanării face documentul disponibil online, dar păstrează modul de lucru al unei cereri pe hârtie:
+
+- **Scanarea nu oferă text selectabil sau câmpuri interactive.** Un cititor de ecran nu are acces la structura de întrebări și câmpuri a unui formular HTML. Mărirea paginii mărește foaia, fără să reașeze conținutul în funcție de ecran.
+- **Solicitantul trebuie să descifreze un paragraf cu spații libere.** Numele, părinții, datele nașterii și adresa sunt încorporate în text continuu. Întrebările separate, cu etichete clare, fac mai ușor de identificat următorul răspuns cerut.
+- **Datele solicitantului sunt amestecate cu rubricile instituției.** Înregistrarea, datele certificatului și rezultatul verificării apar pe aceeași foaie cu întrebările persoanei. Un parcurs digital poate separa datele furnizate de solicitant de operațiunile instituției.
+- **Explicațiile și corectarea greșelilor rămân în afara formularului.** Liniile și căsuțele nu oferă completare automată, tastaturi potrivite, mesaje lângă întrebări sau o verificare structurată a răspunsurilor. Dacă circuitul cere tipărire, scriere de mână și scanare, apar și nevoi de echipamente sau ajutor.
+
+Digitalizarea înseamnă colectarea unor răspunsuri structurate printr-un serviciu accesibil și legarea lor de procesare, nu reproducerea foii pe ecran. Exemplul SDR arată partea de completare a acestui parcurs. Serviciul electronic MAI existent rămâne o cale separată pentru obținerea cazierului.
+
 ## Ce propune SDR
 
 Datele personale, domiciliul și motivul cererii formează trei pași. Identificatorul are un singur câmp cu tastatură numerică, datele calendaristice folosesc controale native, iar răspunsurile pot fi verificate înainte de încheiere.

@@ -1,29 +1,47 @@
-The same public need, a clearer experience. These studies start with forms published by Romanian institutions and show how they could be organised using SDR components.
-
-**Independent proposals, not operational public services.** The institutions have neither commissioned nor approved these versions. Use fictional details only.
+These studies explain the problems in specific forms published by Romanian institutions, why those problems matter and how SDR components could address them.
 
 ## Existing online forms
 
 These comparisons redesign existing web interfaces, keeping the service and observable requirements as their starting point.
 
-| Study | Source | What the proposal explores |
+| Study | Source | What the proposal addresses |
 | --- | --- | --- |
-| [Online petition: immigration](/en/reality/online-igi/) | Inspectorate General for Immigration | Identity, routing and attachments in a journey with answer review. |
-| [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Separating recipient and payer, confirming email and showing a demonstration total. |
+| [Online petition: immigration](/en/reality/online-igi/) | Inspectorate General for Immigration | Incorrect label associations and hard-to-read guidance; clear question groups and answer review. |
+| [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Compressed side labels and similar identity questions; clearer recipient, payer and contact steps. |
 
 ## Digitisation and pilot candidates
 
-These studies start with printable documents or PDFs. They explore possible digital journeys and can support pilot discussions; no institutional pilot has been agreed.
+These studies start with image-only scans from the police and pension office, and ANAF’s interactive, fillable PDF. They explore possible digital journeys and can support pilot discussions; no institutional pilot has been agreed.
 
-| Study | Source | What the proposal explores |
+| Study | Source | What the proposal addresses |
 | --- | --- | --- |
-| [Criminal-record certificate request](/en/reality/criminal-record/) | Romanian Police · Constanța County Police | Turning a scanned application into grouped questions and answer review. |
-| [Form 230: one beneficiary](/en/reality/income-tax/) | ANAF · 2025 edition | Separating taxpayer and recipient details, with guidance beside the fields. |
-| [Pension-related petition](/en/reality/petition/) | Ministry of Defence sectoral pension office | A consistent structure for identity, correspondence and describing the issue. |
+| [Criminal-record certificate request](/en/reality/criminal-record/) | Romanian Police · Constanța County Police | Image-only questions and handwritten blanks; semantic controls and grouped questions. |
+| [Form 230: one beneficiary](/en/reality/income-tax/) | ANAF · 2025 edition | Several scenarios crowded onto a fixed page; relevant questions and nearby guidance. |
+| [Pension-related petition](/en/reality/petition/) | Ministry of Defence sectoral pension office | Scanned boxes and limited writing space; readable, responsive fields and expandable text. |
+
+## Why these changes are needed
+
+A public form needs to make information easy to read, questions easy to understand and answers easy to enter and correct. These examples show two different kinds of work.
+
+### Existing web forms: remove usability and accessibility barriers
+
+Being online is only the starting point. The IGI example has incorrect programmatic label associations and small supporting text. The DGPCI capture shows long labels squeezed beside controls and faint information beneath the form. These are concrete barriers to understanding and completing a service, particularly for people using assistive technology or needing more readable text.
+
+### Paper and PDF forms: create a digital service journey
+
+Putting a scan or fixed-page PDF on a website makes a document downloadable. It leaves the person working with a sheet-shaped interface, often without semantic fields, responsive reading, contextual validation or a structured answer check. Where printing, handwriting, scanning or re-entry are required, the process also depends on equipment and manual handling.
+
+Digitisation brings questions, guidance and structured answers into a usable service journey, connected to submission and institutional processing. The SDR examples demonstrate the interface part of that change. A fillable PDF and a print option may still be useful alongside a web service.
+
+## Why consistency matters across institutions
+
+In these examples, even familiar identity and contact questions change their typography, label position, spacing and action styling from one service to another. People have to learn the interface again each time. Shared components let different services ask their own questions through familiar controls, readable type, predictable layouts and consistent help and error patterns. That is a practical reason for a common design system.
 
 ## Reading the comparison
 
-Each study includes a web-form screenshot or an image of the published document, a link to the institution’s source, proposed changes and an interactive form built with the SDR library. Sources were checked on **26–27 October 2026**. The original publication dates are not known for every document; appearance alone does not establish age.
+Each study includes a web-form screenshot or an image of the published document, a link to the institution’s source, proposed changes and an interactive form built with the SDR library. Sources were checked on **26–27 October 2026**.
+
+The critique combines captured screens with targeted, read-only HTML checks. The original web forms were not submitted or used to make payments. These observations identify specific barriers; they are not a full WCAG audit of every service.
 
 The comparison concerns **these forms**, rather than each institution’s entire digital service. A printable PDF can remain useful at a service desk, and some requests already have online alternatives. For example, [MAI provides an electronic criminal-record certificate service](https://hub.mai.gov.ro/serviciu/view?id=88). The SDR study does not replace it.
 
