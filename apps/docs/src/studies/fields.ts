@@ -1,0 +1,5 @@
+import type { Field, Key } from './study-types';
+export const field = (name: string, key: Key, options: Omit<Field, 'name' | 'key'> = {}): Field => ({ name, key, ...options });
+export const identity = [field('surname', 'surname', { required: true, autoComplete: 'family-name' }), field('given-name', 'givenName', { required: true, autoComplete: 'given-name' }), field('personal-number', 'personalNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp' })];
+export const address = [field('county', 'county', { required: true, autoComplete: 'address-level1' }), field('town', 'town', { required: true, autoComplete: 'address-level2' }), field('street', 'street', { autoComplete: 'address-line1' }), field('house-number', 'houseNumber'), field('building', 'building'), field('staircase', 'staircase'), field('floor', 'floor'), field('apartment', 'apartment')];
+export const document = [field('document-series', 'documentSeries'), field('document-number', 'documentNumber', { required: true })];

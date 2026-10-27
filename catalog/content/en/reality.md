@@ -2,7 +2,18 @@ The same public need, a clearer experience. These studies start with forms publi
 
 **Independent proposals, not operational public services.** The institutions have neither commissioned nor approved these versions. Use fictional details only.
 
-## Three forms, one shared language
+## Existing online forms
+
+These comparisons redesign existing web interfaces, keeping the service and observable requirements as their starting point.
+
+| Study | Source | What the proposal explores |
+| --- | --- | --- |
+| [Online petition: immigration](/en/reality/online-igi/) | Inspectorate General for Immigration | Identity, routing and attachments in a journey with answer review. |
+| [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Separating recipient and payer, confirming email and showing a demonstration total. |
+
+## Digitisation and pilot candidates
+
+These studies start with printable documents or PDFs. They explore possible digital journeys and can support pilot discussions; no institutional pilot has been agreed.
 
 | Study | Source | What the proposal explores |
 | --- | --- | --- |
@@ -12,9 +23,9 @@ The same public need, a clearer experience. These studies start with forms publi
 
 ## Reading the comparison
 
-Each study includes an image of the published document, a link to the institution’s source, proposed changes and an interactive form built with the SDR library. Sources were checked on **26 October 2026**. The original publication dates are not known for every document; appearance alone does not establish age.
+Each study includes a web-form screenshot or an image of the published document, a link to the institution’s source, proposed changes and an interactive form built with the SDR library. Sources were checked on **26–27 October 2026**. The original publication dates are not known for every document; appearance alone does not establish age.
 
-The comparison concerns **these documents**, rather than each institution’s entire digital service. A printable PDF can remain useful at a service desk, and some requests already have online alternatives. For example, [MAI provides an electronic criminal-record certificate service](https://hub.mai.gov.ro/serviciu/view?id=88). The SDR study does not replace it.
+The comparison concerns **these forms**, rather than each institution’s entire digital service. A printable PDF can remain useful at a service desk, and some requests already have online alternatives. For example, [MAI provides an electronic criminal-record certificate service](https://hub.mai.gov.ro/serviciu/view?id=88). The SDR study does not replace it.
 
 ## What you can try
 

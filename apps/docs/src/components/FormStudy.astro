@@ -6,13 +6,14 @@ import StudyDemo from '../studies/StudyDemo';
 interface Props { id: StudyId; locale: Locale; part: 'original' | 'proposal'; }
 const { id, locale, part } = Astro.props;
 const study = getFormStudy(id);
+const date = new Intl.DateTimeFormat(locale === 'ro' ? 'ro-RO' : 'en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(study.capturedOn));
 ---
 {part === 'original' && <section aria-label={t(locale, 'original')}>
   <p><strong>{study.institution}</strong></p>
-  <p>{t(locale, study.edition)}</p>
+  <p>{t(locale, study.edition, { date })}</p>
   <figure class="sdr-form-source">
-    <a href={study.source}><img src={docsUrl(`/studies/forms/${id}.webp`)} alt={`${t(locale, 'original')}: ${t(locale, study.title)} — ${study.institution}`} width="983" height="1390" loading="lazy" decoding="async" /></a>
-    <figcaption>{t(locale, 'verified')} <a href={study.source}>{t(locale, 'openOriginal')}</a></figcaption>
+    <a href={study.source}><img src={docsUrl(`/studies/forms/${id}.webp`)} alt={`${t(locale, 'original')}: ${t(locale, study.title)} — ${study.institution}`} width={study.image.width} height={study.image.height} loading="lazy" decoding="async" /></a>
+    <figcaption>{t(locale, study.sourceType === 'web' ? 'verifiedWeb' : 'verified', { date })} <a href={study.source}>{t(locale, study.sourceType === 'web' ? 'openWebsite' : 'openOriginal')}</a></figcaption>
   </figure>
 </section>}
 {part === 'proposal' && <section aria-label={t(locale, 'proposal')}>

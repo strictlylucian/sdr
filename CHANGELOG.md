@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Bilingual comparisons of three official Romanian forms with independent SDR demonstrations, including source images, field mapping, validation and answer review.
+- Bilingual digitisation/pilot studies and redesigns of existing official web forms, with source captures, field mapping, validation and answer review. Online examples cover immigration petitions and provisional-authorisation payment details, including attachments, email confirmation and a local demonstration total.
 - Heading size utilities now share the complete heading typography. Fieldset legends use the same weight, leading and wrapping rules as headings.
 
 ## 0.1.0-alpha.1

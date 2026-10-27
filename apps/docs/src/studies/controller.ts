@@ -1,6 +1,6 @@
 import { getFormStudy, type Locale } from './forms';
 import { studyText as t } from '../i18n/messages';
-type Control = HTMLInputElement | HTMLTextAreaElement;
+import { validateStudyField, studyAnswer, studyTotal, type StudyControl as Control } from './study-values';
 export function mountFormStudy(root: HTMLElement) {
   const study = getFormStudy(root.dataset.formStudy!);
   const locale = root.lang as Locale;
@@ -27,7 +27,7 @@ export function mountFormStudy(root: HTMLElement) {
     summary.hidden = true;
     summary.querySelector('ul')!.replaceChildren();
     root.querySelectorAll<HTMLElement>('[data-study-field]').forEach(wrapper => {
-      const input = wrapper.querySelector<Control>('input,textarea')!;
+      const input = wrapper.querySelector<Control>('input,textarea,select')!;
       const error = wrapper.querySelector<HTMLElement>('[data-study-error]')!;
       input.removeAttribute('aria-invalid');
       const described = input.getAttribute('aria-describedby')?.split(' ').filter(id => id !== error.id).join(' ');
@@ -41,10 +41,11 @@ export function mountFormStudy(root: HTMLElement) {
     const errors = summary.querySelector('ul')!;
     for (const field of study.steps[current].fields) {
       const input = control(field.name);
+      validateStudyField(field, input, control, locale, study.pricing);
       if (input.validity.valid) continue;
       const message = input.validity.valueMissing
         ? t(locale, field.type === 'checkbox' ? 'checkRequired' : 'required', { label: t(locale, field.key) })
-        : t(locale, 'invalid', { label: t(locale, field.key) });
+        : input.validity.customError ? input.validationMessage : t(locale, 'invalid', { label: t(locale, field.key) });
       const wrapper = get(`[data-study-field="${field.name}"]`);
       const error = wrapper.querySelector<HTMLElement>('[data-study-error]')!;
       error.textContent = message; error.hidden = false;
@@ -71,7 +72,7 @@ export function mountFormStudy(root: HTMLElement) {
         const row = document.createElement('div'), label = document.createElement('dt'), value = document.createElement('dd');
         row.className = 'sdr-summary__row';
         label.textContent = t(locale, field.key);
-        value.textContent = field.type === 'checkbox' ? t(locale, (input as HTMLInputElement).checked ? 'yes' : 'no') : input.value || t(locale, 'empty');
+        value.textContent = studyAnswer(field, input, locale);
         row.append(label, value); list.append(row);
       });
       const edit = document.createElement('button'); edit.type = 'button'; edit.className = 'sdr-button sdr-button--secondary';
@@ -90,14 +91,21 @@ export function mountFormStudy(root: HTMLElement) {
     progress.textContent = t(locale, 'progress', { current: current + 1, total: steps.length });
     next.textContent = t(locale, current === steps.length - 1 ? 'review' : 'continue');
     if (reviewing) buildAnswers();
+    if (study.pricing) {
+      get('[data-study-pricing]').hidden = !reviewing && !study.steps[current].fields.some(field => field.name === study.pricing!.countField);
+      get('[data-study-total]').textContent = studyTotal(study, control(study.pricing.countField).value, locale);
+    }
     if (focus) (reviewing ? review : steps[current].querySelector<HTMLElement>('legend')!).focus();
   }
   function advance() { if (validate()) { current++; show(); } }
   next.addEventListener('click', advance, { signal: abort.signal });
   form.addEventListener('submit', event => { event.preventDefault(); if (current < steps.length) advance(); }, { signal: abort.signal });
   back.addEventListener('click', () => { current--; show(); }, { signal: abort.signal });
-  finish.addEventListener('click', () => { review.hidden = true; get('[data-study-controls]').hidden = true; done.hidden = false; done.focus(); }, { signal: abort.signal });
+  finish.addEventListener('click', () => { review.hidden = true; if (study.pricing) get('[data-study-pricing]').hidden = true; get('[data-study-controls]').hidden = true; done.hidden = false; done.focus(); }, { signal: abort.signal });
   restart.addEventListener('click', () => { form.reset(); answers.replaceChildren(); done.hidden = true; get('[data-study-controls]').hidden = false; current = 0; show(); }, { signal: abort.signal });
+  if (study.pricing) control(study.pricing.countField).addEventListener('input', () => {
+    get('[data-study-total]').textContent = studyTotal(study, control(study.pricing!.countField).value, locale);
+  }, { signal: abort.signal });
   get('[data-study-no-js]').hidden = true;
   for (const button of [next, back, finish, restart]) button.disabled = false;
   show(false);

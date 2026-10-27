@@ -62,29 +62,35 @@ for (const locale of ['ro', 'en']) {
     await page.locator('.sdr-example-code').first().getByRole('tab', { name: 'HTML', exact: true }).click();
     await expect(page.locator('.sdr-example-code').first().getByRole('link')).toHaveAttribute('href', `/sdr/${locale}/getting-started/`);
     await page.waitForFunction(() => !document.querySelector('astro-island[ssr]'));
+    await expect(page.locator('#starlight__search .pagefind-ui__search-input')).toHaveCount(1);
     await page.goto(`/sdr/${locale}/components/page/`);
     const frame = page.frameLocator('iframe');
     await expect(frame.locator('h1')).toBeVisible();
     await expect(frame.getByRole('link', { name: 'English', exact: true })).toHaveAttribute('href', '/sdr/examples/en/page.html');
+    await expect(page.locator('#starlight__search .pagefind-ui__search-input')).toHaveCount(1);
     await page.goto(`/sdr/${locale}/studies/institutional-identity/`);
     for (const image of await page.locator('.sdr-study-plate__image').all()) {
       await expect(image).toHaveAttribute('src', /^\/sdr\/studies\//);
     }
+    await expect(page.locator('#starlight__search .pagefind-ui__search-input')).toHaveCount(1);
     expect(errors).toEqual([]);
   });
 }
 
 for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their header, single notice and back link under the deployment prefix`, async ({ page }) => {
-  await page.goto(`/sdr/${locale}/reality/criminal-record/`);
-  await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
-  const root = page.locator('[data-form-study]');
-  await expect(root.locator('[data-study-next]')).toBeEnabled();
-  await expect(root.locator('.sdr-header')).toBeVisible();
-  await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
-  await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
-  await root.locator('.sdr-back').click();
-  await expect(page).toHaveURL(new RegExp(`/sdr/${locale}/reality/$`));
-  await page.goto(`/sdr/examples/${locale}/study-criminal-record.html`);
+  for (const id of ['criminal-record', 'online-igi', 'online-payment']) {
+    await page.goto(`/sdr/${locale}/reality/${id}/`);
+    await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
+    const root = page.locator('[data-form-study]');
+    await expect(root.locator('[data-study-next]')).toBeEnabled();
+    await expect(root.locator('.sdr-header')).toBeVisible();
+    await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
+    await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
+    if (id.startsWith('online-')) await expect(page.locator('.sdr-form-source img')).toHaveAttribute('src', `/sdr/studies/forms/${id}.webp`);
+    await root.locator('.sdr-back').click();
+    await expect(page).toHaveURL(new RegExp(`/sdr/${locale}/reality/$`));
+  }
+  await page.goto(`/sdr/examples/${locale}/study-online-payment.html`);
   await page.setViewportSize({ width: 320, height: 900 });
   await expect(page.locator('[data-study-next]')).toBeEnabled();
   await expect(page.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);

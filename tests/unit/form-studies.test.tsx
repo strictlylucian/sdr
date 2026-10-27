@@ -14,9 +14,12 @@ function open(id: StudyId, locale: Locale = 'ro') {
   return { root, get, dispose };
 }
 function fillStep(root: HTMLElement) {
-  for (const input of root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-study-step]:not([hidden]) input,[data-study-step]:not([hidden]) textarea')) {
+  for (const input of root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('[data-study-step]:not([hidden]) input,[data-study-step]:not([hidden]) textarea,[data-study-step]:not([hidden]) select')) {
+    if (input instanceof HTMLInputElement && input.readOnly) continue;
+    if (input.type === 'file') continue;
+    if (input instanceof HTMLSelectElement) { fireEvent.change(input, { target: { value: input.options[1].value } }); continue; }
     if (input.type === 'checkbox') { fireEvent.click(input); continue; }
-    const value = input.type === 'date' ? '2000-01-01' : input.name === 'percentage' ? '3.5' : input.name === 'tax-year' ? '2025' : input.name === 'personal-number' ? '0000000000000' : input.getAttribute('pattern') === '[0-9]+' ? '123456' : input.type === 'email' ? 'fictional@example.invalid' : input.type === 'number' ? '1' : 'Exemplu fictiv';
+    const value = input.type === 'date' ? '2000-01-01' : input.name === 'percentage' ? '3.5' : input.name === 'tax-year' ? '2025' : input.getAttribute('pattern') === '[0-9]{13}' ? '0000000000000' : input.getAttribute('pattern') === '[0-9]+' ? '123456' : input.type === 'email' ? 'fictional@example.invalid' : input.type === 'number' ? '1' : 'Exemplu fictiv';
     fireEvent.change(input, { target: { value } });
   }
 }
@@ -39,7 +42,8 @@ describe('official-form study journeys', () => {
       expect(get('[data-study-review]')).toHaveFocus();
       expect(root.querySelectorAll('[data-study-answers] dt')).toHaveLength(study.steps.flatMap(step => step.fields).length);
       fireEvent.click(get('[data-study-answers] button'));
-      const surname = get<HTMLInputElement>('[name="surname"]');
+      const primary = study.steps[0].fields.find(field => field.autoComplete === 'family-name' || field.autoComplete === 'name')!;
+      const surname = get<HTMLInputElement>(`[name="${primary.name}"]`);
       expect(surname.value).toBe('Exemplu fictiv');
       fireEvent.change(surname, { target: { value: 'Schimbat' } });
       for (let step = 0; step < study.steps.length; step++) fireEvent.click(get('[data-study-next]'));
@@ -78,5 +82,45 @@ describe('official-form study journeys', () => {
     get('[data-study-errors]').hidden = true;
     fireEvent.click(get('[data-study-next]'));
     expect(get('[data-study-errors]')).not.toBeVisible();
+  });
+  it('checks email confirmation, integer quantity and the local payment total', () => {
+    const { root, get, dispose } = open('online-payment');
+    fillStep(root); fireEvent.click(get('[data-study-next]'));
+    fillStep(root);
+    fireEvent.change(get('[name="confirm-email"]'), { target: { value: 'different@example.invalid' } });
+    fireEvent.click(get('[data-study-next]'));
+    expect(get('[name="confirm-email"]')).toHaveAttribute('aria-invalid', 'true');
+    fireEvent.change(get('[name="confirm-email"]'), { target: { value: 'fictional@example.invalid' } });
+    fireEvent.click(get('[data-study-next]'));
+    const quantity = get<HTMLInputElement>('[name="quantity"]');
+    fireEvent.input(quantity, { target: { value: '1.5' } });
+    fireEvent.click(get('[data-study-next]'));
+    expect(quantity).toHaveAttribute('aria-invalid', 'true');
+    fireEvent.input(quantity, { target: { value: '3' } });
+    expect(get('[data-study-total]')).toHaveTextContent('75');
+    fireEvent.click(get('[data-study-next]'));
+    expect(get('[data-study-review]')).toBeVisible();
+    expect(get('[data-study-pricing]')).toBeVisible();
+    expect(get('[data-study-total]')).toHaveTextContent('75');
+    dispose();
+  });
+  it('checks attachment metadata and accepts an accented file name without reading content', () => {
+    const { root, get, dispose } = open('online-igi');
+    for (let index = 0; index < 2; index++) { fillStep(root); fireEvent.click(get('[data-study-next]')); }
+    fillStep(root);
+    const attachment = get<HTMLInputElement>('[name="attachment"]');
+    fireEvent.change(attachment, { target: { files: [new File(['x'], 'example.exe')] } });
+    fireEvent.click(get('[data-study-next]'));
+    expect(attachment).toHaveAttribute('aria-invalid', 'true');
+    fireEvent.change(attachment, { target: { files: [new File([new Uint8Array(1000001)], 'example.pdf')] } });
+    fireEvent.click(get('[data-study-next]'));
+    expect(attachment).toHaveAttribute('aria-invalid', 'true');
+    const file = new File(['fictional'], 'fișier.pdf', { type: 'application/pdf' });
+    Object.defineProperty(file, 'text', { value: () => { throw new Error('File contents must not be read'); } });
+    fireEvent.change(attachment, { target: { files: [file] } });
+    fireEvent.click(get('[data-study-next]'));
+    expect(get('[data-study-review]')).toBeVisible();
+    expect(get('[data-study-answers]')).toHaveTextContent('fișier.pdf');
+    dispose();
   });
 });

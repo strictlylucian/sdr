@@ -1,3 +1,5 @@
+import { formStudies } from './src/studies/forms';
+import { studyText } from './src/i18n/messages';
 import { uiText } from './src/i18n/messages.ts';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
@@ -19,7 +21,7 @@ export default defineConfig({
       { label: uiText('ro', "navigation.Starthere"), translations: { en: uiText('en', "navigation.Starthere") }, items: [
         { slug: 'about' }, { slug: 'getting-started' }, { slug: 'architecture' }, { slug: 'coverage' },
       ] },
-      { label: uiText('ro', 'navigation.reality'), translations: { en: uiText('en', 'navigation.reality') }, items: [{ autogenerate: { directory: 'reality' } }], collapsed: true },
+      { label: uiText('ro', 'navigation.reality'), translations: { en: uiText('en', 'navigation.reality') }, items: [{ slug: 'reality' }, ...(['web', 'pdf'].map(sourceType => ({ label: studyText('ro', sourceType === 'web' ? 'webStudies' : 'paperStudies'), translations: { en: studyText('en', sourceType === 'web' ? 'webStudies' : 'paperStudies') }, collapsed: true, items: formStudies.filter(study => study.sourceType === sourceType).map(study => ({ slug: 'reality/' + study.id })) })))], collapsed: true },
       { label: uiText('ro', "Identity.foundations"), translations: { en: uiText('en', "Identity.foundations") }, items: [{ autogenerate: { directory: 'foundations' } }] },
       { label: uiText('ro', "Identity.components"), translations: { en: uiText('en', "Identity.components") }, items: [{ autogenerate: { directory: 'components' } }], collapsed: true },
       { label: uiText('ro', "Identity.servicePatterns"), translations: { en: uiText('en', "Identity.servicePatterns") }, items: [{ autogenerate: { directory: 'patterns' } }], collapsed: true },

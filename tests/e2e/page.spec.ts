@@ -98,9 +98,31 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       const group = root.locator(`[data-study-step="${index}"]`);
       for (const field of step.fields) {
         const input = group.locator(`[name="${field.name}"]`);
+        if (field.fixedValueKey) continue;
+        if (field.type === 'file') {
+          await input.setInputFiles({ name: 'example.exe', mimeType: 'application/octet-stream', buffer: Buffer.from('fictional') });
+          await next.click();
+          await expect(input).toHaveAttribute('aria-invalid', 'true');
+          await input.setInputFiles({ name: 'fișier.pdf', mimeType: 'application/pdf', buffer: Buffer.from('fictional') });
+          continue;
+        }
+        if (field.type === 'select') { await input.selectOption(field.options![0].value); continue; }
         if (field.type === 'checkbox') { await input.check(); continue; }
-        const value = field.type === 'date' ? '2000-01-01' : field.name === 'percentage' ? '3.5' : field.name === 'tax-year' ? '2025' : field.name === 'personal-number' ? '0000000000000' : field.pattern === '[0-9]+' ? '123456' : field.type === 'email' ? 'fictional@example.invalid' : field.type === 'number' ? '1' : 'Exemplu fictiv';
+        const value = field.type === 'date' ? '2000-01-01' : field.name === 'percentage' ? '3.5' : field.name === 'tax-year' ? '2025' : field.pattern === '[0-9]{13}' ? '0000000000000' : field.pattern === '[0-9]+' ? '123456' : field.type === 'email' ? 'fictional@example.invalid' : field.type === 'number' ? '1' : 'Exemplu fictiv';
         await input.fill(value);
+        if (field.matches) {
+          await input.fill('different@example.invalid');
+          await next.click();
+          await expect(input).toHaveAttribute('aria-invalid', 'true');
+          await input.fill(value);
+        }
+        if (field.name === study.pricing?.countField) {
+          await input.fill('1.5');
+          await next.click();
+          await expect(input).toHaveAttribute('aria-invalid', 'true');
+          await input.fill('3');
+          await expect(root.locator('[data-study-total]')).toContainText('75');
+        }
       }
       if (index === 0) { await expectReflow(root); await expectAccessible(page, '[data-form-study]'); }
       await next.click();
@@ -112,13 +134,15 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     await expectAccessible(page, '[data-form-study]');
     await root.screenshot({ path: info.outputPath('study-review-mobile.png'), scale: 'css' });
     await root.locator('[data-study-answers] button').first().click();
-    await expect(root.locator('[name="surname"]')).toHaveValue('Exemplu fictiv');
+    const primary = study.steps[0].fields.find(field => field.autoComplete === 'family-name' || field.autoComplete === 'name')!;
+    await expect(root.locator(`[name="${primary.name}"]`)).toHaveValue('Exemplu fictiv');
     for (const _step of study.steps) await next.click();
     await root.locator('[data-study-finish]').click();
     await expect(root.locator('[data-study-done]')).toBeFocused();
-    await expect(root.locator('[data-study-done]')).toContainText(locale === 'ro' ? 'Nicio cerere' : 'No application');
+    await expect(root.locator('[data-study-done]')).toContainText(study.id === 'online-payment' ? (locale === 'ro' ? 'nicio plată' : 'No payment') : (locale === 'ro' ? 'Nicio cerere' : 'No application'));
     await root.locator('[data-study-restart]').click();
-    await expect(root.locator('[name="surname"]')).toHaveValue('');
+    await expect(root.locator(`[name="${primary.name}"]`)).toHaveValue('');
+    if (study.id === 'online-igi') expect(await root.locator('input[type="file"]').evaluate(input => (input as HTMLInputElement).files!.length)).toBe(0);
     expect(posts).toEqual([]);
     expect(await page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage } }))).toEqual(storageBefore);
   });

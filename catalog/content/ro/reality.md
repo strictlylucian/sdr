@@ -2,7 +2,18 @@ Aceeași nevoie, o experiență mai clară. Aceste studii pornesc de la formular
 
 **Propuneri independente, nu servicii publice funcționale.** Instituțiile nu au comandat și nu au aprobat aceste variante. Folosește numai date inventate în demonstrații.
 
-## Trei formulare, un limbaj comun
+## Formulare deja online
+
+Aceste comparații reproiectează interfețe web existente. Păstrează serviciul și cerințele observabile ca punct de plecare.
+
+| Studiu | Sursa | Ce explorează propunerea |
+| --- | --- | --- |
+| [Petiție online: imigrări](/ro/reality/online-igi/) | Inspectoratul General pentru Imigrări | Identificare, adresare și fișiere într-un parcurs cu verificarea răspunsurilor. |
+| [Plată online: autorizație provizorie](/ro/reality/online-payment/) | DGPCI | Separarea beneficiarului de plătitor, confirmarea emailului și un total demonstrativ. |
+
+## Digitalizare și candidați pentru pilot
+
+Aceste studii pornesc de la documente tipărite sau PDF. Arată cum ar putea deveni formulare digitale și pot susține discuții despre un pilot; nu sunt piloturi convenite cu instituțiile.
 
 | Studiu | Sursa | Ce explorează propunerea |
 | --- | --- | --- |
@@ -12,9 +23,9 @@ Aceeași nevoie, o experiență mai clară. Aceste studii pornesc de la formular
 
 ## Cum se citește comparația
 
-Fiecare studiu include o imagine a documentului publicat, linkul către sursa instituției, modificările propuse și un formular interactiv construit cu biblioteca SDR. Originalele au fost consultate la **26 octombrie 2026**. Nu cunoaștem data primei publicări a tuturor documentelor; aspectul lor nu demonstrează vechimea.
+Fiecare studiu include o captură a formularului web sau o imagine a documentului publicat, linkul către sursa instituției, modificările propuse și un formular interactiv construit cu biblioteca SDR. Sursele au fost consultate la **26–27 octombrie 2026**. Nu cunoaștem data primei publicări a tuturor documentelor; aspectul lor nu demonstrează vechimea.
 
-Comparația privește **aceste documente**, nu întreaga ofertă digitală a instituțiilor. Un PDF poate rămâne util la ghișeu, iar unele solicitări au deja alternative online. De exemplu, [MAI oferă eliberarea electronică a cazierului judiciar](https://hub.mai.gov.ro/serviciu/view?id=88). Studiul SDR nu înlocuiește acel serviciu.
+Comparația privește **aceste formulare**, nu întreaga ofertă digitală a instituțiilor. Un PDF poate rămâne util la ghișeu, iar unele solicitări au deja alternative online. De exemplu, [MAI oferă eliberarea electronică a cazierului judiciar](https://hub.mai.gov.ro/serviciu/view?id=88). Studiul SDR nu înlocuiește acel serviciu.
 
 ## Ce se poate încerca
 
