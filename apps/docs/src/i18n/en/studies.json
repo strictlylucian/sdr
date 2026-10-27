@@ -97,8 +97,8 @@
   "help": "Help",
   "onlineIgiTitle": "Online petition: immigration",
   "onlinePaymentTitle": "Online payment: provisional authorisation",
-  "onlineIgiEdition": "Public web form inspected on {date}. Demonstrated scenario: an individual applicant.",
-  "onlinePaymentEdition": "DGPCI web form, payment type 12, inspected on {date}. Demonstrated scenario: an individual.",
+  "onlineIgiEdition": "Public web form inspected on {date}. Individual and legal-entity applicant types are available.",
+  "onlinePaymentEdition": "DGPCI web form, payment type 12, inspected on {date}. Individual and legal-entity applicant types are available.",
   "webStudies": "Existing online forms",
   "paperStudies": "Digitisation and pilot candidates",
   "openWebsite": "Open the institution’s web form",
@@ -126,5 +126,9 @@
   "priceSnapshot": "Demonstration calculation at {amount} lei per document, the amount displayed by the source when captured. This is not a live tariff and no payment is made.",
   "enterQuantity": "Enter the document quantity to see the total.",
   "paymentCompletedText": "Demonstration completed. No payment was initiated and no details were sent to DGPCI or a payment processor.",
-  "paymentDetails": "Payment details"
+  "paymentDetails": "Payment details",
+  "legalEntity": "Legal entity",
+  "companyName": "Company name",
+  "companyNumber": "Company tax identifier (CUI/CIF)",
+  "fictionalCui": "For this demonstration: 1 to 10 fictional digits. The tax identifier is not verified."
 }

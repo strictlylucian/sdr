@@ -7,7 +7,8 @@ export interface Field {
   type?: 'text' | 'email' | 'tel' | 'date' | 'textarea' | 'checkbox' | 'number' | 'select' | 'file';
   required?: boolean; pattern?: string; hint?: Key; autoComplete?: string;
   min?: string; max?: string; step?: string; defaultValue?: string; fixedValueKey?: Key;
-  options?: { value: string; label: string }[];
+  options?: ({ value: string; label: string } | { value: string; labelKey: Key })[];
+  showWhen?: { field: string; value: string };
   matches?: string; accept?: string; maxBytes?: number;
 }
 export interface Step { key: Key; fields: Field[]; }

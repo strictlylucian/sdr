@@ -1,6 +1,12 @@
 import type { FormStudy } from './study-types';
 import { field } from './fields';
 import recipients from './igi-recipients.json' with { type: 'json' };
+const applicantType = () => field('applicant-type', 'applicantType', { type: 'select', required: true, options: [
+  { value: 'individual', labelKey: 'individual' },
+  { value: 'legal-entity', labelKey: 'legalEntity' },
+] });
+const individual = { field: 'applicant-type', value: 'individual' };
+const legalEntity = { field: 'applicant-type', value: 'legal-entity' };
 export const onlineStudies: FormStudy[] = [
   {
     id: 'online-igi', sourceType: 'web', capturedOn: '2026-10-26', image: { width: 1110, height: 1084 },
@@ -8,9 +14,9 @@ export const onlineStudies: FormStudy[] = [
     source: 'https://igi.mai.gov.ro/formular-petitii/', edition: 'onlineIgiEdition', completionKey: 'completedText',
     steps: [
       { key: 'identity', fields: [
+        applicantType(),
         field('surname', 'surname', { required: true, autoComplete: 'family-name' }),
         field('given-name', 'givenName', { required: true, autoComplete: 'given-name' }),
-        field('applicant-type', 'applicantType', { required: true, fixedValueKey: 'individual' }),
         field('citizenship', 'citizenship', { required: true }),
         field('birth-date', 'birthDate', { required: true, type: 'date' }),
       ] },
@@ -34,9 +40,11 @@ export const onlineStudies: FormStudy[] = [
     pricing: { unitAmount: 25, currency: 'RON', countField: 'quantity' },
     steps: [
       { key: 'paymentRecipient', fields: [
-        field('beneficiary-name', 'beneficiaryName', { required: true, autoComplete: 'name' }),
-        field('applicant-type', 'applicantType', { required: true, fixedValueKey: 'individual' }),
-        field('recipient-number', 'recipientNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp' }),
+        applicantType(),
+        field('beneficiary-name', 'beneficiaryName', { required: true, autoComplete: 'name', showWhen: individual }),
+        field('recipient-number', 'recipientNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp', showWhen: individual }),
+        field('company-name', 'companyName', { required: true, autoComplete: 'organization', showWhen: legalEntity }),
+        field('company-number', 'companyNumber', { required: true, pattern: '[0-9]{1,10}', hint: 'fictionalCui', showWhen: legalEntity }),
         field('payer-number', 'payerNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp' }),
       ] },
       { key: 'contactDetails', fields: [

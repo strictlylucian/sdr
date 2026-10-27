@@ -48,7 +48,7 @@ it('vectorises every reference pixel without overlaps, dropped stitches or added
 it('generates tiled SVG masks with palette colours and the existing size API', () => {
   const css = motifStyles(), ast = postcss.parse(css);
   expect(css).not.toMatch(/base64|\.png|image-rendering/);
-  for (const colour of ['blue', 'red']) expect(css).toContain(`var(--sdr-flag-${colour})`);
+  for (const role of ['ground', 'primary', 'secondary']) expect(css).toContain(`var(--sdr-motif-${role})`);
   const rule = ast.nodes.find(node => node.type === 'rule' && node.selector === '.sdr-motif::before,.sdr-motif::after');
   expect(rule?.type).toBe('rule');
   if (rule?.type !== 'rule') throw new Error('Missing motif mask CSS rule');

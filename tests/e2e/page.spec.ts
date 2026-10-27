@@ -99,6 +99,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       const group = root.locator(`[data-study-step="${index}"]`);
       for (const field of step.fields) {
         const input = group.locator(`[name="${field.name}"]`);
+        if (field.showWhen && !await input.isVisible()) continue;
         if (field.fixedValueKey) continue;
         if (field.type === 'file') {
           await input.setInputFiles({ name: 'example.exe', mimeType: 'application/octet-stream', buffer: Buffer.from('fictional') });

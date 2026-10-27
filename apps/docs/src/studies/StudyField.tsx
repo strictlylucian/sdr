@@ -13,11 +13,11 @@ export default function StudyField({ field, locale, prefix }: { field: Field; lo
     case 'file': control = <R.FileUpload {...props} accept={field.accept} />; break;
     case 'select':
       if (!field.options?.length) throw new Error(`Select ${field.name} needs options`);
-      control = <R.Select {...props} defaultValue=""><option value="">{t(locale, 'chooseOption')}</option>{field.options.map(option => <option value={option.value} key={option.value}>{option.label}</option>)}</R.Select>;
+      control = <R.Select {...props} defaultValue=""><option value="">{t(locale, 'chooseOption')}</option>{field.options.map(option => <option value={option.value} key={option.value}>{'labelKey' in option ? t(locale, option.labelKey) : option.label}</option>)}</R.Select>;
       break;
     default: control = <R.TextInput {...props} type={field.type ?? 'text'} autoComplete={field.autoComplete} pattern={field.pattern} min={field.min} max={field.max} step={field.step} readOnly={!!field.fixedValueKey} defaultValue={field.fixedValueKey ? t(locale, field.fixedValueKey) : field.defaultValue} inputMode={field.pattern?.startsWith('[0-9]') ? 'numeric' : undefined} />;
   }
-  return <div className="sdr-form-group" data-study-field={field.name}>
+  return <div className="sdr-form-group" data-study-field={field.name} hidden={!!field.showWhen}>
     {control}
     <p id={`${id}-validation`} className="sdr-error" data-study-error hidden />
   </div>;

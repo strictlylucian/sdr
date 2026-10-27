@@ -15,11 +15,12 @@ function open(id: StudyId, locale: Locale = 'ro') {
 }
 function fillStep(root: HTMLElement) {
   for (const input of root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('[data-study-step]:not([hidden]) input,[data-study-step]:not([hidden]) textarea,[data-study-step]:not([hidden]) select')) {
+    if (input.closest<HTMLElement>('[data-study-field]')?.hidden) continue;
     if (input instanceof HTMLInputElement && input.readOnly) continue;
     if (input.type === 'file') continue;
     if (input instanceof HTMLSelectElement) { fireEvent.change(input, { target: { value: input.options[1].value } }); continue; }
     if (input.type === 'checkbox') { fireEvent.click(input); continue; }
-    const value = input.type === 'date' ? '2000-01-01' : input.name === 'percentage' ? '3.5' : input.name === 'tax-year' ? '2025' : input.getAttribute('pattern') === '[0-9]{13}' ? '0000000000000' : input.getAttribute('pattern') === '[0-9]+' ? '123456' : input.type === 'email' ? 'fictional@example.invalid' : input.type === 'number' ? '1' : 'Exemplu fictiv';
+    const value = input.type === 'date' ? '2000-01-01' : input.name === 'percentage' ? '3.5' : input.name === 'tax-year' ? '2025' : input.getAttribute('pattern') === '[0-9]{13}' ? '0000000000000' : ['[0-9]+', '[0-9]{1,10}'].includes(input.getAttribute('pattern') ?? '') ? '123456' : input.type === 'email' ? 'fictional@example.invalid' : input.type === 'number' ? '1' : 'Exemplu fictiv';
     fireEvent.change(input, { target: { value } });
   }
 }
@@ -40,7 +41,7 @@ describe('official-form study journeys', () => {
       }
       expect(get('[data-study-review]')).toBeVisible();
       expect(get('[data-study-review]')).toHaveFocus();
-      expect(root.querySelectorAll('[data-study-answers] dt')).toHaveLength(study.steps.flatMap(step => step.fields).length);
+      expect(root.querySelectorAll('[data-study-answers] dt')).toHaveLength(study.steps.flatMap(step => step.fields).filter(field => field.showWhen?.value !== 'legal-entity').length);
       fireEvent.click(get('[data-study-answers] button'));
       const primary = study.steps[0].fields.find(field => field.autoComplete === 'family-name' || field.autoComplete === 'name')!;
       const surname = get<HTMLInputElement>(`[name="${primary.name}"]`);
@@ -123,4 +124,54 @@ describe('official-form study journeys', () => {
     expect(get('[data-study-answers]')).toHaveTextContent('fișier.pdf');
     dispose();
   });
+  for (const locale of ['ro', 'en'] as const) for (const id of ['online-igi', 'online-payment'] as const) {
+    it(`${id} ${locale}: preserves both applicant choices through review, edit and reset`, () => {
+      const { root, get, dispose } = open(id, locale);
+      const type = get<HTMLSelectElement>('[name="applicant-type"]');
+      expect(type.tagName).toBe('SELECT');
+      expect([...type.options].map(option => option.value)).toEqual(['', 'individual', 'legal-entity']);
+      fillStep(root);
+      fireEvent.change(type, { target: { value: 'legal-entity' } });
+      if (id === 'online-payment') {
+        const person = get<HTMLInputElement>('[name="recipient-number"]');
+        expect(person).toBeDisabled();
+        expect(person.closest('[data-study-field]')).not.toBeVisible();
+        const company = get<HTMLInputElement>('[name="company-name"]');
+        const taxId = get<HTMLInputElement>('[name="company-number"]');
+        expect(company).toBeEnabled();
+        expect(taxId).toBeEnabled();
+        fireEvent.click(get('[data-study-next]'));
+        expect(company).toHaveAttribute('aria-invalid', 'true');
+        fireEvent.change(company, { target: { value: 'Companie fictivă' } });
+        fireEvent.change(taxId, { target: { value: '12345678' } });
+      }
+      const steps = formStudies.find(study => study.id === id)!.steps;
+      fireEvent.click(get('[data-study-next]'));
+      for (let step = 1; step < steps.length; step++) { fillStep(root); fireEvent.click(get('[data-study-next]')); }
+      expect(get('[data-study-review]')).toBeVisible();
+      expect(get('[data-study-answers]')).toHaveTextContent(locale === 'ro' ? 'Persoană juridică' : 'Legal entity');
+      if (id === 'online-payment') {
+        expect(get('[data-study-answers]')).toHaveTextContent('Companie fictivă');
+        expect(get('[data-study-answers]')).not.toHaveTextContent(locale === 'ro' ? 'CNP-ul beneficiarului' : 'Recipient’s Romanian personal number');
+        fireEvent.click(get('[data-study-answers] button'));
+        fireEvent.change(type, { target: { value: 'individual' } });
+        expect(get('[name="company-name"]')).toBeDisabled();
+        expect(get('[name="recipient-number"]')).toBeEnabled();
+        expect(get<HTMLInputElement>('[name="company-name"]').value).toBe('Companie fictivă');
+        for (const step of steps) fireEvent.click(get('[data-study-next]'));
+        expect(get('[data-study-review]')).toBeVisible();
+        expect(get('[data-study-answers]')).not.toHaveTextContent('Companie fictivă');
+      }
+      fireEvent.click(get('[data-study-finish]'));
+      fireEvent.click(get('[data-study-restart]'));
+      expect(type.value).toBe('');
+      if (id === 'online-payment') {
+        expect(get('[name="company-name"]')).toBeDisabled();
+        expect(get('[name="recipient-number"]')).toBeDisabled();
+        expect(get<HTMLInputElement>('[name="company-name"]').value).toBe('');
+      }
+      dispose();
+    });
+  }
+
 });

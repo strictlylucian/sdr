@@ -24,8 +24,8 @@ Recipient, contact and quantity become separate steps. Email uses the appropriat
 
 | Existing web form | Proposal |
 | --- | --- |
-| Applicant type | An individual-applicant scenario shown read-only. Legal entities are not covered. |
-| Recipient and recipient identifier | Full name and a fictional identifier in the first step. |
+| Applicant type | A dropdown with individual and legal-entity options. The selection controls the recipient fields. |
+| Recipient and recipient identifier | Full name and fictional CNP for an individual; company name and fictional CUI/CIF for a legal entity. Only the selected branch is validated and included in the review. |
 | Payer identifier | A separate field, retained even when payer and recipient may be the same person. Equality is not assumed. |
 | Email and confirmation | Second step; mismatches are reported before continuing. No verification email is sent. |
 | Document quantity and amount | A positive whole-number quantity and a local total using the captured value. |

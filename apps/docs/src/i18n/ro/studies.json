@@ -97,8 +97,8 @@
   "help": "Ajutor",
   "onlineIgiTitle": "Petiție online: imigrări",
   "onlinePaymentTitle": "Plată online: autorizație provizorie",
-  "onlineIgiEdition": "Formular web public inspectat la {date}. Scenariul demonstrat: persoană fizică.",
-  "onlinePaymentEdition": "Formular web DGPCI, tipul de plată 12, inspectat la {date}. Scenariul demonstrat: persoană fizică.",
+  "onlineIgiEdition": "Formular web public inspectat la {date}. Sunt disponibile opțiunile persoană fizică și persoană juridică.",
+  "onlinePaymentEdition": "Formular web DGPCI, tipul de plată 12, inspectat la {date}. Sunt disponibile opțiunile persoană fizică și persoană juridică.",
   "webStudies": "Formulare deja online",
   "paperStudies": "Digitalizare și candidați pentru pilot",
   "openWebsite": "Deschide formularul web al instituției",
@@ -126,5 +126,9 @@
   "priceSnapshot": "Calcul demonstrativ la {amount} lei pe document, suma afișată de sursă la data capturii. Nu este un tarif actualizat și nu se efectuează plăți.",
   "enterQuantity": "Completează numărul de documente pentru a vedea totalul.",
   "paymentCompletedText": "Demonstrație încheiată. Nu a fost inițiată nicio plată și nu au fost trimise date către DGPCI sau un procesator de plăți.",
-  "paymentDetails": "Datele plății"
+  "paymentDetails": "Datele plății",
+  "legalEntity": "Persoană juridică",
+  "companyName": "Denumirea companiei",
+  "companyNumber": "Codul de identificare fiscală al companiei (CUI/CIF)",
+  "fictionalCui": "Pentru demonstrație: între 1 și 10 cifre fictive. Codul fiscal nu este verificat."
 }

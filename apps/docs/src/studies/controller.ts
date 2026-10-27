@@ -1,3 +1,4 @@
+import { isStudyFieldActive, syncStudyFields } from './conditional-fields';
 import { getFormStudy, type Locale } from './forms';
 import { studyText as t } from '../i18n/messages';
 import { validateStudyField, studyAnswer, studyTotal, type StudyControl as Control } from './study-values';
@@ -40,6 +41,7 @@ export function mountFormStudy(root: HTMLElement) {
     clearErrors();
     const errors = summary.querySelector('ul')!;
     for (const field of study.steps[current].fields) {
+      if (!isStudyFieldActive(field, control)) continue;
       const input = control(field.name);
       validateStudyField(field, input, control, locale, study.pricing);
       if (input.validity.valid) continue;
@@ -68,6 +70,7 @@ export function mountFormStudy(root: HTMLElement) {
       const heading = document.createElement('h3'); heading.className = 'sdr-heading-md'; heading.textContent = t(locale, step.key);
       const list = document.createElement('dl'); list.className = 'sdr-summary';
       step.fields.forEach(field => {
+        if (!isStudyFieldActive(field, control)) return;
         const input = control(field.name);
         const row = document.createElement('div'), label = document.createElement('dt'), value = document.createElement('dd');
         row.className = 'sdr-summary__row';
@@ -84,6 +87,7 @@ export function mountFormStudy(root: HTMLElement) {
   }
   function show(focus = true) {
     clearErrors();
+    syncStudyFields(root, study, control);
     const reviewing = current === steps.length;
     steps.forEach((step, index) => { step.hidden = index !== current; step.disabled = index !== current; });
     review.hidden = !reviewing; back.hidden = current === 0; next.hidden = reviewing; finish.hidden = !reviewing;
@@ -105,6 +109,12 @@ export function mountFormStudy(root: HTMLElement) {
   restart.addEventListener('click', () => { form.reset(); answers.replaceChildren(); done.hidden = true; get('[data-study-controls]').hidden = false; current = 0; show(); }, { signal: abort.signal });
   if (study.pricing) control(study.pricing.countField).addEventListener('input', () => {
     get('[data-study-total]').textContent = studyTotal(study, control(study.pricing!.countField).value, locale);
+  }, { signal: abort.signal });
+  const dependencies = new Set(study.steps.flatMap(step => step.fields).flatMap(field => field.showWhen ? [field.showWhen.field] : []));
+  form.addEventListener('change', event => {
+    if (event.target instanceof HTMLSelectElement && dependencies.has(event.target.name)) {
+      clearErrors(); syncStudyFields(root, study, control);
+    }
   }, { signal: abort.signal });
   get('[data-study-no-js]').hidden = true;
   for (const button of [next, back, finish, restart]) button.disabled = false;
