@@ -1,0 +1,34 @@
+Serviciul permite **semnalarea unei probleme de infrastructură locală** către Primăria Gruiu: iluminat, apă sau canalizare, drumuri, gunoi ori altă problemă. Nu este un studiu despre un formular general de contact.
+
+## Ce există deja
+
+Formularul publicat cere tipul problemei, numele, email și telefon opționale, unul dintre cele patru sate, strada și numărul, o descriere, un fișier și confirmarea privind datele personale. Interfața live afișează un buton de trimitere. Butoanele de previzualizare și resetare există în cod, dar sunt ascunse și nu sunt tratate ca funcții disponibile ale serviciului. Interfața necompletată și codul HTML au fost consultate la **27 octombrie 2026**; nu a fost trimisă nicio sesizare.
+
+## Problemele formularului actual
+
+- **Mai multe etichete vizibile nu sunt legate de câmpuri.** În codul consultat, numele, emailul, telefonul, strada, numărul, descrierea și fișierul nu au etichete HTML native asociate. Este necesară o relație fiabilă între textul vizibil și control, nu doar apropierea lor în pagină.
+- **Serviciul amestecă trei sarcini diferite.** Alegerea problemei, localizarea și datele de contact apar într-un formular lung. Un panou separat pentru localizare face mai ușor de verificat informațiile necesare găsirii problemei.
+- **Contactul folosește input-uri generice de text.** Atât emailul, cât și telefonul sunt câmpuri text. Tipurile native pentru email și telefon oferă un mod de introducere și verificare mai potrivit.
+- **Încărcarea nu are indicații apropiate despre format sau dimensiune.** Controlul din captură cere un fișier fără să explice lângă el formatele acceptate sau limita. Indicațiile explicite ajută la pregătirea unui document util; observația nu stabilește ce acceptă serverul.
+
+Sunt observații punctuale despre formularul publicat, nu o afirmație că toate serviciile primăriei sunt inaccesibile sau că lipsesc verificările pe server.
+
+## Ce propune SDR
+
+Trei panouri separă problema, locul și contactul. Cele cinci tipuri de probleme și cele patru sate rămân opțiuni radio; alegerea „Altă problemă” afișează un câmp pentru detalii. Etichetele, statutul opțional și scopul panourilor sunt explicite. Documentația arată toate panourile, iar demonstrația separată oferă verificarea răspunsurilor, fără validare fără trimiterea unei sesizări.
+
+## Corespondența cu originalul
+
+| În formularul publicat | În propunere |
+| --- | --- |
+| Tipul problemei și alt tip | Aceleași cinci opțiuni, cu detalii condiționale pentru altă problemă. |
+| Sat, stradă și număr | Panou de localizare cu cele patru sate originale. Adresa nu este verificată într-un registru. |
+| Nume, email și telefon | Panou de contact; emailul și telefonul rămân opționale. |
+| Descriere și fișier | Text redimensionabil și control pentru mai multe fișiere. PDF/JPG/JPEG/PNG și 5 MB sunt **limite demonstrative**, nu restricții verificate ale sursei. |
+| Confirmare și trimitere | Confirmare demonstrativă, verificare și modificare locală. Niciun acord și nicio sesizare nu sunt transmise instituției. |
+
+<!-- study-follow-up -->
+
+## Ce ar trebui verificat într-un pilot
+
+Un pilot ar putea verifica dacă localizarea este suficientă pentru intervenția echipei potrivite. Direcționarea, politica pentru fișiere, informarea privind datele personale, confirmarea și urmărirea sesizării ar necesita integrarea primăriei. Prototipul nu este un canal pentru urgențe.

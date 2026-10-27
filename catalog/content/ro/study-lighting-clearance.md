@@ -1,0 +1,38 @@
+Studiul privește **cererea unei persoane fizice pentru un aviz edilitar** al operatorului municipal de iluminat public din București, CMIPB. Avizul verifică lucrări de branșament sau de rețea în raport cu infrastructura de iluminat public; nu este o solicitare generală de contact.
+
+## Verificarea unui serviciu digital existent
+
+La **27 octombrie 2026** au fost consultate [serviciul de avizare și catalogul de documente](https://www.cmipb.ro/page/197). Operatorul publică cereri de descărcat, semnat și depus la ghișeu sau prin email. Formularul general de contact este descris ca un canal pentru sesizarea defecțiunilor de iluminat, nu ca o cerere structurată de aviz.
+
+În aceste trasee publicate și în căutările în serviciile oficiale nu a fost identificată o aplicație web tranzacțională dedicată acestei cereri. **Depunerea dosarului prin email există deja.** Propunerea urmărește introducerea structurată a datelor și documentelor, nu susține că operatorul nu comunică electronic. Verificarea privește serviciile publicate; înaintea unui pilot, operatorul ar trebui să confirme dacă există un sistem nepublicat sau în pregătire.
+
+## Ce cere formularul publicat
+
+PDF-ul de o pagină cere numele, telefonul, emailul, adresa, reprezentantul și lucrarea, urmate de o listă de documente și semnătură. Sursa este explicit pentru persoane fizice; catalogul publică separat formulare pentru firme. PDF-ul are text selectabil, dar **nu are câmpuri interactive**.
+
+## De ce este util un parcurs digital
+
+- **Documentul descărcat se completează în afara serviciului.** Consultarea PDF-ului nu oferă câmpuri operabile din tastatură, verificări lângă răspunsuri sau o etapă de verificare. Formularul trebuie completat și transmis ca dosar.
+- **Cerințele esențiale sunt separate de spațiile de răspuns.** Identificarea, reprezentarea și lucrarea sunt urmate de o listă lungă de planuri și acte tehnice. Un parcurs structurat poate lega fiecare cerință de încărcarea documentului și poate explica momentul în care este necesară împuternicirea.
+- **Pagina fixă nu se adaptează la text mărit sau la telefon.** Liniile lungi și lista densă rămân o interfață în formă de coală. Un layout responsive permite citirea întrebărilor fără micșorarea paginii.
+
+Sursa este o revizie recentă. Problema este interacțiunea bazată pe document, nu presupunerea că data sau cerințele tehnice ale avizului sunt depășite.
+
+## Ce propune SDR
+
+Trei panouri acoperă solicitantul, lucrarea și documentele. Alegerea beneficiar/împuternicit afișează datele și actele reprezentantului când este cazul. Documentele necesare rămân în pagină, fiecare cu propriul control de încărcare. PDF/JPG/JPEG/PNG și 5 MB pentru fiecare fișier sunt **limite de prototip**, nu reguli de încărcare verificate ale CMIPB. Conținutul nu este citit, dosarul nu este trimis și nu sunt emise avize sau efectuate plăți.
+
+## Corespondența cu originalul
+
+| În formularul publicat | În propunere |
+| --- | --- |
+| Solicitant, contact și adresă | Câmpuri native etichetate în primul panou. |
+| Reprezentare și descrierea lucrării | Alegerea explicită a calității și date condiționale pentru reprezentant. |
+| Identitate, certificat de urbanism/aviz de racordare, planuri, memoriu și soluție de rețea | Controale separate și vizibile, corespunzătoare listei originale. Actele reprezentantului apar când este cazul. |
+| Semnătură și informare privind prelucrarea | Doar confirmare demonstrativă; nu este semnătură electronică și nu este transmis un acord instituției. |
+
+<!-- study-follow-up -->
+
+## Ce ar trebui verificat într-un pilot
+
+CMIPB ar trebui să confirme mai întâi că nu există o aplicație care trebuie reutilizată, apoi să valideze actele, reprezentarea, semnăturile, stocarea sigură, taxele, analiza tehnică și urmărirea cererii. Cercetarea ar putea urmări dosarele incomplete și cererile de completare. Prototipul nu demonstrează scurtarea avizării.

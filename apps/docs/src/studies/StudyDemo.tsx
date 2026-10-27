@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { SdrProvider } from '../../../../packages/react/src';
-import StudyForm from './StudyForm';
-import { mountFormStudy } from './controller';
+import StudyPanels from './StudyPanels';
+import { mountStudyPanels } from './panel-controller';
 import type { Locale, StudyId } from './forms';
 export default function StudyDemo({ id, locale }: { id: StudyId; locale: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,8 +17,8 @@ export default function StudyDemo({ id, locale }: { id: StudyId; locale: Locale 
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     const root = ref.current?.querySelector<HTMLElement>('[data-form-study]');
     if (!root) throw new Error('Missing form study root');
-    const dispose = mountFormStudy(root);
+    const dispose = mountStudyPanels(root);
     return () => { observer.disconnect(); dispose(); };
   }, []);
-  return <div ref={ref}><SdrProvider lang={locale} theme={theme}><StudyForm id={id} locale={locale} /></SdrProvider></div>;
+  return <div ref={ref}><SdrProvider lang={locale} theme={theme}><StudyPanels id={id} locale={locale} /></SdrProvider></div>;
 }

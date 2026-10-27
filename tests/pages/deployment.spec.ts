@@ -78,12 +78,15 @@ for (const locale of ['ro', 'en']) {
 }
 
 for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their header, single notice and back link under the deployment prefix`, async ({ page }) => {
-  for (const id of ['criminal-record', 'online-igi', 'online-payment']) {
+  for (const id of ['criminal-record', 'online-igi', 'online-payment', 'online-gruiu', 'online-fishing', 'lighting-clearance', 'street-crossing']) {
     await page.goto(`/sdr/${locale}/reality/${id}/`);
     await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
     await expect(page.locator('.sdr-doc-footer .sdr-doc-notice')).toHaveCount(1);
     const root = page.locator('[data-form-study]');
-    await expect(root.locator('[data-study-next]')).toBeEnabled();
+    await expect(root).toHaveAttribute('data-study-mode', 'panels');
+    await expect(root.locator('[data-study-step]').first()).toBeVisible();
+    await expect(root.locator('[data-study-step]').last()).toBeVisible();
+    await expect(root.locator('[data-study-next]')).toHaveCount(0);
     await expect(root.locator('.sdr-header')).toBeVisible();
     await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
     await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);

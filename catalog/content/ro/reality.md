@@ -8,10 +8,19 @@ Aceste comparații reproiectează interfețe web existente. Păstrează serviciu
 | --- | --- | --- |
 | [Petiție online: imigrări](/ro/reality/online-igi/) | Inspectoratul General pentru Imigrări | Etichete asociate greșit și explicații greu de citit; grupuri clare de întrebări și verificarea răspunsurilor. |
 | [Plată online: autorizație provizorie](/ro/reality/online-payment/) | DGPCI | Etichete înghesuite lateral și întrebări similare despre identitate; pași clari pentru beneficiar, plătitor și contact. |
+| [Semnalarea unei probleme de infrastructură](/ro/reality/online-gruiu/) | Primăria Gruiu | Etichete neasociate și formular continuu; panouri clare pentru problemă, localizare și contact. |
+| [Aviz de pescuit în apele de frontieră](/ro/reality/online-fishing/) | Poliția de Frontieră | Etichete procedurale lungi, alegerea județelor și indicații contradictorii despre documente; cerințe vizibile și alegeri clare. |
 
-## Digitalizare și candidați pentru pilot
+## Formulare pe hârtie și propuneri de servicii
 
-Aceste studii pornesc de la scanările fără text ale poliției și casei de pensii, respectiv de la PDF-ul interactiv, completabil, al ANAF. Arată cum ar putea deveni formulare digitale și pot susține discuții despre un pilot; nu sunt piloturi convenite cu instituțiile.
+Cele două studii noi de avizare au fost selectate după verificarea traseelor publicate de operatori pentru un echivalent digital dedicat, la **27 octombrie 2026**. ASCE cere depunerea la sediu; CMIPB acceptă dosare completate la ghișeu sau prin email. Niciunul dintre traseele publicate nu oferea o cerere online structurată pentru solicitarea aleasă. Fiecare articol arată limitele și sursele verificării; înainte de pilot, instituția trebuie să confirme dacă există un sistem nepublicat sau în pregătire.
+
+| Studiu nou de serviciu | Sursă | Ce probleme tratează propunerea |
+| --- | --- | --- |
+| [Aviz edilitar pentru branșamente](/ro/reality/lighting-clearance/) | Operatorul municipal de iluminat public din București, CMIPB | PDF semnat și dosar de acte; date structurate și controale pentru documente în context. |
+| [Aviz de traversare a domeniului public](/ro/reality/street-crossing/) | Operatorul municipal de străzi din Alexandria, ASCE | Cerere Word și depunere la sediu; întrebări clare despre proiect și documente vizibile. |
+
+Comparațiile de interfețe documentare realizate anterior rămân utile ca studii de design. **Nu demonstrează lipsa unui serviciu digital**: există deja un serviciu electronic de cazier, iar formularul ANAF 230 este deja un PDF completabil. Aceste comparații nu trebuie prezentate ca lipsuri de digitalizare nou descoperite.
 
 | Studiu | Sursa | Ce probleme tratează propunerea |
 | --- | --- | --- |
@@ -39,7 +48,7 @@ Digitalizarea aduce întrebările, explicațiile și răspunsurile structurate �
 
 ## Cum se citește comparația
 
-Fiecare studiu include o captură a formularului web sau o imagine a documentului publicat, linkul către sursa instituției, modificările propuse și un formular interactiv construit cu biblioteca SDR. Sursele au fost consultate la **26–27 octombrie 2026**.
+Fiecare studiu include o captură a formularului web, o imagine a PDF-ului publicat sau pagina oficială de descărcare a unui document Word, linkul sursei, modificările propuse și o refacere cu biblioteca SDR. Sursele au fost consultate la **26–27 octombrie 2026**.
 
 Analiza combină capturile cu verificări punctuale ale codului HTML, fără modificarea datelor din formularele originale. Nu au fost trimise cereri și nu au fost efectuate plăți. Observațiile identifică bariere concrete; nu reprezintă un audit WCAG complet al fiecărui serviciu.
 
@@ -47,12 +56,14 @@ Comparația privește **aceste formulare**, nu întreaga ofertă digitală a ins
 
 ## Ce se poate încerca
 
-Demonstrațiile au pași, etichete persistente, câmpuri cu tipuri potrivite, erori lângă întrebări și un sumar cu linkuri către câmpuri. Răspunsurile pot fi verificate și modificate înainte de încheiere. Datele rămân în pagina deschisă, fără transmitere sau stocare în browser. Reîncărcarea paginii ori reluarea demonstrației le șterge.
+În documentație, toți pașii și verificarea finală a răspunsurilor sunt vizibile în panouri individuale, cu linkuri în indicatorul de pași. Nu este necesară completarea datelor pentru a vedea panourile următoare. Verificarea răspunsurilor se actualizează pe măsură ce sunt încercate câmpurile. Parcursul interactiv cu verificarea răspunsurilor este disponibil în demonstrația pe pagină separată.
 
-Varianta din documentație folosește componente React SDR. Exemplul separat folosește HTML generat din aceeași compoziție și cele două fișiere ale bibliotecii. Navigarea și validarea parcursului sunt cod al demonstrației. [Codul studiilor este în repository](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
+Demonstrațiile pe pagină separată au indicator de pași, etichete persistente și câmpuri cu tipuri potrivite. Ambele variante prezintă o bază vizuală, fără validare sau stări de eroare; răspunsurile goale ori incomplete nu blochează explorarea. Răspunsurile pot fi verificate și modificate înainte de încheiere. Datele rămân în pagina deschisă, fără transmitere sau stocare în browser. Reîncărcarea paginii ori reluarea demonstrației le șterge.
+
+Varianta din documentație folosește componente React SDR. Exemplul separat folosește HTML generat din aceleași definiții de câmpuri și componente SDR și cele două fișiere ale bibliotecii. Navigarea parcursului este cod al demonstrației. [Codul studiilor este în repository](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 
 ## Ce trebuie validat într-un pilot
 
-Obligativitatea câmpurilor din demonstrații este o alegere de prototip, nu o interpretare juridică a formularelor. Validarea este de format: nu verifică identitatea, eligibilitatea, registrele instituționale sau autenticitatea datelor. Semnăturile, documentele justificative și circuitul de depunere nu sunt implementate.
+Etichetele pentru câmpurile opționale și formatele sugerate sunt alegeri de prototip, nu o interpretare juridică a formularelor. Exemplele nu validează răspunsurile, identitatea, eligibilitatea sau registrele instituționale. Nu sunt verificate semnături sau autenticitatea documentelor și nu este implementat circuitul real de depunere.
 
 Un pilot ar avea nevoie de verificarea cerințelor cu instituția, cercetare cu persoanele care folosesc serviciul, integrare cu sistemele existente și evaluare de accesibilitate. Nu pretindem că aceste studii au redus timpul de completare sau că demonstrează conformitatea unui serviciu complet.

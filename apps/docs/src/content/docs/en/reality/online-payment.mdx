@@ -24,16 +24,16 @@ The contrast with the IGI example is also instructive: even ordinary contact and
 
 ## What SDR proposes
 
-Recipient, contact and quantity become separate steps. Email uses the appropriate native input type, confirmation is checked and the demonstration total updates when quantity changes. Labels sit above controls and can wrap without compressing a separate label column.
+Recipient, contact and quantity become separate steps. Email uses the appropriate native input type, the confirmation field is retained and the demonstration total updates when quantity changes. Labels sit above controls and can wrap without compressing a separate label column.
 
 ## Mapping to the original
 
 | Existing web form | Proposal |
 | --- | --- |
 | Applicant type | A dropdown with individual and legal-entity options. The selection controls the recipient fields. |
-| Recipient and recipient identifier | Full name and fictional CNP for an individual; company name and fictional CUI/CIF for a legal entity. Only the selected branch is validated and included in the review. |
+| Recipient and recipient identifier | Full name and fictional CNP for an individual; company name and fictional CUI/CIF for a legal entity. Only the selected branch is shown and included in the review. |
 | Payer identifier | A separate field, retained even when payer and recipient may be the same person. Equality is not assumed. |
-| Email and confirmation | Second step; mismatches are reported before continuing. No verification email is sent. |
+| Email and confirmation | Second step; both fields are available for inspecting the layout. No validation or verification email is implemented. |
 | Document quantity and amount | A positive whole-number quantity and a local total using the captured value. |
 | reCAPTCHA and continuing to payment | Not simulated as completed checks. The demonstration ends after answer review. |
 

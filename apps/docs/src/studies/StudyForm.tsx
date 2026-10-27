@@ -1,28 +1,19 @@
 import StudyField from './StudyField';
 import { studyTotal } from './study-values';
 import React from 'react';
-import { docsUrl } from '../docs-url';
+import StudyShell from './StudyShell';
 import * as R from '../../../../packages/react/src';
 import { studyText as t } from '../i18n/messages';
 import { getFormStudy, type Locale, type StudyId } from './forms';
 export default function StudyForm({ id, locale, standalone = false }: { id: StudyId; locale: Locale; standalone?: boolean }) {
   const study = getFormStudy(id);
   const prefix = `study-${id}`;
-  return <div data-form-study={id} lang={locale}>
-    <R.Header serviceName={t(locale, study.title)} href={`#${prefix}-form`}><span>{t(locale, 'demoInstitution')}</span></R.Header>
-    <R.ServiceNavigation label={t(locale, 'formNavigation')} menuLabel={t(locale, 'menu')} items={[
-      { label: t(locale, study.pricing ? 'paymentDetails' : 'application'), href: `#${prefix}-form`, current: true },
-      { label: t(locale, 'help'), href: `#${prefix}-help` },
-    ]} />
-    <R.Container className="sdr-main-wrapper sdr-stack">
-    <div><R.BackLink href={docsUrl(`/${locale}/reality/`)}>{t(locale, 'back')}</R.BackLink></div>
+  return <StudyShell study={study} locale={locale}>
     {standalone && <h1>{t(locale, study.title)}</h1>}
     <p data-study-no-js>{t(locale, 'noJs')}</p>
-    <div data-study-errors className="sdr-error-summary" tabIndex={-1} role="region" aria-labelledby={`${prefix}-error-title`} hidden>
-      <h2 id={`${prefix}-error-title`} className="sdr-heading-md">{t(locale, 'errors')}</h2><ul />
-    </div>
     <form id={`${prefix}-form`} noValidate className="sdr-stack" autoComplete="off">
-      <p data-study-progress role="status" aria-live="polite">{t(locale, 'progress', { current: 1, total: study.steps.length })}</p>
+      {study.steps.length > 1 && <div data-study-stepper><R.Stepper label={t(locale, 'steps')} steps={[...study.steps.map((step, index) => ({ label: t(locale, step.key), current: index === 0 })), { label: t(locale, 'review') }]} /></div>}
+      <p className="sdr-visually-hidden" data-study-progress role="status" aria-live="polite">{t(locale, 'progress', { current: 1, total: study.steps.length + 1 })}</p>
       {study.steps.map((step, index) => <fieldset className="sdr-fieldset sdr-stack" data-study-step={index} key={step.key} hidden={index !== 0} disabled={index !== 0}>
         <legend className="sdr-legend sdr-heading-lg" tabIndex={-1}>{t(locale, step.key)}</legend>
         {step.fields.map(field => <StudyField key={field.name} field={field} locale={locale} prefix={prefix} />)}
@@ -45,10 +36,5 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
         <div><R.Button type="button" variant="secondary" data-study-restart disabled>{t(locale, 'restart')}</R.Button></div>
       </section>
     </form>
-    <section id={`${prefix}-help`} className="sdr-stack">
-      <h2 className="sdr-heading-md">{t(locale, 'help')}</h2>
-      <p><a href={study.source}>{t(locale, study.sourceType === 'web' ? 'openWebsite' : 'openOriginal')}</a></p>
-    </section>
-    </R.Container>
-  </div>;
+  </StudyShell>;
 }

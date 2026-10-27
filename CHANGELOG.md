@@ -2,12 +2,14 @@
 
 ## Unreleased
 
+- Step indicators centre labels against numbered circles, use heading leading and provide wider horizontal gaps. Study documentation exposes every step in its own panel; standalone demonstrations retain the interactive journey and shared step indicator. Four additional service studies cover infrastructure reporting, border-water fishing approval and two municipal clearance dossiers, with explicit checks for existing digital routes.
+
 - Theme-aware altiță colours: dark uses flag-red and off-white stitches on a near-black ground, with dedicated motif roles; the existing SVG geometry, repeats and size variants are unchanged.
 
 - Shared responsive typography: headings, legends, lead text, utilities and documentation use one small/large-screen scale at 40rem; body text remains 19px at every width. Size-specific heading rhythm accounts for existing layout gaps and preserves explicit overrides. Exported typographySmall accompanies the large-screen typography tokens.
 
 - Responsive question spacing: 24px on small screens and 32px on desktop, with 16px/24px in compact density. Shared layouts place the gap between complete field groups while preserving label spacing, compound controls, explicit overrides and error-rail geometry.
-- Bilingual digitisation/pilot studies and redesigns of existing official web forms, with source captures, field mapping, validation and answer review. Online examples cover immigration petitions and provisional-authorisation payment details, including attachments, email confirmation and a local demonstration total.
+- Bilingual digitisation/pilot studies and redesigns of existing official web forms, with source captures, field mapping and answer review. Case studies are visual baselines without validation or error states. Online examples cover immigration petitions and provisional-authorisation payment details, including attachments, email confirmation and a local demonstration total.
 - Heading size utilities now share the complete heading typography. Fieldset legends use the same weight, leading and wrapping rules as headings.
 
 ## 0.1.0-alpha.1

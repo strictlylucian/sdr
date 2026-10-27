@@ -2,25 +2,38 @@ import { expect, expectAccessible, expectReflow, test } from './support/fixtures
 
 for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'en'] as const) {
   for (const id of ['online-igi', 'online-payment'] as const) {
-    test(`Applicant types ${id} ${edition} ${locale}: legal entity, conditional validation and review`, async ({ page }) => {
+    test(`Applicant types ${id} ${edition} ${locale}: legal entity, conditional fields and review`, async ({ page }) => {
       const posts: string[] = [];
       page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
       await page.goto(edition === 'react' ? `/${locale}/reality/${id}/` : `/examples/${locale}/study-${id}.html`);
       const root = page.locator('[data-form-study]');
       const next = root.locator('[data-study-next]');
-      await expect(next).toBeEnabled();
+      if (edition === 'html') await expect(next).toBeEnabled();
+      else { await expect(root).toHaveAttribute('data-study-ready', 'true'); await expect(root.locator('[data-study-step]').last()).toBeVisible(); }
       const type = root.getByRole('combobox', { name: locale === 'ro' ? 'Tipul solicitantului' : 'Applicant type', exact: true });
       await expect(type).toBeEnabled();
       await expect(type.locator('option')).toHaveText(locale === 'ro'
         ? ['Alege o opțiune', 'Persoană fizică', 'Persoană juridică']
         : ['Choose an option', 'Individual', 'Legal entity']);
       await type.selectOption('legal-entity');
+      if (edition === 'react') {
+        if (id === 'online-payment') {
+          await expect(root.locator('[name="company-name"]')).toBeVisible();
+          await expect(root.locator('[name="recipient-number"]')).toBeHidden();
+          await root.locator('[name="company-name"]').fill('Fictional company');
+          await expect(root.locator('[data-study-review-panel]')).toContainText('Fictional company');
+          await type.selectOption('individual');
+          await expect(root.locator('[data-study-review-panel]')).not.toContainText('Fictional company');
+          await expect(root.locator('[name="recipient-number"]')).toBeVisible();
+          await expect(root.locator('[name="company-name"]')).toBeHidden();
+        }
+        await expectAccessible(page, '[data-form-study]');
+        expect(posts).toEqual([]); return;
+      }
       if (id === 'online-payment') {
         await expect(root.locator('[name="recipient-number"]')).toBeHidden();
         await expect(root.locator('[name="recipient-number"]')).toBeDisabled();
         await expect(root.locator('[name="company-name"]')).toBeVisible();
-        await next.click();
-        await expect(root.locator('[name="company-name"]')).toHaveAttribute('aria-invalid', 'true');
         await root.locator('[name="company-name"]').fill('Companie fictivă');
         await root.locator('[name="company-number"]').fill('12345678');
         await root.locator('[name="payer-number"]').fill('0000000000000');
@@ -60,8 +73,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
         await type.selectOption('individual');
         await expect(root.locator('[name="company-number"]')).toBeDisabled();
         await expect(root.locator('[name="recipient-number"]')).toBeVisible();
-        await next.click();
-        await expect(root.locator('[name="recipient-number"]')).toHaveAttribute('aria-invalid', 'true');
+        await expect(root.locator('[aria-invalid]')).toHaveCount(0);
       }
       expect(posts).toEqual([]);
     });

@@ -8,10 +8,19 @@ These comparisons redesign existing web interfaces, keeping the service and obse
 | --- | --- | --- |
 | [Online petition: immigration](/en/reality/online-igi/) | Inspectorate General for Immigration | Incorrect label associations and hard-to-read guidance; clear question groups and answer review. |
 | [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Compressed side labels and similar identity questions; clearer recipient, payer and contact steps. |
+| [Report a local infrastructure problem](/en/reality/online-gruiu/) | Gruiu Town Hall | Unconnected labels and a continuous reporting form; clearer issue, location and contact panels. |
+| [Border-water fishing approval](/en/reality/online-fishing/) | Romanian Border Police | Long procedural labels, county selection and conflicting document guidance; visible choices and document requirements. |
 
-## Digitisation and pilot candidates
+## Paper forms and service proposals
 
-These studies start with image-only scans from the police and pension office, and ANAF’s interactive, fillable PDF. They explore possible digital journeys and can support pilot discussions; no institutional pilot has been agreed.
+The two new approval studies were selected after checking the operators’ published service routes for a dedicated digital equivalent on **27 October 2026**. ASCE specifies submission at its office; CMIPB accepts completed dossiers at its counter or by email. Neither published route provided a structured online application for the selected request. Each article records the scope and evidence of that check; an institution must confirm any unlisted or forthcoming system before a pilot.
+
+| New service study | Source | What the proposal addresses |
+| --- | --- | --- |
+| [Utility-work clearance](/en/reality/lighting-clearance/) | Bucharest municipal public-lighting operator, CMIPB | A signed PDF and document dossier; structured application and contextual document controls. |
+| [Public-land crossing approval](/en/reality/street-crossing/) | Alexandria municipal street-services operator, ASCE | Downloadable Word application and office submission; clear project questions and a visible dossier checklist. |
+
+The earlier document-interface comparisons below remain useful design studies. They are **not evidence of a missing digital service**: an electronic criminal-record service already exists, and ANAF’s Form 230 is already a fillable PDF. These comparisons must not be presented as newly discovered gaps in digitisation.
 
 | Study | Source | What the proposal addresses |
 | --- | --- | --- |
@@ -39,7 +48,7 @@ In these examples, even familiar identity and contact questions change their typ
 
 ## Reading the comparison
 
-Each study includes a web-form screenshot or an image of the published document, a link to the institution’s source, proposed changes and an interactive form built with the SDR library. Sources were checked on **26–27 October 2026**.
+Each study includes a web-form screenshot, an image of the published PDF or the official download page for a Word document, a link to the institution’s source, proposed changes and a remake built with the SDR library. Documentation shows all question steps and the final answer review as individual panels, with links in the step indicator; no answers are required to inspect later steps. Sources were checked on **26–27 October 2026**.
 
 The critique combines captured screens with targeted, read-only HTML checks. The original web forms were not submitted or used to make payments. These observations identify specific barriers; they are not a full WCAG audit of every service.
 
@@ -47,12 +56,12 @@ The comparison concerns **these forms**, rather than each institution’s entire
 
 ## What you can try
 
-The demonstrations include steps, persistent labels, appropriate input types, inline errors and an error summary linking to fields. Answers can be checked and changed before finishing. Details stay in the open page without transmission or browser storage. Reloading the page or restarting the demonstration clears them.
+Documentation panels, including answer review, are all visible. The review updates as controls are explored, without requiring the other questions to be completed. The standalone demonstrations use the SDR step indicator, persistent labels and appropriate input types. Both versions are visual baselines, without validation or error states; empty or incomplete answers never block exploration. In that interactive journey, answers can be checked and changed before finishing. Details stay in the open page without transmission or browser storage. Reloading the page or restarting the demonstration clears them.
 
-The documentation version uses SDR React components. The standalone version uses HTML generated from the same composition and the library’s two files. Journey navigation and validation are demonstration code. [Study source code is in the repository](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
+The documentation version uses SDR React components. The standalone version uses HTML generated from the same field definitions and SDR components and the library’s two files. Journey navigation is demonstration code. [Study source code is in the repository](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 
 ## What a pilot would need to establish
 
-Required fields are prototype choices, rather than a legal interpretation of the forms. Validation checks format, not identity, eligibility, institutional records or authenticity. Signatures, supporting documents and actual submission are not implemented.
+Optional labels and suggested field formats are prototype choices, rather than a legal interpretation of the forms. The examples do not validate answers, identity, eligibility or institutional records. Signatures and document authenticity are not verified, and actual submission is not implemented.
 
 A pilot would need institutional requirements review, research with people using the service, integration with existing systems and accessibility evaluation. These studies do not establish faster completion times or compliance for a complete service.

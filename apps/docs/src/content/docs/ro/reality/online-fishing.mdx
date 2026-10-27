@@ -1,0 +1,46 @@
+---
+title: "Aviz de pescuit în apele de frontieră"
+sidebar: { order: 4 }
+---
+import FormStudy from '../../../../components/FormStudy.astro';
+
+Poliția de Frontieră oferă deja o cerere online pentru **avizarea pescuitului în apele de frontieră române**. Studiul reproiectează serviciul existent pentru persoane fizice, nu propune digitalizarea separată a cererii sale de descărcat.
+
+## Ce există deja
+
+Formularul cere identificarea și contactul, domiciliul, mai multe județe de frontieră, cererea semnată, copia actului de identitate, un permis de pescuit și o declarație. Asociațiile au un serviciu separat în sursă. Formularul necompletat și codul HTML au fost consultate la **27 octombrie 2026**, fără date personale, fișiere, acorduri sau trimitere.
+
+## Problemele formularului actual
+
+- **O frază procedurală lungă devine etichetă de câmp.** Eticheta pentru județe combină solicitarea, teritoriul vizat și structurile responsabile. Alegerea efectivă este mai greu de găsit decât într-o întrebare scurtă, însoțită de explicații.
+- **Alegerea județelor introduce un widget suplimentar.** Select-ul multiplu este îmbunătățit cu un input de căutare care, în codul inspectat, nu are etichetă nativă sau `aria-label`. Propunerea folosește în schimb o listă vizibilă de checkbox-uri într-un grup etichetat.
+- **Indicațiile despre fișiere se contrazic.** Textul final spune că toate încărcările sunt obligatorii, dar permisul de pescuit nu are același asterisc ca cererea semnată și actul de identitate. Pagina discută și eliminarea obligației privind permisul ANPA. Solicitantul are nevoie de o explicație clară despre documentul necesar pentru locul ales.
+- **Un pas pe hârtie este repetat în serviciul online.** Solicitantul descarcă, completează și semnează o cerere, apoi o încarcă alături de răspunsuri deja introduse online. O reproiectare a serviciului ar trebui să verifice dacă dublarea poate fi eliminată; schimbarea componentelor nu rezolvă cerințele privind semnătura.
+
+## Ce propune SDR
+
+Patru panouri acoperă identificarea, domiciliul, județele vizate și documentele. Cele nouăsprezece opțiuni de județ relevante pot fi bifate independent; intrarea „0” din sursă este exclusă. Indicațiile esențiale despre documente rămân vizibile. Prototipul verifică **10 MB pentru toate fișierele împreună**, nu doar separat, și nu citește conținutul lor.
+
+Cererea semnată și actul de identitate rămân obligatorii în demonstrație. Permisul suplimentar este prezentat ca opțional până la clarificarea indicațiilor contradictorii; este o alegere de prototip, nu îndrumare juridică sau privind dreptul de pescuit. Demonstrația nu emite avize și nu autorizează pescuitul.
+
+## Corespondența cu originalul
+
+| În sursă | În propunere |
+| --- | --- |
+| Identificare, email și telefon | Primul panou, cu controale native și identificatori fictivi pentru test. |
+| Domiciliu | Dropdown pentru județ, localitate, adresă și detalii despre imobil. |
+| Mai multe județe vizate | Grup de checkbox-uri etichetat, cu opțiunile relevante păstrate. |
+| Cerere, act de identitate și permis | Controale separate, cu maximum 10 MB în total. Nu este inventată o restricție de format pe care formularul inspectat nu o precizează. |
+| Termeni, semnătură și trimitere | Doar confirmare demonstrativă. Documentele, cerințele legale, semnătura și trimiterea reală rămân în responsabilitatea instituției. |
+
+## Formularul publicat
+
+<FormStudy id="online-fishing" locale="ro" part="original" />
+
+## Propunerea SDR
+
+<FormStudy id="online-fishing" locale="ro" part="proposal" />
+
+## Ce ar trebui verificat într-un pilot
+
+Cercetarea ar putea testa alegerea județelor, documentele necesare și eliminarea completării repetate în cererea semnată. Producția ar necesita decizii privind semnăturile, securitatea documentelor, verificarea accesibilă, eligibilitatea, direcționarea și livrarea avizului.

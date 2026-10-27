@@ -1,0 +1,7 @@
+.sdr-study-panels { display:grid; gap:var(--sdr-space-6); }
+.sdr-study-panel { padding:var(--sdr-space-4); border:var(--sdr-border-width) solid var(--sdr-divider); background:var(--sdr-surface); min-inline-size:0; }
+.sdr-study-panel__number { display:block; margin-block-end:var(--sdr-space-2); font-weight:400; }
+@media (min-width:40rem) {
+  .sdr-study-panels { gap:var(--sdr-space-7); }
+  .sdr-study-panel { padding:var(--sdr-space-6); }
+}

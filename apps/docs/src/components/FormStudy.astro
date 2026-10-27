@@ -12,8 +12,8 @@ const date = new Intl.DateTimeFormat(locale === 'ro' ? 'ro-RO' : 'en-GB', { date
   <p><strong>{study.institution}</strong></p>
   <p>{t(locale, study.edition, { date })}</p>
   <figure class="sdr-form-source">
-    <a href={study.source}><img src={docsUrl(`/studies/forms/${id}.webp`)} alt={`${t(locale, 'original')}: ${t(locale, study.title)} — ${study.institution}`} width={study.image.width} height={study.image.height} loading="lazy" decoding="async" /></a>
-    <figcaption>{t(locale, study.sourceType === 'web' ? 'verifiedWeb' : 'verified', { date })} <a href={study.source}>{t(locale, study.sourceType === 'web' ? 'openWebsite' : 'openOriginal')}</a></figcaption>
+    <a href={study.source}><img src={docsUrl(`/studies/forms/${id}.webp`)} alt={`${t(locale, study.sourcePreview === 'publication' ? 'publishedServicePage' : 'original')}: ${t(locale, study.title)} — ${study.institution}`} width={study.image.width} height={study.image.height} loading="lazy" decoding="async" /></a>
+    <figcaption>{t(locale, study.sourcePreview === 'publication' ? 'verifiedPublication' : study.sourceType === 'web' ? 'verifiedWeb' : 'verified', { date })} <a href={study.source}>{t(locale, study.sourcePreview === 'publication' ? 'openDocument' : study.sourceType === 'web' ? 'openWebsite' : 'openOriginal')}</a></figcaption>
   </figure>
 </section>}
 {part === 'proposal' && <section aria-label={t(locale, 'proposal')}>
