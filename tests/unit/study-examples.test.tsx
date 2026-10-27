@@ -15,6 +15,8 @@ for (const study of formStudies) it(`${study.id}: all complete page examples are
   pages.forEach((page, index) => {
     expect(page).toBeVisible();
     expect(page.querySelector('.sdr-header')).toBeVisible();
+    expect(page.querySelector('[id$="-help"]')).toBeNull();
+    expect(page.querySelector('a[href$="-help"]')).toBeNull();
     expect(page.querySelector('[data-study-page-back]')).toBeVisible();
     const steps = [...page.querySelectorAll('[data-study-stepper] li')];
     expect(steps).toHaveLength(pages.length);
@@ -30,7 +32,9 @@ for (const study of formStudies) it(`${study.id}: all complete page examples are
   expect(root.querySelector(`[name="${edit.dataset.studyEdit}"]`)).toHaveFocus();
   pages.forEach(page => expect(page).toBeVisible());
   const submit = new Event('submit', { bubbles: true, cancelable: true });
-  root.querySelector('form')!.dispatchEvent(submit);
+  const review = root.querySelector<HTMLFormElement>('form[data-study-review]')!;
+  expect(review.querySelector('button[type="submit"]')).toHaveTextContent('Submit');
+  review.dispatchEvent(submit);
   expect(submit.defaultPrevented).toBe(true);
   dispose();
 });

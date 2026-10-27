@@ -98,6 +98,6 @@ for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their head
   await page.setViewportSize({ width: 320, height: 900 });
   await expect(page.locator('[data-study-next]')).toBeEnabled();
   await expect(page.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
-  await page.locator('[data-sdr-navigation-toggle]').click();
+  await expect(page.locator('[data-sdr-navigation-toggle]')).toBeHidden();
   await expect(page.locator('[data-sdr-navigation-links]')).toBeVisible();
 });

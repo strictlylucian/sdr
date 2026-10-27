@@ -22,10 +22,12 @@ export default function StudyPageExamples({ id, locale }: { id: StudyId; locale:
           <StudyShell study={study} locale={locale} prefix={pagePrefix(index)} exampleIndex={index}
             backHref={index ? `#${heading(index - 1)}` : docsUrl(`/${locale}/reality/`)}>
             <div data-study-stepper><R.Stepper label={`${t(locale, 'steps')}: ${title}`} steps={pages.map((label, target) => ({ label, href: `#${heading(target)}`, current: target === index }))} /></div>
-            {reviewing ? <section id={`${pagePrefix(index)}-form`} data-study-review className="sdr-stack">
+            {reviewing ? <form noValidate id={`${pagePrefix(index)}-form`} data-study-review className="sdr-stack">
               <h2 id={heading(index)} tabIndex={-1} className="sdr-heading-lg">{title}</h2>
               <div data-study-answers className="sdr-stack" />
-            </section> : <form id={`${pagePrefix(index)}-form`} noValidate autoComplete="off" className="sdr-stack">
+              {total && <p>{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>}
+              <div><R.Button type="submit">{t(locale, 'submit')}</R.Button></div>
+            </form> : <form id={`${pagePrefix(index)}-form`} noValidate autoComplete="off" className="sdr-stack">
               <fieldset data-study-step={index} className="sdr-fieldset sdr-stack">
                 <legend id={heading(index)} tabIndex={-1} className="sdr-legend sdr-heading-lg">{title}</legend>
                 {step.fields.map(field => <StudyField key={field.name} field={field} prefix={pagePrefix(index)} locale={locale} />)}
@@ -33,7 +35,6 @@ export default function StudyPageExamples({ id, locale }: { id: StudyId; locale:
               {total && <p aria-live="polite">{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>}
               <div><a className="sdr-button" href={`#${heading(index + 1)}`}>{t(locale, index === study.steps.length - 1 ? 'review' : 'continue')}</a></div>
             </form>}
-            {reviewing && total && <p>{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>}
           </StudyShell>
         </div>
       </section>;

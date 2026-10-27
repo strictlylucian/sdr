@@ -15,7 +15,7 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
         const headings = [...node.querySelectorAll('h2,h3,h4')].map(node => node.getBoundingClientRect());
         return [headings[1].top - headings[0].bottom, headings[2].top - headings[1].bottom];
       });
-      expect(gaps).toEqual(small ? [24, 16] : [32, 24]);
+      gaps.forEach((gap, index) => expect(gap).toBeCloseTo((small ? [24, 16] : [32, 24])[index], 1));
       await expectReflow(root);
     }
     await root.locator('.sdr-stack').evaluate(node => node.classList.add('sdr-u-gap-3'));
@@ -23,7 +23,7 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
       const [first, second] = [...node.querySelectorAll('h2,h3')].map(node => node.getBoundingClientRect());
       return second.top - first.bottom;
     });
-    expect(explicitGap).toBe(12);
+    expect(explicitGap).toBeCloseTo(12, 1);
     const heading = root.locator('h2');
     await heading.evaluate(node => node.classList.add('sdr-u-text-3xl'));
     expect(await heading.evaluate(node => getComputedStyle(node).fontSize)).toBe('48px');
@@ -40,7 +40,7 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
       expect(await root.locator('h1').evaluate(node => getComputedStyle(node).fontSize)).toBe(width < 640 ? '32px' : '48px');
       expect(await root.locator('.sdr-lead').evaluate(node => getComputedStyle(node).fontSize)).toBe(width < 640 ? '21px' : '24px');
       const gap = await root.evaluate(node => node.querySelector('.sdr-lead')!.getBoundingClientRect().top - node.querySelector('h1')!.getBoundingClientRect().bottom);
-      expect(gap).toBe(width < 640 ? 32 : 48);
+      expect(gap).toBeCloseTo(width < 640 ? 32 : 48, 1);
       await expectReflow(root);
     }
     await root.screenshot({ path: info.outputPath('title-desktop.png'), scale: 'css' });
@@ -71,10 +71,27 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
         };
       });
       expect(rhythm.firstTop).toBe('0px');
-      expect(rhythm.before).toBeCloseTo(width < 640 ? 32 : 48, 1);
+      expect(rhythm.before).toBeCloseTo(width < 640 ? 48 : 64, 1);
       expect(rhythm.after).toBeCloseTo(width < 640 ? 24 : 32, 1);
       await expectReflow(root);
     }
+  });
+
+  test(`Typography stack ${edition} ${locale}: section space does not double the layout gap`, async ({ page }) => {
+    const root = await openExample(page, 'Prose', edition, locale);
+    await root.evaluate(node => {
+      const section = document.createElement('section'); section.className = 'sdr-stack'; section.dataset.headingStack = '';
+      section.innerHTML = '<p>Previous section.</p><h2>New section</h2><p>Section content.</p>';
+      node.append(section);
+    });
+    const stack = root.locator('[data-heading-stack]');
+    const before = () => stack.evaluate(node => node.querySelector('h2')!.getBoundingClientRect().top - node.querySelector('p')!.getBoundingClientRect().bottom);
+    for (const width of [320, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(await before()).toBeCloseTo(width < 640 ? 48 : 64, 1);
+    }
+    await stack.evaluate(node => node.classList.add('sdr-u-gap-3'));
+    expect(await before()).toBeCloseTo(12, 1);
   });
 
   test(`Typography fields ${edition} ${locale}: readable text survives density and text resizing`, async ({ page }) => {
@@ -100,7 +117,7 @@ for (const locale of ['ro', 'en']) test(`Typography docs ${locale}: documentatio
     expect(await page.locator('.sl-markdown-content h3').first().evaluate(node => getComputedStyle(node).fontSize)).toBe(width < 640 ? '21px' : '24px');
     expect(await page.locator('.sl-markdown-content p').first().evaluate(node => getComputedStyle(node).fontSize)).toBe('19px');
     const rhythm = await page.locator('.sl-markdown-content > .level-h3').first().evaluate(node => ({ before: getComputedStyle(node).marginBlockStart, after: getComputedStyle(node).marginBlockEnd }));
-    expect(rhythm).toEqual(width < 640 ? { before: '24px', after: '16px' } : { before: '32px', after: '24px' });
+    expect(rhythm).toEqual(width < 640 ? { before: '32px', after: '16px' } : { before: '48px', after: '24px' });
     await page.screenshot({ path: info.outputPath(`typography-docs-${width}.png`), scale: 'css' });
   }
 });

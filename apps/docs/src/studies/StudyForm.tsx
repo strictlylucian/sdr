@@ -27,7 +27,7 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
       <div className="sdr-cluster" data-study-controls>
         <R.Button variant="secondary" type="button" data-study-back hidden disabled>{t(locale, 'back')}</R.Button>
         <R.Button type="button" data-study-next disabled>{t(locale, 'continue')}</R.Button>
-        <R.Button type="button" data-study-finish hidden disabled>{t(locale, 'complete')}</R.Button>
+        <R.Button type="submit" data-study-finish hidden disabled>{t(locale, 'submit')}</R.Button>
       </div>
       <section data-study-done tabIndex={-1} hidden aria-labelledby={`${prefix}-done-title`} className="sdr-stack">
         <h2 id={`${prefix}-done-title`} className="sdr-heading-lg">{t(locale, 'completed')}</h2>

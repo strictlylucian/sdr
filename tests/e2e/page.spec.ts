@@ -67,6 +67,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     if (edition === 'react') { await expectStudyExamples(page, study.steps.length); expect(posts).toEqual([]); return; }
     const storageBefore = await page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage } }));
     const root = page.locator('[data-form-study]');
+    await expect(root.locator('[id$="-help"],a[href$="-help"]')).toHaveCount(0);
     await expect(root.locator('.sdr-header')).toBeVisible();
     await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/${locale}/reality/`);
     const typography = await root.locator('legend').first().evaluate(node => {
@@ -80,10 +81,8 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     await expect(next).toBeEnabled();
     await page.setViewportSize({ width: 320, height: 900 });
     const menu = root.locator('[data-sdr-navigation-toggle]');
-    await expect(menu).toBeVisible();
-    await menu.click();
+    await expect(menu).toBeHidden();
     await expect(root.locator('[data-sdr-navigation-links]')).toBeVisible();
-    await menu.click();
     await expectReflow(root);
     await expect(root.locator('[data-study-error], [data-study-errors], [aria-invalid]')).toHaveCount(0);
     for (const _step of study.steps) await next.click();

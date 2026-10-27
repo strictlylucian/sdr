@@ -7,6 +7,7 @@ export async function expectStudyExamples(page: Page, count: number) {
   await expect(root).toHaveAttribute('data-study-ready', 'true');
   const pages = root.locator('[data-study-page]');
   await expect(pages).toHaveCount(count + 1);
+  await expect(root.locator('[id$="-help"],a[href$="-help"]')).toHaveCount(0);
   for (let index = 0; index <= count; index++) {
     const example = pages.nth(index);
     await expect(example).toBeVisible();
@@ -26,6 +27,8 @@ export async function expectStudyExamples(page: Page, count: number) {
   await expect(field).toBeFocused();
   for (const example of await pages.all()) await expect(example).toBeVisible();
   expect(await root.locator('[id]').evaluateAll(nodes => new Set(nodes.map(node => node.id)).size === nodes.length)).toBe(true);
+  await root.locator('[data-study-review]').getByRole('button', { name: await root.getAttribute('lang') === 'ro' ? 'Trimite' : 'Submit', exact: true }).click();
+  await expect(field).toHaveValue('Fictional answer');
   await expectAccessible(page, '[data-form-study]');
   await page.setViewportSize({ width: 320, height: 900 });
   await expectReflow(root);

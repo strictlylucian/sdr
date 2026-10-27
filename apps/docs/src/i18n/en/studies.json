@@ -5,7 +5,7 @@
   "openOriginal": "Open the institution’s PDF",
   "openDemo": "Open the standalone demonstration",
   "verified": "Source checked on {date}. This image reproduces the PDF’s first page.",
-  "noJs": "This demonstration requires JavaScript. The institution’s form is linked in the Help section.",
+  "noJs": "JavaScript is required to explore this demonstration.",
   "continue": "Continue",
   "back": "Back",
   "review": "Check your answers",
@@ -94,7 +94,6 @@
   "formNavigation": "Service navigation",
   "menu": "Menu",
   "application": "Application",
-  "help": "Help",
   "onlineIgiTitle": "Online petition: immigration",
   "onlinePaymentTitle": "Online payment: provisional authorisation",
   "onlineIgiEdition": "Public web form inspected on {date}. Individual and legal-entity applicant types are available.",
@@ -206,5 +205,6 @@
   "identityDocumentDetails": "Identity document series and number",
   "streetAndNumber": "Street and number",
   "applicantName": "Applicant’s full name",
-  "documentStudies": "Other document redesigns"
+  "documentStudies": "Other document redesigns",
+  "submit": "Submit"
 }

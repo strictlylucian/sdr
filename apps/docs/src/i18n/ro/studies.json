@@ -5,7 +5,7 @@
   "openOriginal": "Deschide PDF-ul instituției",
   "openDemo": "Deschide demonstrația pe o pagină separată",
   "verified": "Sursa a fost consultată la {date}. Imaginea reproduce prima pagină a PDF-ului.",
-  "noJs": "Pentru această demonstrație este necesar JavaScript. Formularul instituției este disponibil în secțiunea Ajutor.",
+  "noJs": "Pentru a încerca demonstrația este necesar JavaScript.",
   "continue": "Continuă",
   "back": "Înapoi",
   "review": "Verifică răspunsurile",
@@ -94,7 +94,6 @@
   "formNavigation": "Navigarea serviciului",
   "menu": "Meniu",
   "application": "Cerere",
-  "help": "Ajutor",
   "onlineIgiTitle": "Petiție online: imigrări",
   "onlinePaymentTitle": "Plată online: autorizație provizorie",
   "onlineIgiEdition": "Formular web public inspectat la {date}. Sunt disponibile opțiunile persoană fizică și persoană juridică.",
@@ -206,5 +205,6 @@
   "identityDocumentDetails": "Seria și numărul actului de identitate",
   "streetAndNumber": "Strada și numărul",
   "applicantName": "Numele și prenumele solicitantului",
-  "documentStudies": "Alte formulare refăcute"
+  "documentStudies": "Alte formulare refăcute",
+  "submit": "Trimite"
 }
