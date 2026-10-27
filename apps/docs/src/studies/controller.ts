@@ -1,7 +1,8 @@
-import { isStudyFieldActive, syncStudyFields, studyFieldDependencies } from './conditional-fields';
+import { renderStudyAnswers } from './render-answers';
+import { syncStudyFields, studyFieldDependencies } from './conditional-fields';
 import { getFormStudy, type Locale } from './forms';
 import { studyText as t } from '../i18n/messages';
-import { studyAnswer, studyTotal, type StudyControl as Control } from './study-values';
+import { studyTotal, type StudyControl as Control } from './study-values';
 export function mountFormStudy(root: HTMLElement) {
   const study = getFormStudy(root.dataset.formStudy!);
   const locale = root.lang as Locale;
@@ -23,30 +24,6 @@ export function mountFormStudy(root: HTMLElement) {
   const abort = new AbortController();
   let current = 0;
   const control = (name: string) => get<Control>(`[name="${name}"]`);
-  function buildAnswers() {
-    answers.replaceChildren();
-    study.steps.forEach((step, index) => {
-      const section = document.createElement('section'); section.className = 'sdr-stack';
-      const heading = document.createElement('h3'); heading.className = 'sdr-heading-md'; heading.textContent = t(locale, step.key);
-      const list = document.createElement('dl'); list.className = 'sdr-summary';
-      step.fields.forEach(field => {
-        if (!isStudyFieldActive(field, control)) return;
-        const input = control(field.name);
-        const row = document.createElement('div'), label = document.createElement('dt'), value = document.createElement('dd');
-        row.className = 'sdr-summary__row';
-        label.textContent = t(locale, field.key);
-        value.textContent = studyAnswer(field, input, locale);
-        const actions = document.createElement('dd'); actions.className = 'sdr-summary__actions';
-        const edit = document.createElement('a'); edit.href = `#${input.id}`; edit.className = 'sdr-link';
-        edit.textContent = t(locale, 'edit');
-        const context = document.createElement('span'); context.className = 'sdr-visually-hidden'; context.textContent = `: ${t(locale, field.key)}`;
-        edit.append(context); edit.dataset.studyEdit = field.name;
-        edit.addEventListener('click', event => { event.preventDefault(); current = index; show(false); control(field.name).focus(); }, { signal: abort.signal });
-        actions.append(edit); row.append(label, value, actions); list.append(row);
-      });
-      section.append(heading, list); answers.append(section);
-    });
-  }
   function show(focus = true) {
     syncStudyFields(root, study, control);
     const reviewing = current === steps.length;
@@ -59,7 +36,7 @@ export function mountFormStudy(root: HTMLElement) {
     progress.hidden = reviewing;
     progress.textContent = t(locale, 'progress', { current: current + 1, total: steps.length + 1 });
     next.textContent = t(locale, current === steps.length - 1 ? 'review' : 'continue');
-    if (reviewing) buildAnswers();
+    if (reviewing) renderStudyAnswers(answers, study, locale, control);
     if (study.pricing) {
       get('[data-study-pricing]').hidden = !reviewing && !study.steps[current].fields.some(field => field.name === study.pricing!.countField);
       get('[data-study-total]').textContent = studyTotal(study, control(study.pricing.countField).value, locale);
@@ -67,6 +44,14 @@ export function mountFormStudy(root: HTMLElement) {
     if (focus) (reviewing ? review : steps[current].querySelector<HTMLElement>('legend')!).focus();
   }
   function advance() { current++; show(); }
+  answers.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+    const edit = event.target.closest<HTMLAnchorElement>('[data-study-edit]');
+    if (!edit) return;
+    const index = study.steps.findIndex(step => step.fields.some(field => field.name === edit.dataset.studyEdit));
+    if (index < 0) throw new Error('Unknown answer field');
+    event.preventDefault(); current = index; show(false); control(edit.dataset.studyEdit!).focus();
+  }, { signal: abort.signal });
   next.addEventListener('click', advance, { signal: abort.signal });
   form.addEventListener('submit', event => { event.preventDefault(); if (current < steps.length) advance(); }, { signal: abort.signal });
   back.addEventListener('click', () => { current--; show(); }, { signal: abort.signal });

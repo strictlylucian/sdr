@@ -83,18 +83,15 @@ for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their head
     await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
     await expect(page.locator('.sdr-doc-footer .sdr-doc-notice')).toHaveCount(1);
     const root = page.locator('[data-form-study]');
-    await expect(root).toHaveAttribute('data-study-mode', 'journey');
+    await expect(root).toHaveAttribute('data-study-mode', 'examples');
     await expect(root.locator('[data-study-step]').first()).toBeVisible();
-    await expect(root.locator('[data-study-step]').last()).toBeHidden();
-    await expect(root.locator('[data-study-next]')).toBeEnabled();
-    await root.locator('[data-study-stepper] a').last().click();
+    await expect(root.locator('[data-study-step]').last()).toBeVisible();
     await expect(root.locator('[data-study-review]')).toBeVisible();
-    await expect(root.locator('.sdr-header')).toBeVisible();
+    for (const header of await root.locator('.sdr-header').all()) await expect(header).toBeVisible();
     await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
-    await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/sdr/${locale}/reality/`);
+    await expect(root.locator('.sdr-back').first()).toHaveAttribute('href', `/sdr/${locale}/reality/`);
     if (id.startsWith('online-')) await expect(page.locator('.sdr-form-source img')).toHaveAttribute('src', `/sdr/studies/forms/${id}.webp`);
-    await root.locator('[data-study-stepper] a').first().click();
-    await root.locator('.sdr-back').click();
+    await root.locator('.sdr-back').first().click();
     await expect(page).toHaveURL(new RegExp(`/sdr/${locale}/reality/$`));
   }
   await page.goto(`/sdr/examples/${locale}/study-online-payment.html`);

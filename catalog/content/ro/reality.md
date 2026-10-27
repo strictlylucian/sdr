@@ -41,7 +41,7 @@ O refacere completă cere controale accesibile, conținut lizibil, pași clari �
 
 ## Explorează variantele refăcute
 
-Fiecare studiu include originalul, problemele principale și varianta SDR. Fiecare pas este un exemplu de pagină completă, cu întrebările sale, header și navigare de serviciu. Indicatorul de pași permite deschiderea directă a oricărei pagini. La verificarea răspunsurilor, fiecare răspuns are o acțiune „Modifică”. Sunt studii vizuale: nu se trimite nimic, iar validarea este omisă intenționat.
+Fiecare studiu include originalul, problemele principale și varianta SDR. Fiecare pas este un exemplu de pagină completă, cu întrebările sale, header și navigare de serviciu. Toate exemplele de pagină sunt vizibile în ordine, fiecare cu pasul corespunzător selectat. La verificarea răspunsurilor, fiecare răspuns are o acțiune „Modifică”. Sunt studii vizuale: nu se trimite nimic, iar validarea este omisă intenționat.
 
 [Codul studiilor](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 

@@ -1,3 +1,4 @@
+import { expectStudyExamples } from './support/study-examples';
 import {
   expect,
   expectAccessible,
@@ -63,6 +64,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     const posts: string[] = [];
     page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
     await page.goto(edition === 'react' ? `/${locale}/reality/${study.id}/` : `/examples/${locale}/study-${study.id}.html`);
+    if (edition === 'react') { await expectStudyExamples(page, study.steps.length); expect(posts).toEqual([]); return; }
     const storageBefore = await page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage } }));
     const root = page.locator('[data-form-study]');
     await expect(root.locator('.sdr-header')).toBeVisible();

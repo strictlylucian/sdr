@@ -1,0 +1,2 @@
+.sdr-study-examples { display:grid; gap:var(--sdr-space-7); }
+.sdr-study-example { border:var(--sdr-border-width) solid var(--sdr-divider); min-inline-size:0; }

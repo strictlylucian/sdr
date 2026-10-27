@@ -5,16 +5,15 @@ import { docsUrl } from '../docs-url';
 import { studyText as t } from '../i18n/messages';
 import type { FormStudy, Locale } from './forms';
 
-export default function StudyShell({ study, locale, children }: { study: FormStudy; locale: Locale; children: ReactNode }) {
-  const prefix = `study-${study.id}`;
-  return <div data-form-study={study.id} data-study-mode="journey" lang={locale}>
+export default function StudyShell({ study, locale, children, prefix = `study-${study.id}`, exampleIndex, backHref }: { study: FormStudy; locale: Locale; children: ReactNode; prefix?: string; exampleIndex?: number; backHref?: string }) {
+  return <div data-form-study={exampleIndex === undefined ? study.id : undefined} data-study-page={exampleIndex} data-study-mode={exampleIndex === undefined ? 'journey' : 'page'} lang={locale}>
     <R.Header serviceName={t(locale, study.title)} href={`#${prefix}-form`}><span>{t(locale, 'demoInstitution')}</span></R.Header>
-    <R.ServiceNavigation label={t(locale, 'formNavigation')} menuLabel={t(locale, 'menu')} items={[
+    <R.ServiceNavigation label={exampleIndex === undefined ? t(locale, 'formNavigation') : `${t(locale, 'formNavigation')}: ${t(locale, 'stepNumber', { number: exampleIndex + 1 })}`} menuLabel={t(locale, 'menu')} items={[
       { label: t(locale, study.pricing ? 'paymentDetails' : 'application'), href: `#${prefix}-form`, current: true },
       { label: t(locale, 'help'), href: `#${prefix}-help` },
     ]} />
     <R.Container className="sdr-main-wrapper sdr-stack">
-      <div><R.BackLink data-study-page-back href={docsUrl(`/${locale}/reality/`)}>{t(locale, 'back')}</R.BackLink></div>
+      <div><R.BackLink data-study-page-back href={backHref ?? docsUrl(`/${locale}/reality/`)}>{t(locale, 'back')}</R.BackLink></div>
       {children}
       <section id={`${prefix}-help`} className="sdr-stack">
         <h2 className="sdr-heading-md">{t(locale, 'help')}</h2>

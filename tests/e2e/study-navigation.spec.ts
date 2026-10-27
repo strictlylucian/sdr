@@ -31,11 +31,11 @@ for (const locale of ['ro', 'en'] as const) {
         await expect(active).toBeVisible();
         const preview = page.locator('[data-form-study]');
         await expect(preview).toHaveAttribute('data-study-ready', 'true');
-        const steps = preview.locator('[data-study-stepper] a');
-        for (let index = await steps.count() - 2; index >= 0; index--) {
-          await steps.nth(index).click();
-          await expect(preview.locator('[data-study-step]:not([hidden])')).toHaveCount(1);
-          await expect(preview.locator(`[data-study-step="${index}"]`)).toBeVisible();
+        const examples = preview.locator('[data-study-page]');
+        await expect(examples).toHaveCount(study.steps.length + 1);
+        for (let index = 0; index <= study.steps.length; index++) {
+          await expect(examples.nth(index)).toBeVisible();
+          await expect(examples.nth(index).locator('[data-study-stepper] li').nth(index)).toHaveAttribute('aria-current', 'step');
         }
         await expect(page.getByRole('heading', { name: locale === 'en' ? 'Why a complete overhaul is needed' : 'De ce este necesară o refacere completă', exact: true })).toBeVisible();
       }

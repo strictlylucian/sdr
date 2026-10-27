@@ -7,6 +7,23 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
       await page.goto(edition === 'react' ? `/${locale}/reality/${id}/` : `/examples/${locale}/study-${id}.html`);
       const root = page.locator('[data-form-study]');
+      if (edition === 'react') {
+        await expect(root).toHaveAttribute('data-study-ready', 'true');
+        const type = root.locator('[name="applicant-type"]');
+        await type.selectOption('legal-entity');
+        if (id === 'online-payment') {
+          const company = root.locator('[name="company-name"]');
+          await company.fill('Fictional company');
+          await expect(root.locator('[data-study-review]')).toContainText('Fictional company');
+          await root.locator('[data-study-edit="company-name"]').click();
+          await expect(company).toBeFocused();
+          await type.selectOption('individual');
+          await expect(company).toBeHidden();
+          await expect(root.locator('[data-study-review]')).not.toContainText('Fictional company');
+        }
+        await expectAccessible(page, '[data-form-study]');
+        expect(posts).toEqual([]); return;
+      }
       const next = root.locator('[data-study-next]');
       await expect(next).toBeEnabled();
       const type = root.getByRole('combobox', { name: locale === 'ro' ? 'Tipul solicitantului' : 'Applicant type', exact: true });

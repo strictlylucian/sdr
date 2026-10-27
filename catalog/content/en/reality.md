@@ -41,7 +41,7 @@ A complete overhaul needs accessible controls, readable content, clear steps and
 
 ## Explore the redesigns
 
-Each study contains the original, a short diagnosis and the SDR remake. Each step is a complete page example, with its own question content inside the service header and navigation. The step indicator opens any page directly. Answer review includes a Change action beside each answer. These are visual studies: nothing is submitted, and validation is deliberately omitted.
+Each study contains the original, a short diagnosis and the SDR remake. Each step is a complete page example, with its own question content inside the service header and navigation. All page examples are visible together, in order, with the appropriate step selected in each. Answer review includes a Change action beside each answer. These are visual studies: nothing is submitted, and validation is deliberately omitted.
 
 [Study source code](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 
