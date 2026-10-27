@@ -1,4 +1,6 @@
 import { createInstance } from 'i18next';
+import enIdentity from './en/identity.json';
+import roIdentity from './ro/identity.json';
 import enStudies from './en/studies.json';
 import roStudies from './ro/studies.json';
 import enExamples from './en/examples.json';
@@ -13,8 +15,8 @@ type Values = Readonly<Record<string, string | number>>;
 const i18n = createInstance();
 void i18n.init({
   resources: {
-    en: { studies: enStudies, examples: enExamples, ui: enUi, components: enComponents },
-    ro: { studies: roStudies, examples: roExamples, ui: roUi, components: roComponents },
+    en: { identity: enIdentity, studies: enStudies, examples: enExamples, ui: enUi, components: enComponents },
+    ro: { identity: roIdentity, studies: roStudies, examples: roExamples, ui: roUi, components: roComponents },
   },
   supportedLngs: ['ro', 'en'], lng: 'ro', fallbackLng: false, initAsync: false,
   defaultNS: 'ui', keySeparator: false, returnNull: false, returnEmptyString: false,
@@ -34,3 +36,5 @@ export const componentText = (locale: Locale, key: keyof typeof enComponents, va
 export const countText = (locale: Locale, remaining: number) => text(locale, 'components', remaining < 0 ? 'over' : 'remaining', { count: Math.abs(remaining) });
 
 export const studyText = (locale: Locale, key: keyof typeof enStudies, values: Values = {}) => text(locale, 'studies', key, values);
+
+export const identityText = (locale: Locale, key: string) => text(locale, 'identity', key, {});

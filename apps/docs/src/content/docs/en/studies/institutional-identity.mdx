@@ -1,36 +1,75 @@
 ---
 title: Institutional identity studies
-description: Two experimental concepts for a possible institutional logo, in blue and burgundy.
+description: "A family of public-sector identities: one eagle, one construction and shared colours for related institutions."
 ---
-import { Aside } from '@astrojs/starlight/components';
+import InstitutionalSymbol from '../../../../components/InstitutionalSymbol.astro';
 import StudyPlate from '../../../../components/StudyPlate.astro';
+import InstitutionalFamily from '../../../../components/InstitutionalFamily.astro';
+import InstitutionalApplications from '../../../../components/InstitutionalApplications.astro';
 
-<Aside type="caution" title="Experimental concepts · Independent proposal">
-These boards are studies for a possible institutional identity. They do not represent an identity adopted by the Romanian Government or the institutions named in the examples.
-</Aside>
+<InstitutionalSymbol />
 
-The two concepts explore a monochrome eagle alongside a two-line wordmark. They share the same composition, presented in two colour directions: blue and burgundy.
+A public institution should be recognisable as part of the state without needing a completely different visual language from its neighbours. This study develops the original boards into a **family of identities**: a shared eagle, the institutional name and a colour indicating its institutional family.
 
-## Balance · Blue
+The identities and colours below are study proposals, not identities adopted by the institutions shown.
+
+## From separate logos to a shared identity
+
+The British government identity system, introduced in 2012, replaced disparate approaches with a common construction: symbol, name and departmental family colour. Agencies inherit the colour of their parent department. The [2012 guidelines](https://assets.publishing.service.gov.uk/media/5a7dd9bce5274a5eb14e7912/hmg_identity_system_guidelines_2012.pdf) describe this mechanism. [Design102 explains the reasons for unification](https://design102.blog.gov.uk/2021/01/29/branding-government-how-can-good-design-help-build-public-trust/): recognition, consistency and lower costs when organisations change.
+
+The Romanian proposal applies colour to the **whole visual signature**, rather than a side stripe. The eagle and construction stay consistent. Repetition builds recognition; the name and colour provide differentiation.
+
+## Shared construction
+
+- **One symbol.** The eagle uses the [Government-logo vector drawing on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Guvernul_Rom%C3%A2niei_(2016-).svg), adapted to monochrome, with the same geometry for every institution.
+- **One typography system.** Inter, with sentence-case names arranged over two or three lines. Names remain live text, rather than images.
+- **Fixed proportions.** The eagle matches the height of the text block. The space between them is one quarter of that height: H/4. Longer names can use three lines within the same overall height.
+- **Inherited colour.** The Ministry of Finance and ANAF share the same green. A change of name or organisation does not require a new symbol.
+
+The full name identifies the institution in monochrome as well. Colour supplements that information. Symbol and text scale together, without distortion or reducing the name to initials. Marks retain Romanian names; English captions identify each institution.
+
+## The identity family
+
+The proposal uses a restrained palette of dark colours. Every colour has at least 7:1 contrast against white and works both on white and reversed. Blue and burgundy continue the directions explored in the original boards.
+
+<InstitutionalFamily locale="en" />
+
+DNSC is coordinated by the prime minister and appears in the central-administration family. SRI retains a separate colour: parliamentary oversight does not make it a ministry or a government agency. The Ministry of Justice colour does not automatically extend to courts and prosecutors.
+
+## In a service and a document
+
+The signature can be prominent in a service header and quieter in a document. The finance family stays recognisable in ANAF services, while the same construction works in a Ministry of Justice letterhead.
+
+<InstitutionalApplications locale="en" />
+
+Institutional colours belong to identity. Buttons, links, focus and errors retain their shared SDR meanings. A burgundy institutional identity does not turn every action into a red button.
+
+## The original boards
+
+### Balance · Blue
 
 The first board presents a white-on-blue version and its blue-on-white counterpart. The main composition uses “Guvernul României” (Government of Romania). The “Ministerul Afacerilor Externe” (Ministry of Foreign Affairs) example explores how the same relationship between symbol and text accommodates a longer institutional name.
 
 <StudyPlate src="/studies/institutional-identity-blue.png" alt="Blue identity study: an eagle alongside the Romanian Government wordmark, in white on blue and blue on white; a Ministry of Foreign Affairs application appears below." caption="Original board — blue direction. It includes positive and reversed versions, a longer institutional name and proportion notes. The original labels are in Romanian." originalLabel="Open the blue board at its original resolution" />
 
-## Balance · Burgundy
+### Balance · Burgundy
 
 The second board retains the same construction and explores a burgundy direction: white on burgundy for the main version, and burgundy on white for its counterpart. The institutional names and proportions remain the same to allow comparison between the two directions.
 
 <StudyPlate src="/studies/institutional-identity-burgundy.png" alt="Burgundy identity study: an eagle alongside the Romanian Government wordmark, in white on burgundy and burgundy on white; a Ministry of Foreign Affairs application appears below." caption="Original board — burgundy direction. The shared composition and proportions allow comparison with the blue direction. The original labels are in Romanian." originalLabel="Open the burgundy board at its original resolution" />
 
-## Proportions explored
 
-Both boards make the eagle as tall as the text block: a **1:1** ratio. Their notation is **H = 2 lines × 1.15 em**, with a gap of **H/4** between the eagle and the text.
+## Where this study sits in SDR
 
-These relationships describe the construction of the concepts shown. They are study hypotheses, rather than approved rules for an institutional identity.
+The study is separate from the library packages. [Header](/en/components/header/) and [Page](/en/components/page/) continue to accept an application-provided emblem. None of these identities becomes a default.
 
-## Status in SDR
+Romania already has [Government-logo rules for EU-funded project communications](https://legislatie.just.ro/Public/DetaliiDocumentAfis/276473). This study explores a possible shared direction without changing those rules. Further development would need final vector heraldic artwork, print proofs and recognition testing at small sizes, including monochrome.
 
-The boards are retained as visual exploration material. They are not default library logos and do not change SDR colours, themes or components.
+## Institutional references
 
-The [Header](/en/components/header/) and [Page](/en/components/page/) components support an emblem supplied by the institution. These studies document a possible identity direction without prescribing it for services using SDR.
+- [ANAF within the Ministry of Finance](https://serviciipublice.gov.ro/institutii/2781).
+- [Ministry of Justice organisation](https://www.just.ro/despre-noi/organizare/organizare-si-atributii/).
+- [DNSC establishment and institutional position](https://legislatie.just.ro/Public/DetaliiDocument/246652).
+- [Democratic oversight of SRI](https://www.sri.ro/control-democratic).
+
+Institutional relationships checked on 27 October 2026. Colours are proposed by this study.

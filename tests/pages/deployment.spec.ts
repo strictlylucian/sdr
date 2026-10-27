@@ -69,6 +69,10 @@ for (const locale of ['ro', 'en']) {
     await expect(frame.getByRole('link', { name: 'English', exact: true })).toHaveAttribute('href', '/sdr/examples/en/page.html');
     await expect(page.locator('#starlight__search .pagefind-ui__search-input')).toHaveCount(1);
     await page.goto(`/sdr/${locale}/studies/institutional-identity/`);
+    const emblem = page.locator('[data-identity-family] use').first();
+    await expect(emblem).toHaveAttribute('href', '#sdr-identity-eagle');
+    expect((await page.request.get('/sdr/studies/romanian-eagle.svg')).ok()).toBeTruthy();
+    await expect.poll(() => emblem.evaluate(node => (node as SVGGraphicsElement).getBBox().height)).toBeGreaterThan(0);
     for (const image of await page.locator('.sdr-study-plate__image').all()) {
       await expect(image).toHaveAttribute('src', /^\/sdr\/studies\//);
     }

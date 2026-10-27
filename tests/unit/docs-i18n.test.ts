@@ -1,4 +1,6 @@
 import { expect, it } from 'vitest';
+import roIdentity from '../../apps/docs/src/i18n/ro/identity.json';
+import enIdentity from '../../apps/docs/src/i18n/en/identity.json';
 import roComponents from '../../apps/docs/src/i18n/ro/components.json';
 import enComponents from '../../apps/docs/src/i18n/en/components.json';
 import roExamples from '../../apps/docs/src/i18n/ro/examples.json';
@@ -8,7 +10,7 @@ import enUi from '../../apps/docs/src/i18n/en/ui.json';
 import { exampleText, uiText, countText } from '../../apps/docs/src/i18n/messages';
 
 const placeholders = (value: string) => [...value.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort();
-it.each([['examples', roExamples, enExamples], ['interface', roUi, enUi]] as const)('%s documentation translations have matching nonempty keys and placeholders', (_, first, second) => {
+it.each([['examples', roExamples, enExamples], ['interface', roUi, enUi], ['identity', roIdentity, enIdentity]] as const)('%s documentation translations have matching nonempty keys and placeholders', (_, first, second) => {
   const romanian = first as Record<string, string>, english = second as Record<string, string>;
   expect(Object.keys(romanian).sort()).toEqual(Object.keys(english).sort());
   for (const key of Object.keys(english)) {

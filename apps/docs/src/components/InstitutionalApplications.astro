@@ -1,0 +1,29 @@
+---
+import data from '../identity/institutions.json';
+import InstitutionalMark from './InstitutionalMark.astro';
+import { identityText, type Locale } from '../i18n/messages';
+import '../styles/institutional-identity.css';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const anaf = data.institutions.find(item => item.id === 'anaf')!;
+const justice = data.institutions.find(item => item.id === 'justice')!;
+const financeColour = data.families.find(item => item.id === 'finance')!.colour;
+const justiceColour = data.families.find(item => item.id === 'justice')!.colour;
+---
+<div class="not-content sdr-identity-applications">
+  <figure class="sdr-identity-application" style={`--identity-ink:${financeColour}`}>
+    <figcaption>{identityText(locale, 'service.caption')}</figcaption>
+    <div class="sdr-identity-service">
+      <div class="sdr-identity-service__header"><InstitutionalMark institution={anaf} /></div>
+      <div class="sdr-identity-service__body"><span>{identityText(locale, 'service.context')}</span><p>{identityText(locale, 'service.title')}</p><span>{identityText(locale, 'service.text')}</span></div>
+    </div>
+  </figure>
+  <figure class="sdr-identity-application" style={`--identity-ink:${justiceColour}`}>
+    <figcaption>{identityText(locale, 'letter.caption')}</figcaption>
+    <div class="sdr-identity-letter">
+      <div class="sdr-identity-letter__header"><InstitutionalMark institution={justice} /></div>
+      <div class="sdr-identity-letter__body"><span>{identityText(locale, 'letter.reference')}</span><p>{identityText(locale, 'letter.title')}</p><span>{identityText(locale, 'letter.text')}</span></div>
+      <div class="sdr-identity-letter__footer">{identityText(locale, 'letter.footer')}</div>
+    </div>
+  </figure>
+</div>

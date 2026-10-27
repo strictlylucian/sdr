@@ -1,0 +1,29 @@
+---
+import data from '../identity/institutions.json';
+import InstitutionalMark from './InstitutionalMark.astro';
+import { identityText, type Locale } from '../i18n/messages';
+import '../styles/institutional-identity.css';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<div class="not-content sdr-identity-family" data-identity-family>
+  {data.institutions.map(institution => {
+    const family = data.families.find(item => item.id === institution.family)!;
+    return <figure class="sdr-identity-specimen" data-identity-institution={institution.id} style={`--identity-ink:${family.colour}`}>
+      <figcaption class="sdr-identity-specimen__caption">
+        <div><strong>{identityText(locale, `${institution.id}.title`)}</strong><p>{identityText(locale, `${institution.id}.note`)}</p></div>
+        <span class="sdr-identity-specimen__colour"><span aria-hidden="true" />{identityText(locale, `${family.id}.family`)} · <code>{family.colour}</code></span>
+      </figcaption>
+      <div class="sdr-identity-specimen__pair">
+        <div class="sdr-identity-specimen__plate sdr-identity-specimen__plate--reverse" data-identity-version="reversed">
+          <InstitutionalMark institution={institution} />
+          <span class="sdr-identity-specimen__label">{identityText(locale, 'reversed')}</span>
+        </div>        <div class="sdr-identity-specimen__plate" data-identity-version="positive">
+          <InstitutionalMark institution={institution} />
+          <span class="sdr-identity-specimen__label">{identityText(locale, 'positive')}</span>
+        </div>
+
+      </div>
+    </figure>;
+  })}
+</div>

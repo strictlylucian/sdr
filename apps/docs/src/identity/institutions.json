@@ -1,0 +1,118 @@
+{
+  "families": [
+    {
+      "id": "government",
+      "colour": "#123259"
+    },
+    {
+      "id": "finance",
+      "colour": "#245748"
+    },
+    {
+      "id": "justice",
+      "colour": "#761E3D"
+    },
+    {
+      "id": "foreign",
+      "colour": "#254C73"
+    },
+    {
+      "id": "intelligence",
+      "colour": "#303B4A"
+    }
+  ],
+  "institutions": [
+    {
+      "id": "government",
+      "family": "government",
+      "lines": [
+        "Guvernul",
+        "României"
+      ],
+      "narrowLines": [
+        "Guvernul",
+        "României"
+      ]
+    },
+    {
+      "id": "finance",
+      "family": "finance",
+      "lines": [
+        "Ministerul",
+        "Finanțelor"
+      ],
+      "narrowLines": [
+        "Ministerul",
+        "Finanțelor"
+      ]
+    },
+    {
+      "id": "anaf",
+      "family": "finance",
+      "lines": [
+        "Agenția Națională",
+        "de Administrare Fiscală"
+      ],
+      "narrowLines": [
+        "Agenția Națională",
+        "de Administrare",
+        "Fiscală"
+      ]
+    },
+    {
+      "id": "justice",
+      "family": "justice",
+      "lines": [
+        "Ministerul",
+        "Justiției"
+      ],
+      "narrowLines": [
+        "Ministerul",
+        "Justiției"
+      ]
+    },
+    {
+      "id": "dnsc",
+      "family": "government",
+      "lines": [
+        "Directoratul Național",
+        "de Securitate Cibernetică"
+      ],
+      "narrowLines": [
+        "Directoratul Național",
+        "de Securitate",
+        "Cibernetică"
+      ]
+    },
+    {
+      "id": "sri",
+      "family": "intelligence",
+      "lines": [
+        "Serviciul Român",
+        "de Informații"
+      ],
+      "narrowLines": [
+        "Serviciul Român",
+        "de Informații"
+      ]
+    },
+    {
+      "id": "foreign",
+      "family": "foreign",
+      "lines": [
+        "Ministerul",
+        "Afacerilor Externe"
+      ],
+      "narrowLines": [
+        "Ministerul",
+        "Afacerilor",
+        "Externe"
+      ]
+    }
+  ],
+  "emblem": {
+    "viewBox": "188.4594 267.6604 218.0830 303.1643",
+    "width": 218.083,
+    "height": 303.1643
+  }
+}

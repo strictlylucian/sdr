@@ -1,36 +1,75 @@
 ---
 title: Studii de identitate instituțională
-description: Două concepte experimentale pentru un posibil logo instituțional, în albastru și vișiniu.
+description: "O familie de identități pentru instituțiile publice: aceeași acvilă, aceeași construcție, culori comune pentru instituțiile înrudite."
 ---
-import { Aside } from '@astrojs/starlight/components';
+import InstitutionalSymbol from '../../../../components/InstitutionalSymbol.astro';
 import StudyPlate from '../../../../components/StudyPlate.astro';
+import InstitutionalFamily from '../../../../components/InstitutionalFamily.astro';
+import InstitutionalApplications from '../../../../components/InstitutionalApplications.astro';
 
-<Aside type="caution" title="Concepte experimentale · Propunere independentă">
-Aceste planșe sunt studii pentru o posibilă identitate instituțională. Nu reprezintă o identitate adoptată de Guvernul României sau de instituțiile numite în exemple.
-</Aside>
+<InstitutionalSymbol />
 
-Cele două concepte explorează asocierea unei acvile monocrome cu un bloc de text pe două rânduri. Au aceeași compoziție, prezentată în două direcții cromatice: albastru și vișiniu.
+O instituție publică ar trebui să fie ușor de recunoscut ca parte a statului, fără să aibă nevoie de un limbaj vizual complet diferit de al celorlalte. Studiul dezvoltă planșele inițiale într-o **familie de identități**: o acvilă comună, denumirea instituției și o culoare care arată apartenența la o familie instituțională.
 
-## Echilibru · Albastru
+Identitățile și culorile de mai jos sunt propuneri de studiu, nu identități adoptate de instituțiile prezentate.
+
+## De la logo-uri separate la o identitate comună
+
+Sistemul britanic de identitate guvernamentală, introdus în 2012, a înlocuit abordările disparate cu o construcție comună: simbol, denumire și culoarea familiei instituționale. Agențiile preiau culoarea ministerului de care aparțin. [Ghidul din 2012](https://assets.publishing.service.gov.uk/media/5a7dd9bce5274a5eb14e7912/hmg_identity_system_guidelines_2012.pdf) descrie acest mecanism. [Design102 explică motivele unificării](https://design102.blog.gov.uk/2021/01/29/branding-government-how-can-good-design-help-build-public-trust/): recunoaștere, coerență și costuri mai mici când instituțiile se reorganizează.
+
+Propunerea românească folosește culoarea pentru **întreaga semnătură vizuală**, în locul unei benzi laterale. Acvila și structura rămân aceleași. Recunoașterea vine din repetiție, iar diferențierea din denumire și culoare.
+
+## Construcție comună
+
+- **Un singur simbol.** Acvila folosește [desenul vectorial al siglei Guvernului de pe Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Guvernul_Rom%C3%A2niei_(2016-).svg), adaptat monocrom, cu aceeași geometrie pentru toate instituțiile.
+- **Aceeași tipografie.** Inter, cu denumirea scrisă normal și împărțită în două sau trei rânduri. Textul rămâne text, nu o imagine.
+- **Proporții constante.** Înălțimea acvilei este egală cu înălțimea blocului de text. Distanța dintre ele este un sfert din această înălțime: H/4. Numele lungi pot ocupa trei rânduri în același gabarit.
+- **Culoare moștenită.** Ministerul Finanțelor și ANAF au același verde. Un nume nou sau o reorganizare nu presupune redesenarea simbolului.
+
+Denumirea completă identifică instituția și în alb-negru. Culoarea completează informația; nu o înlocuiește. Acvila și textul se micșorează împreună, fără deformare sau reducerea textului la inițiale.
+
+## Familia de identități
+
+Paleta este o propunere restrânsă de culori închise. Fiecare culoare are contrast de cel puțin 7:1 cu albul și funcționează atât pe alb, cât și în versiunea inversată. Albastrul și vișiniul continuă direcțiile din planșele originale.
+
+<InstitutionalFamily locale="ro" />
+
+DNSC este în coordonarea prim-ministrului și apare în familia administrației centrale. SRI păstrează o culoare distinctă: controlul parlamentar nu îl transformă într-un minister sau într-o agenție subordonată Guvernului. Culoarea Ministerului Justiției nu se extinde automat la instanțe și parchete.
+
+## Într-un serviciu și într-un document
+
+Semnătura vizuală poate avea o prezență puternică într-un header de serviciu și una mai discretă într-un document. Familia financiară rămâne recognoscibilă în serviciile ANAF, iar aceeași construcție funcționează într-un antet al Ministerului Justiției.
+
+<InstitutionalApplications locale="ro" />
+
+Culorile instituționale aparțin identității. Butoanele, linkurile, focusul și mesajele de eroare păstrează semnificațiile comune SDR. O instituție cu identitate vișinie nu transformă toate acțiunile în butoane roșii.
+
+## Planșele de la care am pornit
+
+### Echilibru · Albastru
 
 Prima planșă prezintă o versiune albă pe fond albastru și perechea sa cromatică, albastru pe alb. Compoziția principală folosește denumirea „Guvernul României”. Exemplul „Ministerul Afacerilor Externe” explorează aplicarea aceleiași relații între simbol și text la o denumire mai lungă.
 
 <StudyPlate src="/studies/institutional-identity-blue.png" alt="Studiu albastru: acvila lângă denumirea Guvernul României, în alb pe albastru și albastru pe alb; dedesubt, o aplicare pentru Ministerul Afacerilor Externe." caption="Planșa originală — direcția albastră. Include versiunile pozitivă și negativă, exemplul cu denumire lungă și notele de proporție." originalLabel="Deschide planșa albastră la rezoluția originală" />
 
-## Echilibru · Vișiniu
+### Echilibru · Vișiniu
 
 A doua planșă păstrează aceeași construcție și explorează o direcție vișinie: alb pe vișiniu pentru versiunea principală și vișiniu pe alb pentru perechea cromatică. Denumirile și raporturile sunt aceleași, pentru a permite compararea celor două direcții.
 
 <StudyPlate src="/studies/institutional-identity-burgundy.png" alt="Studiu vișiniu: acvila lângă denumirea Guvernul României, în alb pe vișiniu și vișiniu pe alb; dedesubt, o aplicare pentru Ministerul Afacerilor Externe." caption="Planșa originală — direcția vișinie. Aceeași compoziție și aceleași proporții permit compararea cu direcția albastră." originalLabel="Deschide planșa vișinie la rezoluția originală" />
 
-## Relații de proporție explorate
 
-În ambele planșe, înălțimea acvilei este egală cu înălțimea blocului de text: un raport de **1:1**. Notația folosită este **H = 2 rânduri × 1,15 em**, iar spațiul dintre acvilă și text este **H/4**.
+## Locul acestui studiu în SDR
 
-Aceste relații descriu construcția conceptelor prezentate. Sunt ipoteze de studiu, nu reguli aprobate pentru o identitate instituțională.
+Studiul este separat de pachetele bibliotecii. Componentele [Header](/ro/components/header/) și [Page](/ro/components/page/) acceptă în continuare o emblemă furnizată de aplicație. Niciuna dintre identitățile de aici nu devine implicită.
 
-## Statut în SDR
+România are deja [reguli pentru sigla Guvernului în comunicarea proiectelor finanțate din fonduri europene](https://legislatie.just.ro/Public/DetaliiDocumentAfis/276473). Studiul explorează o posibilă direcție comună, fără să modifice acele reguli. O dezvoltare ulterioară ar avea nevoie de desen heraldic vectorial final, probe de tipar și testarea recunoașterii la dimensiuni mici, inclusiv în alb-negru.
 
-Planșele sunt păstrate ca materiale de explorare vizuală. Nu sunt logo-uri implicite ale bibliotecii și nu modifică paleta, temele sau componentele SDR.
+## Repere instituționale
 
-Componentele [Header](/ro/components/header/) și [Page](/ro/components/page/) permit folosirea unei embleme furnizate de instituție. Studiile de aici documentează o posibilă direcție de identitate, fără să o impună serviciilor care folosesc SDR.
+- [ANAF în subordinea Ministerului Finanțelor](https://serviciipublice.gov.ro/institutii/2781).
+- [Organizarea Ministerului Justiției](https://www.just.ro/despre-noi/organizare/organizare-si-atributii/).
+- [Înființarea și poziționarea DNSC](https://legislatie.just.ro/Public/DetaliiDocument/246652).
+- [Controlul democratic asupra SRI](https://www.sri.ro/control-democratic).
+
+Relațiile instituționale au fost consultate la 27 octombrie 2026. Culorile sunt ale studiului.

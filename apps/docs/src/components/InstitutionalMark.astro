@@ -1,0 +1,10 @@
+---
+import data from '../identity/institutions.json';
+interface Props { institution: (typeof data.institutions)[number]; }
+const { institution } = Astro.props;
+---
+<div class="sdr-identity-mark" lang="ro" style={`--identity-symbol-ratio:${data.emblem.width / data.emblem.height};--identity-wide-lines:${institution.lines.length};--identity-narrow-lines:${institution.narrowLines.length}`}>
+  <svg class="sdr-identity-mark__eagle" viewBox={data.emblem.viewBox} aria-hidden="true" focusable="false"><use href="#sdr-identity-eagle" /></svg>
+  <span class="sdr-identity-mark__name sdr-identity-mark__name--wide">{institution.lines.map(line => <span>{line}</span>)}</span>
+  <span class="sdr-identity-mark__name sdr-identity-mark__name--narrow">{institution.narrowLines.map(line => <span>{line}</span>)}</span>
+</div>

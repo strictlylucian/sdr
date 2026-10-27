@@ -79,7 +79,15 @@ it("keeps source modular, spacing tokenised and documentation bilingual", async 
   for (const path of all.filter(
     (path) => path.startsWith(`./${docs}`) && path.endsWith(".mdx"),
   )) {
-    if (/gov\.uk|govuk|\bGDS\b/i.test(await readFile(path, "utf8")))
+    // The identity experiment explicitly studies the 2012 British identity standard.
+    const source = (await readFile(path, "utf8")).replace(
+      path.endsWith('/studies/institutional-identity.mdx') ? 'https://design102.blog.gov.uk/2021/01/29/branding-government-how-can-good-design-help-build-public-trust/' : 'UNMATCHED_IDENTITY_HISTORY', '',
+    ).replace(
+      path.endsWith('/studies/institutional-identity.mdx')
+        ? 'https://assets.publishing.service.gov.uk/media/5a7dd9bce5274a5eb14e7912/hmg_identity_system_guidelines_2012.pdf'
+        : 'UNMATCHED_IDENTITY_REFERENCE', '',
+    );
+    if (/gov\.uk|govuk|\bGDS\b/i.test(source))
       errors.push(
         `Public documentation contains a prohibited external comparison: ${path}`,
       );

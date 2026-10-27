@@ -1,3 +1,4 @@
+import './docs-identity.mts';
 import { writeFormStudies } from './docs-form-studies.mts';
 import { formStudies } from '../../apps/docs/src/studies/forms';
 import { writeGenerated } from './write-generated.mts';

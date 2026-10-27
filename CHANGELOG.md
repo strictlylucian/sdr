@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Expand the bilingual institutional identity study into seven related identities, with shared Wikimedia-derived vector artwork, inherited family colours, fixed proportions and service/header applications. This is documentation-only exploration, separate from the npm packages.
+
 ## 0.1.0-alpha.2 — 2026-10-27
 
 ### Library
