@@ -1,82 +1,7 @@
-import { localisationContent, projectContent } from './content';
+import { localisationContent, projectContent, gettingStartedContent } from './content';
 export const guidesRo: Record<string, { title: string; body: string }> = {
   about: { title: 'Despre proiect', body: projectContent.ro },
-  'getting-started': { title: 'Instalare și integrare', body: `
-SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României.
-
-## Rularea proiectului local
-
-Proiectul necesită Node 22.23.4 sau mai nou și npm 11. Scripturile npm folosesc versiunea locală de Node inclusă în proiect.
-
-~~~sh
-npm ci
-npm run build:library
-npm run docs:generate
-npm run dev
-~~~
-
-Documentația este disponibilă la /ro/ și /en/ pe serverul local. Comanda npm run verify verifică sursele, tipurile, testele unitare, build-ul documentației și interacțiunile în browser. Testele de browser folosesc cele trei motoare, instalate cu \`npx playwright install chromium firefox webkit\`. Pe Linux, comanda este \`npx playwright install --with-deps chromium firefox webkit\`.
-
-## Integrarea în React
-
-~~~sh
-npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
-~~~
-
-Pachetele core și React se folosesc la aceeași versiune. React și React DOM sunt dependențe peer, furnizate de aplicație. Pentru contribuții la codul sursă, npm run pack:release pregătește arhive locale.
-
-~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@strictlylucian/sdr-react';
-import '@strictlylucian/sdr-core/styles.css';
-
-export function Application() {
-  return <SdrProvider lang="ro" theme="light">
-    <form onSubmit={event => event.preventDefault()}><Stack><TextInput label="Nume complet" name="name" autoComplete="name" />
-      <Button type="submit">Continuă</Button></Stack></form>
-  </SdrProvider>;
-}
-~~~
-
-SdrProvider se plasează la nivelul aplicației sau al unei secțiuni, nu în jurul fiecărei componente. Acesta stabilește tema și densitatea; atributul nativ lang este transmis mai departe, fără alegerea traducerilor. Stilurile SDR se aplică doar în interiorul containerului său. Butoanele de trimitere funcționează în formularul definit de aplicație.
-
-## Integrarea cu CSS și JavaScript
-
-Ediția portabilă conține două fișiere: dist/portable/sdr.css și dist/portable/sdr.js. Acestea pot fi copiate în directorul de resurse statice al aplicației. Exemplele componentelor oferă structura HTML, iar SDR.init(document) activează interacțiunile. CSS-ul include toate temele, iar JavaScript-ul toate comportamentele. Nu se descarcă separat fonturi, iconuri sau alte resurse.
-
-Fișierele se includ o singură dată în șablonul paginii, în această ordine:
-
-~~~html
-<link rel="stylesheet" href="/assets/sdr.css">
-<script src="/assets/sdr.js" defer></script>
-<script src="/assets/app.js" defer></script>
-~~~
-
-În fișierul aplicației, /assets/app.js, inițializarea arată astfel:
-
-~~~js
-const dispose = SDR.init(document);
-~~~
-
-Pentru contoarele de caractere, init primește și funcția formatCount(remaining, element), furnizată de aplicație. Valorile negative indică depășirea limitei; formularea și pluralul aparțin sistemului de traduceri al aplicației. Etichetele pentru parolă și acordeon sunt furnizate prin atributele HTML din exemple.
-
-~~~js
-PORTABLE_COUNT_EXAMPLE
-~~~
-
-Atributele data-sdr-component identifică elementele care au interacțiuni. Funcția dispose() elimină comportamentele inițializate prin acel apel, înainte de ștergerea conținutului. Pentru conținut adăugat ulterior, SDR.init(container) inițializează noua secțiune. app.js este fișierul aplicației, separat de cele două fișiere SDR.
-
-Exemplele interactive din documentație folosesc și logica demonstrativă din portable-demo.js. Atributele data-sdr-pattern-demo, data-sdr-toast-show și data-sdr-toast-example sunt specifice exemplelor, nu fac parte din API-ul SDR. Aplicația gestionează afișarea toast-urilor; biblioteca asigură închiderea și revenirea focusului. Ele nu activează plăți, SMS-uri sau salvare pe server. Într-o aplicație, aceste acțiuni sunt implementate de serviciu.
-
-ID-urile precum email și email-error sunt exemple. Într-o pagină, fiecare ID este unic și corespunde referințelor din for, aria-describedby, aria-labelledby, aria-controls și href.
-
-Aplicația gestionează acțiunile serviciului, salvarea datelor și validarea pe server. În ediția portabilă, CookieBanner, Feedback și DismissibleChip emit evenimentul sdr:action, cu acțiunea în detail.action; Toast emite sdr:dismiss. Butoanele obișnuite folosesc evenimentele native. Callback-urile din exemplele React au nevoie de o implementare echivalentă în aplicațiile HTML.
-
-Cele două fișiere reprezintă biblioteca SDR; HTML-ul și logica serviciului sunt furnizate de aplicație. Pentru o politică CSP strictă, inițializarea poate rămâne într-un fișier JavaScript extern. Fonturile incluse în CSS necesită data: în directiva font-src, de exemplu \`font-src 'self' data:\`. Măștile SVG ale altiței folosesc data: în img-src. SDR nu necesită unsafe-eval.
-
-## Browsere și funcționare fără JavaScript
-
-Biblioteca folosește dialog și details native, variabile CSS și ES2022. Playwright verifică interacțiunile native în Chromium, Firefox și WebKit; Chromium verifică și întregul catalog React/HTML cu axe, layout-uri înguste și text mărit la 200%. Automatizarea WebKit nu reprezintă testare manuală în Safari/iOS. NVDA, VoiceOver, TalkBack și cercetarea cu utilizatori rămân neverificate. Formularele esențiale au nevoie de trimitere la server și fără JavaScript. O funcție disponibilă doar într-un dialog are nevoie de o alternativă accesibilă când JavaScript nu rulează.
-` },
+  'getting-started': { title: 'Instalare și integrare', body: gettingStartedContent.ro },
   architecture: { title: 'Arhitectură și API', body: `
 ## Organizarea proiectului
 
@@ -86,7 +11,7 @@ Biblioteca folosește dialog și details native, variabile CSS și ES2022. Playw
 - apps/docs: documentația Astro Starlight, în română și engleză, cu exemple React interactive și exemple HTML.
 - catalog: descrierile și recomandările pentru componente și modele de utilizare.
 
-Edițiile React și HTML folosesc aceleași stiluri și controlere, pornind de la elemente HTML native. Atributele data-sdr-* fac parte din API-ul public; nu depind de selectori CSS care urmăresc accidental structura paginii.
+Core este baza de distribuție independentă de framework. React este integrarea implicită întreținută în acest repository; pachetele pentru alte framework-uri pot folosi aceleași contracte publice. Integrările folosesc aceleași stiluri și controlere, pornind de la elemente HTML native. Atributele data-sdr-* fac parte din API-ul public; nu depind de selectori CSS care urmăresc accidental structura paginii.
 
 ## Inițializare și curățare
 
@@ -264,6 +189,8 @@ npm run verify construiește proiectul și rulează toate verificările de lansa
 
 ` },
   contributing: { title: 'Contribuții și lansări', body: `
+Sunt binevenite pachetele care integrează core cu alte framework-uri. [Ghidul de instalare și integrare](/ro/getting-started/) explică principiul „Distribution first”.
+
 O contribuție pornește de la o nevoie concretă și are un responsabil pentru întreținere. Include recomandări în română și engleză, un exemplu funcțional, stările relevante și rezultatele verificărilor cu tastatura și cititoare de ecran. Ediția portabilă păstrează cele două fișiere de distribuție.
 
 npm run verify acoperă dimensiunea fișierelor sursă, spațierea, versiunile de limbă, tipurile, comportamentele, contrastul, pachetele și interacțiunile în browser. După modificarea surselor, npm run docs:generate actualizează API-ul și exemplele din documentație.

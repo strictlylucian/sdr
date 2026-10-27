@@ -8,3 +8,7 @@ export const projectContent = {
   ro: readFileSync(new URL('./content/ro/about.md', import.meta.url), 'utf8'),
   en: readFileSync(new URL('./content/en/about.md', import.meta.url), 'utf8'),
 };
+export const gettingStartedContent = {
+  ro: readFileSync(new URL('./content/ro/getting-started.md', import.meta.url), 'utf8'),
+  en: readFileSync(new URL('./content/en/getting-started.md', import.meta.url), 'utf8'),
+};

@@ -1,82 +1,7 @@
-import { localisationContent, projectContent } from './content';
+import { localisationContent, projectContent, gettingStartedContent } from './content';
 export const guidesEn: Record<string, { title: string; body: string }> = {
   about: { title: 'About the project', body: projectContent.en },
-  'getting-started': { title: 'Get started', body: `
-SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system.
-
-## Run this workspace
-
-Use Node 22.23.4 or later and npm 11. This workspace also pins a local Node runtime for npm scripts.
-
-~~~sh
-npm ci
-npm run build:library
-npm run docs:generate
-npm run dev
-~~~
-
-Open /ro/ or /en/ on the local server. Run npm run verify for source checks, type checking, unit tests, the production documentation build and browser checks. Install all browser engines with \`npx playwright install chromium firefox webkit\`. Linux runners use \`npx playwright install --with-deps chromium firefox webkit\`.
-
-## Use React
-
-~~~sh
-npm install @strictlylucian/sdr-core@alpha @strictlylucian/sdr-react@alpha
-~~~
-
-The alpha uses matching versions of the core and React packages. React and React DOM are peer dependencies supplied by the application. Source contributors can build local archives with npm run pack:release.
-
-~~~tsx
-import { SdrProvider, Button, Stack, TextInput } from '@strictlylucian/sdr-react';
-import '@strictlylucian/sdr-core/styles.css';
-
-export function Application() {
-  return <SdrProvider lang="ro" theme="light">
-    <form onSubmit={event => event.preventDefault()}><Stack><TextInput label="Nume complet" name="name" autoComplete="name" />
-      <Button type="submit">Continuă</Button></Stack></form>
-  </SdrProvider>;
-}
-~~~
-
-Place submit buttons inside the host application form. Use SdrProvider at the application boundary, rather than once per component. It supplies theme, density and scoped base styling; the native lang attribute is passed through without selecting translations.
-
-## Use two portable files
-
-Copy dist/portable/sdr.css and dist/portable/sdr.js to your own static assets. Supply semantic HTML using the component examples, include the CSS and deferred script, then call SDR.init(document) from your application script. The CSS contains all themes. The JavaScript contains all enhancement controllers. No fonts, icons, chunks or remote resources are fetched by SDR.
-
-Include the assets once in your page template, in this order:
-
-~~~html
-<link rel="stylesheet" href="/assets/sdr.css">
-<script src="/assets/sdr.js" defer></script>
-<script src="/assets/app.js" defer></script>
-~~~
-
-In your application file, /assets/app.js:
-
-~~~js
-const dispose = SDR.init(document);
-~~~
-
-For character-count controls, init also requires a formatCount(remaining, element) callback supplied by the application. Negative values mean the limit has been exceeded; wording and plural rules belong to the host translation system. Password and accordion action labels are supplied in the HTML data attributes shown in their examples.
-
-~~~js
-PORTABLE_COUNT_EXAMPLE
-~~~
-
-The data-sdr-component attributes in the HTML examples opt into enhancement. Call dispose() before removing enhanced content, and SDR.init(container) after inserting new content. app.js belongs to your application, not the SDR distribution.
-
-Interactive documentation examples also use demonstration wiring from portable-demo.js. The data-sdr-pattern-demo, data-sdr-toast-show and data-sdr-toast-example attributes belong to the examples, not the SDR API. The application controls toast presentation; the library handles dismissal and focus restoration. They do not enable payments, messaging or server persistence. A consuming service implements those actions.
-
-Example IDs are illustrative, such as email and email-error. Choose descriptive IDs that are unique within your page, and keep for, aria-describedby, aria-labelledby, aria-controls and href anchors matched to them.
-
-The host implements business actions, persistence and server validation. In the portable edition, CookieBanner, Feedback and DismissibleChip emit sdr:action with detail.action; Toast emits sdr:dismiss. Ordinary buttons use native events. React examples with callbacks need equivalent host action wiring in an HTML application.
-
-The two-file promise concerns SDR runtime assets; your HTML and business logic remain part of your application. For a strict CSP, keep initialisation in an external application file. Embedded fonts require data: in font-src, for example \`font-src 'self' data:\`. Embedded SVG motif masks also use data: in img-src. SDR does not require unsafe-eval.
-
-## Supported baseline
-
-Modern browsers with native dialog, details, CSS custom properties and ES2022 support. Playwright runs native interaction tests in Chromium, Firefox and WebKit; Chromium also checks the complete React/HTML catalogue with axe, narrow layouts and 200% text. WebKit automation is not a manual Safari/iOS test. NVDA, VoiceOver, TalkBack and real-user research remain unverified. Essential forms should submit to a server without JavaScript. Dialog-only features need an accessible alternative route if JavaScript is unavailable.
-` },
+  'getting-started': { title: 'Installation and integration', body: gettingStartedContent.en },
   architecture: { title: 'Architecture and contracts', body: `
 ## Package boundaries
 
@@ -86,7 +11,7 @@ Modern browsers with native dialog, details, CSS custom properties and ES2022 su
 - apps/docs: Astro Starlight, bilingual MDX, live React examples and portable HTML examples.
 - catalog: component guidance and service-pattern guidance.
 
-Both adapters use the same styles and enhancement controllers. Native HTML is the baseline. Data attributes are an explicit public enhancement contract, not selectors tied to incidental document structure.
+Core is the framework-independent distribution foundation. React is the default integration maintained in this repository; additional framework packages can build on the same public contracts. Integrations use the same styles and enhancement controllers. Native HTML is the baseline. Data attributes are an explicit public enhancement contract, not selectors tied to incidental document structure.
 
 ## Lifecycle
 
@@ -264,6 +189,8 @@ npm run verify builds the project and runs all release checks. The reports descr
 
 ` },
   contributing: { title: 'Contributing and release gates', body: `
+New packages that integrate core with other frameworks are welcome; the [installation and integration guide](/en/getting-started/) explains the distribution-first philosophy.
+
 Every contribution needs a real user need, coherent semantics and a named maintainer. Include Romanian and English guidance, a runnable example, all relevant states and evidence for keyboard and screen-reader behaviour. Preserve the two-file portable contract when changing core components.
 
 Run npm run verify before proposing a release. The checks cover source file length, spacing-token use, locale parity, types, behaviours, theme contrast, build artifacts and browser interactions. Generated API tables and component snippets must be regenerated with npm run docs:generate after source changes.

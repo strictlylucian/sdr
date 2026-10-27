@@ -3,6 +3,8 @@ title: "Contributing and release gates"
 description: "Contributing and release gates — SDR. Independent proposal."
 ---
 
+New packages that integrate core with other frameworks are welcome; the [installation and integration guide](/en/getting-started/) explains the distribution-first philosophy.
+
 Every contribution needs a real user need, coherent semantics and a named maintainer. Include Romanian and English guidance, a runnable example, all relevant states and evidence for keyboard and screen-reader behaviour. Preserve the two-file portable contract when changing core components.
 
 Run npm run verify before proposing a release. The checks cover source file length, spacing-token use, locale parity, types, behaviours, theme contrast, build artifacts and browser interactions. Generated API tables and component snippets must be regenerated with npm run docs:generate after source changes.

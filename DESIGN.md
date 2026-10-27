@@ -36,6 +36,10 @@ Interactive docs previews follow documentation appearance by default. A person c
 
 Reference: [IBM DESIGN.md from VoltAgent's collection](https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/ibm/DESIGN.md), reviewed 2026-10-25. This independent analysis informs the flat geometry and restrained hierarchy; IBM identity, fonts and marketing layouts are not copied.
 
+## Distribution and framework integration
+
+SDR is distribution first. Core is the framework-independent foundation, with exactly two portable browser assets: sdr.css and sdr.js. Its module exports support bundled integrations. Framework packages adapt the shared design, semantic markup and behaviours to their rendering and lifecycle conventions. React is the current repository default because of its widespread adoption; additional framework packages are welcome. Adopting SDR should leave institutions free to retain server-rendered, browser-rendered or static architectures. Shared accessibility and interaction contracts remain consistent across adapters.
+
 ## Purpose and atmosphere
 
 SDR is documentation and working examples for a Romanian public-service design system. It should feel reliable, practical and carefully maintained. People should immediately understand where they are, which page to read and how to use a component.

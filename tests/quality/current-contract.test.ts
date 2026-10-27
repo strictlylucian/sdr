@@ -37,7 +37,7 @@ it('keeps generated documentation inventories aligned with current parent pages'
 
 it('documents existing workspace commands and all required browser engines', async () => {
   const manifest = JSON.parse(await readFile('package.json', 'utf8'));
-  for (const file of ['README.md', 'README.ro.md', 'TESTING.md', 'catalog/guides-ro.ts', 'catalog/guides-en.ts']) {
+  for (const file of ['README.md', 'README.ro.md', 'TESTING.md', 'catalog/content/ro/getting-started.md', 'catalog/content/en/getting-started.md']) {
     const source = await readFile(file, 'utf8');
     expect(source, file).toContain('playwright install chromium firefox webkit');
     for (const match of source.matchAll(/npm run ([a-z][\w:-]*)/g)) expect(manifest.scripts, `${file}: ${match[1]}`).toHaveProperty(match[1]);
