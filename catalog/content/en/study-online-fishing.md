@@ -13,7 +13,7 @@ The form collects identity and contact details, residence, multiple border count
 
 ## What SDR proposes
 
-Four panels cover identity, residence, destination counties and documents. The nineteen meaningful border-county options remain independently selectable; the source’s stray “0” entry is excluded. Essential document guidance remains visible. The prototype checks **10 MB across all attachments together**, not just each file, and does not read their contents.
+Four pages cover identity, residence, destination counties and documents. The nineteen meaningful border-county options remain independently selectable; the source’s stray “0” entry is excluded. Essential document guidance remains visible. The attachment guidance is kept beside the file controls.
 
 The signed application and identity copy remain required in the demonstration. The additional permit is shown as optional pending resolution of the conflicting source guidance; that is a prototype decision, not fishing or legal advice. The demonstration neither issues an approval nor authorises fishing.
 
@@ -21,7 +21,7 @@ The signed application and identity copy remain required in the demonstration. T
 
 | Source | SDR proposal |
 | --- | --- |
-| Identity, email and phone | First panel with native controls and fictional test identifiers. |
+| Identity, email and phone | First page with native controls and fictional test identifiers. |
 | Residence | County dropdown, locality, address and building details. |
 | Multiple destination counties | A labelled checkbox group retaining the meaningful options. |
 | Application, identity copy and permit | Separate file controls with a combined 10 MB limit. No format restriction is invented where the inspected form states none. |

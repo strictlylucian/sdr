@@ -8,28 +8,13 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       await page.goto(edition === 'react' ? `/${locale}/reality/${id}/` : `/examples/${locale}/study-${id}.html`);
       const root = page.locator('[data-form-study]');
       const next = root.locator('[data-study-next]');
-      if (edition === 'html') await expect(next).toBeEnabled();
-      else { await expect(root).toHaveAttribute('data-study-ready', 'true'); await expect(root.locator('[data-study-step]').last()).toBeVisible(); }
+      await expect(next).toBeEnabled();
       const type = root.getByRole('combobox', { name: locale === 'ro' ? 'Tipul solicitantului' : 'Applicant type', exact: true });
       await expect(type).toBeEnabled();
       await expect(type.locator('option')).toHaveText(locale === 'ro'
         ? ['Alege o opțiune', 'Persoană fizică', 'Persoană juridică']
         : ['Choose an option', 'Individual', 'Legal entity']);
       await type.selectOption('legal-entity');
-      if (edition === 'react') {
-        if (id === 'online-payment') {
-          await expect(root.locator('[name="company-name"]')).toBeVisible();
-          await expect(root.locator('[name="recipient-number"]')).toBeHidden();
-          await root.locator('[name="company-name"]').fill('Fictional company');
-          await expect(root.locator('[data-study-review-panel]')).toContainText('Fictional company');
-          await type.selectOption('individual');
-          await expect(root.locator('[data-study-review-panel]')).not.toContainText('Fictional company');
-          await expect(root.locator('[name="recipient-number"]')).toBeVisible();
-          await expect(root.locator('[name="company-name"]')).toBeHidden();
-        }
-        await expectAccessible(page, '[data-form-study]');
-        expect(posts).toEqual([]); return;
-      }
       if (id === 'online-payment') {
         await expect(root.locator('[name="recipient-number"]')).toBeHidden();
         await expect(root.locator('[name="recipient-number"]')).toBeDisabled();
@@ -67,7 +52,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
         await expect(root.locator('[data-study-answers]')).not.toContainText(locale === 'ro' ? 'CNP-ul beneficiarului' : 'Recipient’s Romanian personal number');
       }
       await expectAccessible(page, '[data-form-study]');
-      await root.locator('[data-study-answers] button').first().click();
+      await root.locator('[data-study-edit]').first().click();
       await expect(type).toHaveValue('legal-entity');
       if (id === 'online-payment') {
         await type.selectOption('individual');

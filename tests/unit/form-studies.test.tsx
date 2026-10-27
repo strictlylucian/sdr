@@ -17,7 +17,7 @@ for (const locale of ['ro', 'en'] as const) for (const study of formStudies) {
     expect(get('[data-study-review]')).toBeVisible();
     expect(get('[data-study-review]')).toHaveFocus();
     expect(root.querySelectorAll('[data-study-answers] dl')).toHaveLength(study.steps.length);
-    fireEvent.click(get('[data-study-answers] button'));
+    fireEvent.click(get('[data-study-edit]'));
     expect(get('[data-study-step="0"]')).toBeVisible();
     const submit = new Event('submit', { bubbles: true, cancelable: true });
     get('form').dispatchEvent(submit);

@@ -12,13 +12,13 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
     {standalone && <h1>{t(locale, study.title)}</h1>}
     <p data-study-no-js>{t(locale, 'noJs')}</p>
     <form id={`${prefix}-form`} noValidate className="sdr-stack" autoComplete="off">
-      {study.steps.length > 1 && <div data-study-stepper><R.Stepper label={t(locale, 'steps')} steps={[...study.steps.map((step, index) => ({ label: t(locale, step.key), current: index === 0 })), { label: t(locale, 'review') }]} /></div>}
+      {study.steps.length > 1 && <div data-study-stepper><R.Stepper label={t(locale, 'steps')} steps={[...study.steps.map((step, index) => ({ label: t(locale, step.key), current: index === 0, href: `#${prefix}-step-${index}` })), { label: t(locale, 'review'), href: `#${prefix}-step-review` }]} /></div>}
       <p className="sdr-visually-hidden" data-study-progress role="status" aria-live="polite">{t(locale, 'progress', { current: 1, total: study.steps.length + 1 })}</p>
       {study.steps.map((step, index) => <fieldset className="sdr-fieldset sdr-stack" data-study-step={index} key={step.key} hidden={index !== 0} disabled={index !== 0}>
-        <legend className="sdr-legend sdr-heading-lg" tabIndex={-1}>{t(locale, step.key)}</legend>
+        <legend id={`${prefix}-step-${index}`} className="sdr-legend sdr-heading-lg" tabIndex={-1}>{t(locale, step.key)}</legend>
         {step.fields.map(field => <StudyField key={field.name} field={field} locale={locale} prefix={prefix} />)}
       </fieldset>)}
-      <section data-study-review tabIndex={-1} hidden aria-labelledby={`${prefix}-review-title`} className="sdr-stack">
+      <section id={`${prefix}-step-review`} data-study-review tabIndex={-1} hidden aria-labelledby={`${prefix}-review-title`} className="sdr-stack">
         <h2 id={`${prefix}-review-title`} className="sdr-heading-lg">{t(locale, 'review')}</h2><div data-study-answers className="sdr-stack" />
       </section>
       {study.pricing && <section data-study-pricing hidden className="sdr-stack">

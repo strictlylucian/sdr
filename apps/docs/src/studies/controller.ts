@@ -36,18 +36,21 @@ export function mountFormStudy(root: HTMLElement) {
         row.className = 'sdr-summary__row';
         label.textContent = t(locale, field.key);
         value.textContent = studyAnswer(field, input, locale);
-        row.append(label, value); list.append(row);
+        const actions = document.createElement('dd'); actions.className = 'sdr-summary__actions';
+        const edit = document.createElement('a'); edit.href = `#${input.id}`; edit.className = 'sdr-link';
+        edit.textContent = t(locale, 'edit');
+        const context = document.createElement('span'); context.className = 'sdr-visually-hidden'; context.textContent = `: ${t(locale, field.key)}`;
+        edit.append(context); edit.dataset.studyEdit = field.name;
+        edit.addEventListener('click', event => { event.preventDefault(); current = index; show(false); control(field.name).focus(); }, { signal: abort.signal });
+        actions.append(edit); row.append(label, value, actions); list.append(row);
       });
-      const edit = document.createElement('button'); edit.type = 'button'; edit.className = 'sdr-button sdr-button--secondary';
-      edit.textContent = `${t(locale, 'edit')}: ${t(locale, step.key)}`;
-      edit.addEventListener('click', () => { current = index; show(); }, { signal: abort.signal });
-      const actions = document.createElement('div'); actions.append(edit);
-      section.append(heading, list, actions); answers.append(section);
+      section.append(heading, list); answers.append(section);
     });
   }
   function show(focus = true) {
     syncStudyFields(root, study, control);
     const reviewing = current === steps.length;
+    done.hidden = true; get('[data-study-controls]').hidden = false;
     steps.forEach((step, index) => { step.hidden = index !== current; step.disabled = index !== current; });
     root.querySelectorAll('[data-study-stepper] li').forEach((item, index) => {
       if (index === current) item.setAttribute('aria-current', 'step'); else item.removeAttribute('aria-current');
@@ -80,6 +83,14 @@ export function mountFormStudy(root: HTMLElement) {
   }, { signal: abort.signal });
   get('[data-study-no-js]').hidden = true;
   for (const button of [next, back, finish, restart]) button.disabled = false;
+  root.querySelectorAll<HTMLAnchorElement>('[data-study-stepper] a').forEach((link, index) => {
+    link.addEventListener('click', event => { event.preventDefault(); current = index; show(); }, { signal: abort.signal });
+  });
+  get('[data-study-page-back]').addEventListener('click', event => {
+    if (current === 0) return;
+    event.preventDefault(); current--; show();
+  }, { signal: abort.signal });
   show(false);
-  return () => abort.abort();
+  root.dataset.studyReady = 'true';
+  return () => { abort.abort(); delete root.dataset.studyReady; };
 }

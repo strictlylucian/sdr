@@ -6,7 +6,6 @@ import {
   type Locale,
 } from "./support/fixtures";
 import { openReactPage } from "./support/page-fixture";
-import { expectStudyPanels } from './support/study-panels';
 import { formStudies } from '../../apps/docs/src/studies/forms';
 import { expectReflow } from './support/fixtures';
 
@@ -64,7 +63,6 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     const posts: string[] = [];
     page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
     await page.goto(edition === 'react' ? `/${locale}/reality/${study.id}/` : `/examples/${locale}/study-${study.id}.html`);
-    if (edition === 'react') { await expectStudyPanels(page, study.steps.length); expect(posts).toEqual([]); return; }
     const storageBefore = await page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage } }));
     const root = page.locator('[data-form-study]');
     await expect(root.locator('.sdr-header')).toBeVisible();
@@ -126,10 +124,14 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     await expectReflow(root);
     await expectAccessible(page, '[data-form-study]');
     await root.screenshot({ path: info.outputPath('study-review-mobile.png'), scale: 'css' });
-    await root.locator('[data-study-answers] button').first().click();
+    const edit = root.locator('[data-study-edit]').first();
+    const editedField = await edit.getAttribute('data-study-edit');
+    await edit.click();
+    await expect(root.locator(`[name="${editedField}"]`).first()).toBeFocused();
     expect(primaryName).not.toBeNull();
     await expect(root.locator(`[name="${primaryName}"]`)).toHaveValue('Exemplu fictiv');
     for (const _step of study.steps) await next.click();
+    await expect(root.locator('[data-study-review]')).toBeVisible();
     await root.locator('[data-study-finish]').click();
     await expect(root.locator('[data-study-done]')).toBeFocused();
     await expect(root.locator('[data-study-done]')).toContainText(study.id === 'online-payment' ? (locale === 'ro' ? 'nicio plată' : 'No payment') : (locale === 'ro' ? 'Nicio cerere' : 'No application'));

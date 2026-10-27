@@ -13,7 +13,7 @@ Formularul cere identificarea și contactul, domiciliul, mai multe județe de fr
 
 ## Ce propune SDR
 
-Patru panouri acoperă identificarea, domiciliul, județele vizate și documentele. Cele nouăsprezece opțiuni de județ relevante pot fi bifate independent; intrarea „0” din sursă este exclusă. Indicațiile esențiale despre documente rămân vizibile. Prototipul verifică **10 MB pentru toate fișierele împreună**, nu doar separat, și nu citește conținutul lor.
+Patru pagini acoperă identificarea, domiciliul, județele vizate și documentele. Cele nouăsprezece opțiuni de județ relevante pot fi bifate independent; intrarea „0” din sursă este exclusă. Indicațiile esențiale despre documente rămân vizibile. Indicațiile despre atașamente sunt afișate lângă controalele pentru fișiere.
 
 Cererea semnată și actul de identitate rămân obligatorii în demonstrație. Permisul suplimentar este prezentat ca opțional până la clarificarea indicațiilor contradictorii; este o alegere de prototip, nu îndrumare juridică sau privind dreptul de pescuit. Demonstrația nu emite avize și nu autorizează pescuitul.
 
@@ -21,7 +21,7 @@ Cererea semnată și actul de identitate rămân obligatorii în demonstrație. 
 
 | În sursă | În propunere |
 | --- | --- |
-| Identificare, email și telefon | Primul panou, cu controale native și identificatori fictivi pentru test. |
+| Identificare, email și telefon | Primul pagină, cu controale native și identificatori fictivi pentru test. |
 | Domiciliu | Dropdown pentru județ, localitate, adresă și detalii despre imobil. |
 | Mai multe județe vizate | Grup de checkbox-uri etichetat, cu opțiunile relevante păstrate. |
 | Cerere, act de identitate și permis | Controale separate, cu maximum 10 MB în total. Nu este inventată o restricție de format pe care formularul inspectat nu o precizează. |

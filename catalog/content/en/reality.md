@@ -8,7 +8,7 @@ SDR shows what that overhaul can look like through real services, their current 
 | --- | --- | --- |
 | [Online petition: immigration](/en/reality/online-igi/) | Inspectorate General for Immigration | Incorrect label associations and hard-to-read guidance; clear question groups and answer review. |
 | [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Compressed side labels and similar identity questions; clearer recipient, payer and contact steps. |
-| [Report a local infrastructure problem](/en/reality/online-gruiu/) | Gruiu Town Hall | Unconnected labels and a continuous reporting form; clearer issue, location and contact panels. |
+| [Report a local infrastructure problem](/en/reality/online-gruiu/) | Gruiu Town Hall | Unconnected labels and a continuous reporting form; clearer issue, location and contact pages. |
 | [Border-water fishing approval](/en/reality/online-fishing/) | Romanian Border Police | Long procedural labels, county selection and conflicting document guidance; visible choices and document requirements. |
 
 ## Paper forms and service proposals
@@ -27,7 +27,7 @@ These studies examine published documents. An [electronic criminal-record servic
 | Study | Source | What the proposal addresses |
 | --- | --- | --- |
 | [Criminal-record certificate request](/en/reality/criminal-record/) | Romanian Police · Constanța County Police | Image-only questions and handwritten blanks; semantic controls and grouped questions. |
-| [Form 230: one beneficiary](/en/reality/income-tax/) | ANAF · 2025 edition | Several scenarios crowded onto a fixed page; relevant questions and nearby guidance. |
+| [Form 230](/en/reality/income-tax/) | ANAF · 2025 edition | Several scenarios crowded onto a fixed page; relevant questions and nearby guidance. |
 | [Pension-related petition](/en/reality/petition/) | Ministry of Defence sectoral pension office | Scanned boxes and limited writing space; readable, responsive fields and expandable text. |
 
 ## Serious barriers, not cosmetic flaws
@@ -41,7 +41,7 @@ A complete overhaul needs accessible controls, readable content, clear steps and
 
 ## Explore the redesigns
 
-Each study contains the original, a short diagnosis and the SDR remake. All steps and answer review are visible in the documentation; the standalone version provides a step-by-step walkthrough. These are visual studies: nothing is submitted, and validation is deliberately omitted.
+Each study contains the original, a short diagnosis and the SDR remake. Each step is a complete page example, with its own question content inside the service header and navigation. The step indicator opens any page directly. Answer review includes a Change action beside each answer. These are visual studies: nothing is submitted, and validation is deliberately omitted.
 
 [Study source code](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 

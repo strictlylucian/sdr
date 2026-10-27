@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Step indicators centre labels against numbered circles, use heading leading and provide wider horizontal gaps. Study documentation exposes every step in its own panel; standalone demonstrations retain the interactive journey and shared step indicator. Four additional service studies cover infrastructure reporting, border-water fishing approval and two municipal clearance dossiers, with explicit checks for existing digital routes.
+- Step indicators centre labels against numbered circles, use heading leading and provide wider horizontal gaps. Study documentation presents one complete page example per step, with direct navigation and per-answer Change actions. Four additional service studies cover infrastructure reporting, border-water fishing approval and two municipal clearance dossiers, with explicit checks for existing digital routes.
 
 - Theme-aware altiță colours: dark uses flag-red and off-white stitches on a near-black ground, with dedicated motif roles; the existing SVG geometry, repeats and size variants are unchanged.
 

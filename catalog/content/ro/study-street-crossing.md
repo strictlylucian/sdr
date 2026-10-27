@@ -19,13 +19,13 @@ Cererea pentru firme este un document Word: datele firmei, reprezentantul, certi
 
 ## Ce propune SDR
 
-Patru panouri separă firma și reprezentantul, lucrarea și proiectul, documentele, apoi semnatarul și data. Studiul urmărește **cererea Word pentru persoane juridice**; formularul pentru persoane fizice rămâne disponibil în pagina instituției. Cerințele pentru documente sunt vizibile, iar actele delegatului apar când este selectată această opțiune. Formatele și limita de 5 MB pentru fiecare fișier sunt alegeri de prototip, nu reguli de încărcare din sursă. Nu sunt transmise cereri, semnături, fișiere sau plăți.
+Patru pagini separă firma și reprezentantul, lucrarea și proiectul, documentele, apoi semnatarul și data. Studiul urmărește **cererea Word pentru persoane juridice**; formularul pentru persoane fizice rămâne disponibil în pagina instituției. Cerințele pentru documente sunt vizibile, iar actele delegatului apar când este selectată această opțiune. Formatele și limita de 5 MB pentru fiecare fișier sunt alegeri de prototip, nu reguli de încărcare din sursă. Nu sunt transmise cereri, semnături, fișiere sau plăți.
 
 ## Corespondența cu originalul
 
 | Documentul sau instrucțiunile publicate | În propunere |
 | --- | --- |
-| Firmă, sediu, județ, număr de înregistrare și cod fiscal | Primul panou, împreună cu numele reprezentantului. |
+| Firmă, sediu, județ, număr de înregistrare și cod fiscal | Primul pagină, împreună cu numele reprezentantului. |
 | Certificat de urbanism, locul lucrării, proiect și proiectant | Câmpuri etichetate separat și descrieri redimensionabile. |
 | Memoriu și planuri, certificat și act de proprietate | Controale individuale pentru documente. |
 | Identitate/înregistrare și delegare | Certificatul firmei urmează lista actuală a serviciului; actele delegatului apar când este cazul. Instituția trebuie să clarifice formularea mai veche despre identitate din Word. |

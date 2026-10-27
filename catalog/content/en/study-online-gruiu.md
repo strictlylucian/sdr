@@ -7,21 +7,21 @@ The published form asks for the issue category, reporter’s name, optional emai
 ## Why a complete overhaul is needed
 
 - **Several visible labels are not connected to their fields.** In the inspected markup, name, email, phone, street, number, description and file controls have no associated native label. These controls therefore need a reliable visible-label relationship rather than nearby text alone.
-- **The service mixes three distinct tasks.** Choosing what needs attention, locating it and providing contact details appear as one long form. A clear location panel makes the information needed to find the problem easier to check.
+- **The service mixes three distinct tasks.** Choosing what needs attention, locating it and providing contact details appear as one long form. A clear location page makes the information needed to find the problem easier to check.
 - **Optional contact details use generic text controls.** The email and telephone controls are both text inputs. Native email and telephone types provide more appropriate entry and validation support.
 - **The upload has no nearby format or size guidance.** The captured control asks for a file without explaining accepted formats or a limit beside it. Explicit guidance can help people prepare a useful attachment; this observation does not establish what the server accepts.
 
 ## What SDR proposes
 
-Three panels separate the issue, its location and contact details. The five issue types and four villages remain radio choices; selecting “Other” reveals a specific description field. Labels, optional status and the purpose of each panel are explicit. Every panel is visible in the documentation, while the standalone demonstration provides a visual walkthrough and answer review.
+Three pages separate the issue, its location and contact details. The five issue types and four villages remain radio choices; selecting “Other” reveals a specific description field. Labels, optional status and the purpose of each page are explicit. Each page can be opened directly from the step indicator, followed by answer review.
 
 ## Mapping to the original
 
 | Published question | SDR proposal |
 | --- | --- |
 | Issue type and other issue | Same five choices, with conditional detail for “Other”. |
-| Village, street and number | A dedicated location panel with the four source villages. No location lookup is performed. |
-| Name, email and phone | Contact panel; email and phone remain optional. |
+| Village, street and number | A dedicated location page with the four source villages. No location lookup is performed. |
+| Name, email and phone | Contact page; email and phone remain optional. |
 | Description and file | Expandable text and a multiple-file control. PDF/JPG/JPEG/PNG and 5 MB are explicit **demonstration limits**, not verified source restrictions. |
 | Privacy acknowledgement and submission | A demonstration acknowledgement, local answer review and editing. No institutional agreement or report is transmitted. |
 
