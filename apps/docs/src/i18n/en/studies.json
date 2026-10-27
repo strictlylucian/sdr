@@ -1,5 +1,5 @@
 {
-  "section": "Today’s reality. Tomorrow, with SDR.",
+  "section": "Today’s massive problems",
   "original": "Published form",
   "proposal": "SDR proposal",
   "openOriginal": "Open the institution’s PDF",
@@ -123,7 +123,6 @@
   "quantity": "Number of documents",
   "quantityHint": "A whole number, at least 1.",
   "demonstrationTotal": "Demonstration total",
-  "priceSnapshot": "Demonstration calculation at {amount} lei per document, the amount displayed by the source when captured. This is not a live tariff and no payment is made.",
   "enterQuantity": "Enter the document quantity to see the total.",
   "paymentCompletedText": "Demonstration completed. No payment was initiated and no details were sent to DGPCI or a payment processor.",
   "paymentDetails": "Payment details",

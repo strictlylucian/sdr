@@ -2,19 +2,17 @@ Punctul de plecare este **formularul web DGPCI pentru contravaloarea autorizați
 
 ## Ce există deja
 
-Formularul cere email și confirmarea lui, tipul persoanei, identificarea beneficiarului și a plătitorului, apoi numărul de documente. La desktop, etichetele lungi ocupă o coloană îngustă, separat de controale. Câmpurile de email inspectate folosesc tipul HTML `text`; aceasta nu dovedește absența validării din aplicație.
+Formularul cere email și confirmarea lui, tipul persoanei, identificarea beneficiarului și a plătitorului, apoi numărul de documente. La desktop, etichetele lungi ocupă o coloană îngustă, separat de controale.
 
-Sursa afișa **25 RON pentru un document la data capturii**. Valoarea din demonstrație este un instantaneu pentru compararea interfețelor, nu un tarif actualizat sau o recomandare de plată.
+## De ce este necesară o refacere completă
 
-## Problemele formularului actual
+Interfața are nevoie de o refacere completă. Layout-ul face o plată simplă inutil de greu de citit și verificat.
 
-Captura etapei de completare și verificarea codului HTML, fără trimiterea datelor, la **27 octombrie 2026** arată mai multe probleme într-o operațiune care cere citire și verificare atentă:
+- **Etichetele înghesuite ascund întrebările.** Etichetele beneficiarului și plătitorului se rup pe mai multe rânduri într-o coloană laterală îngustă. Persoana trebuie să potrivească fragmentele de text cu fiecare câmp.
+- **Explicațiile esențiale nu respectă cerințele de contrast.** Informarea despre date personale și email are un contrast de aproximativ **3,03:1**, sub minimul de **4,5:1** din [WCAG 2.2](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+- **Beneficiarul și plătitorul se pot confunda ușor.** Întrebările similare despre identitate au nevoie de grupuri distincte și explicații clare despre persoana la care se referă.
 
-- **Etichetele lungi sunt înghesuite într-o coloană îngustă.** Textele pentru CNP-ul beneficiarului și al plătitorului ocupă mai multe rânduri, la distanță pe orizontală de câmpuri. Asocierea întrebării cu locul de completare cere mai multă urmărire vizuală decât o etichetă așezată direct deasupra controlului.
-- **Informarea suplimentară nu are suficient contrast.** Textul despre datele personale și mesajele prin email, aflat sub panou, apare la 16px, cu grosime normală și italic, în culoarea `rgba(41, 41, 41, 0.5)` pe alb. Contrastul este de aproximativ **3,03:1**, sub minimul de **4,5:1** pentru text obișnuit din [WCAG 2.2, criteriul 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). Este o problemă concretă de lizibilitate și accesibilitate, care afectează informații necesare pentru înțelegerea serviciului.
-- **Întrebările similare despre identitate au nevoie de grupare mai clară.** Beneficiarul și plătitorul pot fi persoane diferite. Apropierea câmpurilor și formulările asemănătoare fac importantă explicarea persoanei la care se referă fiecare răspuns și posibilitatea de a verifica datele înainte de continuare.
-
-Diferența față de exemplul IGI este relevantă: chiar și întrebările obișnuite despre contact și identitate au altă tipografie, altă poziție a etichetelor, alte fundaluri și alt stil al acțiunilor. Cetățenii trebuie să învețe convenții vizuale diferite pentru fiecare serviciu. SDR propune un mod comun de citire și interacțiune, păstrând întrebările specifice fiecărui serviciu.
+Aceleași întrebări de bază arată complet diferit în serviciul IGI. Cetățenii suportă costul acestei inconsecvențe de fiecare dată când trec de la o instituție la alta.
 
 ## Ce propune SDR
 
@@ -27,12 +25,12 @@ Beneficiarul, contactul și cantitatea au pași separați. Emailul folosește ti
 | Tip persoană | Dropdown cu opțiunile persoană fizică și persoană juridică. Selecția stabilește câmpurile beneficiarului. |
 | Beneficiar și identificator | Nume complet și CNP fictiv pentru persoana fizică; denumire și CUI/CIF fictiv pentru persoana juridică. Sunt afișate și incluse la verificarea răspunsurilor doar câmpurile opțiunii selectate. |
 | CNP plătitor | Câmp distinct, păstrat chiar dacă beneficiarul poate fi aceeași persoană. Nu presupunem că datele sunt identice. |
-| Email și confirmare | Al doilea pas; ambele câmpuri sunt disponibile pentru examinarea layout-ului. Nu există validare și nu se trimite email de verificare. |
-| Număr de documente și sumă | Cantitate întreagă pozitivă și total local, calculat la valoarea din captură. |
+| Email și confirmare | Emailul și confirmarea sunt grupate în al doilea pas. |
+| Număr de documente și sumă | Cantitate și total actualizat automat. |
 | reCAPTCHA și continuarea spre plată | Nu sunt simulate ca verificări îndeplinite. Demonstrația se încheie după verificarea răspunsurilor. |
 
 <!-- study-follow-up -->
 
 ## Ce ar trebui verificat într-un pilot
 
-Ar fi utile teste cu persoane care plătesc pentru altcineva, evaluarea erorilor de identificare și verificarea înțelegerii totalului. Un serviciu real ar avea nevoie de tarife furnizate de sistemul instituției, validări pe server, protecție anti-abuz și integrarea cu procesatorul. Exemplul nu cere date de card, nu rezervă documente și nu efectuează tranzacții.
+Testarea diferenței dintre plătitor și beneficiar și a înțelegerii totalului. Conectarea parcursului la datele instituției și la procesatorul de plăți.

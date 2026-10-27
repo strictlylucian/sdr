@@ -1,5 +1,5 @@
 {
-  "section": "Realitatea de azi. Cu SDR, mâine.",
+  "section": "Problemele majore de azi",
   "original": "Formularul publicat",
   "proposal": "Propunerea SDR",
   "openOriginal": "Deschide PDF-ul instituției",
@@ -123,7 +123,6 @@
   "quantity": "Număr de documente",
   "quantityHint": "Un număr întreg, de cel puțin 1.",
   "demonstrationTotal": "Total demonstrativ",
-  "priceSnapshot": "Calcul demonstrativ la {amount} lei pe document, suma afișată de sursă la data capturii. Nu este un tarif actualizat și nu se efectuează plăți.",
   "enterQuantity": "Completează numărul de documente pentru a vedea totalul.",
   "paymentCompletedText": "Demonstrație încheiată. Nu a fost inițiată nicio plată și nu au fost trimise date către DGPCI sau un procesator de plăți.",
   "paymentDetails": "Datele plății",

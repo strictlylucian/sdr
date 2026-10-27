@@ -20,7 +20,6 @@ export default function StudyPricing({ study, locale, prefix, announce = false }
     return () => abort.abort();
   }, [study, locale, prefix]);
   return <section data-study-price className="sdr-stack">
-    <p>{t(locale, 'priceSnapshot', { amount: study.pricing.unitAmount })}</p>
     <p aria-live={announce ? 'polite' : undefined}>{t(locale, 'demonstrationTotal')}: <strong>{total}</strong></p>
   </section>;
 }

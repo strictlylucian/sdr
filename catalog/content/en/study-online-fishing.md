@@ -4,7 +4,7 @@ The Border Police already offers an online application for **approval to fish in
 
 The form collects identity and contact details, residence, multiple border counties, a signed application and identity copy, an additional fishing-permit upload and a declaration. Associations have a separate source service. The blank form and its markup were inspected on **27 October 2026**, without personal details, files, agreements or submission.
 
-## Why the current interface needs work
+## Why a complete overhaul is needed
 
 - **A long procedural sentence becomes a field label.** The county selector’s label combines the request, statutory territory and responsible services. The actual choice is harder to find than a short question with adjacent guidance.
 - **County selection introduces an extra widget.** The underlying multiple select is enhanced with a search input that has no associated native label or ARIA label in the inspected markup. The proposal uses a visible checklist with a named group instead.

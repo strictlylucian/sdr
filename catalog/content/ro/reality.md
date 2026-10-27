@@ -1,8 +1,8 @@
-Aceste studii explică problemele unor formulare publicate de instituții din România, efectele lor asupra persoanelor care le completează și felul în care componentele SDR le-ar putea rezolva.
+Interfețele serviciilor publice au probleme grave și repetate: controale inaccesibile, explicații greu de citit, layout-uri inconsecvente și cereri care depind încă de hârtie. Aceste exemple au nevoie de o refacere completă, de la întrebări și structura paginii până la depunerea cererii.
+
+SDR arată cum poate arăta această schimbare, pornind de la servicii reale, formularele lor actuale și variante refăcute cu biblioteca.
 
 ## Formulare deja online
-
-Aceste comparații reproiectează interfețe web existente. Păstrează serviciul și cerințele observabile ca punct de plecare.
 
 | Studiu | Sursa | Ce probleme tratează propunerea |
 | --- | --- | --- |
@@ -13,14 +13,16 @@ Aceste comparații reproiectează interfețe web existente. Păstrează serviciu
 
 ## Formulare pe hârtie și propuneri de servicii
 
-Cele două studii noi de avizare au fost selectate după verificarea traseelor publicate de operatori pentru un echivalent digital dedicat, la **27 octombrie 2026**. ASCE cere depunerea la sediu; CMIPB acceptă dosare completate la ghișeu sau prin email. Niciunul dintre traseele publicate nu oferea o cerere online structurată pentru solicitarea aleasă. Fiecare articol arată limitele și sursele verificării; înainte de pilot, instituția trebuie să confirme dacă există un sistem nepublicat sau în pregătire.
+Traseele publicate, verificate la **27 octombrie 2026**, cer depunerea la sediu pentru ASCE sau un dosar completat, trimis la ghișeu ori prin email, pentru CMIPB. Nu am găsit o cerere online structurată pentru aceste solicitări.
 
 | Studiu nou de serviciu | Sursă | Ce probleme tratează propunerea |
 | --- | --- | --- |
 | [Aviz edilitar pentru branșamente](/ro/reality/lighting-clearance/) | Operatorul municipal de iluminat public din București, CMIPB | PDF semnat și dosar de acte; date structurate și controale pentru documente în context. |
 | [Aviz de traversare a domeniului public](/ro/reality/street-crossing/) | Operatorul municipal de străzi din Alexandria, ASCE | Cerere Word și depunere la sediu; întrebări clare despre proiect și documente vizibile. |
 
-Comparațiile de interfețe documentare realizate anterior rămân utile ca studii de design. **Nu demonstrează lipsa unui serviciu digital**: există deja un serviciu electronic de cazier, iar formularul ANAF 230 este deja un PDF completabil. Aceste comparații nu trebuie prezentate ca lipsuri de digitalizare nou descoperite.
+### Alte formulare refăcute
+
+Aceste studii analizează documentele publicate. Există deja un [serviciu electronic de cazier judiciar](https://hub.mai.gov.ro/serviciu/view?id=88), iar formularul ANAF 230 este un PDF completabil.
 
 | Studiu | Sursa | Ce probleme tratează propunerea |
 | --- | --- | --- |
@@ -28,42 +30,21 @@ Comparațiile de interfețe documentare realizate anterior rămân utile ca stud
 | [Formularul 230: un beneficiar](/ro/reality/income-tax/) | ANAF · modelul din 2025 | Scenarii înghesuite pe o pagină fixă; întrebări relevante și explicații apropiate. |
 | [Petiție privind pensia](/ro/reality/petition/) | Casa de pensii sectorială a MApN | Casete scanate și spațiu de scriere limitat; câmpuri lizibile, responsive și text extensibil. |
 
-## De ce sunt necesare aceste schimbări
+## Bariere serioase, nu probleme de aspect
 
-Un formular public are nevoie de informații ușor de citit, întrebări ușor de înțeles și răspunsuri care pot fi completate și corectate fără dificultate. Exemplele arată două tipuri diferite de intervenție.
+- **Câmpurile nu pot fi identificate corect cu tehnologii asistive.** Formularele IGI și Gruiu au etichete lipsă sau asociate greșit.
+- **Informațiile esențiale sunt greu de citit.** Textul mic, contrastul slab și etichetele înghesuite fac instrucțiunile importante ușor de ratat.
+- **Fiecare instituție prezintă altfel aceleași întrebări.** Cetățenii trebuie să învețe din nou layout-ul, controalele și termenii fiecărui serviciu.
+- **Descărcarea unui document păstrează procesul manual.** Tipărirea, semnarea, scanarea și reintroducerea datelor înseamnă muncă în plus pentru cetățeni și funcționari. Serviciile digitale au nevoie de întrebări structurate, gestionarea documentelor și depunere online.
 
-### Formulare web: eliminarea barierelor de utilizare și accesibilitate
+O refacere completă cere controale accesibile, conținut lizibil, pași clari și un limbaj de design comun. Studiile arată aceste schimbări folosind componente SDR.
 
-Disponibilitatea online este doar punctul de plecare. Exemplul IGI are asocieri greșite între etichete și controale și explicații cu text mic. Captura DGPCI arată etichete lungi înghesuite lângă câmpuri și informații estompate sub formular. Aceste probleme îngreunează înțelegerea și folosirea serviciului, mai ales pentru persoanele care utilizează tehnologii asistive sau au nevoie de text mai lizibil.
+## Explorează variantele refăcute
 
-### Formulare pe hârtie și PDF: construirea unui parcurs digital
+Fiecare studiu include originalul, problemele principale și varianta SDR. Toți pașii și verificarea răspunsurilor sunt vizibile în documentație; varianta separată oferă un parcurs pas cu pas. Sunt studii vizuale: nu se trimite nimic, iar validarea este omisă intenționat.
 
-O scanare sau un PDF cu pagină fixă, pus pe site, face documentul descărcabil. Persoana trebuie să completeze în continuare o pagină gândită pentru tipar, adesea fără câmpuri accesibile, conținut adaptat ecranului, validare contextuală sau verificarea structurată a răspunsurilor. Acolo unde sunt necesare tipărirea, scrierea de mână, scanarea ori reintroducerea datelor, procesul depinde și de echipamente și operațiuni manuale.
+[Codul studiilor](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 
-Digitalizarea aduce întrebările, explicațiile și răspunsurile structurate într-un parcurs utilizabil, legat de depunere și de procesarea în instituție. Exemplele SDR arată partea de interfață a acestei schimbări. Un PDF completabil și o variantă de tipărit pot rămâne utile alături de serviciul web.
+## De la studiu la pilot
 
-## De ce contează consecvența între instituții
-
-În aceste exemple, chiar și întrebările obișnuite despre identitate și contact schimbă tipografia, poziția etichetelor, spațierea și stilul acțiunilor de la un serviciu la altul. Persoana trebuie să învețe din nou interfața de fiecare dată. Componentele comune permit serviciilor să-și păstreze propriile întrebări, folosind controale familiare, text lizibil, layout-uri previzibile și aceleași modele de ajutor și semnalare a erorilor. Acesta este un motiv practic pentru un sistem de design comun.
-
-## Cum se citește comparația
-
-Fiecare studiu include o captură a formularului web, o imagine a PDF-ului publicat sau pagina oficială de descărcare a unui document Word, linkul sursei, modificările propuse și o refacere cu biblioteca SDR. Sursele au fost consultate la **26–27 octombrie 2026**.
-
-Analiza combină capturile cu verificări punctuale ale codului HTML, fără modificarea datelor din formularele originale. Nu au fost trimise cereri și nu au fost efectuate plăți. Observațiile identifică bariere concrete; nu reprezintă un audit WCAG complet al fiecărui serviciu.
-
-Comparația privește **aceste formulare**, nu întreaga ofertă digitală a instituțiilor. Un PDF poate rămâne util la ghișeu, iar unele solicitări au deja alternative online. De exemplu, [MAI oferă eliberarea electronică a cazierului judiciar](https://hub.mai.gov.ro/serviciu/view?id=88). Studiul SDR nu înlocuiește acel serviciu.
-
-## Ce se poate încerca
-
-În documentație, toți pașii și verificarea finală a răspunsurilor sunt vizibile în panouri individuale, cu linkuri în indicatorul de pași. Nu este necesară completarea datelor pentru a vedea panourile următoare. Verificarea răspunsurilor se actualizează pe măsură ce sunt încercate câmpurile. Parcursul interactiv cu verificarea răspunsurilor este disponibil în demonstrația pe pagină separată.
-
-Demonstrațiile pe pagină separată au indicator de pași, etichete persistente și câmpuri cu tipuri potrivite. Ambele variante prezintă o bază vizuală, fără validare sau stări de eroare; răspunsurile goale ori incomplete nu blochează explorarea. Răspunsurile pot fi verificate și modificate înainte de încheiere. Datele rămân în pagina deschisă, fără transmitere sau stocare în browser. Reîncărcarea paginii ori reluarea demonstrației le șterge.
-
-Varianta din documentație folosește componente React SDR. Exemplul separat folosește HTML generat din aceleași definiții de câmpuri și componente SDR și cele două fișiere ale bibliotecii. Navigarea parcursului este cod al demonstrației. [Codul studiilor este în repository](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
-
-## Ce trebuie validat într-un pilot
-
-Etichetele pentru câmpurile opționale și formatele sugerate sunt alegeri de prototip, nu o interpretare juridică a formularelor. Exemplele nu validează răspunsurile, identitatea, eligibilitatea sau registrele instituționale. Nu sunt verificate semnături sau autenticitatea documentelor și nu este implementat circuitul real de depunere.
-
-Un pilot ar avea nevoie de verificarea cerințelor cu instituția, cercetare cu persoanele care folosesc serviciul, integrare cu sistemele existente și evaluare de accesibilitate. Nu pretindem că aceste studii au redus timpul de completare sau că demonstrează conformitatea unui serviciu complet.
+Un pilot leagă interfața de procesele instituției, depunere și urmărirea cererii, apoi o testează cu cetățeni și tehnologii asistive. Fiecare studiu se încheie cu întrebările specifice serviciului care trebuie rezolvate.

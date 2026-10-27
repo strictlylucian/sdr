@@ -22,7 +22,6 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
         <h2 id={`${prefix}-review-title`} className="sdr-heading-lg">{t(locale, 'review')}</h2><div data-study-answers className="sdr-stack" />
       </section>
       {study.pricing && <section data-study-pricing hidden className="sdr-stack">
-        <p>{t(locale, 'priceSnapshot', { amount: study.pricing.unitAmount })}</p>
         <p role="status" aria-live="polite">{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>
       </section>}
       <div className="sdr-cluster" data-study-controls>
