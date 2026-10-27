@@ -30,6 +30,8 @@ Three steps separate identity, correspondence and petition content. Labels remai
 | Petition and file | Final step; extension and a demonstration limit of 1,000,000 bytes are checked. Review shows the file name without reading its contents. |
 | Arithmetic challenge and submission | Not reproduced as operational steps. Production anti-abuse protection would need an accessible approach and server-side checks. |
 
+<!-- study-follow-up -->
+
 ## What a pilot could establish
 
 A pilot could measure whether grouping questions and reviewing answers reduces misdirected petitions and requests for missing information. It would require reviewing office routing, attachment policy, privacy information and registry integration.

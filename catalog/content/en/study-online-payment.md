@@ -31,6 +31,8 @@ Recipient, contact and quantity become separate steps. Email uses the appropriat
 | Document quantity and amount | A positive whole-number quantity and a local total using the captured value. |
 | reCAPTCHA and continuing to payment | Not simulated as completed checks. The demonstration ends after answer review. |
 
+<!-- study-follow-up -->
+
 ## What a pilot could establish
 
 Research could test paying for another person, identification errors and understanding of the total. A real service would need institution-provided tariffs, server-side checks, anti-abuse protection and processor integration. This example requests no card details, reserves no documents and performs no transactions.

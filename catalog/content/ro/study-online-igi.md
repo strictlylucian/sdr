@@ -30,6 +30,8 @@ Trei pași separă identificarea, corespondența și conținutul petiției. Etic
 | Petiție și fișier | Ultimul pas; sunt verificate extensia și limita demonstrativă de 1.000.000 de octeți. Numele fișierului apare la verificare, fără citirea conținutului. |
 | Verificare aritmetică și trimitere | Nu sunt reproduse ca operațiuni reale. În producție, protecția anti-abuz ar necesita o soluție accesibilă și verificări pe server. |
 
+<!-- study-follow-up -->
+
 ## Ce ar trebui verificat într-un pilot
 
 Un pilot ar putea măsura dacă gruparea întrebărilor și verificarea răspunsurilor reduc greșelile de adresare și cererile de completare. Ar necesita validarea listei de structuri, a politicii pentru fișiere, a informării privind datele personale și a integrării cu registratura.
