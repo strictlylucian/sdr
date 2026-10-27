@@ -18,13 +18,22 @@ Toate componentele folosesc aceeași scară de spațiere pentru gap, padding și
 | 8 | 4 | 64 px | Secțiuni mari de prezentare |
 | 9 | 6 | 96 px | Separarea unor zone ample |
 
-Valorile rem se adaptează dimensiunii de text alese în browser. Variabilele --sdr-field-gap, --sdr-group-gap, --sdr-section-gap și --sdr-layout-gap grupează distanțele după rol. Modificarea unei variabile actualizează toate componentele care o folosesc.
+Valorile rem se adaptează dimensiunii de text alese în browser. Variabilele --sdr-field-gap, --sdr-form-group-gap, --sdr-group-gap, --sdr-section-gap și --sdr-layout-gap grupează distanțele după rol. Modificarea unei variabile actualizează toate componentele care o folosesc.
 
 Stack așază elementele pe verticală. Cluster le trece pe rândul următor când nu mai încap. Grid organizează elemente repetate în coloane, Container aliniază conținutul paginii, iar SidebarLayout așază navigarea lângă conținut. Folosirea gap evită cumularea marginilor elementelor vecine. Distanțele mai mici între elementele aceluiași grup le fac mai ușor de recunoscut ca grup.
 
 Grid cu columns=2 sau columns=3 limitează numărul de coloane și păstrează o lățime minimă de 16rem pentru fiecare. Numărul de coloane depinde de spațiul disponibil componentei, inclusiv într-un container îngust pe un ecran mare. SidebarLayout trece pe o singură coloană când cele două zone nu mai încap alături. Containerul principal are maximum 64rem, iar blocurile de text maximum 68ch. Tabelele late se derulează în propriul container, care are un nume accesibil și poate primi focus.
 
-Spațierea se adaptează la lățimea ecranului. De la 40rem, --sdr-group-gap crește de la 16px la 24px, --sdr-layout-gap de la 16px la 32px, iar --sdr-section-gap de la 32px la 48px. Stack fără gap explicit folosește distanța de grup. Valorile gap explicite și clasele utilitare numerotate păstrează distanța aleasă.
+Spațierea se adaptează la lățimea ecranului. De la 40rem, --sdr-group-gap crește de la 16px la 24px, --sdr-layout-gap de la 16px la 32px, iar --sdr-section-gap de la 32px la 48px. Stack fără gap explicit folosește distanța de grup; dacă are copii care sunt controale de formular, grupuri de câmpuri sau containere sdr-form-group, folosește distanța dintre întrebări, --sdr-form-group-gap. Valorile gap explicite și clasele utilitare numerotate păstrează distanța aleasă.
+
+### Distanța dintre întrebări
+
+Formularele au mai mult spațiu între întrebări decât între eticheta și controlul aceleiași întrebări. --sdr-field-gap păstrează 8px între etichetă, hint, eroare și control. --sdr-form-group-gap separă întrebările: 24px pe ecrane mici și 32px de la 40rem în densitatea normală; densitatea compactă folosește 16px, respectiv 24px.
+
+Spațiul este gestionat de Stack, Fieldset și grupurile condiționale care conțin câmpuri, fără padding suplimentar pe input sau pe rândul unei opțiuni. Opțiunile radio și checkbox din aceeași întrebare păstrează distanța lor internă. Astfel, bara de eroare se încheie la conținutul grupului, fără spațiu gol dedesubt. Controalele dintr-o dată calendaristică sau dintr-un input group rămân apropiate.
+
+Pentru un câmp compus într-un container propriu, clasa sdr-form-group identifică întrebarea în layout. Prop-ul gap și clasele utilitare de spațiere au în continuare prioritate asupra distanței implicite.
+
 
 ## Structura unei pagini
 

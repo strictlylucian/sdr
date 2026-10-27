@@ -122,13 +122,22 @@ Spacing is a contract. Every component gap, padding and margin uses the shared s
 | 8 | 4 | 64 px | Large editorial section |
 | 9 | 6 | 96 px | Major editorial separation |
 
-The source uses rem so user font preferences are preserved. Semantic aliases include --sdr-field-gap, --sdr-group-gap, --sdr-section-gap and --sdr-layout-gap. A single shared alias controls all components in that role.
+The source uses rem so user font preferences are preserved. Semantic aliases include --sdr-field-gap, --sdr-form-group-gap, --sdr-group-gap, --sdr-section-gap and --sdr-layout-gap. A single shared alias controls all components in that role.
 
 Stack arranges vertical groups, Cluster allows actions to wrap, Grid arranges repeated content, Container aligns page gutters and SidebarLayout positions contextual navigation. Gap-based spacing avoids accumulating adjacent child margins. Smaller spaces within groups help distinguish them from neighbouring groups.
 
 Grid with columns=2 or columns=3 caps the column count while retaining a 16rem minimum for each column. The actual count follows the space available to the component, including a narrow container on a wide screen. SidebarLayout stacks when navigation and content no longer fit side by side. The main container is capped at 64rem and prose at 68ch. Tables scroll inside their own labelled, keyboard-focusable region.
 
-Semantic spacing is responsive: --sdr-group-gap changes from 16px to 24px, --sdr-layout-gap from 16px to 32px, and --sdr-section-gap from 32px to 48px at 40rem. Stack without an explicit gap follows group spacing; the gap prop and numbered utilities retain the selected value.
+Semantic spacing is responsive: --sdr-group-gap changes from 16px to 24px, --sdr-layout-gap from 16px to 32px, and --sdr-section-gap from 32px to 48px at 40rem. Stack without an explicit gap follows group spacing; when its children are form controls, field groups or sdr-form-group wrappers, it uses question spacing through --sdr-form-group-gap; the gap prop and numbered utilities retain the selected value.
+
+### Space between questions
+
+Forms have more space between questions than between a question’s label and control. --sdr-field-gap keeps 8px between label, hint, error and control. --sdr-form-group-gap separates questions: 24px on small screens and 32px from 40rem in comfortable density; compact density uses 16px and 24px respectively.
+
+Stack, Fieldset and conditional groups containing fields own this space. Inputs and option rows receive no extra padding. Radio and checkbox options within one question retain their internal spacing, so error rails end at the group’s content without empty space below. Parts of a date or input group stay together.
+
+For a compound field in a custom wrapper, sdr-form-group identifies the question to the layout. An explicit gap prop or spacing utility still takes precedence over the default question spacing.
+
 ` },
   'foundations/typography': { title: 'Typography', body: `
 Inter 4.1 is the default typeface across the library and documentation. Its variable regular and italic WOFF2 faces are embedded directly in CSS, covering the UI weight range 400–750. The Latin and Latin Extended subsets retain international Latin-script names, combining accents, punctuation and currency symbols. Other scripts use the system font stack. Optical sizing, tabular numerals and hinting are preserved. There are no separate font requests, and portable delivery remains two files. Inter includes Romanian diacritics, including comma-below Ș/ș and Ț/ț. Code retains a monospace font. An institution can override the family through --sdr-font.

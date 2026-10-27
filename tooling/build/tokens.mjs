@@ -9,14 +9,16 @@ export function tokenStyles() {
     --sdr-border-width:1px;--sdr-border-strong:2px;--sdr-focus-width:3px;--sdr-focus-offset:3px;
     --sdr-measure:68ch;--sdr-container:64rem;--sdr-page-gutter:var(--sdr-space-4);--sdr-control-height:3rem;
     --sdr-control-padding:var(--sdr-space-2);--sdr-duration:120ms;--sdr-shadow:0 8px 32px #00000020;
-    --sdr-field-gap:var(--sdr-space-2);--sdr-group-gap:var(--sdr-space-4);
+    --sdr-field-gap:var(--sdr-space-2);--sdr-group-gap:var(--sdr-space-4);--sdr-form-group-gap:var(--sdr-space-5);
     --sdr-section-gap:var(--sdr-space-6);--sdr-layout-gap:var(--sdr-space-4);
     --sdr-navigation-gap:var(--sdr-space-4);--sdr-navigation-item-padding:var(--sdr-space-2);}`;
   for (const [name, values] of Object.entries(themes)) {
     css += `${name === 'light' ? ':root,.sdr,' : ''}[data-sdr-theme="${name}"]{${vars('', values)}color-scheme:${name === 'dark' ? 'dark' : 'light'};}`;
   }
+  css += '@media(min-width:40rem){:root,.sdr{--sdr-form-group-gap:var(--sdr-space-6);}}';
   for (const [name, values] of Object.entries(density)) {
-    css += `[data-sdr-density="${name}"]{--sdr-control-height:${values.control}rem;--sdr-control-padding:var(--sdr-space-${values['control-padding']});}`;
+    css += `[data-sdr-density="${name}"]{--sdr-control-height:${values.control}rem;--sdr-control-padding:var(--sdr-space-${values['control-padding']});--sdr-form-group-gap:var(--sdr-space-${values['form-group-gap']});}`;
+    css += `@media(min-width:40rem){[data-sdr-density="${name}"]{--sdr-form-group-gap:var(--sdr-space-${values['form-group-gap-large']});}}`;
   }
   return css;
 }

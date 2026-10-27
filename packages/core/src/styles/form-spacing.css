@@ -1,0 +1,9 @@
+.sdr-form-group { min-inline-size:0; }
+/* Space belongs to the layout between complete questions, outside error rails. */
+.sdr-stack:where(:not([data-sdr-component="character-count"])):where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,.sdr-choice-field,.sdr-form-group,[data-sdr-component="character-count"],[data-sdr-component="password"]))),
+.sdr-fieldset:where(:has(> :is(.sdr-field:not(.sdr-choice-field),.sdr-field-group,.sdr-fieldset,.sdr-form-group,[data-sdr-component="character-count"],[data-sdr-component="password"]))),
+.sdr-choice__conditional:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,[data-sdr-component="character-count"],[data-sdr-component="password"]))),
+.sdr-grid:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,.sdr-choice-field))),
+.sdr-grid-row:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,.sdr-choice-field))) {
+  row-gap:var(--sdr-form-group-gap);
+}

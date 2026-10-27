@@ -17,7 +17,7 @@ export default function StudyField({ field, locale, prefix }: { field: Field; lo
       break;
     default: control = <R.TextInput {...props} type={field.type ?? 'text'} autoComplete={field.autoComplete} pattern={field.pattern} min={field.min} max={field.max} step={field.step} readOnly={!!field.fixedValueKey} defaultValue={field.fixedValueKey ? t(locale, field.fixedValueKey) : field.defaultValue} inputMode={field.pattern?.startsWith('[0-9]') ? 'numeric' : undefined} />;
   }
-  return <div data-study-field={field.name}>
+  return <div className="sdr-form-group" data-study-field={field.name}>
     {control}
     <p id={`${id}-validation`} className="sdr-error" data-study-error hidden />
   </div>;

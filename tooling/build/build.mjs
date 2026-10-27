@@ -1,5 +1,5 @@
-import { build, transform } from 'esbuild';
-import { mkdir, readFile, writeFile, cp } from 'node:fs/promises';
+import { build } from 'esbuild';
+import { mkdir, writeFile, cp } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { tokenStyles, utilityStyles } from './tokens.mjs';
 import { documentationThemeStyles } from './docs-theme.mjs';
@@ -8,15 +8,16 @@ import { embeddedFontStyles } from './fonts.mjs';
 import { clearBuildOutputs } from './outputs.mjs';
 
 await clearBuildOutputs();
-const styles = ['base', 'motif.generated', 'layout', 'forms', 'conditional-choice', 'navigation', 'feedback', 'interactive', 'data'];
 await writeFile('packages/core/src/styles/motif.generated.css', await motifStyles());
 const generated = tokenStyles() + utilityStyles();
 const fonts = await embeddedFontStyles();
 await writeFile('packages/core/src/styles/fonts.generated.css', fonts);
 await writeFile('packages/core/src/styles/generated.css', generated);
 await writeFile('apps/docs/src/styles/theme.generated.css', documentationThemeStyles());
-const source = fonts + generated + (await Promise.all(styles.map(name => readFile(`packages/core/src/styles/${name}.css`, 'utf8')))).join('\n');
-const css = (await transform(source, { loader: 'css', minify: true, target: 'es2022', legalComments: 'inline' })).code;
+// The source entry is also consumed by the docs, so both editions include the same styles.
+const cssBuild = await build({ entryPoints: ['packages/core/src/styles/index.css'], bundle: true, write: false, minify: true, target: 'es2022', legalComments: 'inline' });
+if (cssBuild.outputFiles.length !== 1) throw new Error('Portable CSS must remain one self-contained file.');
+const css = cssBuild.outputFiles[0].text;
 for (const directory of ['dist/portable', 'packages/core/dist', 'packages/react/dist', 'apps/docs/public/portable']) await mkdir(directory, { recursive: true });
 for (const directory of ['dist/portable', 'packages/core/dist', 'apps/docs/public/portable']) await writeFile(`${directory}/sdr.css`, css);
 await build({ entryPoints: ['packages/core/src/portable.ts'], outfile: 'dist/portable/sdr.js', bundle: true, minify: true, format: 'iife', globalName: 'SDR', target: 'es2022', legalComments: 'eof' });

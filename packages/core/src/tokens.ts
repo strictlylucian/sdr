@@ -48,4 +48,7 @@ export const themes = {
   },
 } as const;
 export type Theme = keyof typeof themes;
-export const density = { comfortable: { control: 3, 'control-padding': 2 }, compact: { control: 2.75, 'control-padding': 1 } } as const;
+export const density = {
+  comfortable: { control: 3, 'control-padding': 2, 'form-group-gap': 5, 'form-group-gap-large': 6 },
+  compact: { control: 2.75, 'control-padding': 1, 'form-group-gap': 4, 'form-group-gap-large': 5 },
+} as const;
