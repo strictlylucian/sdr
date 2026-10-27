@@ -1,20 +1,30 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-alpha.2 — 2026-10-27
 
-- Choice groups keep consistent option spacing inside Stack layouts. Answer-review sections use clearer responsive separation in all study examples.
+### Library
 
-- Restored the original heading rhythm and added responsive spacing below step indicators, separating them from page titles. Review examples now end with a Trimite / Submit button.
+- Add a shared responsive typography scale at 40rem for headings, legends, lead text and typography utilities. Body text remains 19px. Export `typographySmall` alongside the large-screen typography tokens.
+- Give headings size-specific vertical rhythm within shared layouts, accounting for existing gaps and preserving explicit spacing overrides. Heading utilities and fieldset legends share the complete heading typography.
+- Increase spacing between complete form questions to 24px on small screens and 32px on desktop, or 16px/24px in compact density. Preserve label spacing, compound controls and error-rail geometry.
+- Fix excessive radio and checkbox option spacing when a Fieldset also uses Stack. Choice groups retain consistent option gaps and 48px single-line row pitch for comfortable controls.
+- Centre step-indicator labels against their numbered circles, increase horizontal spacing and add responsive separation below the indicator.
+- Adapt altiță colours to dark themes with flag-red and off-white stitches on a near-black background. Preserve SVG geometry, seamless repeats and size variants.
 
-- Step indicators centre labels against numbered circles, use heading leading and provide wider horizontal gaps. Study documentation displays all complete page examples together, in order, with the appropriate step selected and per-answer Change links. Four additional service studies cover infrastructure reporting, border-water fishing approval and two municipal clearance dossiers, with explicit checks for existing digital routes.
+### Documentation
 
-- Theme-aware altiță colours: dark uses flag-red and off-white stitches on a near-black ground, with dedicated motif roles; the existing SVG geometry, repeats and size variants are unchanged.
+- Add a bilingual About the project section describing the motivation, fragmented public-service interfaces and opportunities for shared design resources and pilots.
+- Explain the Distribution first approach: a framework-independent core with two portable runtime files, a React adapter and scope for community adapters.
+- Add nine studies of official web forms, paper-service digitisation candidates and existing document redesigns. Include source captures, observed problems, field mappings and existing digital routes where available.
+- Show every study step as a separate, complete page example, in order, with its own header, navigation, back link and selected step indicator. Examples are visual baselines without validation or real submissions.
+- Preserve individual and legal-entity applicant choices where the source form provides them, with conditional fields and retained local values.
+- Add direct per-answer Change links and Trimite / Submit buttons to review examples, with 32px/48px separation between review sections. Remove repeated Help blocks from study examples.
+- Consolidate repeated alpha notices into the shared footer and align sidebar groups with the available study pages.
 
-- Shared responsive typography: headings, legends, lead text, utilities and documentation use one small/large-screen scale at 40rem; body text remains 19px at every width. Size-specific heading rhythm accounts for existing layout gaps and preserves explicit overrides. Exported typographySmall accompanies the large-screen typography tokens.
+### Verification
 
-- Responsive question spacing: 24px on small screens and 32px on desktop, with 16px/24px in compact density. Shared layouts place the gap between complete field groups while preserving label spacing, compound controls, explicit overrides and error-rail geometry.
-- Bilingual digitisation/pilot studies and redesigns of existing official web forms, with source captures, field mapping and answer review. Case studies are visual baselines without validation or error states. Online examples cover immigration petitions and provisional-authorisation payment details, including attachments, email confirmation and a local demonstration total.
-- Heading size utilities now share the complete heading typography. Fieldset legends use the same weight, leading and wrapping rules as headings.
+- Extend component, installed-package and browser coverage for responsive typography, form and choice spacing, step indicators, theme-aware motifs and the complete study examples.
+- Use installed Chrome for GitHub Pages deployment checks while retaining Chromium, Firefox and WebKit coverage in the full browser suite.
 
 ## 0.1.0-alpha.1
 

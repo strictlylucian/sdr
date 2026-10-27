@@ -29,7 +29,7 @@ Clasele au prefixul sdr-, iar variabilele CSS au prefixul --sdr-. Componentele f
 
 ## Versiuni
 
-Versiunea 0.1.0-alpha.1 este experimentală. Modificările incompatibile sunt documentate. O versiune stabilă presupune revizuirea API-ului, testare cu persoane cu dizabilități, verificări manuale în browsere și cititoare de ecran și o politică de suport publicată.
+Versiunea 0.1.0-alpha.2 este experimentală. Modificările incompatibile sunt documentate. O versiune stabilă presupune revizuirea API-ului, testare cu persoane cu dizabilități, verificări manuale în browsere și cititoare de ecran și o politică de suport publicată.
 ` },
   'foundations/spacing': { title: 'Spațiere și layout', body: `
 Toate componentele folosesc aceeași scară de spațiere pentru gap, padding și margin. Verificările proiectului detectează valorile introduse în afara acestei scări. Excepția documentată este utilitarul care ascunde vizual conținutul destinat cititoarelor de ecran.
@@ -195,7 +195,7 @@ O contribuție pornește de la o nevoie concretă și are un responsabil pentru 
 
 npm run verify acoperă dimensiunea fișierelor sursă, spațierea, versiunile de limbă, tipurile, comportamentele, contrastul, pachetele și interacțiunile în browser. După modificarea surselor, npm run docs:generate actualizează API-ul și exemplele din documentație.
 
-Toate componentele sunt experimentale în 0.1.0-alpha.1. O versiune stabilă presupune testare reprezentativă cu persoane cu dizabilități, verificări manuale în browsere și tehnologii asistive, limite documentate, API revizuit și un angajament de suport.
+Toate componentele sunt experimentale în 0.1.0-alpha.2. O versiune stabilă presupune testare reprezentativă cu persoane cu dizabilități, verificări manuale în browsere și tehnologii asistive, limite documentate, API revizuit și un angajament de suport.
 
 Un raport de problemă include componenta, versiunea, browserul, tehnologia asistivă, pașii de reproducere și rezultatul așteptat. Exemplele nu conțin acte sau date personale reale. Repository-ul desemnat este [strictlylucian/sdr](https://github.com/strictlylucian/sdr). Rapoartele locale și rezultatele CI de pe GitHub reprezintă dovezi separate. Rulările curente sunt disponibile în tabul Actions. Documentația se publică prin workflow-ul GitHub Pages, la push pe main.
 

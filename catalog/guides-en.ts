@@ -29,7 +29,7 @@ Component classes start sdr- and tokens start --sdr-. Components use logical pro
 
 ## Versioning
 
-0.1.0-alpha.1 is experimental. Breaking alpha changes must be documented. A stable release requires API review, disabled-user research, manual browser and screen-reader qualification and a published support policy.
+0.1.0-alpha.2 is experimental. Breaking alpha changes must be documented. A stable release requires API review, disabled-user research, manual browser and screen-reader qualification and a published support policy.
 ` },
   'foundations/spacing': { title: 'Spacing and layout', body: `
 Spacing is a contract. Every component gap, padding and margin uses the shared scale. The source checker rejects arbitrary authored spacing in library and documentation styles, with a documented exception for the off-screen accessibility utility.
@@ -195,7 +195,7 @@ Every contribution needs a real user need, coherent semantics and a named mainta
 
 Run npm run verify before proposing a release. The checks cover source file length, spacing-token use, locale parity, types, behaviours, theme contrast, build artifacts and browser interactions. Generated API tables and component snippets must be regenerated with npm run docs:generate after source changes.
 
-All components are experimental in 0.1.0-alpha.1. A stable release requires research with representative users including disabled people, manual browser and assistive-technology checks, documented limitations, a reviewed API and a support commitment.
+All components are experimental in 0.1.0-alpha.2. A stable release requires research with representative users including disabled people, manual browser and assistive-technology checks, documented limitations, a reviewed API and a support commitment.
 
 Report a problem with the component, version, browser, assistive technology, reproduction and expected result. Do not include real identity documents or personal information. The designated repository is [strictlylucian/sdr](https://github.com/strictlylucian/sdr). Local verification reports and GitHub-hosted CI results are separate evidence. Current runs are available in the Actions tab. The GitHub Pages workflow publishes documentation on pushes to main.
 

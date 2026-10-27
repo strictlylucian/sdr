@@ -2,7 +2,7 @@
 
 [Română](README.ro.md) · [Repository](https://github.com/strictlylucian/sdr)
 
-**Independent proposal · 0.1.0-alpha.1 · Experimental implementation.**
+**Independent proposal · 0.1.0-alpha.2 · Experimental implementation.**
 
 SDR provides a framework-independent CSS and JavaScript foundation for Romanian public-service interfaces, with a React integration and a two-file portable browser distribution. Documentation and examples are available in Romanian and English. The project claims no government affiliation or accessibility certification.
 
@@ -46,7 +46,7 @@ Chromium checks the complete Romanian/English React and HTML catalogue, includin
 - `dist/portable/sdr.css` and `dist/portable/sdr.js`: exactly two portable runtime files, with embedded Inter fonts and SVG motif masks.
 - `apps/docs`: Astro Starlight documentation, live examples, API tables and documentation-only i18next resources.
 
-Build and create local installable archives with `npm run pack:release`. The output directory `output/release/0.1.0-alpha.1/` contains both npm archives, the portable pair and SHA-256 checksums. This command prepares local files and does not publish them. The npm namespace is `@strictlylucian`.
+Build and create local installable archives with `npm run pack:release`. The output directory `output/release/0.1.0-alpha.2/` contains both npm archives, the portable pair and SHA-256 checksums. This command prepares local files and does not publish them. The npm namespace is `@strictlylucian`.
 
 React applications install both packages, import `@strictlylucian/sdr-core/styles.css` once and mount components inside `SdrProvider`. React and React DOM use the peer range ^18.3.0 || ^19.0.0. Packed-package checks cover React 18.3.0, 18.3.1, 19.0.0 and 19.2.0 with matching type declarations, server rendering and browser hydration.
 

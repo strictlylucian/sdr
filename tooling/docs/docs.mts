@@ -123,7 +123,7 @@ ${uiText(locale, "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFo
 
 ## ${uiText(locale, "docs.versionAndContributions")}
 
-0.1.0-alpha.1 · ${uiText(locale, "docs.experimentalAPIExamplesUseTheSameVersionAs")} [${uiText(locale, "docs.contributing")}](/${locale}/contributing/).
+0.1.0-alpha.2 · ${uiText(locale, "docs.experimentalAPIExamplesUseTheSameVersionAs")} [${uiText(locale, "docs.contributing")}](/${locale}/contributing/).
 `, { order: position + 1 });
     await writePortablePage(item.name, item.slug, locale);
   }

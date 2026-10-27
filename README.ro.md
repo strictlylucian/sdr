@@ -2,7 +2,7 @@
 
 [English](README.md) · [Repository](https://github.com/strictlylucian/sdr)
 
-**Propunere independentă · 0.1.0-alpha.1 · Implementare experimentală.**
+**Propunere independentă · 0.1.0-alpha.2 · Implementare experimentală.**
 
 SDR oferă o bază CSS și JavaScript independentă de framework pentru interfețele serviciilor publice, o integrare React și o distribuție portabilă cu două fișiere. Documentația și exemplele sunt în română și engleză. Proiectul nu pretinde afiliere guvernamentală sau certificare de accesibilitate.
 
@@ -46,7 +46,7 @@ Chromium verifică întregul catalog React/HTML în ambele limbi, inclusiv stăr
 - `dist/portable/sdr.css` și `dist/portable/sdr.js`: cele două fișiere de distribuție, cu fonturile Inter și măștile SVG incluse în CSS.
 - `apps/docs`: documentație Astro Starlight, exemple interactive, tabele API și resurse i18next folosite doar în docs.
 
-`npm run pack:release` construiește și verifică arhivele locale. Directorul `output/release/0.1.0-alpha.1/` conține arhivele celor două pachete, ediția portabilă și sumele SHA-256. Comanda pregătește fișiere locale, fără să le publice. Namespace-ul npm este `@strictlylucian`.
+`npm run pack:release` construiește și verifică arhivele locale. Directorul `output/release/0.1.0-alpha.2/` conține arhivele celor două pachete, ediția portabilă și sumele SHA-256. Comanda pregătește fișiere locale, fără să le publice. Namespace-ul npm este `@strictlylucian`.
 
 Aplicațiile React instalează ambele pachete, importă `@strictlylucian/sdr-core/styles.css` o singură dată și plasează componentele într-un `SdrProvider`. Intervalul peer pentru React și React DOM este ^18.3.0 || ^19.0.0. Pachetele sunt verificate cu React 18.3.0, 18.3.1, 19.0.0 și 19.2.0, cu declarațiile de tipuri corespunzătoare, randare pe server și hidratare în browser.
 
