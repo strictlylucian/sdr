@@ -1,6 +1,6 @@
 Formularul Casei de pensii sectoriale a MApN este o pagină scanată cu casete pentru identificare, corespondență și detaliile petiției. Câmpurile au lățimi fixe, iar spațiul pentru text este limitat de foaie. Scanarea inspectată nu conține text selectabil.
 
-## De ce este nevoie de un parcurs digital
+## De ce este necesară o refacere completă
 
 Sursa este scanarea unui formular conceput pentru o foaie de hârtie. Cere informații fără să ofere instrumentele unui formular digital:
 

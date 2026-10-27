@@ -10,7 +10,7 @@ No dedicated transactional web application for this request was found in those p
 
 The one-page PDF asks for the applicant’s name, phone, email, address, representative and project, followed by a document checklist and signature. The linked source is specifically for individuals; the catalogue separately publishes company forms. Its PDF has selectable text but **no interactive form fields**.
 
-## Why a digital journey is useful
+## Why a complete overhaul is needed
 
 - **A downloaded sheet still needs completion outside the service.** Reading the PDF online does not provide keyboard-operable fields, contextual checks or an answer review. The document must be completed and delivered as a dossier.
 - **Essential requirements are separated from the answer spaces.** Identity, authority to act and project information are followed by a long list of drawings and technical documents. A structured journey can connect each required item with its upload and explain when representation documents apply.

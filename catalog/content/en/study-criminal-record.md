@@ -1,6 +1,6 @@
 In the PDF published by Constanța County Police, questions sit inside a continuous paragraph, details use blank lines and the personal number has individual character boxes. The inspected page is a scan without selectable text.
 
-## Why a digital journey is needed
+## Why a complete overhaul is needed
 
 A downloadable scan makes the document available online, but it still presents a paper application:
 

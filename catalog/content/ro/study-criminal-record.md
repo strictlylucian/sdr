@@ -1,6 +1,6 @@
 În PDF-ul publicat de IPJ Constanța, întrebările sunt inserate într-un paragraf, datele se completează pe linii, iar CNP-ul are căsuțe separate. Pagina inspectată este scanată, fără text selectabil.
 
-## De ce este nevoie de un parcurs digital
+## De ce este necesară o refacere completă
 
 Publicarea scanării face documentul disponibil online, dar păstrează modul de lucru al unei cereri pe hârtie:
 

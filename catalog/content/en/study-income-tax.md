@@ -1,6 +1,6 @@
 ANAF’s 2025 model is an interactive PDF with selectable text and fillable fields. It puts taxpayer details, several allocation options and representative details on the first page. The fixed size leads to small boxes, abbreviations and footnotes. The study follows the single-beneficiary scenario.
 
-## Why a digital journey is needed
+## Why a complete overhaul is needed
 
 The problem is the fixed-page interaction model, not simply the appearance of an official document:
 

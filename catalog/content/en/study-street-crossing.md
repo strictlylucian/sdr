@@ -10,7 +10,7 @@ ASCE [states that it was established by Alexandria’s Local Council](https://as
 
 The company application is a Word document: company details, representative, urban-planning certificate, work location, designer and project, supporting documents, date and signature. The original Word download is linked below. The source image shows the **service instructions and download links**, rather than pretending to be an image of the Word page.
 
-## Why a digital journey is useful
+## Why a complete overhaul is needed
 
 - **The published route still requires a dossier at an office.** A downloadable editable file helps prepare it, but does not provide a structured online application, document completeness checks or status tracking.
 - **Questions are embedded in a formal paragraph.** Certificate number, date, issuer, work description, street, project number and designer details are blanks inside sentences. Separate questions make the required information easier to identify and check.

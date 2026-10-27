@@ -1,6 +1,6 @@
 Modelul ANAF din 2025 este un PDF interactiv, cu text selectabil și câmpuri completabile. Reunește pe prima pagină identificarea contribuabilului, mai multe destinații posibile ale sumei și datele împuternicitului. Dimensiunea fixă impune rubrici mici, abrevieri și note de subsol. Studiul urmărește scenariul cu un singur beneficiar.
 
-## De ce este nevoie de un parcurs digital
+## De ce este necesară o refacere completă
 
 Problema principală este modul de completare impus de pagina fixă, nu simplul aspect al unui document oficial:
 

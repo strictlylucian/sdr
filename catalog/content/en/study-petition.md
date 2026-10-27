@@ -1,6 +1,6 @@
 The Ministry of Defence sectoral pension office’s form is a scanned page with boxes for identification, correspondence and petition details. Fields have fixed widths and writing space is limited by the sheet. The inspected scan contains no selectable text.
 
-## Why a digital journey is needed
+## Why a complete overhaul is needed
 
 This is a scan of a form designed for a sheet of paper. It asks for information without providing the tools of a digital form:
 

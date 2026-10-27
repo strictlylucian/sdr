@@ -205,5 +205,6 @@
   "buildingDetails": "Block, entrance and apartment",
   "identityDocumentDetails": "Identity document series and number",
   "streetAndNumber": "Street and number",
-  "applicantName": "Applicant’s full name"
+  "applicantName": "Applicant’s full name",
+  "documentStudies": "Other document redesigns"
 }

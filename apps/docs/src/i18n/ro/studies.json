@@ -205,5 +205,6 @@
   "buildingDetails": "Bloc, scară și apartament",
   "identityDocumentDetails": "Seria și numărul actului de identitate",
   "streetAndNumber": "Strada și numărul",
-  "applicantName": "Numele și prenumele solicitantului"
+  "applicantName": "Numele și prenumele solicitantului",
+  "documentStudies": "Alte formulare refăcute"
 }
