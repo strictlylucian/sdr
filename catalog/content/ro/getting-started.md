@@ -1,4 +1,4 @@
-SDR înseamnă **Sistem de Design Românesc**. Este o **propunere independentă, disponibilă într-o versiune alpha experimentală**, nu un sistem oficial al Guvernului României.
+SDR înseamnă **Sistem de Design Românesc**.
 
 ## Distribution first
 

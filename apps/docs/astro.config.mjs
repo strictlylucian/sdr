@@ -16,7 +16,7 @@ export default defineConfig({
     customCss: ['./src/styles/docs.css'],
     routeMiddleware: './src/sidebar-middleware.ts',
     expressiveCode: { plugins: [focusCodeBlocks()] },
-    components: { PageTitle: './src/components/PageTitle.astro', SkipLink: './src/components/SkipLink.astro', SiteTitle: './src/components/SiteTitle.astro', Hero: './src/components/Hero.astro', SocialIcons: './src/components/TopNav.astro', Footer: './src/components/Footer.astro', Sidebar: './src/components/Sidebar.astro' },
+    components: { SkipLink: './src/components/SkipLink.astro', SiteTitle: './src/components/SiteTitle.astro', Hero: './src/components/Hero.astro', SocialIcons: './src/components/TopNav.astro', Footer: './src/components/Footer.astro', Sidebar: './src/components/Sidebar.astro' },
     sidebar: [
       { label: uiText('ro', "navigation.Starthere"), translations: { en: uiText('en', "navigation.Starthere") }, items: [
         { slug: 'about' }, { slug: 'getting-started' }, { slug: 'architecture' }, { slug: 'coverage' },

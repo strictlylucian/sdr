@@ -67,6 +67,7 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     const root = page.locator('[data-form-study]');
     if (edition === 'react') {
       await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
+      await expect(page.locator('.sdr-doc-footer .sdr-doc-notice')).toHaveCount(1);
       await expect(root.locator('.sdr-doc-notice,.sdr-alert')).toHaveCount(0);
     }
     await expect(root.locator('.sdr-header')).toBeVisible();

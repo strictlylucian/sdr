@@ -44,7 +44,7 @@ SDR is distribution first. Core is the framework-independent foundation, with ex
 
 SDR is documentation and working examples for a Romanian public-service design system. It should feel reliable, practical and carefully maintained. People should immediately understand where they are, which page to read and how to use a component.
 
-The project remains an independent proposal. The homepage carries the proposal badge; one plain notice beneath each documentation title describes the alpha status. Do not suggest institutional approval. Product pages describe SDR on its own terms rather than comparing it with foreign systems.
+The project remains an independent proposal. The homepage carries the proposal badge; one plain notice in the documentation footer describes the alpha status. Do not suggest institutional approval. Product pages describe SDR on its own terms rather than comparing it with foreign systems.
 
 ## Colour and surfaces
 

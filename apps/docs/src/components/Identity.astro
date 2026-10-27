@@ -1,7 +1,6 @@
 ---
 import { docsUrl } from '../docs-url';
 import { uiText } from '../i18n/messages';
-import DocsNotice from './DocsNotice.astro';
 const { locale = 'ro' } = Astro.props;
 const ro = locale === 'ro';
 const sections = [
@@ -22,7 +21,6 @@ const sections = [
       <span class="sdr-home__proposal">{uiText(locale, "Identity.proposal")}</span>
     </div>
     <p class="sdr-home__lead">{uiText(locale, "Identity.componentsPatternsAndGuidanceForClearConsistentAndAccessible")}</p>
-    <DocsNotice />
     <div class="sdr-home__start"><a class="sdr-doc-button" href={docsUrl(`/${locale}/getting-started/`)}>{uiText(locale, "Identity.installationAndIntegration")}</a></div>
     <nav class="sdr-home__language" aria-label={uiText(locale, "Identity.languageForThisPage")}><a href={docsUrl('/ro/')} lang="ro" hrefLang="ro" aria-current={ro ? 'page' : undefined}>Română</a><span aria-hidden="true">/</span><a href={docsUrl('/en/')} lang="en" hrefLang="en" aria-current={!ro ? 'page' : undefined}>English</a></nav>
   </header>
@@ -35,7 +33,6 @@ const sections = [
   </nav>
   <aside class="sdr-home__status" aria-labelledby="project-status">
     <h2 id="project-status">{uiText(locale, "Identity.aboutThisVersion")}</h2>
-    <p>{uiText(locale, "Identity.sdrIsAnIndependentProposalUnderDevelopmentTheLibrary")}</p>
     <a href={docsUrl(`/${locale}/coverage/`)}>{uiText(locale, "Identity.viewFeaturesAndImplementationStatus")}</a>
     <a href={docsUrl(`/${locale}/studies/institutional-identity/`)}>{uiText(locale, 'Identity.institutionalIdentityStudies')}</a>
   </aside>

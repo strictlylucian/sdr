@@ -9,4 +9,3 @@
 .sl-markdown-content > .sl-heading-wrapper :is(h1,h2,h3,h4,h5,h6) { margin-block:0;font-weight:700; }
 .sl-markdown-content > .sl-heading-wrapper + * { margin-block-start:0; }
 #_top { margin-block:0;font-weight:700; }
-#_top + .sdr-doc-notice { margin-block-start:var(--sdr-heading-xl-after); }

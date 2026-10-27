@@ -81,6 +81,7 @@ for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their head
   for (const id of ['criminal-record', 'online-igi', 'online-payment']) {
     await page.goto(`/sdr/${locale}/reality/${id}/`);
     await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
+    await expect(page.locator('.sdr-doc-footer .sdr-doc-notice')).toHaveCount(1);
     const root = page.locator('[data-form-study]');
     await expect(root.locator('[data-study-next]')).toBeEnabled();
     await expect(root.locator('.sdr-header')).toBeVisible();

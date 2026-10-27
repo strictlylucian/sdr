@@ -1,4 +1,4 @@
-SDR stands for **Sistem de Design Românesc** (Romanian Design System). It is an **independent proposal, implemented as an experimental alpha**, not an official Romanian government system.
+SDR stands for **Sistem de Design Românesc** (Romanian Design System).
 
 ## Distribution first
 
