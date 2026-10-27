@@ -16,6 +16,7 @@ export type TextSize = keyof typeof typography;
 export const flagColours = { blue: '#002b7f', yellow: '#fcd116', red: '#ce1126' } as const;
 const errorColours = { base: '#ca3535', onDark: '#d76868', strong: '#982828', stronger: '#651b1b', subtle: '#fcf5f5' } as const;
 const civic = {
+  'motif-ground': '#ffffff', 'motif-primary': flagColours.red, 'motif-secondary': flagColours.blue,
   masthead: flagColours.blue, 'on-masthead': '#ffffff', 'masthead-border': '#7d91ac',
   'masthead-focus': flagColours.yellow, 'masthead-accent': flagColours.red,
   'pressed-bg': flagColours.yellow, 'on-pressed': '#131f33', 'pressed-border': '#131f33',
@@ -32,7 +33,7 @@ export const themes = {
     info: flagColours.blue, 'info-bg': '#edf3ff', accent: flagColours.red, 'on-accent': '#ffffff',
   },
   dark: {
-    ...civic, 'button-border': '#75849a', 'button-danger-border': errorColours.onDark,
+    ...civic, 'motif-ground': '#080c12', 'motif-secondary': '#edf1f7', 'button-border': '#75849a', 'button-danger-border': errorColours.onDark,
     canvas: '#080c12', surface: '#0e141e', subtle: '#192332', text: '#edf1f7', muted: '#b3bdcc',
     border: '#75849a', divider: '#2b384b', action: '#a8c7fa', 'action-hover': '#c8dcff', 'on-action': '#0a1728',
     link: '#a8c7fa', focus: flagColours.yellow, 'focus-gap': '#131f33', danger: errorColours.onDark, 'danger-bg': '#291515',

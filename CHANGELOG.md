@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Theme-aware altiță colours: dark uses flag-red and off-white stitches on a near-black ground, with dedicated motif roles; the existing SVG geometry, repeats and size variants are unchanged.
+
 - Shared responsive typography: headings, legends, lead text, utilities and documentation use one small/large-screen scale at 40rem; body text remains 19px at every width. Size-specific heading rhythm accounts for existing layout gaps and preserves explicit overrides. Exported typographySmall accompanies the large-screen typography tokens.
 
 - Responsive question spacing: 24px on small screens and 32px on desktop, with 16px/24px in compact density. Shared layouts place the gap between complete field groups while preserving label spacing, compound controls, explicit overrides and error-rail geometry.

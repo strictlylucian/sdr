@@ -27,12 +27,29 @@ for (const locale of ['ro', 'en'] as Locale[]) for (const edition of ['react', '
             expect(layer.size[0]).toBeCloseTo(height * motifDimensions.width / motifDimensions.height, 2);
             expect(layer.repeat).toBe('repeat-x');
           }
-          expect(paint.map(layer => layer.colour)).toEqual(['rgb(206, 17, 38)', 'rgb(0, 43, 127)']);
+          expect(paint.map(layer => layer.colour)).toEqual(['rgb(206, 17, 38)', theme === 'dark' ? 'rgb(237, 241, 247)' : 'rgb(0, 43, 127)']);
+          await expect(motif).toHaveCSS('background-color', theme === 'dark' ? 'rgb(8, 12, 18)' : 'rgb(255, 255, 255)');
         }
       }
     }
+    // An explicit light boundary inside dark must reset the palette, and vice versa.
+    const first = motifs.first();
+    await root.evaluate(node => node.setAttribute('data-sdr-theme', 'dark'));
+    await first.evaluate(node => { node.classList.add('sdr'); node.setAttribute('data-sdr-theme', 'light'); });
+    await expect(first).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    expect(await first.evaluate(node => getComputedStyle(node, '::after').backgroundColor)).toBe('rgb(0, 43, 127)');
+    await root.evaluate(node => node.setAttribute('data-sdr-theme', 'light'));
+    await first.evaluate(node => node.setAttribute('data-sdr-theme', 'dark'));
+    await expect(first).toHaveCSS('background-color', 'rgb(8, 12, 18)');
+    expect(await first.evaluate(node => getComputedStyle(node, '::after').backgroundColor)).toBe('rgb(237, 241, 247)');
+    await first.evaluate(node => { node.classList.remove('sdr'); node.removeAttribute('data-sdr-theme'); });
     await expectAccessible(page, edition === 'html' ? 'main > .sdr' : '[data-sdr-example="Motif"] .sdr-demo__canvas');
     if (info.project.name === 'chromium' && locale === 'en' && edition === 'html') {
+      for (const theme of ['light', 'dark']) {
+        await root.evaluate((node, theme) => node.setAttribute('data-sdr-theme', theme), theme);
+        await root.screenshot({ path: `output/playwright/motif-${theme}-sizes.png`, scale: 'css' });
+      }
+      await root.evaluate(node => node.setAttribute('data-sdr-theme', 'light'));
       await motifs.last().screenshot({ path: 'output/playwright/css-motif-xl.png' });
       await root.screenshot({ path: 'output/playwright/css-motif-sizes.png' });
     }
@@ -46,6 +63,7 @@ for (const edition of ['react', 'html'] as Edition[]) {
   test(`Motif ${edition}: native vector pixels and complete seams match the reference geometry`, async ({ page }, info) => {
     await page.setViewportSize({ width: 1000, height: 800 });
     const root = await openExample(page, 'Motif', edition, 'en');
+    await root.evaluate(node => node.setAttribute('data-sdr-theme', 'light'));
     const motif = root.locator('.sdr-motif').first();
     await motif.evaluate(node => {
       const style = (node as HTMLElement).style;
