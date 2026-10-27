@@ -71,7 +71,7 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
         };
       });
       expect(rhythm.firstTop).toBe('0px');
-      expect(rhythm.before).toBeCloseTo(width < 640 ? 48 : 64, 1);
+      expect(rhythm.before).toBeCloseTo(width < 640 ? 32 : 48, 1);
       expect(rhythm.after).toBeCloseTo(width < 640 ? 24 : 32, 1);
       await expectReflow(root);
     }
@@ -88,7 +88,7 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
     const before = () => stack.evaluate(node => node.querySelector('h2')!.getBoundingClientRect().top - node.querySelector('p')!.getBoundingClientRect().bottom);
     for (const width of [320, 1280]) {
       await page.setViewportSize({ width, height: 900 });
-      expect(await before()).toBeCloseTo(width < 640 ? 48 : 64, 1);
+      expect(await before()).toBeCloseTo(width < 640 ? 32 : 48, 1);
     }
     await stack.evaluate(node => node.classList.add('sdr-u-gap-3'));
     expect(await before()).toBeCloseTo(12, 1);
@@ -117,7 +117,7 @@ for (const locale of ['ro', 'en']) test(`Typography docs ${locale}: documentatio
     expect(await page.locator('.sl-markdown-content h3').first().evaluate(node => getComputedStyle(node).fontSize)).toBe(width < 640 ? '21px' : '24px');
     expect(await page.locator('.sl-markdown-content p').first().evaluate(node => getComputedStyle(node).fontSize)).toBe('19px');
     const rhythm = await page.locator('.sl-markdown-content > .level-h3').first().evaluate(node => ({ before: getComputedStyle(node).marginBlockStart, after: getComputedStyle(node).marginBlockEnd }));
-    expect(rhythm).toEqual(width < 640 ? { before: '32px', after: '16px' } : { before: '48px', after: '24px' });
+    expect(rhythm).toEqual(width < 640 ? { before: '24px', after: '16px' } : { before: '32px', after: '24px' });
     await page.screenshot({ path: info.outputPath(`typography-docs-${width}.png`), scale: 'css' });
   }
 });

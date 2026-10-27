@@ -95,9 +95,9 @@ Heading spacing follows visual size at the same 40rem breakpoint. The top space 
 | Heading size | Space before, small / large | Space after, small / large |
 |---|---|---|
 | xl | 48 / 64px | 32 / 48px |
-| lg | 48 / 64px | 24 / 32px |
-| md | 32 / 48px | 16 / 24px |
-| sm | 24 / 32px | 16 / 24px |
+| lg | 32 / 48px | 24 / 32px |
+| md | 24 / 32px | 16 / 24px |
+| sm | 16 / 24px | 16 / 24px |
 
 Prose and the documentation use this rhythm between reading blocks. Stack adds only the difference between its existing gap and the heading’s spacing, preventing doubled gaps. An explicit gap prop or numbered gap utility retains the selected layout spacing. Compact component layouts such as cards, alerts and dialogs own their internal gaps. Heading-sized fieldset legends use the matching space below the legend, outside the field’s label-to-control relationship.
 

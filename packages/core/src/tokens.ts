@@ -7,9 +7,9 @@ export const typographySmall = { ...typography, lg: 1.1875, xl: 1.3125, '2xl': 1
 /** Space-token pairs are [small screen, large screen]; top space applies after content. */
 export const headingSpacing = {
   xl: { before: [7, 8], after: [6, 7] },
-  lg: { before: [7, 8], after: [5, 6] },
-  md: { before: [6, 7], after: [4, 5] },
-  sm: { before: [5, 6], after: [4, 5] },
+  lg: { before: [6, 7], after: [5, 6] },
+  md: { before: [5, 6], after: [4, 5] },
+  sm: { before: [4, 5], after: [4, 5] },
 } as const;
 export type TextSize = keyof typeof typography;
 /** Law 176/2023, annex: RGB 0-43-127, 252-209-22, 206-17-38. */

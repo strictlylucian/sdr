@@ -95,9 +95,9 @@ Spațierea urmează dimensiunea vizuală a titlului, la același prag de 40rem. 
 | Dimensiunea titlului | Spațiu înainte, mic / mare | Spațiu după, mic / mare |
 |---|---|---|
 | xl | 48 / 64px | 32 / 48px |
-| lg | 48 / 64px | 24 / 32px |
-| md | 32 / 48px | 16 / 24px |
-| sm | 24 / 32px | 16 / 24px |
+| lg | 32 / 48px | 24 / 32px |
+| md | 24 / 32px | 16 / 24px |
+| sm | 16 / 24px | 16 / 24px |
 
 Prose și documentația folosesc acest ritm între blocurile de text. Stack adaugă doar diferența dintre gap-ul existent și spațierea titlului, fără să dubleze distanța. Un gap explicit sau o clasă utilitară de gap păstrează distanța aleasă. Componentele compacte, precum cardurile, alertele și dialogurile, își gestionează propriile distanțe interne. Legendele cu dimensiune de titlu folosesc spațiul corespunzător sub legendă, separat de distanța dintre etichetă și control.
 
