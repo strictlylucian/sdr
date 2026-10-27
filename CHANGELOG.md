@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Choice groups keep consistent option spacing inside Stack layouts. Answer-review sections use clearer responsive separation in all study examples.
+
 - Restored the original heading rhythm and added responsive spacing below step indicators, separating them from page titles. Review examples now end with a Trimite / Submit button.
 
 - Step indicators centre labels against numbered circles, use heading leading and provide wider horizontal gaps. Study documentation displays all complete page examples together, in order, with the appropriate step selected and per-answer Change links. Four additional service studies cover infrastructure reporting, border-water fishing approval and two municipal clearance dossiers, with explicit checks for existing digital routes.

@@ -19,7 +19,7 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
         {step.fields.map(field => <StudyField key={field.name} field={field} locale={locale} prefix={prefix} />)}
       </fieldset>)}
       <section id={`${prefix}-step-review`} data-study-review tabIndex={-1} hidden aria-labelledby={`${prefix}-review-title`} className="sdr-stack">
-        <h2 id={`${prefix}-review-title`} className="sdr-heading-lg">{t(locale, 'review')}</h2><div data-study-answers className="sdr-stack" />
+        <h2 id={`${prefix}-review-title`} className="sdr-heading-lg">{t(locale, 'review')}</h2><div data-study-answers className="sdr-stack sdr-u-gap-6 sdr-u-md-gap-7" />
       </section>
       {study.pricing && <section data-study-pricing hidden className="sdr-stack">
         <p role="status" aria-live="polite">{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>

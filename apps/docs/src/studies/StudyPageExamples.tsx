@@ -24,7 +24,7 @@ export default function StudyPageExamples({ id, locale }: { id: StudyId; locale:
             <div data-study-stepper><R.Stepper label={`${t(locale, 'steps')}: ${title}`} steps={pages.map((label, target) => ({ label, href: `#${heading(target)}`, current: target === index }))} /></div>
             {reviewing ? <form noValidate id={`${pagePrefix(index)}-form`} data-study-review className="sdr-stack">
               <h2 id={heading(index)} tabIndex={-1} className="sdr-heading-lg">{title}</h2>
-              <div data-study-answers className="sdr-stack" />
+              <div data-study-answers className="sdr-stack sdr-u-gap-6 sdr-u-md-gap-7" />
               {total && <p>{t(locale, 'demonstrationTotal')}: <strong data-study-total>{studyTotal(study, '1', locale)}</strong></p>}
               <div><R.Button type="submit">{t(locale, 'submit')}</R.Button></div>
             </form> : <form id={`${pagePrefix(index)}-form`} noValidate autoComplete="off" className="sdr-stack">
