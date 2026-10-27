@@ -1,6 +1,6 @@
 import { behaviors, enhance, type Behavior, type EnhancementOptions } from './behaviors';
 import type { Cleanup } from './behaviors/lifecycle';
-export { themes, spacing, typography } from './tokens';
+export { themes, spacing, typography, typographySmall } from './tokens';
 
 const mounted = new WeakMap<HTMLElement, Cleanup>();
 /** Enhances only opted-in, non-React roots. Call again after inserting HTML. */

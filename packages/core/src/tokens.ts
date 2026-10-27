@@ -1,7 +1,16 @@
 /** Every space, theme and utility is generated from this contract. Values use rem. */
 export const spacing = { 0: 0, 1: .25, 2: .5, 3: .75, 4: 1, 5: 1.5, 6: 2, 7: 3, 8: 4, 9: 6 } as const;
 export type Space = keyof typeof spacing;
-export const typography = { xs: .875, sm: 1, md: 1.125, lg: 1.25, xl: 1.5, '2xl': 2, '3xl': 3, '4xl': 4 } as const;
+/** Large-screen scale; the CSS contract switches at 40rem without shrinking body copy. */
+export const typography = { xs: .875, sm: 1, md: 1.1875, lg: 1.25, xl: 1.5, '2xl': 2.25, '3xl': 3, '4xl': 4 } as const;
+export const typographySmall = { ...typography, lg: 1.1875, xl: 1.3125, '2xl': 1.6875, '3xl': 2, '4xl': 3 } as const;
+/** Space-token pairs are [small screen, large screen]; top space applies after content. */
+export const headingSpacing = {
+  xl: { before: [7, 8], after: [6, 7] },
+  lg: { before: [6, 7], after: [5, 6] },
+  md: { before: [5, 6], after: [4, 5] },
+  sm: { before: [4, 5], after: [4, 5] },
+} as const;
 export type TextSize = keyof typeof typography;
 /** Law 176/2023, annex: RGB 0-43-127, 252-209-22, 206-17-38. */
 export const flagColours = { blue: '#002b7f', yellow: '#fcd116', red: '#ce1126' } as const;

@@ -16,9 +16,9 @@ colors:
   flag-yellow: '#fcd116'
 typography:
   family: Inter
-  body: 1.125rem
-  page-heading: 2.5rem
-  section-heading: 1.5rem
+  body: 1.1875rem
+  page-heading: 2rem / 3rem
+  section-heading: 1.6875rem / 2.25rem
 geometry:
   radius: 0.125rem
   elevated-radius: 0.25rem
@@ -40,7 +40,7 @@ Reference: [IBM DESIGN.md from VoltAgent's collection](https://github.com/VoltAg
 
 SDR is documentation and working examples for a Romanian public-service design system. It should feel reliable, practical and carefully maintained. People should immediately understand where they are, which page to read and how to use a component.
 
-The project remains an independent proposal. The homepage carries the proposal badge; a warning at the bottom of documentation pages describes the alpha status. Do not suggest institutional approval. Product pages describe SDR on its own terms rather than comparing it with foreign systems.
+The project remains an independent proposal. The homepage carries the proposal badge; one plain notice beneath each documentation title describes the alpha status. Do not suggest institutional approval. Product pages describe SDR on its own terms rather than comparing it with foreign systems.
 
 ## Colour and surfaces
 
@@ -50,7 +50,7 @@ Avoid atmospheric gradients, oversized decorative illustrations, glass effects a
 
 ## Typography
 
-Use Inter 4.1 as the shared sans serif family across library and docs. Embed its optimized Latin/Latin Extended variable regular and italic WOFF2 faces in CSS, retaining all UI weights (400–750), optical sizing, Romanian diacritics and combining marks; preserve the OFL license and the two-file portable contract. Code retains its monospace stack. Body text stays comfortably readable, with a 1.6 line height. Page headings use a modest 2.5rem ceiling, normal tracking and semibold weight. Avoid enormous slogans, tight negative tracking, decorative uppercase eyebrows and multiple competing title scales.
+Use Inter 4.1 as the shared sans serif family across library and docs. Embed its optimized Latin/Latin Extended variable regular and italic WOFF2 faces in CSS, retaining all UI weights (400–750), optical sizing, Romanian diacritics and combining marks; preserve the OFL license and the two-file portable contract. Code retains its monospace stack. Body text stays comfortably readable, with a 1.6 line height. Responsive typography is part of the foundation, shared by the library and docs. At 40rem, page headings change from 32px to 48px, section headings from 27px to 36px, and subsection headings and lead text from 21px to 24px (at a 16px root). Body text remains 19px and supporting text 16px on both sides of the breakpoint. Heading size classes, fieldset legends and numbered text utilities resolve through the same rem tokens; line heights scale with text size. Density never reduces reading text. Heading rhythm also responds at 40rem: xl uses 32/48px after, lg 24/32px, md and sm 16/24px; contextual space before is larger than after. First headings have no extra top margin. Stack accounts for its existing gap, explicit gap overrides remain explicit, and compact components own their internal spacing. Page headings use normal tracking and bold weight. Avoid enormous slogans, tight negative tracking, decorative uppercase eyebrows and multiple competing title scales.
 
 Use literal headings: Componente, Tipografie, Spațiere, Instalare. Copy should explain what a person can do. Avoid promotional claims, abstract principles as feature cards, numbered decorative blocks and invented slogans.
 

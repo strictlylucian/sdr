@@ -142,18 +142,39 @@ For a compound field in a custom wrapper, sdr-form-group identifies the question
   'foundations/typography': { title: 'Typography', body: `
 Inter 4.1 is the default typeface across the library and documentation. Its variable regular and italic WOFF2 faces are embedded directly in CSS, covering the UI weight range 400–750. The Latin and Latin Extended subsets retain international Latin-script names, combining accents, punctuation and currency symbols. Other scripts use the system font stack. Optical sizing, tabular numerals and hinting are preserved. There are no separate font requests, and portable delivery remains two files. Inter includes Romanian diacritics, including comma-below Ș/ș and Ț/ț. Code retains a monospace font. An institution can override the family through --sdr-font.
 
-| Token | rem | Role |
-|---|---|---|
-| xs | .875 | Captions and tags |
-| sm | 1 | Supporting text |
-| md | 1.125 | Body text |
-| lg | 1.25 | Lead text |
-| xl | 1.5 | Subsection headings |
-| 2xl | 2 | Section headings |
-| 3xl | 3 | Page headings |
-| 4xl | 4 | Editorial display |
+### Responsive type scale
 
-A heading's level describes document structure; its size prop controls visual size independently. Body line height is 1.6 and heading line height is 1.25. Headings can wrap across lines. Prose limits editorial width to 68ch, and the sdr-u-tabular utility provides tabular figures for numeric values.
+Typography responds at 40rem through shared tokens rather than page-specific viewport formulas. Values below assume a 16px browser default; the source uses rem and unitless line heights so text preferences and zoom remain effective.
+
+| Token | Small screen | From 40rem | Role |
+|---|---|---|---|
+| xs | 14px | 14px | Short metadata and tags; not reading text |
+| sm | 16px | 16px | Supporting text and hints |
+| md | 19px | 19px | Body, labels, controls and small headings |
+| lg | 19px | 20px | Emphasised text and alert titles |
+| xl | 21px | 24px | Subsection headings and lead text |
+| 2xl | 27px | 36px | Section headings |
+| 3xl | 32px | 48px | Page headings |
+| 4xl | 48px | 64px | Exceptional editorial display |
+
+The same scale powers React, portable HTML, documentation titles and numbered sdr-u-text-* utilities. Heading xl/lg/md/sm sizes map to 3xl/2xl/xl/md respectively. An h2 styled as a page title remains an h2 in the document structure. Fieldset legends with heading size classes receive the complete heading treatment. The sdr-lead class uses the xl scale point.
+
+Body line height is 1.6 and heading line height is 1.25; both scale with font size. Body text stays at 19px on small screens. Compact density changes control spacing without reducing reading text. Prose limits reading width to 68ch; headings wrap rather than truncate. The sdr-u-tabular utility provides tabular figures.
+
+The exported typography values describe the large-screen scale; typographySmall describes the small-screen scale. CSS switches automatically, so applications need no JavaScript viewport listener. Custom heading roles can use --sdr-heading-xl-size, --sdr-heading-lg-size, --sdr-heading-md-size and --sdr-heading-sm-size.
+
+### Heading rhythm
+
+Heading spacing follows visual size at the same 40rem breakpoint. The top space applies after a paragraph or list; a heading at the start of a section has no extra top margin.
+
+| Heading size | Space before, small / large | Space after, small / large |
+|---|---|---|
+| xl | 48 / 64px | 32 / 48px |
+| lg | 32 / 48px | 24 / 32px |
+| md | 24 / 32px | 16 / 24px |
+| sm | 16 / 24px | 16 / 24px |
+
+Prose and the documentation use this rhythm between reading blocks. Stack adds only the difference between its existing gap and the heading’s spacing, preventing doubled gaps. An explicit gap prop or numbered gap utility retains the selected layout spacing. Compact component layouts such as cards, alerts and dialogs own their internal gaps. Heading-sized fieldset legends use the matching space below the legend, outside the field’s label-to-control relationship.
 
 Romanian text includes ă, â, î, ș and ț, with corresponding capitals. Names such as Șerban, Târgu Mureș and Dâmbovița are useful samples when evaluating an alternative font. Controls preserve entered Unicode text; visual presentation and data normalisation are separate concerns.
 

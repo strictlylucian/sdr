@@ -5,5 +5,6 @@
 .sdr-choice__conditional:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,[data-sdr-component="character-count"],[data-sdr-component="password"]))),
 .sdr-grid:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,.sdr-choice-field))),
 .sdr-grid-row:where(:has(> :is(.sdr-field,.sdr-field-group,.sdr-fieldset,.sdr-choice-field))) {
+  --sdr-stack-gap:var(--sdr-form-group-gap);
   row-gap:var(--sdr-form-group-gap);
 }

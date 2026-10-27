@@ -1,0 +1,12 @@
+.sl-markdown-content { font-size:var(--sdr-text-md);line-height:var(--sdr-leading); }
+/* Starlight wraps Markdown headings; the wrapper owns their vertical rhythm. */
+.sl-markdown-content > .sl-heading-wrapper { margin-block:var(--sdr-heading-space-before) var(--sdr-heading-space-after); }
+.sl-markdown-content > .level-h1 { --sdr-heading-space-before:var(--sdr-heading-xl-before);--sdr-heading-space-after:var(--sdr-heading-xl-after); }
+.sl-markdown-content > .level-h2 { --sdr-heading-space-before:var(--sdr-heading-lg-before);--sdr-heading-space-after:var(--sdr-heading-lg-after); }
+.sl-markdown-content > .level-h3 { --sdr-heading-space-before:var(--sdr-heading-md-before);--sdr-heading-space-after:var(--sdr-heading-md-after); }
+.sl-markdown-content > :is(.level-h4,.level-h5,.level-h6) { --sdr-heading-space-before:var(--sdr-heading-sm-before);--sdr-heading-space-after:var(--sdr-heading-sm-after); }
+.sl-markdown-content > .sl-heading-wrapper:first-child { margin-block-start:0; }
+.sl-markdown-content > .sl-heading-wrapper :is(h1,h2,h3,h4,h5,h6) { margin-block:0;font-weight:700; }
+.sl-markdown-content > .sl-heading-wrapper + * { margin-block-start:0; }
+#_top { margin-block:0;font-weight:700; }
+#_top + .sdr-doc-notice { margin-block-start:var(--sdr-heading-xl-after); }

@@ -46,6 +46,8 @@ it("ships portable assets, verified embedded fonts, embedded vector decoration a
   const core = await import("../../packages/core/dist/index.js");
   const react = await import("../../packages/react/dist/index.js");
   assert.equal(typeof core.init, "function");
+  assert.equal(core.typographySmall.md, core.typography.md, "Reading size must be exported consistently");
+  assert(core.typographySmall["3xl"] < core.typography["3xl"], "Both responsive scale endpoints must be exported");
   for (const name of ['messages', 'formatDate', 'formatMoney']) assert(!(name in core), `Library must not export ${name}`);
   for (const file of ['dist/portable/sdr.js', 'packages/react/dist/index.js']) {
     const source = await readFile(file, 'utf8');

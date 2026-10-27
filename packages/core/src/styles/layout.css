@@ -22,7 +22,7 @@
   .sdr-grid-row > .sdr-grid-column-three-quarters-from-desktop { inline-size:calc((100% + var(--sdr-layout-gap)) * 3 / 4 - var(--sdr-layout-gap)); }
   .sdr-grid-row > .sdr-grid-column-full-from-desktop { inline-size:100%; }
 }
-.sdr-stack { display: flex; flex-direction: column; gap: var(--sdr-group-gap); }
+.sdr-stack { --sdr-stack-gap:var(--sdr-group-gap); display: flex; flex-direction: column; gap: var(--sdr-stack-gap); }
 .sdr-stack > .sdr-divider { margin-block:0; }
 .sdr-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sdr-space-3); }
 .sdr-grid { display: grid; gap: var(--sdr-layout-gap); grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr)); }

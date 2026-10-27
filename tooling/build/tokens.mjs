@@ -1,21 +1,24 @@
-import { spacing, typography, themes, density, flagColours } from '../../packages/core/src/tokens.ts';
+import { spacing, typography, typographySmall, headingSpacing, themes, density, flagColours } from '../../packages/core/src/tokens.ts';
 
 export function tokenStyles() {
+  const rhythm = screen => Object.entries(headingSpacing).map(([role, spaces]) => Object.entries(spaces).map(([side, pair]) => `--sdr-heading-${role}-${side}:var(--sdr-space-${pair[screen]});`).join('')).join('');
   const vars = (prefix, values, unit = '') => Object.entries(values).map(([key, value]) => `--sdr-${prefix}${key}:${value}${unit};`).join('');
-  let css = `:root,.sdr{${vars('space-', spacing, 'rem')}${vars('text-', typography, 'rem')}${vars('flag-', flagColours)}
+  let css = `:root,.sdr{${vars('space-', spacing, 'rem')}${vars('text-', typographySmall, 'rem')}${rhythm(0)}${vars('flag-', flagColours)}
     --sdr-font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
     --sdr-mono:ui-monospace,"Cascadia Code",Consolas,monospace;
     --sdr-leading:1.6;--sdr-leading-heading:1.25;--sdr-radius:.125rem;--sdr-radius-lg:.25rem;
     --sdr-border-width:1px;--sdr-border-strong:2px;--sdr-focus-width:3px;--sdr-focus-offset:3px;
     --sdr-measure:68ch;--sdr-container:64rem;--sdr-page-gutter:var(--sdr-space-4);--sdr-control-height:3rem;
     --sdr-control-padding:var(--sdr-space-2);--sdr-duration:120ms;--sdr-shadow:0 8px 32px #00000020;
+    --sdr-heading-xl-size:var(--sdr-text-3xl);--sdr-heading-lg-size:var(--sdr-text-2xl);
+    --sdr-heading-md-size:var(--sdr-text-xl);--sdr-heading-sm-size:var(--sdr-text-md);--sdr-lead-size:var(--sdr-text-xl);
     --sdr-field-gap:var(--sdr-space-2);--sdr-group-gap:var(--sdr-space-4);--sdr-form-group-gap:var(--sdr-space-5);
     --sdr-section-gap:var(--sdr-space-6);--sdr-layout-gap:var(--sdr-space-4);
     --sdr-navigation-gap:var(--sdr-space-4);--sdr-navigation-item-padding:var(--sdr-space-2);}`;
   for (const [name, values] of Object.entries(themes)) {
     css += `${name === 'light' ? ':root,.sdr,' : ''}[data-sdr-theme="${name}"]{${vars('', values)}color-scheme:${name === 'dark' ? 'dark' : 'light'};}`;
   }
-  css += '@media(min-width:40rem){:root,.sdr{--sdr-form-group-gap:var(--sdr-space-6);}}';
+  css += `@media(min-width:40rem){:root,.sdr{${vars('text-', typography, 'rem')}${rhythm(1)}--sdr-form-group-gap:var(--sdr-space-6);}}`;
   for (const [name, values] of Object.entries(density)) {
     css += `[data-sdr-density="${name}"]{--sdr-control-height:${values.control}rem;--sdr-control-padding:var(--sdr-space-${values['control-padding']});--sdr-form-group-gap:var(--sdr-space-${values['form-group-gap']});}`;
     css += `@media(min-width:40rem){[data-sdr-density="${name}"]{--sdr-form-group-gap:var(--sdr-space-${values['form-group-gap-large']});}}`;

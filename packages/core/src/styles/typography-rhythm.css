@@ -1,0 +1,16 @@
+/* Heading rhythm is responsive and follows visual size, not semantic heading level. */
+.sdr :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { --sdr-heading-stack-after:max(var(--sdr-space-0),calc(var(--sdr-heading-space-after) - var(--sdr-stack-gap))); --sdr-heading-stack-before:max(var(--sdr-space-0),calc(var(--sdr-heading-space-before) - var(--sdr-stack-gap))); margin-block:0 var(--sdr-heading-space-after); }
+.sdr :where(p,ul,ol,dl) + :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block-start:var(--sdr-heading-space-before); }
+.sdr-prose > :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block-start:var(--sdr-heading-space-before); }
+.sdr-prose > :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) + * { margin-block-start:0; }
+.sdr-prose > :first-child { margin-block-start:0; }
+.sdr-prose > :last-child { margin-block-end:0; }
+/* Stack already owns a gap. Only add the difference needed by a heading. */
+.sdr-stack > :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block:0; }
+.sdr-stack:where(:not([class*="sdr-u-gap-"],[class*="sdr-u-row-gap-"],[class*="sdr-u-md-gap-"],[class*="sdr-u-md-row-gap-"])) > :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm):not(:last-child) { margin-block-end:var(--sdr-heading-stack-after); }
+.sdr-stack:where(:not([class*="sdr-u-gap-"],[class*="sdr-u-row-gap-"],[class*="sdr-u-md-gap-"],[class*="sdr-u-md-row-gap-"])) > :where(p,ul,ol,dl) + :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block-start:var(--sdr-heading-stack-before); }
+/* Compact component layouts own their spacing, rather than accumulating margins. */
+:is(.sdr-card,.sdr-alert,.sdr-error-summary,.sdr-panel,.sdr-empty,.sdr-cookie,.sdr-toast,.sdr-dialog__header) > :where(h1,h2,h3,h4,h5,h6,.sdr-heading,.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block:0; }
+.sdr-page-header__content > h1 { --sdr-heading-layout-after:max(var(--sdr-space-0),calc(var(--sdr-heading-xl-after) - var(--sdr-space-3))); margin-block:0 var(--sdr-heading-layout-after); }
+.sdr-hero__body > h1 { --sdr-heading-layout-after:max(var(--sdr-space-0),calc(var(--sdr-heading-xl-after) - var(--sdr-space-5))); margin-block:0 var(--sdr-heading-layout-after); }
+.sdr-legend:is(.sdr-heading-xl,.sdr-heading-lg,.sdr-heading-md,.sdr-heading-sm) { margin-block:0 var(--sdr-heading-space-after); }

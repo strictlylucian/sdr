@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Shared responsive typography: headings, legends, lead text, utilities and documentation use one small/large-screen scale at 40rem; body text remains 19px at every width. Size-specific heading rhythm accounts for existing layout gaps and preserves explicit overrides. Exported typographySmall accompanies the large-screen typography tokens.
+
 - Responsive question spacing: 24px on small screens and 32px on desktop, with 16px/24px in compact density. Shared layouts place the gap between complete field groups while preserving label spacing, compound controls, explicit overrides and error-rail geometry.
 - Bilingual digitisation/pilot studies and redesigns of existing official web forms, with source captures, field mapping, validation and answer review. Online examples cover immigration petitions and provisional-authorisation payment details, including attachments, email confirmation and a local demonstration total.
 - Heading size utilities now share the complete heading typography. Fieldset legends use the same weight, leading and wrapping rules as headings.

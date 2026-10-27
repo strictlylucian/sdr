@@ -5,18 +5,39 @@ description: "Tipografie — SDR. Propunere independentă."
 
 SDR folosește Inter 4.1 în bibliotecă și în documentație. Variantele variabile regular și italic sunt incluse direct în CSS, în format WOFF2, cu greutăți de la 400 la 750, intervalul folosit de componente. Fonturile sunt optimizate pentru caractere latine și Latin Extended, inclusiv nume internaționale, accente combinate, semne de punctuație și monede. Pentru alte alfabete se folosesc fonturile sistemului de operare. Dimensiunea optică, cifrele tabulare și hinting-ul sunt păstrate. Nu există cereri separate pentru fonturi, iar ediția portabilă păstrează cele două fișiere. Inter include diacriticele românești, inclusiv Ș/ș și Ț/ț cu virgulă dedesubt. Codul păstrează un font monospace. Familia poate fi schimbată prin --sdr-font pentru identitatea unei instituții.
 
-| Token | rem | Utilizare |
-|---|---|---|
-| xs | .875 | Note și etichete |
-| sm | 1 | Text suplimentar |
-| md | 1.125 | Text principal |
-| lg | 1.25 | Text introductiv |
-| xl | 1.5 | Titluri de subsecțiune |
-| 2xl | 2 | Titluri de secțiune |
-| 3xl | 3 | Titluri de pagină |
-| 4xl | 4 | Titluri mari de prezentare |
+### Scară tipografică responsive
 
-Nivelul unui titlu reflectă structura documentului. Proprietatea size schimbă doar dimensiunea vizuală, independent de nivel. line-height este 1.6 pentru text și 1.25 pentru titluri. Titlurile pot ocupa mai multe rânduri. Prose limitează lățimea textului la 68ch, iar sdr-u-tabular aliniază cifrele folosind aceeași lățime pentru fiecare.
+Tipografia se adaptează de la 40rem prin tokenurile comune, fără formule separate pentru fiecare pagină. Valorile de mai jos presupun dimensiunea implicită de 16px a browserului. Sursa folosește rem și line-height fără unitate, astfel încât preferințele de text și zoom-ul să rămână eficiente.
+
+| Token | Ecran mic | De la 40rem | Utilizare |
+|---|---|---|---|
+| xs | 14px | 14px | Metadate scurte și taguri, nu text de citit |
+| sm | 16px | 16px | Text suplimentar și hinturi |
+| md | 19px | 19px | Text principal, etichete, controale și titluri mici |
+| lg | 19px | 20px | Text evidențiat și titluri de alertă |
+| xl | 21px | 24px | Titluri de subsecțiune și text introductiv |
+| 2xl | 27px | 36px | Titluri de secțiune |
+| 3xl | 32px | 48px | Titluri de pagină |
+| 4xl | 48px | 64px | Titluri mari, în situații speciale |
+
+Aceeași scară se aplică în React, HTML, titlurile documentației și clasele sdr-u-text-*. Dimensiunile xl/lg/md/sm ale componentei Heading corespund tokenurilor 3xl/2xl/xl/md. Un h2 cu dimensiunea unui titlu de pagină rămâne h2 în structura documentului. Legendele cu clase de dimensiune pentru titluri primesc același stil complet. Clasa sdr-lead folosește tokenul xl.
+
+line-height este 1.6 pentru text și 1.25 pentru titluri; înălțimea rândului crește odată cu fontul. Textul principal rămâne la 19px și pe ecrane mici. Densitatea compactă modifică spațiul controalelor, fără să micșoreze textul de citit. Prose limitează lățimea la 68ch, iar titlurile trec pe mai multe rânduri, fără trunchiere. Clasa sdr-u-tabular aliniază cifrele la aceeași lățime.
+
+Valorile exportate prin typography descriu scara pentru ecrane mari; typographySmall descrie scara pentru ecrane mici. CSS face trecerea automat, fără cod JavaScript pentru lățimea ecranului. Rolurile proprii pot folosi --sdr-heading-xl-size, --sdr-heading-lg-size, --sdr-heading-md-size și --sdr-heading-sm-size.
+
+### Spațiul din jurul titlurilor
+
+Spațierea urmează dimensiunea vizuală a titlului, la același prag de 40rem. Spațiul de deasupra se aplică după un paragraf sau o listă. Un titlu de la începutul secțiunii nu primește margine suplimentară sus.
+
+| Dimensiunea titlului | Spațiu înainte, mic / mare | Spațiu după, mic / mare |
+|---|---|---|
+| xl | 48 / 64px | 32 / 48px |
+| lg | 32 / 48px | 24 / 32px |
+| md | 24 / 32px | 16 / 24px |
+| sm | 16 / 24px | 16 / 24px |
+
+Prose și documentația folosesc acest ritm între blocurile de text. Stack adaugă doar diferența dintre gap-ul existent și spațierea titlului, fără să dubleze distanța. Un gap explicit sau o clasă utilitară de gap păstrează distanța aleasă. Componentele compacte, precum cardurile, alertele și dialogurile, își gestionează propriile distanțe interne. Legendele cu dimensiune de titlu folosesc spațiul corespunzător sub legendă, separat de distanța dintre etichetă și control.
 
 Textele includ ă, â, î, ș și ț, precum și majusculele lor. Nume ca Șerban, Târgu Mureș și Dâmbovița ajută la verificarea unui font alternativ. Câmpurile păstrează textul Unicode introdus; normalizarea datelor se tratează separat de afișare.
 
