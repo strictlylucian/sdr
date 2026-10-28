@@ -28,7 +28,6 @@ export function SessionExpiredExample({ locale }: P) {
 }
 export function ContactSupportExample({ locale }: P) {
   return <R.Stack><h3>{tr(locale, "pattern-status.doYouNeedHelpWithYourApplication")}</h3>
-    <R.InsetText>{tr(locale, "pattern-status.fictionalContactDetailsForThisExampleOnly")}</R.InsetText>
     <R.SummaryList items={[{ key: 'Email', value: 'ajutor@example.invalid' }, { key: tr(locale, "pattern-status.openingHours"), value: tr(locale, "pattern-status.mondayToFriday09001700") }, { key: tr(locale, "pattern-status.responseTime"), value: tr(locale, "pattern-status.within2WorkingDays") }]} />
     <p>{tr(locale, "pattern-status.includeYourApplicationReferenceIfYouHaveOneDo")}</p>
   </R.Stack>;
@@ -37,6 +36,5 @@ export function AssistedSupportExample({ locale }: P) {
   return <R.Stack><h3>{tr(locale, "pattern-status.helpCompletingTheOnlineForm")}</h3>
     <p>{tr(locale, "pattern-status.youCanGetHelpAtAServiceDeskIf")}</p>
     <R.SummaryList items={[{ key: tr(locale, "pattern-status.exampleLocation"), value: tr(locale, "pattern-status.serviceCentre1ExampleStreet") }, { key: tr(locale, "pattern-status.openingHours"), value: tr(locale, "pattern-status.mondayToFriday09001700") }, { key: tr(locale, "pattern-status.cost"), value: tr(locale, "pattern-status.freeSupport") }]} />
-    <R.InsetText>{tr(locale, "pattern-status.theAddressAndOpeningHoursAreFictionalALive")}</R.InsetText>
   </R.Stack>;
 }

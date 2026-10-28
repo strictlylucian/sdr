@@ -20,7 +20,6 @@ export function EqualityInformationExample({ locale }: P) {
 export function EligibilityExample({ locale }: P) {
   const [answer, setAnswer] = useState('');
   return <form data-sdr-pattern-demo="eligibility" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setAnswer(String(new FormData(form).get('resident'))); requestAnimationFrame(() => form.querySelector<HTMLElement>('[data-sdr-pattern-outcome]:not([hidden])')!.focus()); }}>
-    <R.InsetText>{tr(locale, "pattern-forms.illustrativeConditionsNotRulesForARealService")}</R.InsetText>
     <R.Fieldset legend={tr(locale, "pattern-forms.doYouLiveInTheAreaWhereYouAre")}>
       <R.Radio name="resident" value="yes" label={tr(locale, "pattern-forms.yes")} required />
       <R.Radio name="resident" value="no" label={tr(locale, "pattern-forms.no")} required />
@@ -33,7 +32,6 @@ export function EligibilityExample({ locale }: P) {
 export function ValidationRecoveryExample({ locale }: P) {
   const [done, setDone] = useState(false);
   return <form data-sdr-pattern-demo="validation" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setDone(true); requestAnimationFrame(() => form.closest('[data-sdr-pattern-demo]')!.querySelector<HTMLElement>('[data-sdr-pattern-result]')!.focus()); }}>
-    <R.InsetText>{tr(locale, "pattern-forms.thisExampleStartsWithAnApplicationErrorEnterA")}</R.InsetText>
     <div data-sdr-pattern-summary hidden={done}><R.ErrorSummary errors={[{ href: '#pattern-full-name', message: tr(locale, "pattern-forms.enterYourFullName") }]} title={componentText(locale, 'problem')} /></div>
     <R.TextInput id="pattern-full-name" name="full-name" label={tr(locale, "pattern-forms.fullName")} autoComplete="name" required error={done ? undefined : tr(locale, "pattern-forms.enterYourFullName")} hint={tr(locale, "pattern-forms.useAFictionalNameInThisExample")} />
     <div><R.Button type="submit">{tr(locale, "pattern-forms.continue")}</R.Button></div>

@@ -52,10 +52,6 @@ export function PaymentCardExample() {
     >
       <h3>Pay the document fee</h3>
       <R.SummaryList items={[{ key: 'Amount due', value: amount }]} />
-      <R.InsetText>
-        Demonstration only; no money is processed. Use only test card 4242 4242
-        4242 4242 and fictional details.
-      </R.InsetText>
       <R.TextInput
         label="Card number"
         name="card-number"
@@ -112,7 +108,7 @@ export function PaymentCardExample() {
         required
       />
       <div>
-        <R.Button type="submit">Simulate payment of 25.00 RON</R.Button>
+        <R.Button type="submit">Pay 25.00 RON</R.Button>
       </div>
       <p
         role="status"
@@ -120,7 +116,7 @@ export function PaymentCardExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Test payment confirmed. No money was taken.
+        Your payment has been confirmed.
       </p>
     </form>
   );
@@ -149,10 +145,6 @@ export function PaymentCardExample() {
         <dd>RON&nbsp;25.00</dd>
       </div>
     </dl>
-    <div class="sdr-inset">
-      Demonstration only; no money is processed. Use only test card 4242 4242
-      4242 4242 and fictional details.
-    </div>
     <div class="sdr-field">
       <label
         class="sdr-label"
@@ -266,7 +258,7 @@ export function PaymentCardExample() {
         type="submit"
         class="sdr-button"
       >
-        Simulate payment of 25.00 RON
+        Pay 25.00 RON
       </button>
     </div>
     <p
@@ -275,7 +267,7 @@ export function PaymentCardExample() {
       tabindex="-1"
       hidden=""
     >
-      Test payment confirmed. No money was taken.
+      Your payment has been confirmed.
     </p>
   </form>
 </div>

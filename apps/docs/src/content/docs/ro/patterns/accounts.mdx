@@ -47,9 +47,6 @@ export function AccountCreationExample() {
       }}
     >
       <h3>Creează un cont pentru cererile tale</h3>
-      <R.InsetText>
-        Cont demonstrativ. Folosește date fictive; nu se creează un cont real.
-      </R.InsetText>
       <R.TextInput
         label="Email"
         type="email"
@@ -65,7 +62,7 @@ export function AccountCreationExample() {
         hint="Folosește o parolă unică. Un manager de parole te poate ajuta."
       />
       <div>
-        <R.Button type="submit">Simulează crearea contului</R.Button>
+        <R.Button type="submit">Creează contul</R.Button>
       </div>
       <p
         role="status"
@@ -73,8 +70,7 @@ export function AccountCreationExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Exemplul a fost finalizat. Nu s-au creat conturi și nu s-au salvat
-        parole.
+        Contul a fost creat.
       </p>
     </form>
   );
@@ -97,9 +93,6 @@ export function AccountCreationExample() {
     class="sdr-stack"
   >
     <h3>Creează un cont pentru cererile tale</h3>
-    <div class="sdr-inset">
-      Cont demonstrativ. Folosește date fictive; nu se creează un cont real.
-    </div>
     <div class="sdr-field">
       <label
         class="sdr-label"
@@ -158,7 +151,7 @@ export function AccountCreationExample() {
         type="submit"
         class="sdr-button"
       >
-        Simulează crearea contului
+        Creează contul
       </button>
     </div>
     <p
@@ -167,7 +160,7 @@ export function AccountCreationExample() {
       tabindex="-1"
       hidden=""
     >
-      Exemplul a fost finalizat. Nu s-au creat conturi și nu s-au salvat parole.
+      Contul a fost creat.
     </p>
   </form>
 </div>
@@ -324,7 +317,7 @@ export function UsernameCreationExample() {
         name="new-username"
         autoComplete="username"
         required
-        hint="Alege un nume de test. Disponibilitatea se verifică pe server într-un serviciu real."
+        hint="Alege un nume de utilizator pentru autentificare."
       />
       <div>
         <R.Button type="submit">Continuă</R.Button>
@@ -335,7 +328,7 @@ export function UsernameCreationExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Exemplu finalizat. Numele nu a fost înregistrat.
+        Numele de utilizator a fost ales.
       </p>
     </form>
   );
@@ -367,8 +360,7 @@ export function UsernameCreationExample() {
         id="new-username-hint"
         class="sdr-hint"
       >
-        Alege un nume de test. Disponibilitatea se verifică pe server într-un
-        serviciu real.
+        Alege un nume de utilizator pentru autentificare.
       </div>
       <input
         autocomplete="username"
@@ -393,7 +385,7 @@ export function UsernameCreationExample() {
       tabindex="-1"
       hidden=""
     >
-      Exemplu finalizat. Numele nu a fost înregistrat.
+      Numele de utilizator a fost ales.
     </p>
   </form>
 </div>

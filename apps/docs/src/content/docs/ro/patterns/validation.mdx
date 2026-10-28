@@ -46,10 +46,6 @@ export function ValidationRecoveryExample() {
         );
       }}
     >
-      <R.InsetText>
-        Exemplul pornește de la o cerere cu o eroare. Completează numele pentru
-        a continua.
-      </R.InsetText>
       <div
         data-sdr-pattern-summary
         hidden={done}
@@ -68,7 +64,7 @@ export function ValidationRecoveryExample() {
         autoComplete="name"
         required
         error={done ? undefined : 'Introdu numele complet.'}
-        hint="Folosește un nume fictiv în exemplu."
+        hint="Introdu numele complet."
       />
       <div>
         <R.Button type="submit">Continuă</R.Button>
@@ -79,7 +75,7 @@ export function ValidationRecoveryExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Eroarea a fost corectată în exemplu. Nu s-a trimis o cerere reală.
+        Datele au fost verificate. Poți continua cererea.
       </p>
     </form>
   );
@@ -101,10 +97,6 @@ export function ValidationRecoveryExample() {
     data-sdr-pattern-demo="validation"
     class="sdr-stack"
   >
-    <div class="sdr-inset">
-      Exemplul pornește de la o cerere cu o eroare. Completează numele pentru a
-      continua.
-    </div>
     <div data-sdr-pattern-summary="true">
       <div
         class="sdr-error-summary"
@@ -132,7 +124,7 @@ export function ValidationRecoveryExample() {
         id="pattern-full-name-hint"
         class="sdr-hint"
       >
-        Folosește un nume fictiv în exemplu.
+        Introdu numele complet.
       </div>
       <div
         id="pattern-full-name-error"
@@ -164,7 +156,7 @@ export function ValidationRecoveryExample() {
       tabindex="-1"
       hidden=""
     >
-      Eroarea a fost corectată în exemplu. Nu s-a trimis o cerere reală.
+      Datele au fost verificate. Poți continua cererea.
     </p>
   </form>
 </div>

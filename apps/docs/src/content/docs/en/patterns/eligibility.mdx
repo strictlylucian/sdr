@@ -47,9 +47,6 @@ export function EligibilityExample() {
         );
       }}
     >
-      <R.InsetText>
-        Illustrative conditions, not rules for a real service.
-      </R.InsetText>
       <R.Fieldset legend="Do you live in the area where you are applying?">
         <R.Radio
           name="resident"
@@ -74,7 +71,7 @@ export function EligibilityExample() {
       >
         <R.Alert
           tone="success"
-          title="You can continue in this example"
+          title="You can continue your application"
         >
           <R.Link href={`/${locale}/patterns/start/`}>
             View required documents and steps
@@ -118,9 +115,6 @@ export function EligibilityExample() {
     data-sdr-pattern-demo="eligibility"
     class="sdr-stack"
   >
-    <div class="sdr-inset">
-      Illustrative conditions, not rules for a real service.
-    </div>
     <div class="sdr-field-group">
       <fieldset
         id="eligibility"
@@ -179,7 +173,7 @@ export function EligibilityExample() {
       hidden=""
     >
       <div class="sdr-alert sdr-alert--success">
-        <p class="sdr-alert__title">You can continue in this example</p>
+        <p class="sdr-alert__title">You can continue your application</p>
         <div>
           <a href="/en/patterns/start/">View required documents and steps</a>
         </div>

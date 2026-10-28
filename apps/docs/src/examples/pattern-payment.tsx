@@ -8,7 +8,6 @@ export function PaymentCardExample({ locale }: P) {
   return <form data-sdr-pattern-demo="payment" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setDone(true); requestAnimationFrame(() => form.closest('[data-sdr-pattern-demo]')!.querySelector<HTMLElement>('[data-sdr-pattern-result]')!.focus()); }}>
     <h3>{tr(locale, "pattern-payment.payTheDocumentFee")}</h3>
     <R.SummaryList items={[{ key: tr(locale, "pattern-payment.amountDue"), value: amount }]} />
-    <R.InsetText>{tr(locale, "pattern-payment.demonstrationOnlyNoMoneyIsProcessedUseOnlyTest")}</R.InsetText>
     <R.TextInput label={tr(locale, "pattern-payment.cardNumber")} name="card-number" inputMode="numeric" autoComplete="cc-number" defaultValue="4242 4242 4242 4242" pattern={"4242(?:\\s|\\x2D)*4242(?:\\s|\\x2D)*4242(?:\\s|\\x2D)*4242"} title={tr(locale, "pattern-payment.useTestCard4242424242424242")} required />
     <R.Fieldset legend={tr(locale, "pattern-payment.expiryDate")} hint={tr(locale, "pattern-payment.forExample122030")}><div className="sdr-date">
       <R.TextInput label={tr(locale, "pattern-payment.month")} name="card-exp-month" inputMode="numeric" autoComplete="cc-exp-month" defaultValue="12" pattern="0[1-9]|1[0-2]" maxLength={2} required />

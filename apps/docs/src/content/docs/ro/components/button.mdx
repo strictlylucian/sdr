@@ -39,9 +39,7 @@ export function ButtonExample() {
       <R.Button variant="tertiary">Verifică cererea</R.Button>
       <R.Button variant="danger">Șterge ciorna</R.Button>
       <R.Button variant="danger-secondary">Elimină fișierul</R.Button>
-      <span role="status">
-        {saved && 'Cererea a fost salvată doar în acest exemplu.'}
-      </span>
+      <span role="status">{saved && 'Cererea a fost salvată.'}</span>
     </R.Cluster>
   );
 }

@@ -34,12 +34,8 @@ export function CookieBannerExample() {
           title="Cookie preferences"
           acceptLabel="Accept analytics"
           rejectLabel="Reject analytics"
-          onAccept={() =>
-            setChoice('Analytics accepted in this demonstration.')
-          }
-          onReject={() =>
-            setChoice('Analytics rejected in this demonstration.')
-          }
+          onAccept={() => setChoice('Analytics cookies accepted.')}
+          onReject={() => setChoice('Analytics cookies rejected.')}
         >
           Optional cookies remain off until you choose.
         </R.CookieBanner>

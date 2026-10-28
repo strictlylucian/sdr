@@ -32,9 +32,6 @@ export function ContactSupportExample() {
   return (
     <R.Stack>
       <h3>Do you need help with your application?</h3>
-      <R.InsetText>
-        Fictional contact details for this example only.
-      </R.InsetText>
       <R.SummaryList
         items={[
           { key: 'Email', value: 'ajutor@example.invalid' },
@@ -64,9 +61,6 @@ export function ContactSupportExample() {
 >
   <div class="sdr-stack">
     <h3>Do you need help with your application?</h3>
-    <div class="sdr-inset">
-      Fictional contact details for this example only.
-    </div>
     <dl class="sdr-summary">
       <div class="sdr-summary__row">
         <dt>Email</dt>
@@ -139,10 +133,6 @@ export function AssistedSupportExample() {
           { key: 'Cost', value: 'Free support' },
         ]}
       />
-      <R.InsetText>
-        The address and opening hours are fictional. A live service confirms
-        support arrangements with the institution.
-      </R.InsetText>
     </R.Stack>
   );
 }
@@ -179,10 +169,6 @@ export function AssistedSupportExample() {
         <dd>Free support</dd>
       </div>
     </dl>
-    <div class="sdr-inset">
-      The address and opening hours are fictional. A live service confirms
-      support arrangements with the institution.
-    </div>
   </div>
 </div>
 ~~~

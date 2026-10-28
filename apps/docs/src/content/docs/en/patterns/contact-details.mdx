@@ -53,7 +53,7 @@ export function PhoneNumberExample() {
         name="phone"
         autoComplete="tel"
         required
-        hint="We will only call about your application. Include the country code for numbers outside Romania. Use fictional details in this example."
+        hint="We will only call about your application. Include the country code for numbers outside Romania."
       />
       <div>
         <R.Button type="submit">Continue</R.Button>
@@ -67,8 +67,7 @@ export function PhoneNumberExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Example completed. No phone number was stored and no text message was
-        sent.
+        Your phone number has been saved.
       </p>
     </form>
   );
@@ -102,7 +101,7 @@ export function PhoneNumberExample() {
         class="sdr-hint"
       >
         We will only call about your application. Include the country code for
-        numbers outside Romania. Use fictional details in this example.
+        numbers outside Romania.
       </div>
       <input
         type="tel"
@@ -131,8 +130,7 @@ export function PhoneNumberExample() {
       tabindex="-1"
       hidden=""
     >
-      Example completed. No phone number was stored and no text message was
-      sent.
+      Your phone number has been saved.
     </p>
   </form>
 </div>
@@ -196,7 +194,7 @@ export function EmailAddressExample() {
         autoComplete="email"
         required
         spellCheck={false}
-        hint="Use a test address, for example ana@example.invalid. This example does not send emails."
+        hint="For example, ana@example.invalid."
       />
       <div>
         <R.Button type="submit">Continue</R.Button>
@@ -207,7 +205,7 @@ export function EmailAddressExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Example completed. No email was sent.
+        Your email address has been saved.
       </p>
     </form>
   );
@@ -240,8 +238,7 @@ export function EmailAddressExample() {
         id="email-address-hint"
         class="sdr-hint"
       >
-        Use a test address, for example ana@example.invalid. This example does
-        not send emails.
+        For example, ana@example.invalid.
       </div>
       <input
         type="email"
@@ -268,7 +265,7 @@ export function EmailAddressExample() {
       tabindex="-1"
       hidden=""
     >
-      Example completed. No email was sent.
+      Your email address has been saved.
     </p>
   </form>
 </div>

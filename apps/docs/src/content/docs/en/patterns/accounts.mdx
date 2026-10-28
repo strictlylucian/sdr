@@ -47,10 +47,6 @@ export function AccountCreationExample() {
       }}
     >
       <h3>Create an account for your applications</h3>
-      <R.InsetText>
-        Demonstration account. Use fictional details; no real account is
-        created.
-      </R.InsetText>
       <R.TextInput
         label="Email"
         type="email"
@@ -66,7 +62,7 @@ export function AccountCreationExample() {
         hint="Use a unique password. A password manager can help."
       />
       <div>
-        <R.Button type="submit">Simulate account creation</R.Button>
+        <R.Button type="submit">Create account</R.Button>
       </div>
       <p
         role="status"
@@ -74,8 +70,7 @@ export function AccountCreationExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Example completed. No accounts were created and no passwords were
-        stored.
+        Your account has been created.
       </p>
     </form>
   );
@@ -98,9 +93,6 @@ export function AccountCreationExample() {
     class="sdr-stack"
   >
     <h3>Create an account for your applications</h3>
-    <div class="sdr-inset">
-      Demonstration account. Use fictional details; no real account is created.
-    </div>
     <div class="sdr-field">
       <label
         class="sdr-label"
@@ -159,7 +151,7 @@ export function AccountCreationExample() {
         type="submit"
         class="sdr-button"
       >
-        Simulate account creation
+        Create account
       </button>
     </div>
     <p
@@ -168,7 +160,7 @@ export function AccountCreationExample() {
       tabindex="-1"
       hidden=""
     >
-      Example completed. No accounts were created and no passwords were stored.
+      Your account has been created.
     </p>
   </form>
 </div>
@@ -325,7 +317,7 @@ export function UsernameCreationExample() {
         name="new-username"
         autoComplete="username"
         required
-        hint="Choose a test username. A live service checks availability on the server."
+        hint="Choose a username to sign in with."
       />
       <div>
         <R.Button type="submit">Continue</R.Button>
@@ -336,7 +328,7 @@ export function UsernameCreationExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Example completed. The username was not registered.
+        Your username has been chosen.
       </p>
     </form>
   );
@@ -368,8 +360,7 @@ export function UsernameCreationExample() {
         id="new-username-hint"
         class="sdr-hint"
       >
-        Choose a test username. A live service checks availability on the
-        server.
+        Choose a username to sign in with.
       </div>
       <input
         autocomplete="username"
@@ -394,7 +385,7 @@ export function UsernameCreationExample() {
       tabindex="-1"
       hidden=""
     >
-      Example completed. The username was not registered.
+      Your username has been chosen.
     </p>
   </form>
 </div>

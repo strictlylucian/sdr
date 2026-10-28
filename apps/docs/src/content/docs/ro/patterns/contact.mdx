@@ -32,7 +32,6 @@ export function ContactSupportExample() {
   return (
     <R.Stack>
       <h3>Ai nevoie de ajutor cu cererea?</h3>
-      <R.InsetText>Date de contact fictive, doar pentru exemplu.</R.InsetText>
       <R.SummaryList
         items={[
           { key: 'Email', value: 'ajutor@example.invalid' },
@@ -62,7 +61,6 @@ export function ContactSupportExample() {
 >
   <div class="sdr-stack">
     <h3>Ai nevoie de ajutor cu cererea?</h3>
-    <div class="sdr-inset">Date de contact fictive, doar pentru exemplu.</div>
     <dl class="sdr-summary">
       <div class="sdr-summary__row">
         <dt>Email</dt>
@@ -135,10 +133,6 @@ export function AssistedSupportExample() {
           { key: 'Cost', value: 'Asistență gratuită' },
         ]}
       />
-      <R.InsetText>
-        Adresa și programul sunt fictive. Într-un serviciu real, opțiunile de
-        sprijin sunt verificate cu instituția.
-      </R.InsetText>
     </R.Stack>
   );
 }
@@ -175,10 +169,6 @@ export function AssistedSupportExample() {
         <dd>Asistență gratuită</dd>
       </div>
     </dl>
-    <div class="sdr-inset">
-      Adresa și programul sunt fictive. Într-un serviciu real, opțiunile de
-      sprijin sunt verificate cu instituția.
-    </div>
   </div>
 </div>
 ~~~

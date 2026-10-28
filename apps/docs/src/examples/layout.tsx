@@ -4,7 +4,7 @@ import { tr, type P } from './support';
 export function CardExample({ locale }: P) { return <R.Card title={tr(locale, "layout.localServices")} footer={<R.Link href={docsUrl(`/${locale}/patterns/start/`)}>{tr(locale, "layout.viewTheSteps")}</R.Link>}>{tr(locale, "layout.findTheInformationAndDocumentsYouNeed")}</R.Card>; }
 export function HeroExample({ locale }: P) { return <R.Hero kicker="SDR · Propunere / Proposal" title={tr(locale, "layout.clearerServicesForEveryone")} description={tr(locale, "layout.aSharedLanguageForRomanianDigitalExperiences")}><R.ButtonLink href={docsUrl(`/${locale}/getting-started/`)}>{tr(locale, "layout.exploreSDR")}</R.ButtonLink></R.Hero>; }
 export function PageHeaderExample({ locale }: P) { return <R.PageHeader title={tr(locale, "layout.yourApplications")} description={tr(locale, "layout.trackProgressAndContinueWhereYouLeftOff")} />; }
-export function InsetTextExample({ locale }: P) { return <R.InsetText>{tr(locale, "layout.allDataInThisDemonstrationIsFictional")}</R.InsetText>; }
+export function InsetTextExample({ locale }: P) { return <R.InsetText>{tr(locale, "layout.keepYourReferenceNumber")}</R.InsetText>; }
 export function DividerExample({ locale }: P) { return <R.Stack><p>{tr(locale, "layout.personalDetails")}</p><R.Divider /><p>{tr(locale, "layout.contactDetails")}</p></R.Stack>; }
 export function MotifExample({ locale }: P) {
   return <R.Stack gap={5}>

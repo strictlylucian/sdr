@@ -8,7 +8,6 @@ export function AccountCreationExample({ locale }: P) {
   const [done, setDone] = useState(false);
   return <form data-sdr-pattern-demo="account" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setDone(true); requestAnimationFrame(() => form.closest('[data-sdr-pattern-demo]')!.querySelector<HTMLElement>('[data-sdr-pattern-result]')!.focus()); }}>
     <h3>{tr(locale, "pattern-account.createAnAccountForYourApplications")}</h3>
-    <R.InsetText>{tr(locale, "pattern-account.demonstrationAccountUseFictionalDetailsNoRealAccountIs")}</R.InsetText>
     <R.TextInput label="Email" type="email" autoComplete="username" name="account-email" required />
     <R.PasswordCreationFields required showLabel={componentText(locale, 'show')} hideLabel={componentText(locale, 'hide')} label={componentText(locale, 'patterns.chooseAPassword')} hint={componentText(locale, 'patterns.useAUniquePasswordAPasswordManagerCanHelp')} />
     <div><R.Button type="submit">{tr(locale, "pattern-account.simulateAccountCreation")}</R.Button></div>

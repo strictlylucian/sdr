@@ -26,7 +26,6 @@ export function PhoneConfirmationExample({ locale }: P) {
   const [done, setDone] = useState(false);
   return <form data-sdr-pattern-demo="phone-code" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setDone(true); requestAnimationFrame(() => form.closest('[data-sdr-pattern-demo]')!.querySelector<HTMLElement>('[data-sdr-pattern-result]')!.focus()); }}>
     <h3>{tr(locale, "pattern-contact.enterTheCodeFromYourTextMessage")}</h3>
-    <R.InsetText>{tr(locale, "pattern-contact.noTextMessageIsSentTheTestCodeIs")}</R.InsetText>
     <R.TextInput label={tr(locale, "pattern-contact.securityCode")} name="security-code" type="text" inputMode="numeric" autoComplete="one-time-code" pattern="123456" title={tr(locale, "pattern-contact.theTestCodeIs123456")} required />
     <div><R.Button type="submit">{tr(locale, "pattern-contact.verifyNumber")}</R.Button></div>
     <R.Details summary={tr(locale, "pattern-contact.haveYouNotReceivedACode")}>{tr(locale, "pattern-contact.thisExampleDoesNotSendATextMessageUse")}</R.Details>
@@ -38,7 +37,6 @@ export function EmailConfirmationExample({ locale }: P) {
   return <form data-sdr-pattern-demo="email-confirm" className="sdr-stack" onSubmit={event => { event.preventDefault(); const form = event.currentTarget; setDone(true); requestAnimationFrame(() => form.closest('[data-sdr-pattern-demo]')!.querySelector<HTMLElement>('[data-sdr-pattern-result]')!.focus()); }}>
     <h3>{tr(locale, "pattern-contact.checkYourEmailAddress")}</h3>
     <p>{tr(locale, "pattern-contact.inALiveServiceTheConfirmationLinkIsSent")} <strong>ana@example.invalid</strong>.</p>
-    <R.InsetText>{tr(locale, "pattern-contact.thisIsAnExampleTheButtonSimulatesFollowingThe")}</R.InsetText>
     <div><R.Button type="submit">{tr(locale, "pattern-contact.simulateConfirmation")}</R.Button></div>
     <p role="status" data-sdr-pattern-result tabIndex={-1} hidden={!done}>{tr(locale, "pattern-contact.testConfirmationSucceededYouCanContinueYourApplication")}</p>
   </form>;

@@ -31,9 +31,6 @@ export function PageExample({ locale }: P) {
         </div>
         <main id="page-main" tabIndex={-1} className="sdr-main-wrapper sdr-stack">
           <R.PageHeader className="sdr-u-padding-block-0" title={tr(locale, "page.requestADocument")} description={tr(locale, "page.completeTheDetailsBelowAndCheckYourInformationBefore")} />
-          <R.Alert title={tr(locale, "page.demonstrationExample")}>
-            {tr(locale, "page.useFictionalDetailsThisExampleDoesNotSubmitOr")}
-          </R.Alert>
           <div className="sdr-grid-row">
             <section className="sdr-grid-column-two-thirds-from-desktop" id="page-request" aria-labelledby="page-request-title">
               <R.Stack>
@@ -64,7 +61,6 @@ export function PageExample({ locale }: P) {
               <R.Card title={tr(locale, "page.beforeYouStart")}>
                 <R.Stack gap={3}>
                   <p>{tr(locale, "page.inARealServiceThisSectionExplainsEligibilityCost")}</p>
-                  <R.Cluster><R.Tag>{tr(locale, "page.demonstration")}</R.Tag></R.Cluster>
                 </R.Stack>
               </R.Card>
               <section id="page-documents" aria-labelledby="page-documents-title">

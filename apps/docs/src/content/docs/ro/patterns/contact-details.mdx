@@ -53,7 +53,7 @@ export function PhoneNumberExample() {
         name="phone"
         autoComplete="tel"
         required
-        hint="Te sunăm doar dacă avem întrebări despre cerere. Pentru numere din străinătate, include prefixul țării. Folosește date fictive în exemplu."
+        hint="Te sunăm doar dacă avem întrebări despre cerere. Pentru numere din străinătate, include prefixul țării."
       />
       <div>
         <R.Button type="submit">Continuă</R.Button>
@@ -67,7 +67,7 @@ export function PhoneNumberExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Exemplu finalizat. Numărul nu a fost salvat și nu s-a trimis niciun SMS.
+        Numărul de telefon a fost salvat.
       </p>
     </form>
   );
@@ -101,7 +101,7 @@ export function PhoneNumberExample() {
         class="sdr-hint"
       >
         Te sunăm doar dacă avem întrebări despre cerere. Pentru numere din
-        străinătate, include prefixul țării. Folosește date fictive în exemplu.
+        străinătate, include prefixul țării.
       </div>
       <input
         type="tel"
@@ -130,7 +130,7 @@ export function PhoneNumberExample() {
       tabindex="-1"
       hidden=""
     >
-      Exemplu finalizat. Numărul nu a fost salvat și nu s-a trimis niciun SMS.
+      Numărul de telefon a fost salvat.
     </p>
   </form>
 </div>
@@ -194,7 +194,7 @@ export function EmailAddressExample() {
         autoComplete="email"
         required
         spellCheck={false}
-        hint="Folosește o adresă de test, de exemplu ana@example.invalid. Nu trimitem emailuri din acest exemplu."
+        hint="De exemplu, ana@example.invalid."
       />
       <div>
         <R.Button type="submit">Continuă</R.Button>
@@ -205,7 +205,7 @@ export function EmailAddressExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Exemplu finalizat. Nu s-a trimis niciun email.
+        Adresa de email a fost salvată.
       </p>
     </form>
   );
@@ -238,8 +238,7 @@ export function EmailAddressExample() {
         id="email-address-hint"
         class="sdr-hint"
       >
-        Folosește o adresă de test, de exemplu ana@example.invalid. Nu trimitem
-        emailuri din acest exemplu.
+        De exemplu, ana@example.invalid.
       </div>
       <input
         type="email"
@@ -266,7 +265,7 @@ export function EmailAddressExample() {
       tabindex="-1"
       hidden=""
     >
-      Exemplu finalizat. Nu s-a trimis niciun email.
+      Adresa de email a fost salvată.
     </p>
   </form>
 </div>

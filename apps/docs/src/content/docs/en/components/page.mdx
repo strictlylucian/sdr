@@ -93,10 +93,6 @@ export function PageExample() {
             title="Request a document"
             description="Complete the details below and check your information before submitting."
           />
-          <R.Alert title="Demonstration example">
-            Use fictional details. This example does not submit or store
-            information.
-          </R.Alert>
           <div className="sdr-grid-row">
             <section
               className="sdr-grid-column-two-thirds-from-desktop"
@@ -158,12 +154,12 @@ export function PageExample() {
                   data-sdr-page-result
                   hidden={!submitted}
                   tabIndex={-1}
-                  aria-label="Demonstration confirmation"
+                  aria-label="Application confirmation"
                 >
-                  <R.Panel title="Example completed">
+                  <R.Panel title="Application submitted">
                     <p>
-                      Your details were checked in the browser. No information
-                      was submitted or stored.
+                      We have received your application. You will receive a
+                      response by email.
                     </p>
                   </R.Panel>
                 </section>
@@ -176,12 +172,9 @@ export function PageExample() {
               <R.Card title="Before you start">
                 <R.Stack gap={3}>
                   <p>
-                    In a real service, this section explains eligibility, cost
-                    and the response timeframe.
+                    Have your identity document and supporting documents ready
+                    before you start.
                   </p>
-                  <R.Cluster>
-                    <R.Tag>Demonstration</R.Tag>
-                  </R.Cluster>
                 </R.Stack>
               </R.Card>
               <section
@@ -351,13 +344,6 @@ export function PageExample() {
           </p>
         </div>
       </header>
-      <div class="sdr-alert">
-        <p class="sdr-alert__title">Demonstration example</p>
-        <div>
-          Use fictional details. This example does not submit or store
-          information.
-        </div>
-      </div>
       <div class="sdr-grid-row">
         <section
           class="sdr-grid-column-two-thirds-from-desktop"
@@ -458,13 +444,13 @@ export function PageExample() {
               data-sdr-page-result="true"
               hidden=""
               tabindex="-1"
-              aria-label="Demonstration confirmation"
+              aria-label="Application confirmation"
             >
               <div class="sdr-panel">
-                <h2>Example completed</h2>
+                <h2>Application submitted</h2>
                 <p>
-                  Your details were checked in the browser. No information was
-                  submitted or stored.
+                  We have received your application. You will receive a response
+                  by email.
                 </p>
               </div>
             </section>
@@ -479,12 +465,9 @@ export function PageExample() {
             <div>
               <div class="sdr-stack sdr-u-gap-3">
                 <p>
-                  In a real service, this section explains eligibility, cost and
-                  the response timeframe.
+                  Have your identity document and supporting documents ready
+                  before you start.
                 </p>
-                <div class="sdr-cluster sdr-u-gap-3">
-                  <span class="sdr-tag">Demonstration</span>
-                </div>
               </div>
             </div>
           </article>

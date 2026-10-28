@@ -39,9 +39,7 @@ export function ButtonExample() {
       <R.Button variant="tertiary">Review application</R.Button>
       <R.Button variant="danger">Delete draft</R.Button>
       <R.Button variant="danger-secondary">Remove attachment</R.Button>
-      <span role="status">
-        {saved && 'Application saved in this demonstration.'}
-      </span>
+      <span role="status">{saved && 'Application saved.'}</span>
     </R.Cluster>
   );
 }

@@ -47,9 +47,6 @@ export function EligibilityExample() {
         );
       }}
     >
-      <R.InsetText>
-        Condiții demonstrative, nu reguli ale unui serviciu real.
-      </R.InsetText>
       <R.Fieldset legend="Locuiești în localitatea în care depui cererea?">
         <R.Radio
           name="resident"
@@ -74,7 +71,7 @@ export function EligibilityExample() {
       >
         <R.Alert
           tone="success"
-          title="Poți continua în acest exemplu"
+          title="Poți continua cererea"
         >
           <R.Link href={`/${locale}/patterns/start/`}>
             Vezi documentele și pașii necesari
@@ -118,9 +115,6 @@ export function EligibilityExample() {
     data-sdr-pattern-demo="eligibility"
     class="sdr-stack"
   >
-    <div class="sdr-inset">
-      Condiții demonstrative, nu reguli ale unui serviciu real.
-    </div>
     <div class="sdr-field-group">
       <fieldset
         id="eligibility"
@@ -179,7 +173,7 @@ export function EligibilityExample() {
       hidden=""
     >
       <div class="sdr-alert sdr-alert--success">
-        <p class="sdr-alert__title">Poți continua în acest exemplu</p>
+        <p class="sdr-alert__title">Poți continua cererea</p>
         <div>
           <a href="/ro/patterns/start/">Vezi documentele și pașii necesari</a>
         </div>

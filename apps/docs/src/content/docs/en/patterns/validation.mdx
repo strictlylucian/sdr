@@ -46,9 +46,6 @@ export function ValidationRecoveryExample() {
         );
       }}
     >
-      <R.InsetText>
-        This example starts with an application error. Enter a name to continue.
-      </R.InsetText>
       <div
         data-sdr-pattern-summary
         hidden={done}
@@ -67,7 +64,7 @@ export function ValidationRecoveryExample() {
         autoComplete="name"
         required
         error={done ? undefined : 'Enter your full name.'}
-        hint="Use a fictional name in this example."
+        hint="Enter your full name."
       />
       <div>
         <R.Button type="submit">Continue</R.Button>
@@ -78,7 +75,7 @@ export function ValidationRecoveryExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        The example error was corrected. No real application was submitted.
+        Your details have been checked. You can continue your application.
       </p>
     </form>
   );
@@ -100,9 +97,6 @@ export function ValidationRecoveryExample() {
     data-sdr-pattern-demo="validation"
     class="sdr-stack"
   >
-    <div class="sdr-inset">
-      This example starts with an application error. Enter a name to continue.
-    </div>
     <div data-sdr-pattern-summary="true">
       <div
         class="sdr-error-summary"
@@ -130,7 +124,7 @@ export function ValidationRecoveryExample() {
         id="pattern-full-name-hint"
         class="sdr-hint"
       >
-        Use a fictional name in this example.
+        Enter your full name.
       </div>
       <div
         id="pattern-full-name-error"
@@ -162,7 +156,7 @@ export function ValidationRecoveryExample() {
       tabindex="-1"
       hidden=""
     >
-      The example error was corrected. No real application was submitted.
+      Your details have been checked. You can continue your application.
     </p>
   </form>
 </div>

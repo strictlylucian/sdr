@@ -93,10 +93,6 @@ export function PageExample() {
             title="Solicită un document"
             description="Completează datele de mai jos și verifică informațiile înainte de trimitere."
           />
-          <R.Alert title="Exemplu demonstrativ">
-            Folosește date fictive. Acest exemplu nu trimite și nu salvează
-            informații.
-          </R.Alert>
           <div className="sdr-grid-row">
             <section
               className="sdr-grid-column-two-thirds-from-desktop"
@@ -158,13 +154,10 @@ export function PageExample() {
                   data-sdr-page-result
                   hidden={!submitted}
                   tabIndex={-1}
-                  aria-label="Confirmarea din exemplu"
+                  aria-label="Confirmarea cererii"
                 >
-                  <R.Panel title="Exemplu finalizat">
-                    <p>
-                      Datele au fost verificate în browser. Nu s-au trimis sau
-                      salvat informații.
-                    </p>
+                  <R.Panel title="Cererea a fost trimisă">
+                    <p>Am primit cererea. Vei primi răspunsul pe email.</p>
                   </R.Panel>
                 </section>
               </R.Stack>
@@ -176,12 +169,9 @@ export function PageExample() {
               <R.Card title="Înainte de a începe">
                 <R.Stack gap={3}>
                   <p>
-                    Într-un serviciu real, această secțiune explică
-                    eligibilitatea, costul și termenul de răspuns.
+                    Pregătește actul de identitate și documentele necesare
+                    înainte de a începe.
                   </p>
-                  <R.Cluster>
-                    <R.Tag>Demonstrație</R.Tag>
-                  </R.Cluster>
                 </R.Stack>
               </R.Card>
               <section
@@ -348,13 +338,6 @@ export function PageExample() {
           </p>
         </div>
       </header>
-      <div class="sdr-alert">
-        <p class="sdr-alert__title">Exemplu demonstrativ</p>
-        <div>
-          Folosește date fictive. Acest exemplu nu trimite și nu salvează
-          informații.
-        </div>
-      </div>
       <div class="sdr-grid-row">
         <section
           class="sdr-grid-column-two-thirds-from-desktop"
@@ -455,14 +438,11 @@ export function PageExample() {
               data-sdr-page-result="true"
               hidden=""
               tabindex="-1"
-              aria-label="Confirmarea din exemplu"
+              aria-label="Confirmarea cererii"
             >
               <div class="sdr-panel">
-                <h2>Exemplu finalizat</h2>
-                <p>
-                  Datele au fost verificate în browser. Nu s-au trimis sau
-                  salvat informații.
-                </p>
+                <h2>Cererea a fost trimisă</h2>
+                <p>Am primit cererea. Vei primi răspunsul pe email.</p>
               </div>
             </section>
           </div>
@@ -476,12 +456,9 @@ export function PageExample() {
             <div>
               <div class="sdr-stack sdr-u-gap-3">
                 <p>
-                  Într-un serviciu real, această secțiune explică
-                  eligibilitatea, costul și termenul de răspuns.
+                  Pregătește actul de identitate și documentele necesare înainte
+                  de a începe.
                 </p>
-                <div class="sdr-cluster sdr-u-gap-3">
-                  <span class="sdr-tag">Demonstrație</span>
-                </div>
               </div>
             </div>
           </article>

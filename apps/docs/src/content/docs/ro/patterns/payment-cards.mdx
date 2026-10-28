@@ -52,10 +52,6 @@ export function PaymentCardExample() {
     >
       <h3>Plata taxei pentru document</h3>
       <R.SummaryList items={[{ key: 'Total de plată', value: amount }]} />
-      <R.InsetText>
-        Plată demonstrativă, fără procesarea banilor. Folosește doar cardul de
-        test 4242 4242 4242 4242 și date fictive.
-      </R.InsetText>
       <R.TextInput
         label="Numărul cardului"
         name="card-number"
@@ -112,7 +108,7 @@ export function PaymentCardExample() {
         required
       />
       <div>
-        <R.Button type="submit">Simulează plata de 25,00 lei</R.Button>
+        <R.Button type="submit">Plătește 25,00 lei</R.Button>
       </div>
       <p
         role="status"
@@ -120,7 +116,7 @@ export function PaymentCardExample() {
         tabIndex={-1}
         hidden={!done}
       >
-        Plata de test a fost confirmată. Nu s-au retras bani.
+        Plata a fost confirmată.
       </p>
     </form>
   );
@@ -149,10 +145,6 @@ export function PaymentCardExample() {
         <dd>25,00&nbsp;RON</dd>
       </div>
     </dl>
-    <div class="sdr-inset">
-      Plată demonstrativă, fără procesarea banilor. Folosește doar cardul de
-      test 4242 4242 4242 4242 și date fictive.
-    </div>
     <div class="sdr-field">
       <label
         class="sdr-label"
@@ -266,7 +258,7 @@ export function PaymentCardExample() {
         type="submit"
         class="sdr-button"
       >
-        Simulează plata de 25,00 lei
+        Plătește 25,00 lei
       </button>
     </div>
     <p
@@ -275,7 +267,7 @@ export function PaymentCardExample() {
       tabindex="-1"
       hidden=""
     >
-      Plata de test a fost confirmată. Nu s-au retras bani.
+      Plata a fost confirmată.
     </p>
   </form>
 </div>

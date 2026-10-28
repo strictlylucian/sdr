@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Remove repeated simulation and fictional-data callouts from component and pattern examples in both languages. The InsetText example now shows ordinary service guidance.
+
 - Fix React PasswordInput returning to masked mode after editing a revealed password. React now owns visibility, input type and the toggle state together. Clarify that Toast renders in normal flow and applications own viewport placement.
 
 - Expand the bilingual institutional identity study into seven related identities, with shared Wikimedia-derived vector artwork, inherited family colours, fixed proportions and service/header applications. This is documentation-only exploration, separate from the npm packages.
