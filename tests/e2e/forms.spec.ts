@@ -58,6 +58,7 @@ for (const edition of ["react", "html"] as Edition[])
       const root = await openExample(page, "PasswordInput", edition, locale);
       const input = root.locator("input"),
         toggle = root.locator("[data-sdr-password-toggle]");
+      await expect(toggle).toBeVisible();
       await input.fill("Ș-secret-123");
       await input.focus();
       await page.keyboard.press("Tab");
@@ -66,6 +67,14 @@ for (const edition of ["react", "html"] as Edition[])
       await expect(input).toHaveAttribute("type", "text");
       await expect(toggle).toHaveAttribute("aria-pressed", "true");
       await expect(input).toHaveValue("Ș-secret-123");
+      await input.focus();
+      await input.press("End");
+      await input.pressSequentially("-more");
+      await expect(input).toHaveAttribute("type", "text");
+      await expect(input).toHaveValue("Ș-secret-123-more");
+      await expect(toggle).toHaveAttribute("aria-pressed", "true");
+      await expect(toggle).toHaveText(locale === 'ro' ? 'Ascunde parola' : 'Hide password');
+      await toggle.focus();
       await page.keyboard.press("Enter");
       await expect(input).toHaveAttribute("type", "password");
     });

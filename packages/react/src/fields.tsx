@@ -1,4 +1,4 @@
-import { forwardRef, useId, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, type ReactNode } from 'react';
+import { forwardRef, useEffect, useId, useState, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, type ReactNode } from 'react';
 import { cx, useBehavior } from './shared';
 import { FieldGroup } from './field-group';
 
@@ -37,11 +37,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FieldProps & Omit<InputHT
 
 export function PasswordInput({ label, hint, error, id: given, className, showLabel, hideLabel, ...props }: FieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & { showLabel: string; hideLabel: string }) {
   const generated = useId(); const id = given ?? generated;
-  const ref = useBehavior<HTMLDivElement>('password');
-  return <div ref={ref} data-sdr-show-label={showLabel} data-sdr-hide-label={hideLabel} data-sdr-component="password" data-sdr-owner="react">
+  const [visible, setVisible] = useState(false);
+  const [enhanced, setEnhanced] = useState(false);
+  useEffect(() => { setEnhanced(true); }, []);
+  return <div data-sdr-show-label={showLabel} data-sdr-hide-label={hideLabel} data-sdr-component="password" data-sdr-owner="react">
     <Field {...{ label, hint, error, id }}><div className="sdr-input-group">
-      <input autoComplete="current-password" {...props} {...fieldAttributes(id, hint, error, props['aria-describedby'], props['aria-invalid'])} type="password" className={cx('sdr-input', className)} />
-      <button type="button" disabled={props.disabled} className="sdr-button sdr-button--secondary" data-sdr-password-toggle aria-controls={id} aria-pressed="false" hidden>{showLabel}</button>
+      <input autoComplete="current-password" {...props} {...fieldAttributes(id, hint, error, props['aria-describedby'], props['aria-invalid'])} type={visible ? 'text' : 'password'} className={cx('sdr-input', className)} />
+      <button type="button" disabled={props.disabled} className="sdr-button sdr-button--secondary" data-sdr-password-toggle aria-controls={id} aria-pressed={visible} hidden={!enhanced} onClick={() => setVisible(value => !value)}>{visible ? hideLabel : showLabel}</button>
     </div></Field>
   </div>;
 }

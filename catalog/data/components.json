@@ -896,8 +896,8 @@
       "ro": "Afișează o confirmare scurtă, fără să întrerupă lucrul în pagină."
     },
     "caution": {
-      "en": "No auto-dismiss timer. Provide a real returnFocusId. Persistent errors belong in the page.",
-      "ro": "Mesajul se închide manual. returnFocusId indică un element existent la care revine focusul. Erorile care necesită rezolvare rămân vizibile în pagină."
+      "en": "Toast renders in normal document flow, so this preview stays inside its example. The component does not create a portal or a fixed viewport region; applications own that positioning. Dismissal is manual, and returnFocusId identifies an existing focus destination. Persistent errors belong in the page.",
+      "ro": "Toast este afișat în fluxul normal al paginii, de aceea apare în interiorul exemplului. Componenta nu creează un portal sau o zonă fixă în fereastră; poziționarea aparține aplicației. Mesajul se închide manual, iar returnFocusId indică un element existent la care revine focusul. Erorile care necesită rezolvare rămân vizibile în pagină."
     }
   },
   {

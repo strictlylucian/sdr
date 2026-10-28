@@ -25,7 +25,16 @@ for (const { version, directory } of consumers) test(`React ${version}: packed-p
   expect(await page.locator('form').evaluate((form: HTMLFormElement) => new FormData(form).has('phone'))).toBe(false);
   await page.getByRole('button', { name: 'Resetează' }).click(); await expect(phone).toBeVisible();
   await page.getByRole('button', { name: 'Arată parola' }).click();
-  await expect(page.locator('input[name="password"]')).toHaveAttribute('type', 'text');
+  const password = page.locator('input[name="password"]');
+  await expect(password).toHaveAttribute('type', 'text');
+  await password.pressSequentially('secret-more');
+  await expect(password).toHaveAttribute('type', 'text');
+  await page.getByRole('button', { name: 'Validare' }).click();
+  await expect(password).toHaveAttribute('type', 'text');
+  await expect(page.getByRole('button', { name: 'Ascunde parola' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Ascunde parola' }).click();
+  await expect(password).toHaveAttribute('type', 'password');
+  await expect(password).toHaveValue('secret-more');
   await page.getByRole('textbox', { name: 'Mesaj' }).fill('Bună');
   await expect(page.locator('[data-sdr-count]')).toHaveText('16 disponibile');
   await page.getByRole('button', { name: 'Resetează' }).click();

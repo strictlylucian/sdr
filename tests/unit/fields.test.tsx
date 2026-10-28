@@ -59,6 +59,11 @@ it.each([['ro', 'Afișează parola', 'Ascunde parola'], ['en', 'Show password', 
   await userEvent.click(button);
   expect(input).toHaveAttribute('type', 'text'); expect(input).toHaveValue('ș-secret');
   expect(button).toHaveAttribute('aria-pressed', 'true');
+  await userEvent.type(input, '-more');
+  expect(input).toHaveAttribute('type', 'text');
+  expect(input).toHaveValue('ș-secret-more');
+  expect(button).toHaveAccessibleName(hide);
+  expect(button).toHaveAttribute('aria-pressed', 'true');
   await userEvent.click(screen.getByRole('button', { name: hide }));
   expect(input).toHaveAttribute('type', 'password');
 });
@@ -91,4 +96,25 @@ it('preserves date/time/range constraints and native search form semantics', () 
   expect(screen.getByRole('search')).toHaveAttribute('action', '/search');
   expect(screen.getByRole('search')).toHaveAttribute('method', 'get');
   expect(screen.getByRole('button', { name: 'Find' })).toHaveAttribute('type', 'submit');
+});
+
+it('keeps controlled password editing, host rerenders and translated toggle labels in sync', async () => {
+  function Form({ show, hide }: { show: string; hide: string }) {
+    const [value, setValue] = useState('');
+    return <form><R.PasswordInput label="Password" name="password" value={value} onChange={event => setValue(event.target.value)} showLabel={show} hideLabel={hide} /><output>{value}</output></form>;
+  }
+  const { rerender } = renderSdr(<Form show="Show" hide="Hide" />);
+  const input = screen.getByLabelText('Password');
+  await userEvent.type(input, 'secret');
+  await userEvent.click(screen.getByRole('button', { name: 'Show' }));
+  await userEvent.type(input, '-more');
+  expect(input).toHaveAttribute('type', 'text');
+  expect(screen.getByRole('status')).toHaveTextContent('secret-more');
+  rerender(<Form show="Arată" hide="Ascunde" />);
+  expect(input).toHaveAttribute('type', 'text');
+  expect(screen.getByRole('button', { name: 'Ascunde' })).toHaveAttribute('aria-pressed', 'true');
+  expect(new FormData(input.closest('form')!).get('password')).toBe('secret-more');
+  await userEvent.click(screen.getByRole('button', { name: 'Ascunde' }));
+  expect(input).toHaveAttribute('type', 'password');
+  expect(input).toHaveValue('secret-more');
 });
