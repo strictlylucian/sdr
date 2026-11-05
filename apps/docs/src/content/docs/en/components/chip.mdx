@@ -6,6 +6,9 @@ sidebar: {"order":8}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Chip" locale="en" />
 
 Present a compact category or selected filter label.
 
@@ -81,6 +84,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 
 ## Action chip
 
+<AccessibilityStatus name="ActionChip" locale="en" includeVariants={false} />
+
 The interactive variant uses a button for a contextual action. A static chip remains a non-interactive label.
 
 <Preview name="ActionChip" locale="en" />
@@ -153,6 +158,8 @@ Accepts HTML attributes for its native element. See the typed source.
 <div id="variant-dismissible-chip" className="sdr-component-variant">
 
 ## Dismissible chip
+
+<AccessibilityStatus name="DismissibleChip" locale="en" includeVariants={false} />
 
 The removable variant represents a selected filter. onRemove or the portable event reports the action; the application manages the list and focus destination.
 

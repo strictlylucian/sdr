@@ -6,6 +6,9 @@ sidebar: {"order":52}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Table" locale="en" />
 
 Compare structured information with explicit row and column headers.
 
@@ -115,6 +118,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 <div id="variant-data-table" className="sdr-component-variant">
 
 ## Sortable table
+
+<AccessibilityStatus name="DataTable" locale="en" includeVariants={false} />
 
 DataTable adds local sorting through header buttons. Formatted numeric cells can supply sortValues; remote pagination remains an application concern.
 

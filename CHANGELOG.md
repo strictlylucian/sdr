@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Audit component examples against WCAG 2.2 A/AA rules across themes, densities, expanded content, keyboard focus, forced colours and text-spacing/reflow settings. Add bilingual, source-validated accessibility evidence badges and a per-component report; keep pending human and screen-reader evaluation explicit.
+- Keep tooltip text within horizontal viewport edges and place it below the trigger when there is no space above. Let clustered content shrink within its available width under enlarged text and text-spacing overrides.
+- Give ErrorSummary an explicit named region role, preserving its focus behavior and heading association.
+
 - Remove repeated simulation and fictional-data callouts from component and pattern examples in both languages. The InsetText example now shows ordinary service guidance.
 
 - Fix React PasswordInput returning to masked mode after editing a revealed password. React now owns visibility, input type and the toggle state together. Clarify that Toast renders in normal flow and applications own viewport placement.

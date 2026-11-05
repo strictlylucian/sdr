@@ -72,6 +72,8 @@ ${code('html', await formatExample(exampleHtml(name, locale), 'html'))}
 
 ## ${variant.title[locale]}
 
+<AccessibilityStatus name="${variant.name}" locale="${locale}" includeVariants={false} />
+
 ${variant.guidance[locale]}
 
 <Preview name="${variant.name}" locale="${locale}" />
@@ -90,6 +92,9 @@ ${apiTable(variant.apiName ?? variant.name, locale)}
 `));
     await page(locale, `components/${item.slug}`, item.title[locale], `
 ${imports}
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="${item.name}" locale="${locale}" />
 
 ${item.description[locale]}
 

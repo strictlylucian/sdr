@@ -54,6 +54,23 @@ The package test project verifies the two-file portable contract, embedded-font 
 
 Automated checks cover their fixtures. They do not replace manual assistive-technology testing or research with disabled participants, and they do not establish accessibility certification.
 
+## Component accessibility audit
+
+`tests/e2e/accessibility-audit.spec.ts` checks every component, nested variant and form-state example in React and portable HTML. Chromium scans all four themes and both densities using WCAG 2 A/AA, 2.1 A/AA and 2.2 AA axe tags, then scans expanded disclosures, dialogs, tooltips and selected tab panels. It retains axe incomplete results for human evaluation. It also checks keyboard focus indicators, forced-colours focus, reduced-motion presentation, 320px reflow, WCAG text-spacing overrides and 200% text enlargement. Native keyboard journeys still run in all three engines through the other browser specs.
+
+To refresh the documentation evidence after a completed build:
+
+```powershell
+$env:PLAYWRIGHT_JSON_OUTPUT_FILE='output/wcag-matrix.json'
+& node_modules/node/bin/node.exe node_modules/@playwright/test/cli.js test tests/e2e/accessibility-audit.spec.ts --project=chromium --reporter=list,json
+& node_modules/node/bin/node.exe tooling/accessibility/record-audit.mjs output/wcag-matrix.json
+npm run build
+```
+
+The recorder rejects incomplete inventory coverage, failed or retried tests, missing theme/density scans and a source fingerprint mismatch. The checked-in receipt is `catalog/accessibility/audit.json`. Badges describe **automated checks**, link to the bilingual evidence inventory and become pending when the audited library/example source changes. Pending screen-reader assessment and human review of applicable criteria are separate from automated pass results. The receipt does not assert full page or process conformance.
+
+`accessibility-interactions.spec.ts` checks tooltip hover/focus persistence, Escape and viewport containment, toast keyboard reveal/dismissal and disclosure focus restoration in all three engines. Native disclosure-link Tab traversal is asserted in Chromium and Firefox. Windows WebKit's default preference skips ordinary anchors even with Alt+Tab (also reproduced on plain native links); that profile explicitly sets up child focus to check Escape. Native anchor traversal still requires Safari qualification with full keyboard access enabled. The harness does not alter library tabindex to manufacture a pass.
+
 ## GitHub Pages
 
 `npm run build:pages` creates an isolated `/sdr/` deployment in `output/pages/sdr/`; `npm run test:pages` serves it at that prefix and crawls every generated HTML page and internal resource. Chromium, Firefox and WebKit verify hydrated sidebar variants, source links, the embedded Page and institutional-study assets. The normal localhost/LAN build remains separate.

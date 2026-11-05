@@ -14,6 +14,7 @@ const root = 'apps/docs/src/content/docs';
 for (const locale of ['ro', 'en'] as const) {
   const ro = locale === 'ro';
   const guides = { ...(ro ? guidesRo : guidesEn) };
+  guides.accessibility = { ...guides.accessibility, body: `import AccessibilityReport from '../../../components/AccessibilityReport.astro';\n\n## ${uiText(locale, 'a11y.reportTitle')}\n\n<AccessibilityReport locale="${locale}" />\n\n${guides.accessibility.body}` };
   guides['getting-started'] = { ...guides['getting-started'], body: guides['getting-started'].body.replace('PORTABLE_COUNT_EXAMPLE', portableCountSnippet(locale)) };
   guides['foundations/spacing'] = { ...guides['foundations/spacing'], body: guides['foundations/spacing'].body + layoutGuide(locale) };
   guides['foundations/themes'] = { ...guides['foundations/themes'], body: guides['foundations/themes'].body + `

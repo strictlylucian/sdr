@@ -6,6 +6,9 @@ sidebar: {"order":5}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Button" locale="en" />
 
 Perform an action, such as saving an application.
 
@@ -117,6 +120,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 
 ## Button link
 
+<AccessibilityStatus name="ButtonLink" locale="en" includeVariants={false} />
+
 The navigation variant retains an anchor and href destination. Button styling emphasises the next step without changing link semantics.
 
 <Preview name="ButtonLink" locale="en" />
@@ -184,6 +189,8 @@ export function ButtonLinkExample() {
 <div id="variant-toggle-button" className="sdr-component-variant">
 
 ## Toggle button
+
+<AccessibilityStatus name="ToggleButton" locale="en" includeVariants={false} />
 
 The toggle variant exposes state through aria-pressed. defaultPressed sets the initial value; the label stays the same when toggled.
 

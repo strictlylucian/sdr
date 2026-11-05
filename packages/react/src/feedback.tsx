@@ -9,7 +9,7 @@ export const NotificationBanner = Alert;
 export function ErrorMessage(props: HTMLAttributes<HTMLParagraphElement>) { return <p {...props} className={cx('sdr-error', props.className)} />; }
 export function ErrorSummary({ title, errors, autoFocus = false }: { title: string; errors: { href: string; message: string }[]; autoFocus?: boolean }) {
   const id = useId();
-  return <div className="sdr-error-summary" aria-labelledby={id} tabIndex={-1} ref={node => { if (node && autoFocus) node.focus(); }}>
+  return <div className="sdr-error-summary" role="region" aria-labelledby={id} tabIndex={-1} ref={node => { if (node && autoFocus) node.focus(); }}>
     <h2 id={id} className="sdr-heading-md">{title}</h2><ul>{errors.map(error => <li key={error.href}><a href={error.href}>{error.message}</a></li>)}</ul>
   </div>;
 }

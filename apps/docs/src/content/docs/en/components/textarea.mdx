@@ -6,6 +6,9 @@ sidebar: {"order":58}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Textarea" locale="en" />
 
 Collect a longer free-text answer.
 
@@ -310,6 +313,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 <div id="variant-character-count" className="sdr-component-variant">
 
 ## With character count
+
+<AccessibilityStatus name="CharacterCount" locale="en" includeVariants={false} />
 
 CharacterCount composes Textarea with counting for limited answers. It counts Unicode code points rather than grapheme clusters. Text is not truncated; limit validation belongs to the application and server.
 

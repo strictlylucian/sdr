@@ -70,7 +70,7 @@ export async function openExample(
 export async function expectAccessible(page: Page, selector: string) {
   const results = await new AxeBuilder({ page })
     .include(selector)
-    .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
     .analyze();
   expect(results.violations).toEqual([]);
 }

@@ -6,6 +6,7 @@ import starlight from '@astrojs/starlight';
 import react from '@astrojs/react';
 import docsBaseLinks from './remark-docs-base.mjs';
 import focusCodeBlocks from './focus-code-blocks.mjs';
+import { accessibilityFingerprint } from '../../tooling/accessibility/source-fingerprint.mjs';
 const base = process.env.SDR_DOCS_BASE ?? '/';
 export default defineConfig({
   base, site: process.env.SDR_DOCS_SITE,
@@ -34,5 +35,5 @@ export default defineConfig({
   redirects: {
     '/': base + 'ro/',
   },
-  vite: { define: { 'process.env.SDR_DOCS_BASE': JSON.stringify(base) }, server: { fs: { allow: ['../..'] } } },
+  vite: { define: { 'process.env.SDR_DOCS_BASE': JSON.stringify(base), 'process.env.SDR_ACCESSIBILITY_SOURCE': JSON.stringify(accessibilityFingerprint()) }, server: { fs: { allow: ['../..'] } } },
 });

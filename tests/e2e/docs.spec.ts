@@ -29,7 +29,7 @@ for (const locale of ["ro", "en"] as Locale[]) {
           name: locale === "ro" ? "Configurare inițială" : "Initial setup",
         }),
     ).toHaveAttribute("href", `/${locale}/getting-started/`);
-    await page.goto(`http://127.0.0.1:4322/${locale}/getting-started/`);
+    await page.goto(`/${locale}/getting-started/`);
     await expect(page.locator('main code').filter({ hasText: 'npx playwright install --with-deps' }))
       .toHaveText('npx playwright install --with-deps chromium firefox webkit');
     await expect(page.locator('main code').filter({ hasText: "font-src 'self'" }))
@@ -67,7 +67,7 @@ test("portable HTML remains readable without JavaScript", async ({
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto("http://127.0.0.1:4322/examples/en/accordion.html");
+  await page.goto("/examples/en/accordion.html");
   const summary = page.locator("summary").first();
   await summary.click();
   await expect(summary.locator("..")).toHaveAttribute("open", "");

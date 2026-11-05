@@ -6,6 +6,9 @@ sidebar: {"order":55}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Table" locale="ro" />
 
 Afișează date structurate pe rânduri și coloane.
 
@@ -115,6 +118,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-data-table" className="sdr-component-variant">
 
 ## Cu sortare
+
+<AccessibilityStatus name="DataTable" locale="ro" includeVariants={false} />
 
 Butoanele din antetele coloanelor sortează datele în browser. Pentru numere formatate, sortValues poate furniza valorile numerice folosite la sortare. Paginarea de pe server se implementează în aplicație.
 

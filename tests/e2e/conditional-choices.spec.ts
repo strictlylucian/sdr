@@ -78,7 +78,7 @@ test('Portable conditional fields remain available without JavaScript', async ({
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   for (const slug of ['conditional-radio', 'conditional-checkbox']) {
-    await page.goto(`http://127.0.0.1:4322/examples/en/${slug}.html`);
+    await page.goto(`/examples/en/${slug}.html`);
     for (const panel of await page.locator('[data-sdr-conditional]').all()) {
       await expect(panel).toBeVisible(); await expect(panel.locator('input')).toBeEnabled();
     }

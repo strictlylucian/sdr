@@ -6,6 +6,9 @@ sidebar: {"order":63}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Textarea" locale="ro" />
 
 Permite introducerea unui răspuns mai lung, pe mai multe rânduri.
 
@@ -310,6 +313,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-character-count" className="sdr-component-variant">
 
 ## Cu contor de caractere
+
+<AccessibilityStatus name="CharacterCount" locale="ro" includeVariants={false} />
 
 CharacterCount adaugă un contor lângă Textarea. Numără puncte de cod Unicode, nu întotdeauna caracterele percepute vizual. Textul nu este tăiat automat; limita se verifică în aplicație și pe server.
 

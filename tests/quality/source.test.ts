@@ -30,7 +30,10 @@ it("keeps source modular, spacing tokenised and documentation bilingual", async 
       )
     ).flat();
   }
-  const all = await files(".");
+  // Check SDR's source workspaces, not unrelated projects placed beside them locally.
+  const roots = ['apps', 'packages', 'catalog', 'tooling', 'tests'];
+  const rootFiles = (await readdir('.', { withFileTypes: true })).filter(entry => entry.isFile()).map(entry => './' + entry.name);
+  const all = [...rootFiles, ...(await Promise.all(roots.map(root => files('./' + root)))).flat()];
   const errors = [];
   for (const path of all) {
     if (

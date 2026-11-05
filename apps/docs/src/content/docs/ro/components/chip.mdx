@@ -6,6 +6,9 @@ sidebar: {"order":17}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Chip" locale="ro" />
 
 Afișează o categorie sau un filtru într-un format compact.
 
@@ -81,6 +84,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 
 ## Cu acțiune
 
+<AccessibilityStatus name="ActionChip" locale="ro" includeVariants={false} />
+
 Varianta interactivă este un buton pentru o acțiune secundară. Chip-ul simplu afișează doar o etichetă.
 
 <Preview name="ActionChip" locale="ro" />
@@ -153,6 +158,8 @@ Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă d
 <div id="variant-dismissible-chip" className="sdr-component-variant">
 
 ## Cu opțiune de eliminare
+
+<AccessibilityStatus name="DismissibleChip" locale="ro" includeVariants={false} />
 
 Varianta reprezintă un filtru selectat care poate fi eliminat. onRemove sau evenimentul ediției HTML transmite acțiunea către aplicație. Aplicația actualizează lista și mută focusul pe un element potrivit.
 

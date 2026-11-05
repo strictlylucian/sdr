@@ -6,6 +6,9 @@ sidebar: {"order":15}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="TextInput" locale="ro" />
 
 Permite introducerea unui răspuns scurt, cu etichetă vizibilă și text explicativ opțional.
 
@@ -340,6 +343,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-password-input" className="sdr-component-variant">
 
 ## Parolă
+
+<AccessibilityStatus name="PasswordInput" locale="ro" includeVariants={false} />
 
 Câmpul permite afișarea și ascunderea parolei. autocomplete indică dacă este o parolă existentă sau una nouă. Lipirea textului și managerii de parole rămân disponibili.
 
@@ -750,6 +755,8 @@ export function PasswordInputReadOnlyExample() {
 
 ## Oră
 
+<AccessibilityStatus name="TimeInput" locale="ro" includeVariants={false} />
+
 Câmpul folosește input type=time. Browserul furnizează interfața de selectare, iar valoarea nu include fusul orar.
 
 <Preview name="TimeInput" locale="ro" />
@@ -1037,6 +1044,8 @@ export function TimeInputReadOnlyExample() {
 <div id="variant-error-message" className="sdr-component-variant">
 
 ## Cu mesaj de eroare
+
+<AccessibilityStatus name="ErrorMessage" locale="ro" includeVariants={false} />
 
 Proprietatea error leagă mesajul de câmp și îl marchează ca invalid. ErrorMessage poate fi folosit și separat în formulare personalizate.
 

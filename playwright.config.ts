@@ -1,6 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
+import { accessibilityFingerprint } from './tooling/accessibility/source-fingerprint.mjs';
 
 export default defineConfig({
+  metadata: { accessibilitySource: accessibilityFingerprint() },
   testDir: "./tests/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -29,12 +31,12 @@ export default defineConfig({
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
     {
       name: "firefox",
-      testIgnore: ["**/catalog.spec.ts", "**/docs.spec.ts", "**/layout.spec.ts"],
+      testIgnore: ["**/catalog.spec.ts", "**/docs.spec.ts", "**/layout.spec.ts", "**/accessibility-audit.spec.ts"],
       use: { ...devices["Desktop Firefox"] },
     },
     {
       name: "webkit",
-      testIgnore: ["**/catalog.spec.ts", "**/docs.spec.ts", "**/layout.spec.ts"],
+      testIgnore: ["**/catalog.spec.ts", "**/docs.spec.ts", "**/layout.spec.ts", "**/accessibility-audit.spec.ts"],
       use: { ...devices["Desktop Safari"] },
     },
   ],

@@ -1,0 +1,818 @@
+{
+  "date": "2026-11-05",
+  "sourceFingerprint": "0c8a5ff659386710bb130c85f5c79e0cebc4885b6efca75a484c63f08447aae5",
+  "engine": "axe-core 4.14.0",
+  "examples": {
+    "Page": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Button": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ButtonLink": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Link": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ToggleButton": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ActionChip": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DismissibleChip": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "BackLink": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "color-contrast"
+      ]
+    },
+    "BackToTop": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "color-contrast"
+      ]
+    },
+    "SkipLink": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ExitThisPage": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextInput": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Textarea": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Select": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Checkbox": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Radio": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Switch": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Fieldset": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DateInput": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DatePicker": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TimeInput": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FileUpload": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PasswordInput": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CharacterCount": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RangeInput": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SearchBar": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SegmentedControl": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Header": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ServiceNavigation": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SideNavigation": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Breadcrumbs": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Footer": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "LanguageNavigation": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Pagination": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Stepper": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TableOfContents": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TreeView": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Alert": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "NotificationBanner": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ErrorMessage": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ErrorSummary": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Tag": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Badge": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Chip": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "WarningText": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PhaseBanner": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ClassificationBanner": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Panel": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "EmptyState": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "LoadingIndicator": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Skeleton": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Progress": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Toast": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CookieBanner": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Feedback": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Details": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Accordion": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Tabs": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 24,
+      "review": []
+    },
+    "Dialog": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "aria-valid-attr-value",
+        "color-contrast"
+      ]
+    },
+    "Drawer": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "aria-valid-attr-value"
+      ]
+    },
+    "PopoverMenu": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "color-contrast"
+      ]
+    },
+    "Tooltip": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": [
+        "color-contrast"
+      ]
+    },
+    "Card": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Hero": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PageHeader": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "InsetText": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Divider": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Motif": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Heading": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Text": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Prose": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Grid": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Stack": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Cluster": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Container": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Section": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SidebarLayout": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SummaryList": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DataList": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Table": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DataTable": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 24,
+      "review": []
+    },
+    "TaskList": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "Timeline": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "ConditionalRadio": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 24,
+      "review": []
+    },
+    "ConditionalCheckbox": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 24,
+      "review": []
+    },
+    "TextInputError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextareaError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SelectError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CheckboxError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RadioError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SwitchError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FieldsetError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DateInputError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DatePickerError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TimeInputError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FileUploadError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PasswordInputError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CharacterCountError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RangeInputError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SearchBarError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SegmentedControlError": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextInputDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextareaDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SelectDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CheckboxDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RadioDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SwitchDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FieldsetDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DateInputDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DatePickerDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TimeInputDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FileUploadDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PasswordInputDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CharacterCountDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RangeInputDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SearchBarDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SegmentedControlDisabled": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextInputReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TextareaReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SelectReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CheckboxReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RadioReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SwitchReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FieldsetReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DateInputReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "DatePickerReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "TimeInputReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "FileUploadReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "PasswordInputReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "CharacterCountReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "RangeInputReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SearchBarReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    },
+    "SegmentedControlReadOnly": {
+      "passed": true,
+      "scenarios": 2,
+      "scans": 20,
+      "review": []
+    }
+  }
+}

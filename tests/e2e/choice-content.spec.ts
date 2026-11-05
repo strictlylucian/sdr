@@ -39,7 +39,8 @@ for (const edition of ['react', 'html'] as Edition[]) for (const locale of ['ro'
           expect(row.paddingStart).toBe('0px');
           expect(row.paddingEnd).toBe('0px');
           expect(row.shadow).toBe('none');
-          if (row.hintBelow !== null) expect(row.hintBelow).toBeGreaterThanOrEqual(4);
+          // Firefox can subtract distant layout coordinates as 3.999969px for a 4px gap.
+          if (row.hintBelow !== null) expect(row.hintBelow).toBeGreaterThanOrEqual(4 - 0.01);
           if (row.type === 'radio') expect(row.radius).toBe('50%');
         }
         if (locale === 'ro' && density === 'comfortable') {

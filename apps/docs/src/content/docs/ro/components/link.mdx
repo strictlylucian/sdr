@@ -6,6 +6,9 @@ sidebar: {"order":38}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Link" locale="ro" />
 
 Duce la altă pagină sau la o secțiune din aceeași pagină.
 
@@ -77,6 +80,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 
 ## Înapoi
 
+<AccessibilityStatus name="BackLink" locale="ro" includeVariants={false} />
+
 Linkul cu săgeată înapoi are o destinație explicită. Nu depinde de istoricul browserului.
 
 <Preview name="BackLink" locale="ro" />
@@ -145,6 +150,8 @@ export function BackLinkExample() {
 <div id="variant-back-to-top" className="sdr-component-variant">
 
 ## Înapoi sus
+
+<AccessibilityStatus name="BackToTop" locale="ro" includeVariants={false} />
 
 Linkul cu săgeată în sus duce la ancora de la începutul paginii.
 

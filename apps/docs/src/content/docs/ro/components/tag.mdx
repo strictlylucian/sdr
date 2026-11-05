@@ -6,6 +6,9 @@ sidebar: {"order":25}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Tag" locale="ro" />
 
 Arată starea unei cereri prin text și culoare.
 
@@ -84,6 +87,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-badge" className="sdr-component-variant">
 
 ## Badge numeric
+
+<AccessibilityStatus name="Badge" locale="ro" includeVariants={false} />
 
 Badge afișează un număr într-un format compact. Textul alăturat explică ce se numără; pentru stări sunt potrivite etichetele text.
 

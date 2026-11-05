@@ -1,0 +1,36 @@
+---
+import { components, orderedComponents } from '../../../../catalog/components';
+import { componentVariants } from '../../../../catalog/component-variants';
+import { componentHref } from '../../../../catalog/component-navigation';
+import { accessibilityStatus, auditResults } from '../../../../catalog/accessibility/status';
+import { uiText } from '../i18n/messages';
+import { docsUrl } from '../docs-url';
+const { locale } = Astro.props;
+const inventory = orderedComponents(locale).flatMap(parent => [parent, ...componentVariants.filter(item => item.parent === parent.name).map(variant => components.find(item => item.name === variant.name)!)]);
+---
+<p>{uiText(locale, 'a11y.reportScope')}</p>
+<p>{uiText(locale, 'a11y.manualPending')}</p>
+{auditResults.date && <p>{uiText(locale, 'a11y.recorded', { date: auditResults.date })} · {auditResults.engine}</p>}
+<div class="sdr-audit-table" role="region" aria-label={uiText(locale, 'a11y.inventory')} tabindex="0">
+  <table>
+    <caption>{uiText(locale, 'a11y.inventory')}</caption>
+    <thead><tr><th scope="col">{uiText(locale, 'a11y.component')}</th><th scope="col">{uiText(locale, 'a11y.result')}</th><th scope="col">{uiText(locale, 'a11y.review')}</th></tr></thead>
+    <tbody>{inventory.map(component => {
+      const result = accessibilityStatus(component.name);
+      const variant = componentVariants.find(item => item.name === component.name);
+      const key = result.state === 'passed' ? 'a11y.resultPassed' : result.state === 'failed' ? 'a11y.resultFailed' : 'a11y.resultPending';
+      return <tr id={`audit-${component.slug}`}>
+        <th scope="row"><a href={docsUrl(componentHref(component.name, locale))}>{variant ? `${components.find(item => item.name === variant.parent)!.title[locale]} — ` : ''}{component.title[locale]}</a></th>
+        <td>{uiText(locale, key)}</td>
+        <td>{uiText(locale, 'a11y.manualShort')}{result.review.length > 0 && <><br /><code>{result.review.join(', ')}</code></>}</td>
+      </tr>;
+    })}</tbody>
+  </table>
+</div>
+<style>
+  .sdr-audit-table { overflow-x:auto; }
+  .sdr-audit-table:focus-visible { outline:var(--sdr-focus-width) solid var(--sl-color-text-accent); }
+  tr { scroll-margin-block-start:calc(var(--sl-nav-height) + var(--sdr-space-5)); }
+  caption { text-align:start;font-weight:650; }
+  th, td { vertical-align:top; }
+</style>

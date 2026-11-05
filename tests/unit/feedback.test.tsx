@@ -14,6 +14,7 @@ it.each(['Alert', 'NotificationBanner'] as const)('%s preserves host announcemen
 it('focuses error summaries on request and links errors to fields', () => {
   renderSdr(<><R.ErrorSummary autoFocus errors={[{ href: '#name', message: 'Enter your name' }]} title={"There is a problem"} /><R.TextInput label="Name" id="name" /><R.ErrorMessage id="detail">Required</R.ErrorMessage></>);
   expect(screen.getByRole('heading', { name: 'There is a problem' }).parentElement).toHaveFocus();
+  expect(screen.getByRole('region', { name: 'There is a problem' })).toHaveFocus();
   expect(screen.getByRole('link', { name: 'Enter your name' })).toHaveAttribute('href', '#name');
   expect(screen.getByText('Required')).toHaveAttribute('id', 'detail');
 });

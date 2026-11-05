@@ -6,6 +6,9 @@ sidebar: {"order":30}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Link" locale="en" />
 
 Navigate to another page or an anchored section.
 
@@ -77,6 +80,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 
 ## Back link
 
+<AccessibilityStatus name="BackLink" locale="en" includeVariants={false} />
+
 The back-arrow variant receives an explicit destination. Navigation does not depend on browser history.
 
 <Preview name="BackLink" locale="en" />
@@ -145,6 +150,8 @@ export function BackLinkExample() {
 <div id="variant-back-to-top" className="sdr-component-variant">
 
 ## Back to top
+
+<AccessibilityStatus name="BackToTop" locale="en" includeVariants={false} />
 
 The upward-arrow variant navigates to the document start anchor.
 

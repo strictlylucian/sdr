@@ -1,0 +1,15 @@
+---
+import { accessibilityStatus } from '../../../../catalog/accessibility/status';
+import { uiText } from '../i18n/messages';
+import { docsUrl } from '../docs-url';
+const { name, locale, includeVariants = true } = Astro.props;
+const result = accessibilityStatus(name, includeVariants);
+const key = result.state === 'passed' ? 'a11y.passed' : result.state === 'failed' ? 'a11y.failed' : 'a11y.pending';
+---
+<p class="sdr-audit-status" data-a11y-status={result.state}>
+  <a href={docsUrl(`/${locale}/accessibility/`)}>{uiText(locale, key)}</a>
+</p>
+<style>
+  .sdr-audit-status { margin-block:var(--sdr-space-3) var(--sdr-space-5); }
+  .sdr-audit-status a { display:inline-block;padding:var(--sdr-space-1) var(--sdr-space-3);border:var(--sdr-border-width) solid currentColor;border-radius:var(--sdr-radius);font-size:var(--sdr-text-xs);font-weight:650;line-height:1.5;color:var(--sl-color-text-accent);text-underline-offset:.2em; }
+</style>

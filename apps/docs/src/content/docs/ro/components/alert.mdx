@@ -6,6 +6,9 @@ sidebar: {"order":3}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Alert" locale="ro" />
 
 Evidențiază un mesaj important prin titlu, text și culoare.
 
@@ -99,6 +102,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-notification-banner" className="sdr-component-variant">
 
 ## Banner de notificare
+
+<AccessibilityStatus name="NotificationBanner" locale="ro" includeVariants={false} />
 
 NotificationBanner este un alias pentru Alert, destinat mesajelor despre întregul serviciu. Folosește același API.
 

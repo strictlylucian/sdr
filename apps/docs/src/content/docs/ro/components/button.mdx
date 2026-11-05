@@ -6,6 +6,9 @@ sidebar: {"order":12}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Button" locale="ro" />
 
 Declanșează o acțiune, de exemplu salvarea unei cereri.
 
@@ -117,6 +120,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 
 ## Link cu aspect de buton
 
+<AccessibilityStatus name="ButtonLink" locale="ro" includeVariants={false} />
+
 Varianta folosește un element a cu href, afișat ca buton pentru a evidenția o destinație importantă. Păstrează comportamentul unui link obișnuit.
 
 <Preview name="ButtonLink" locale="ro" />
@@ -184,6 +189,8 @@ export function ButtonLinkExample() {
 <div id="variant-toggle-button" className="sdr-component-variant">
 
 ## Buton toggle
+
+<AccessibilityStatus name="ToggleButton" locale="ro" includeVariants={false} />
 
 aria-pressed arată dacă opțiunea este activă. defaultPressed stabilește starea inițială, iar eticheta rămâne aceeași la activare și dezactivare.
 

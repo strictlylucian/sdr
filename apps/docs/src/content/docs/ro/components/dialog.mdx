@@ -6,6 +6,9 @@ sidebar: {"order":23}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Dialog" locale="ro" />
 
 Deschide o fereastră modală pentru o acțiune scurtă sau o verificare.
 
@@ -125,6 +128,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 <div id="variant-drawer" className="sdr-component-variant">
 
 ## Panou lateral
+
+<AccessibilityStatus name="Drawer" locale="ro" includeVariants={false} />
 
 Drawer deschide același dialog modal la marginea ecranului. Focusul rămâne în interior cât timp este deschis. Se închide cu Escape, cu butonul de închidere sau printr-un click în exterior.
 

@@ -6,6 +6,9 @@ sidebar: {"order":13}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="DateInput" locale="en" />
 
 Enter a memorable date as day, month and year.
 
@@ -517,6 +520,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 <div id="variant-date-picker" className="sdr-component-variant">
 
 ## Native date picker
+
+<AccessibilityStatus name="DatePicker" locale="en" includeVariants={false} />
 
 The native picker is an alternative to separate day, month and year fields. DatePicker uses input type=date; appearance and interaction depend on the browser.
 

@@ -6,6 +6,9 @@ sidebar: {"order":44}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="ServiceNavigation" locale="ro" />
 
 Oferă acces la secțiunile principale ale serviciului.
 
@@ -116,6 +119,8 @@ Componentele acceptă atribute HTML native, aria-* și data-* în limita tipuril
 
 ## Navigare laterală
 
+<AccessibilityStatus name="SideNavigation" locale="ro" includeVariants={false} />
+
 Linkurile către secțiuni conexe sunt așezate vertical. Când pagina trece pe o singură coloană, ordinea de citire rămâne cea din HTML.
 
 <Preview name="SideNavigation" locale="ro" />
@@ -198,6 +203,8 @@ export function SideNavigationExample() {
 <div id="variant-table-of-contents" className="sdr-component-variant">
 
 ## Cuprins
+
+<AccessibilityStatus name="TableOfContents" locale="ro" includeVariants={false} />
 
 Cuprinsul folosește navigarea laterală pentru linkuri către secțiunile paginii. Destinațiile sunt transmise prin items și corespund ancorelor din conținut.
 

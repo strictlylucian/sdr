@@ -6,6 +6,9 @@ sidebar: {"order":40}
 
 import Preview from '../../../../components/Preview.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AccessibilityStatus from '../../../../components/AccessibilityStatus.astro';
+
+<AccessibilityStatus name="Radio" locale="en" />
 
 Choose exactly one answer in a named group.
 
@@ -405,6 +408,8 @@ Native HTML, aria-* and data-* attributes are available where allowed by the com
 
 ## Segmented control
 
+<AccessibilityStatus name="SegmentedControl" locale="en" includeVariants={false} />
+
 This variant presents radio options as interface modes, such as list or grid. The group permits a single selection.
 
 <Preview name="SegmentedControl" locale="en" />
@@ -789,6 +794,8 @@ export function SegmentedControlReadOnlyExample() {
 <div id="variant-conditional-fields" className="sdr-component-variant">
 
 ## With conditional fields
+
+<AccessibilityStatus name="ConditionalRadio" locale="en" includeVariants={false} />
 
 Related fields are passed as children of Radio or Checkbox. conditionalId optionally provides the related fieldset ID. A short, directly related question works best; vertical choices keep the relationship clear. The example starts with an email validation error to show the nested error rail. Selection reveals the fields without moving focus. Inactive content stays mounted, hidden and disabled: values are retained, but excluded from native validation and FormData. The application owns validation, error summaries and submitted data, including any custom form-state library. Without JavaScript all related fields remain visible. In HTML, data-sdr-component="conditional-choice" opts in; aria-controls references the direct child fieldset marked data-sdr-conditional. Programmatic checked/disabled changes require a bubbling change event or sdr:refresh on the choice container. Native form reset restores the reveal state. Complex branching is better handled on separate pages. Manual screen-reader evaluation is still pending.
 

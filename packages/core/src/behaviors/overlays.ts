@@ -1,4 +1,5 @@
 import { lifecycle, requireElement } from './lifecycle';
+import { tooltipPosition } from './tooltip-position';
 
 export function dialog(root: HTMLElement) {
   const life = lifecycle();
@@ -42,7 +43,8 @@ export function tooltip(root: HTMLElement) {
   let focused = false;
   let dismissed = false;
   life.set(content, 'hidden', '');
-  const update = () => life.set(content, 'hidden', (hovered || focused) && !dismissed ? null : '');
+  const position = tooltipPosition(root, content, life);
+  const update = () => { life.set(content, 'hidden', (hovered || focused) && !dismissed ? null : ''); position(); };
   life.on(root, 'mouseenter', () => { hovered = true; dismissed = false; update(); });
   life.on(root, 'mouseleave', () => { hovered = false; update(); });
   life.on(trigger, 'focus', () => { focused = true; dismissed = false; update(); });
