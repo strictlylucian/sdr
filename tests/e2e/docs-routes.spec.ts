@@ -52,9 +52,9 @@ test('all documentation routes, internal links, fragments and assets resolve', a
         const url = new URL(raw, base);
         if (url.origin === base.origin) refs.push(url.pathname + url.hash);
       }
-      return { ids: [...doc.querySelectorAll('[id]')].map(node => node.id), refs, notices: doc.querySelectorAll('.sdr-doc-notice').length, footerNotices: doc.querySelectorAll('.sdr-doc-footer .sdr-doc-notice').length };
+      return { ids: [...doc.querySelectorAll('[id]')].map(node => node.id), refs, notices: doc.querySelectorAll('.sdr-doc-notice').length };
     }, { html: await response.text(), route });
-    if (parsed.notices !== 1 || parsed.footerNotices !== 1) errors.push(`${route}: expected one footer-only notice, got ${parsed.notices} total / ${parsed.footerNotices} in footer`);
+    if (parsed.notices !== 0) errors.push(`${route}: unexpected generic disclaimer`);
     ids.set(route, new Set(parsed.ids));
     for (const ref of parsed.refs) {
       if (!references.has(ref)) references.set(ref, new Set());

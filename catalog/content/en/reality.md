@@ -10,6 +10,7 @@ SDR shows what that overhaul can look like through real services, their current 
 | [Online payment: provisional authorisation](/en/reality/online-payment/) | DGPCI | Compressed side labels and similar identity questions; clearer recipient, payer and contact steps. |
 | [Report a local infrastructure problem](/en/reality/online-gruiu/) | Gruiu Town Hall | Unconnected labels and a continuous reporting form; clearer issue, location and contact pages. |
 | [Border-water fishing approval](/en/reality/online-fishing/) | Romanian Border Police | Long procedural labels, county selection and conflicting document guidance; visible choices and document requirements. |
+| [Medical leave allowance](/en/reality/health-allowance/) | CAS Bucharest and CNAS | A separate PDF application and original documents after filing. Structured questions and review before submission. |
 
 ## Paper forms and service proposals
 
@@ -41,7 +42,7 @@ A complete overhaul needs accessible controls, readable content, clear steps and
 
 ## Explore the redesigns
 
-Each study contains the original, a short diagnosis and the SDR remake. Each step is a complete page example, with its own question content inside the service header and navigation. All page examples are visible together, in order, with the appropriate step selected in each. Answer review includes a Change action beside each answer. These are visual studies: nothing is submitted, and validation is deliberately omitted.
+Each study contains the original, a short diagnosis and the SDR remake. Each step is a complete page example, with its own question content inside the service header and navigation. All page examples are visible together, in order, with the appropriate step selected in each. Answer review includes a Change action beside each answer. The standalone Gruiu and medical leave allowance demos validate only the first step. All submissions are simulated.
 
 [Study source code](https://github.com/strictlylucian/sdr/tree/main/apps/docs/src/studies).
 

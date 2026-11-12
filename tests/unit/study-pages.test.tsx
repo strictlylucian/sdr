@@ -6,7 +6,7 @@ import { mountFormStudy } from '../../apps/docs/src/studies/controller';
 import { formStudies } from '../../apps/docs/src/studies/forms';
 
 afterEach(cleanup);
-for (const study of formStudies) it(`${study.id}: each step is independently reachable as one page example`, () => {
+for (const study of formStudies.filter(item => !item.validateFirstStep)) it(`${study.id}: each step is independently reachable as one page example`, () => {
   const { container } = render(<StudyForm id={study.id} locale="en" />);
   const root = container.querySelector<HTMLElement>('[data-form-study]')!;
   const dispose = mountFormStudy(root);

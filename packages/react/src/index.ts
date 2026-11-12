@@ -3,6 +3,7 @@ export * from './actions';
 export * from './fields';
 export * from './choices';
 export * from './layout';
+export * from './page';
 export * from './navigation';
 export * from './feedback';
 export * from './disclosure';

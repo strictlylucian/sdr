@@ -15,6 +15,8 @@ The published form asks for the issue category, reporter’s name, optional emai
 
 Three pages separate the issue, its location and contact details. The five issue types and four villages remain radio choices; selecting “Other” reveals a specific description field. Labels, optional status and the purpose of each page are explicit. Each page can be opened directly from the step indicator, followed by answer review.
 
+The standalone demo validates only the first step. Errors appear beside the fields, and focus moves to the first field that needs correction.
+
 ## Mapping to the original
 
 | Published question | SDR proposal |
@@ -22,7 +24,7 @@ Three pages separate the issue, its location and contact details. The five issue
 | Issue type and other issue | Same five choices, with conditional detail for “Other”. |
 | Village, street and number | A dedicated location page with the four source villages. No location lookup is performed. |
 | Name, email and phone | Contact page; email and phone remain optional. |
-| Description and file | Expandable text and a multiple-file control. PDF/JPG/JPEG/PNG and 5 MB are explicit **demonstration limits**, not verified source restrictions. |
+| Description and file | Expandable text and a control for multiple optional attachments. |
 | Privacy acknowledgement and submission | A demonstration acknowledgement, local answer review and editing. No institutional agreement or report is transmitted. |
 
 <!-- study-follow-up -->

@@ -11,7 +11,7 @@ export function TagExample({ locale }: P) { return <R.Cluster><R.Tag tone="succe
 export function BadgeExample({ locale }: P) { return <p>{tr(locale, "feedback.unreadMessages")} <R.Badge>3</R.Badge></p>; }
 export function ChipExample({ locale }: P) { return <R.Cluster><R.Chip>Brașov</R.Chip><R.Chip>{tr(locale, "feedback.localServices")}</R.Chip></R.Cluster>; }
 export function WarningTextExample({ locale }: P) { return <R.WarningText>{tr(locale, "feedback.afterSubmittingYouCannotChangeTheDocumentsInThis")}</R.WarningText>; }
-export function PhaseBannerExample({ locale }: P) { return <R.PhaseBanner phase="Propunere / Proposal">{tr(locale, "feedback.anIndependentInitiativeUnderDevelopment")}</R.PhaseBanner>; }
+export function PhaseBannerExample({ locale }: P) { return <R.PhaseBanner phase="Beta">{tr(locale, "feedback.serviceInTesting")}</R.PhaseBanner>; }
 export function ClassificationBannerExample({ locale }: P) { return <R.ClassificationBanner>{tr(locale, "feedback.demonstrationFictionalData")}</R.ClassificationBanner>; }
 export function PanelExample({ locale }: P) { return <R.Panel title={tr(locale, "feedback.applicationSubmitted")}><p>{tr(locale, "feedback.referenceNumber")}: <strong>SDR-2026-0042</strong></p></R.Panel>; }
 export function EmptyStateExample({ locale }: P) { return <R.EmptyState title={tr(locale, "feedback.noSavedApplications")} action={<R.ButtonLink href={docsUrl(`/${locale}/patterns/start/`)}>{tr(locale, "feedback.startAnApplication")}</R.ButtonLink>}>{tr(locale, "feedback.applicationsYouStartWillAppearHere")}</R.EmptyState>; }

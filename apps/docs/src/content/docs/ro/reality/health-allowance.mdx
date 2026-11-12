@@ -1,0 +1,33 @@
+---
+title: "Indemnizație pentru concediu medical"
+sidebar: { order: 5 }
+---
+import FormStudy from '../../../../components/FormStudy.astro';
+
+Studiul reface traseul CAS București pentru o persoană fizică asigurată prin contract care solicită plata indemnizației pentru propriul concediu medical. În exemple se folosesc exclusiv date și documente fictive.
+
+## Ce există deja
+
+[Formularul CASMB](https://www.casmb.ro/atl_uploads_pf_concedii_recuperare.php) începe cu datele asiguratului și de contact, într-un tabel. [Lista CASMB de documente](https://www.casmb.ro/atl_uploads_pf.php) cere separat cererea tip, actul de identitate, certificatul medical, dovada plății contribuției și un IBAN. Instrucțiunile menționează și trimiterea ulterioară a anexei și a certificatului în original. Studiul se bazează pe prima pagină publică și pe lista de documente.
+
+## Unde apar dificultățile
+
+- **Solicitantul trebuie să consulte mai multe pagini.** Lista actelor apare în catalogul de servicii, iar prima pagină a cererii începe direct cu datele personale.
+- **O parte din date apar și în PDF.** [Anexa 9 publicată de CNAS](https://cnas.ro/wp-content/uploads/2024/11/ANEXA-9-Cerere-recuperare-concedii-si-indemnizatii-persoane-fizice.pdf) cere din nou numele și CNP-ul și grupează mai multe situații într-un singur document.
+- **Depunerea implică și documente în original.** Instrucțiunile CASMB descriu o etapă suplimentară după depunerea online.
+
+## Ce propune SDR
+
+Formularul grupează întrebările despre solicitant, contract și certificat, documente și plată. Fiecare document are un control separat. Demonstrația pe pagină separată validează doar primul pas, inclusiv formatul CNP-ului fictiv și al adresei de email. Sumarul permite verificarea și modificarea răspunsurilor înainte de confirmarea simulată. Datele completate o singură dată ar putea alimenta o cerere structurată în cadrul unui serviciu integrat.
+
+## Formularul publicat
+
+<FormStudy id="health-allowance" locale="ro" part="original" />
+
+## Propunerea SDR
+
+<FormStudy id="health-allowance" locale="ro" part="proposal" />
+
+## Ce ar trebui verificat într-un pilot
+
+CASMB ar trebui să confirme câmpurile și documentele necesare pentru acest caz, inclusiv condițiile în care poate primi documente digitale în locul originalelor. Testarea cu utilizatori poate arăta dacă oamenii știu ce să pregătească înainte de a începe și dacă pot corecta o informație din sumar.

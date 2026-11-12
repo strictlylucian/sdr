@@ -16,7 +16,7 @@ export default function StudyForm({ id, locale, standalone = false }: { id: Stud
       <p className="sdr-visually-hidden" data-study-progress role="status" aria-live="polite">{t(locale, 'progress', { current: 1, total: study.steps.length + 1 })}</p>
       {study.steps.map((step, index) => <fieldset className="sdr-fieldset sdr-stack" data-study-step={index} key={step.key} hidden={index !== 0} disabled={index !== 0}>
         <legend id={`${prefix}-step-${index}`} className="sdr-legend sdr-heading-lg" tabIndex={-1}>{t(locale, step.key)}</legend>
-        {step.fields.map(field => <StudyField key={field.name} field={field} locale={locale} prefix={prefix} />)}
+        {step.fields.map(field => <StudyField key={field.name} field={field} locale={locale} prefix={prefix} validate={study.validateFirstStep && index === 0} />)}
       </fieldset>)}
       <section id={`${prefix}-step-review`} data-study-review tabIndex={-1} hidden aria-labelledby={`${prefix}-review-title`} className="sdr-stack">
         <h2 id={`${prefix}-review-title`} className="sdr-heading-lg">{t(locale, 'review')}</h2><div data-study-answers className="sdr-stack sdr-u-gap-6 sdr-u-md-gap-7" />

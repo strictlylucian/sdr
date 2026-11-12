@@ -9,6 +9,7 @@ import {
 import { openReactPage } from "./support/page-fixture";
 import { formStudies } from '../../apps/docs/src/studies/forms';
 import { expectReflow } from './support/fixtures';
+import { expectPageLayout } from './support/page-layout';
 
 for (const edition of ["react", "html"] as Edition[])
   for (const locale of ["ro", "en"] as Locale[]) {
@@ -22,6 +23,7 @@ for (const edition of ["react", "html"] as Edition[])
       if (edition === "react") await openReactPage(page, locale);
       else await page.goto(`/examples/${locale}/page.html`);
       await expect(page.getByRole("main")).toBeVisible();
+      await expect(page.getByRole('main')).toHaveCount(1);
       await page.bringToFront();
       await page.keyboard.press('Tab');
       const skip = page.getByRole("link", {
@@ -45,6 +47,8 @@ for (const edition of ["react", "html"] as Edition[])
       await expectAccessible(page, "body");
       for (const width of [320, 768, 1440]) {
         await page.setViewportSize({ width, height: 900 });
+        await expectPageLayout(page.locator('.sdr-page'));
+        expect(await page.locator('.sdr-page').evaluate(node => node.getBoundingClientRect().x)).toBe(0);
         expect(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= innerWidth + 1,
@@ -69,6 +73,10 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     const root = page.locator('[data-form-study]');
     await expect(root.locator('[id$="-help"],a[href$="-help"]')).toHaveCount(0);
     await expect(root.locator('.sdr-header')).toBeVisible();
+    await expect(root).toHaveClass(/sdr-page/);
+    await expect(page.getByRole('main')).toHaveCount(1);
+    await expectPageLayout(root);
+    expect(await root.evaluate(node => node.getBoundingClientRect().x)).toBe(0);
     await expect(root.locator('.sdr-back')).toHaveAttribute('href', `/${locale}/reality/`);
     const typography = await root.locator('legend').first().evaluate(node => {
       const heading = document.createElement('h2'); node.parentElement!.append(heading);
@@ -80,15 +88,31 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
     const next = root.locator('[data-study-next]');
     await expect(next).toBeEnabled();
     await page.setViewportSize({ width: 320, height: 900 });
+    await expectPageLayout(root);
     const menu = root.locator('[data-sdr-navigation-toggle]');
     await expect(menu).toBeHidden();
     await expect(root.locator('[data-sdr-navigation-links]')).toBeVisible();
     await expectReflow(root);
     await expect(root.locator('[data-study-error], [data-study-errors], [aria-invalid]')).toHaveCount(0);
-    for (const _step of study.steps) await next.click();
-    await expect(root.locator('[data-study-review]')).toBeVisible();
-    await root.locator('[data-study-finish]').click();
-    await root.locator('[data-study-restart]').click();
+    if (study.id === 'online-gruiu') {
+      await root.locator('[data-study-stepper] a').last().click();
+      await expect(root.locator('[name="issue-type"]').first()).toBeFocused();
+      await expect(root.locator('[data-study-error]:visible')).toHaveCount(2);
+      await root.locator('[name="issue-type"][value="other"]').check();
+      await root.locator('[name="description"]').fill('Exemplu fictiv');
+      await next.click();
+      await expect(root.locator('[name="other-issue"]')).toBeFocused();
+      await expect(root.locator('[name="other-issue"]')).toHaveAttribute('aria-invalid', 'true');
+    } else if (study.id === 'health-allowance') {
+      await root.locator('[data-study-stepper] a').last().click();
+      await expect(root.locator('[name="full-name"]')).toBeFocused();
+      await expect(root.locator('[data-study-error]:visible')).toHaveCount(3);
+    } else {
+      for (const _step of study.steps) await next.click();
+      await expect(root.locator('[data-study-review]')).toBeVisible();
+      await root.locator('[data-study-finish]').click();
+      await root.locator('[data-study-restart]').click();
+    }
     await expect(root.locator('[data-study-step="0"]')).toBeVisible();
     let primaryName: string | null = null;
     for (const [index, step] of study.steps.entries()) {
@@ -117,10 +141,30 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
         }
       }
       if (index === 0) { primaryName = await group.locator('input[type="text"]:not([inputmode="numeric"]):visible,textarea:visible').first().getAttribute('name'); await expectReflow(root); await expectAccessible(page, '[data-form-study]'); }
+      if (study.id === 'health-allowance' && index === 0) {
+        await group.locator('[name="personal-number"]').fill('123');
+        await next.click();
+        await expect(group.locator('[name="personal-number"]')).toBeFocused();
+        await group.locator('[name="personal-number"]').fill('0000000000000');
+        await group.locator('[name="email"]').fill('invalid');
+        await next.click();
+        await expect(group.locator('[name="email"]')).toBeFocused();
+        await group.locator('[name="email"]').fill('fictional@example.invalid');
+        await expect(group.locator('[name="email"]')).not.toHaveAttribute('aria-invalid');
+      }
+      if (study.id === 'health-allowance' && index === 3) await group.locator('[name="iban"]').clear();
+      if (study.id === 'online-gruiu' && index === 2) {
+        await group.locator('[name="email"]').fill('invalid');
+        await group.locator('[name="privacy-read"]').uncheck();
+        const attachment = group.locator('[name="attachment"]');
+        await expect(attachment).not.toHaveAttribute('accept');
+        await attachment.setInputFiles({ name: 'example.txt', mimeType: 'text/plain', buffer: Buffer.alloc(5_000_001) });
+      }
       await next.click();
       await expect(root.locator('[aria-invalid]')).toHaveCount(0);
     }
     await expect(root.locator('[data-study-review]')).toBeFocused();
+    if (study.id === 'online-gruiu') await expect(root.locator('[data-study-answers]')).toContainText('example.txt');
     await expect(root.locator('.sdr-summary')).toHaveCount(study.steps.length);
     await expectReflow(root);
     await expectAccessible(page, '[data-form-study]');

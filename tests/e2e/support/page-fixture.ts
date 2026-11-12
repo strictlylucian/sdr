@@ -31,7 +31,7 @@ export async function openReactPage(page: Page, locale: Locale) {
   await page.route("**/__test__/page", (route) =>
     route.fulfill({
       contentType: "text/html",
-      body: `<!doctype html><html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SDR Page test</title><link rel="stylesheet" href="/portable/sdr.css"></head><body><div id="fixture"></div><script src="/__test__/page.js" defer></script></body></html>`,
+      body: `<!doctype html><html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SDR Page test</title><link rel="stylesheet" href="/portable/sdr.css"></head><body class="sdr-u-margin-0"><div id="fixture"></div><script src="/__test__/page.js" defer></script></body></html>`,
     }),
   );
   await page.goto("/__test__/page");

@@ -6,7 +6,7 @@ import { formStudies } from '../../apps/docs/src/studies/forms';
 import { mountFormStudy } from '../../apps/docs/src/studies/controller';
 
 afterEach(cleanup);
-for (const locale of ['ro', 'en'] as const) for (const study of formStudies) {
+for (const locale of ['ro', 'en'] as const) for (const study of formStudies.filter(item => !item.validateFirstStep)) {
   it(`${study.id} ${locale}: empty answers never block the visual journey or submit data`, () => {
     const { container } = render(<StudyForm id={study.id} locale={locale} />);
     const root = container.querySelector<HTMLElement>('[data-form-study]')!;

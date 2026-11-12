@@ -68,7 +68,6 @@
   "docs.yes": "Yes",
   "docs.no": "No",
   "docs.acceptsHTMLAttributesForItsNativeElementSee": "Accepts HTML attributes for its native element. See the typed source.",
-  "docs.independentProposal": "Independent proposal.",
   "docs.initialSetup": "Initial setup",
   "docs.components": "Components",
   "docs.documentedComponentsAndExamplesIncludingVariantsAndReact": "documented components and examples, including variants and React and portable HTML sources.",
@@ -77,8 +76,6 @@
   "docs.openThePortableExample": "Open the portable example",
   "docs.usage": "Usage",
   "docs.theEmblemIsOptionalOmittingItLeavesNo": "The emblem is optional. Omitting it leaves no empty logo space. The example path represents an institution-provided asset; the library does not bundle official insignia.",
-  "docs.composition": "Composition",
-  "docs.pageIsACompleteExampleRatherThanA": "Page is a complete example rather than a separate library component. It combines Header, ServiceNavigation, Breadcrumbs, PageHeader, Grid, form fields, Alert and Footer. See those component pages for their APIs.",
   "docs.nativeHTMLAriaAndDataAttributesAreAvailable": "Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.",
   "docs.accessibility": "Accessibility",
   "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFocus": "Composition accessibility depends on labels, element semantics, focus order and application context. Library themes and behaviours are checked against the documented examples; those results do not assess the consuming service. The matrix and limitations are described in",
@@ -118,7 +115,6 @@
   "docs-guides.variantsAreGroupedWithinTheirParentPatternsWith": "Variants are grouped within their parent patterns, with distinct examples and source for each scenario.",
   "docs-guides.knownBoundaries": "Known boundaries",
   "docs-guides.thereIsNoEditableOrVirtualisedGridCustom": "There is no editable or virtualised grid, custom combobox, custom calendar or ARIA tree widget yet. The date picker is native, hierarchical navigation uses disclosures, and the menu uses ordinary links. Tables sort locally. The host implements persistence, server validation and business actions.",
-  "docs-guides.independentProposal": "Independent proposal.",
   "docs-guides.romanianDesignSystem": "Romanian Design System",
   "docs-guides.componentsPatternsAndGuidanceForRomanianDigitalServices": "Components, patterns and guidance for Romanian digital services.",
   "layout-guide.pageStructure": "Page structure",
@@ -152,6 +148,5 @@
   "Identity.aboutProject": "About the project",
   "Identity.projectMotivation": "SDR proposes a shared design and development language for Romania’s digital public services. Its aim is to reduce repeated work and help teams build consistent, accessible and usable services faster.",
   "navigation.reality": "Today’s massive problems",
-  "Identity.realityDescription": "Digitisation studies and redesigns of existing online forms.",
-  "DocsNotice.disclaimer": "Alpha · Independent proposal, without conformance certification. Use fictional details in examples; they do not submit requests to institutions."
+  "Identity.realityDescription": "Digitisation studies and redesigns of existing online forms."
 }

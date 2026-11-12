@@ -81,11 +81,10 @@ for (const locale of ['ro', 'en']) {
   });
 }
 
-for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their header, single notice and back link under the deployment prefix`, async ({ page }) => {
+for (const locale of ['ro', 'en']) test(`${locale}: form studies keep their header and back link without generic disclaimers under the deployment prefix`, async ({ page }) => {
   for (const id of ['criminal-record', 'online-igi', 'online-payment', 'online-gruiu', 'online-fishing', 'lighting-clearance', 'street-crossing']) {
     await page.goto(`/sdr/${locale}/reality/${id}/`);
-    await expect(page.locator('.sdr-doc-notice')).toHaveCount(1);
-    await expect(page.locator('.sdr-doc-footer .sdr-doc-notice')).toHaveCount(1);
+    await expect(page.locator('.sdr-doc-notice')).toHaveCount(0);
     const root = page.locator('[data-form-study]');
     await expect(root).toHaveAttribute('data-study-mode', 'examples');
     await expect(root.locator('[data-study-step]').first()).toBeVisible();

@@ -1,5 +1,5 @@
 import { docsUrl } from '../docs-url';
-import { componentText, countText } from './support';
+import { componentText } from './support';
 import { useState } from 'react';
 import * as R from '../../../../packages/react/src';
 import { tr, type P } from './support';
@@ -7,29 +7,34 @@ import { tr, type P } from './support';
 export function PageExample({ locale }: P) {
   const [submitted, setSubmitted] = useState(false);
   return (
-    <>
-      <R.SkipLink href="#page-main" children={componentText(locale, 'skip')} />
-      <R.SdrProvider lang={locale} theme="dark">
+    <R.Page mainId="page-main" skipLabel={componentText(locale, 'skip')}
+      header={<R.SdrProvider lang={locale} theme="dark">
         <R.Header serviceName={tr(locale, "page.communityServices")} href="#page-main">
           <R.LanguageNavigation label={tr(locale, "page.language")} items={[
             { lang: 'ro', label: 'Română', href: docsUrl('/examples/ro/page.html'), current: locale === 'ro' },
             { lang: 'en', label: 'English', href: docsUrl('/examples/en/page.html'), current: locale === 'en' },
           ]} />
         </R.Header>
-      </R.SdrProvider>
-      <R.ServiceNavigation label={tr(locale, "page.mainNavigation")} items={[
+      </R.SdrProvider>}
+      navigation={<R.ServiceNavigation label={tr(locale, "page.mainNavigation")} items={[
         { label: tr(locale, "page.requestADocument"), href: '#page-main', current: true },
         { label: tr(locale, "page.requiredDocuments"), href: '#page-documents' },
         { label: tr(locale, "page.help"), href: '#page-help' },
-      ]} menuLabel={componentText(locale, 'menu')} />
-      <R.Container>
-        <div className="sdr-u-padding-top-4">
+      ]} menuLabel={componentText(locale, 'menu')} />}
+      beforeContent={
           <R.Breadcrumbs label={tr(locale, "page.breadcrumb")} items={[
             { label: tr(locale, "page.services"), href: '#page-main' },
             { label: tr(locale, "page.requestADocument"), href: '#page-request', current: true },
           ]} />
-        </div>
-        <main id="page-main" tabIndex={-1} className="sdr-main-wrapper sdr-stack">
+      }
+      footer={<R.Stack gap={3}>
+        <h2 id="page-help" className="sdr-heading-sm">{tr(locale, "page.needHelp")}</h2>
+        <p>{tr(locale, "page.aRealServiceProvidesContactDetailsOpeningHoursAnd")}</p>
+        <R.Cluster>
+          <R.Link href={docsUrl(`/${locale}/accessibility/`)}>{tr(locale, "page.accessibility")}</R.Link>
+          <R.Link href={docsUrl(`/${locale}/patterns/cookies/`)}>{tr(locale, "page.cookies")}</R.Link>
+        </R.Cluster>
+      </R.Stack>}>
           <R.PageHeader className="sdr-u-padding-block-0" title={tr(locale, "page.requestADocument")} description={tr(locale, "page.completeTheDetailsBelowAndCheckYourInformationBefore")} />
           <div className="sdr-grid-row">
             <section className="sdr-grid-column-two-thirds-from-desktop" id="page-request" aria-labelledby="page-request-title">
@@ -75,21 +80,6 @@ export function PageExample({ locale }: P) {
               </section>
             </aside>
           </div>
-        </main>
-      </R.Container>
-      <R.Footer className="sdr-u-padding-inline-0">
-        <R.Container>
-          <R.Stack gap={3}>
-            <h2 id="page-help" className="sdr-heading-sm">{tr(locale, "page.needHelp")}</h2>
-            <p>{tr(locale, "page.aRealServiceProvidesContactDetailsOpeningHoursAnd")}</p>
-            <R.Cluster>
-              <R.Link href={docsUrl(`/${locale}/accessibility/`)}>{tr(locale, "page.accessibility")}</R.Link>
-              <R.Link href={docsUrl(`/${locale}/patterns/cookies/`)}>{tr(locale, "page.cookies")}</R.Link>
-            </R.Cluster>
-            <p>{tr(locale, "page.sdrIndependentProposalExampleWithFictionalData")}</p>
-          </R.Stack>
-        </R.Container>
-      </R.Footer>
-    </>
+    </R.Page>
   );
 }

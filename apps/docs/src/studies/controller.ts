@@ -3,6 +3,7 @@ import { syncStudyFields, studyFieldDependencies } from './conditional-fields';
 import { getFormStudy, type Locale } from './forms';
 import { studyText as t } from '../i18n/messages';
 import { studyTotal, type StudyControl as Control } from './study-values';
+import { studyValidation } from './validation';
 export function mountFormStudy(root: HTMLElement) {
   const study = getFormStudy(root.dataset.formStudy!);
   const locale = root.lang as Locale;
@@ -24,6 +25,7 @@ export function mountFormStudy(root: HTMLElement) {
   const abort = new AbortController();
   let current = 0;
   const control = (name: string) => get<Control>(`[name="${name}"]`);
+  const validation = study.validateFirstStep ? studyValidation(study.steps[0].fields, locale, control) : undefined;
   function show(focus = true) {
     syncStudyFields(root, study, control);
     const reviewing = current === steps.length;
@@ -43,7 +45,19 @@ export function mountFormStudy(root: HTMLElement) {
     }
     if (focus) (reviewing ? review : steps[current].querySelector<HTMLElement>('legend')!).focus();
   }
-  function advance() { current++; show(); }
+  function goTo(index: number, movingForward = true) {
+    const invalid = movingForward ? validation?.check() : undefined;
+    if (invalid) {
+      current = 0;
+      show(false);
+      invalid.focus();
+      return false;
+    }
+    current = index;
+    show();
+    return true;
+  }
+  function advance() { goTo(current + 1); }
   answers.addEventListener('click', event => {
     if (!(event.target instanceof Element)) return;
     const edit = event.target.closest<HTMLAnchorElement>('[data-study-edit]');
@@ -53,23 +67,33 @@ export function mountFormStudy(root: HTMLElement) {
     event.preventDefault(); current = index; show(false); control(edit.dataset.studyEdit!).focus();
   }, { signal: abort.signal });
   next.addEventListener('click', advance, { signal: abort.signal });
-  form.addEventListener('submit', event => { event.preventDefault(); if (current < steps.length) advance(); }, { signal: abort.signal });
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (current < steps.length) { advance(); return; }
+    if (validation && !goTo(current)) return;
+    review.hidden = true;
+    if (study.pricing) get('[data-study-pricing]').hidden = true;
+    get('[data-study-controls]').hidden = true;
+    done.hidden = false;
+    done.focus();
+  }, { signal: abort.signal });
   back.addEventListener('click', () => { current--; show(); }, { signal: abort.signal });
-  finish.addEventListener('click', () => { review.hidden = true; if (study.pricing) get('[data-study-pricing]').hidden = true; get('[data-study-controls]').hidden = true; done.hidden = false; done.focus(); }, { signal: abort.signal });
-  restart.addEventListener('click', () => { form.reset(); answers.replaceChildren(); done.hidden = true; get('[data-study-controls]').hidden = false; current = 0; show(); }, { signal: abort.signal });
+  restart.addEventListener('click', () => { form.reset(); validation?.clear(); answers.replaceChildren(); current = 0; show(); }, { signal: abort.signal });
   if (study.pricing) control(study.pricing.countField).addEventListener('input', () => {
     get('[data-study-total]').textContent = studyTotal(study, control(study.pricing!.countField).value, locale);
   }, { signal: abort.signal });
   const dependencies = new Set(study.steps.flatMap(step => step.fields).flatMap(studyFieldDependencies));
+  if (validation) form.addEventListener('input', validation.refresh, { signal: abort.signal });
   form.addEventListener('change', event => {
     if ((event.target instanceof HTMLSelectElement || event.target instanceof HTMLInputElement) && dependencies.has(event.target.name)) {
       syncStudyFields(root, study, control);
     }
+    validation?.refresh();
   }, { signal: abort.signal });
   get('[data-study-no-js]').hidden = true;
   for (const button of [next, back, finish, restart]) button.disabled = false;
   root.querySelectorAll<HTMLAnchorElement>('[data-study-stepper] a').forEach((link, index) => {
-    link.addEventListener('click', event => { event.preventDefault(); current = index; show(); }, { signal: abort.signal });
+    link.addEventListener('click', event => { event.preventDefault(); goTo(index, index > current); }, { signal: abort.signal });
   });
   get('[data-study-page-back]').addEventListener('click', event => {
     if (current === 0) return;
@@ -77,5 +101,5 @@ export function mountFormStudy(root: HTMLElement) {
   }, { signal: abort.signal });
   show(false);
   root.dataset.studyReady = 'true';
-  return () => { abort.abort(); delete root.dataset.studyReady; };
+  return () => { abort.abort(); validation?.clear(); delete root.dataset.studyReady; };
 }

@@ -40,7 +40,7 @@ export async function writePortablePage(name: string, slug: string, locale: Loca
   const body = exampleHtml(name, locale);
   const path = `apps/docs/public/examples/${locale}`;
   await mkdir(path, { recursive: true });
-  const heading = /<h1(?:\s|>)/.test(body) ? '' : `<h1 class="sdr-heading-md sdr-u-margin-bottom-5">${name} · SDR alpha</h1>`;
+  const heading = /<h1(?:\s|>)/.test(body) ? '' : `<h1 class="sdr-heading-md sdr-u-margin-bottom-5">${name}</h1>`;
   const content = name === 'Page' ? body : `<main>${heading}${body}</main>`;
-  await writeGenerated(`${path}/${slug}.html`, `<!doctype html><html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name} · SDR · ${locale === 'ro' ? 'Propunere independentă' : 'Independent proposal'}</title><link rel="icon" href="${docsUrl('/favicon.svg')}"><link rel="stylesheet" href="${docsUrl('/portable/sdr.css')}"><script src="${docsUrl('/portable/sdr.js')}" defer></script><script src="${docsUrl('/portable-demo.js')}" defer></script></head><body class="sdr ${name === 'Page' ? 'sdr-u-margin-0' : 'sdr-u-padding-5'}">${content}</body></html>`);
+  await writeGenerated(`${path}/${slug}.html`, `<!doctype html><html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name} · SDR</title><link rel="icon" href="${docsUrl('/favicon.svg')}"><link rel="stylesheet" href="${docsUrl('/portable/sdr.css')}"><script src="${docsUrl('/portable/sdr.js')}" defer></script><script src="${docsUrl('/portable-demo.js')}" defer></script></head><body class="sdr ${name === 'Page' ? 'sdr-u-margin-0' : 'sdr-u-padding-5'}">${content}</body></html>`);
 }

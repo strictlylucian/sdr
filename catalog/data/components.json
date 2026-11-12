@@ -12,8 +12,8 @@
       "ro": "O pagină completă pentru un serviciu, construită din componentele SDR."
     },
     "caution": {
-      "en": "Use this composition as a starting point. Replace the fictional service content and implement your service validation and submission.",
-      "ro": "Exemplul poate fi adaptat unui serviciu real, cu propriul conținut și propriile reguli de validare și trimitere a formularului."
+      "en": "Page provides full-width service chrome and a shared responsive content container. Header, navigation, back links or breadcrumbs, and footer content are supplied through slots. mainId identifies the skip-link target; skipLabel is supplied by the application. embedded uses a section for examples inside another page, with mainLabelledBy pointing to its heading. The host page body uses sdr-u-margin-0 to remove the browser’s default outer margin.",
+      "ro": "Page oferă un cadru comun pentru paginile unui serviciu: header și navigare pe toată lățimea, cu un container de conținut adaptat ecranului. Header-ul, navigarea, linkul Înapoi sau breadcrumbs și conținutul footer-ului se transmit separat. mainId identifică ținta linkului de acces direct la conținut, iar skipLabel este textul furnizat de aplicație. Pentru exemple incluse într-o altă pagină, embedded folosește o secțiune, iar mainLabelledBy indică titlul acesteia. Clasa sdr-u-margin-0 pe body elimină marginea implicită a browserului."
     }
   },
   {

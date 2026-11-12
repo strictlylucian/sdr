@@ -2,10 +2,11 @@ import React from 'react';
 import * as R from '../../../../packages/react/src';
 import { studyText as t } from '../i18n/messages';
 import type { Field, Locale } from './study-types';
-export default function StudyField({ field, locale, prefix }: { field: Field; locale: Locale; prefix: string }) {
+export default function StudyField({ field, locale, prefix, validate = false }: { field: Field; locale: Locale; prefix: string; validate?: boolean }) {
   const id = `${prefix}-${field.name}`;
   const label = t(locale, field.key) + (field.required ? '' : ` (${t(locale, 'optional')})`);
-  const props = { id, name: field.name, label, hint: field.hint ? t(locale, field.hint) : undefined };
+  const required = validate && field.required;
+  const props = { id, name: field.name, label, required, hint: field.hint ? t(locale, field.hint) : undefined };
   let control: React.ReactNode;
   switch (field.type) {
     case 'radios':
@@ -13,7 +14,7 @@ export default function StudyField({ field, locale, prefix }: { field: Field; lo
       if (!field.options?.length) throw new Error(`Choice field ${field.name} needs options`);
       const Choice = field.type === 'radios' ? R.Radio : R.Checkbox;
       control = <R.Fieldset id={`${id}-group`} legend={label} hint={props.hint} className="sdr-stack">
-        {field.options.map((option, index) => <Choice key={option.value} id={index === 0 ? id : `${id}-${index}`} name={field.name} value={option.value} label={'labelKey' in option ? t(locale, option.labelKey) : option.label} />)}
+        {field.options.map((option, index) => <Choice key={option.value} id={index === 0 ? id : `${id}-${index}`} name={field.name} required={required && field.type === 'radios'} value={option.value} label={'labelKey' in option ? t(locale, option.labelKey) : option.label} />)}
       </R.Fieldset>;
       break;
     }
@@ -24,7 +25,7 @@ export default function StudyField({ field, locale, prefix }: { field: Field; lo
       if (!field.options?.length) throw new Error(`Select ${field.name} needs options`);
       control = <R.Select {...props} defaultValue=""><option value="">{t(locale, 'chooseOption')}</option>{field.options.map(option => <option value={option.value} key={option.value}>{'labelKey' in option ? t(locale, option.labelKey) : option.label}</option>)}</R.Select>;
       break;
-    default: control = <R.TextInput {...props} type={field.type ?? 'text'} autoComplete={field.autoComplete} readOnly={!!field.fixedValueKey} defaultValue={field.fixedValueKey ? t(locale, field.fixedValueKey) : field.defaultValue} inputMode={field.pattern?.startsWith('[0-9]') ? 'numeric' : undefined} />;
+    default: control = <R.TextInput {...props} type={field.type ?? 'text'} autoComplete={field.autoComplete} readOnly={!!field.fixedValueKey} defaultValue={field.fixedValueKey ? t(locale, field.fixedValueKey) : field.defaultValue} inputMode={field.pattern?.startsWith('[0-9]') ? 'numeric' : undefined} pattern={validate ? field.pattern : undefined} />;
   }
   return <div className="sdr-form-group" data-study-field={field.name} hidden={!!field.showWhen}>
     {control}

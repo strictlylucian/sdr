@@ -1,3 +1,4 @@
+.sdr-page { min-inline-size:0; margin:0; padding:0; }
 .sdr-container,.sdr-width-container { inline-size: min(calc(100% - var(--sdr-page-gutter) * 2),var(--sdr-container)); margin-inline:auto; }
 .sdr-main-wrapper { padding-block:var(--sdr-space-6); }
 .sdr-main-wrapper--l,.sdr-main-wrapper--auto-spacing:first-child { padding-block-start:var(--sdr-space-7); }

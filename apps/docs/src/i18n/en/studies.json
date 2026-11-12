@@ -206,5 +206,18 @@
   "streetAndNumber": "Street and number",
   "applicantName": "Applicant’s full name",
   "documentStudies": "Other document redesigns",
-  "submit": "Submit"
+  "submit": "Submit",
+  "healthAllowanceTitle": "Medical leave allowance",
+  "healthAllowanceEdition": "The first page of the CASMB form for individuals, viewed on {date}.",
+  "medicalLeaveDetails": "Insurance contract and medical leave",
+  "healthContractNumber": "Insurance contract number",
+  "medicalCertificateNumber": "Medical certificate series and number",
+  "medicalCertificateDate": "Medical certificate issue date",
+  "medicalCertificate": "Medical leave certificate",
+  "healthContributionProof": "Proof of contribution payment",
+  "healthPayment": "Payment account",
+  "personalIban": "IBAN",
+  "healthDemoIbanHint": "Use a fictional IBAN for the demonstration.",
+  "healthApplicationNotes": "Notes for the health insurance fund",
+  "healthDemoFileHint": "Choose a fictional file for the demonstration."
 }

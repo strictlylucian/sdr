@@ -6,6 +6,7 @@ export const additionalWebStudies: FormStudy[] = [
   {
     id: 'online-gruiu', sourceType: 'web', capturedOn: '2026-10-27', image: { width: 848, height: 1251 },
     title: 'gruiuTitle', institution: 'Primăria comunei Gruiu',
+    validateFirstStep: true,
     source: 'https://www.primariagruiu.ro/38-general/altele/229-sesizari-rapide.html', edition: 'gruiuEdition', completionKey: 'completedText',
     steps: [
       { key: 'issueDetails', fields: [
@@ -23,7 +24,7 @@ export const additionalWebStudies: FormStudy[] = [
       { key: 'contactDetails', fields: [
         field('full-name', 'fullName', { required: true, autoComplete: 'name' }),
         field('email', 'email', { type: 'email', autoComplete: 'email' }), field('phone', 'phone', { type: 'tel', autoComplete: 'tel' }),
-        field('attachment', 'attachment', { type: 'file', multiple: true, accept: '.pdf,.jpg,.jpeg,.png', maxBytes: 5000000, hint: 'supportingUploadHint' }),
+        field('attachment', 'attachment', { type: 'file', multiple: true }),
         field('privacy-read', 'privacyAcknowledgement', { type: 'checkbox', required: true, hint: 'privacyDemoHint' }),
       ] },
     ],

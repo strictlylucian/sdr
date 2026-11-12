@@ -2,10 +2,11 @@ import { additionalPaperStudies } from './additional-paper-studies';
 import { additionalWebStudies } from './additional-web-studies';
 import { paperStudies } from './paper-studies';
 import { onlineStudies } from './online-studies';
+import { healthAllowance } from './health-allowance';
 import type { FormStudy, Key } from './study-types';
 export type * from './study-types';
 export const studyGroups: { key: Key; studies: FormStudy[] }[] = [
-  { key: 'webStudies', studies: [...onlineStudies, ...additionalWebStudies] },
+  { key: 'webStudies', studies: [...onlineStudies, ...additionalWebStudies, healthAllowance] },
   { key: 'paperStudies', studies: additionalPaperStudies },
   { key: 'documentStudies', studies: paperStudies },
 ];

@@ -30,7 +30,7 @@ function apiTable(name: string, locale: 'ro' | 'en') {
 async function page(locale: string, path: string, title: string, content: string, sidebar?: { order?: number; hidden?: boolean }) {
   const target = `${root}/${locale}/${path}.mdx`;
   await mkdir(target.slice(0, target.lastIndexOf('/')), { recursive: true });
-  await writeGenerated(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR. ${uiText(locale, "docs.independentProposal")}`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
+  await writeGenerated(target, `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(`${title} — SDR`)}\n${sidebar ? `sidebar: ${JSON.stringify(sidebar)}\n` : ''}---\n${content}\n`);
 }
 for (const locale of ['ro', 'en'] as const) {
   const ordered = orderedComponents(locale);
@@ -115,9 +115,9 @@ ${item.caution[locale]}
 ${item.name === 'Header' ? `${uiText(locale, "docs.theEmblemIsOptionalOmittingItLeavesNo")}
 ${code('tsx', await formatExample('<R.Header serviceName="Servicii pentru comunitate" emblem={<img src="/institution-emblem.svg" alt="" width={48} height={48} />} />', 'tsx'))}` : ''}
 
-## ${item.name === 'Page' ? uiText(locale, "docs.composition") : 'API'}
+## API
 
-${item.name === 'Page' ? uiText(locale, "docs.pageIsACompleteExampleRatherThanA") : table}
+${table}
 
 ${uiText(locale, "docs.nativeHTMLAriaAndDataAttributesAreAvailable")}
 

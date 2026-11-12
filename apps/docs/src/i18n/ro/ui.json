@@ -68,7 +68,6 @@
   "docs.yes": "Da",
   "docs.no": "Nu",
   "docs.acceptsHTMLAttributesForItsNativeElementSee": "Acceptă atributele HTML ale elementului nativ. Tipurile TypeScript din sursă descriu proprietățile disponibile.",
-  "docs.independentProposal": "Propunere independentă.",
   "docs.initialSetup": "Configurare inițială",
   "docs.components": "Componente",
   "docs.documentedComponentsAndExamplesIncludingVariantsAndReact": "componente și exemple, cu variante și cod pentru React și HTML.",
@@ -77,8 +76,6 @@
   "docs.openThePortableExample": "Deschide exemplul portabil",
   "docs.usage": "Utilizare",
   "docs.theEmblemIsOptionalOmittingItLeavesNo": "Emblema este opțională; în lipsa ei, nu rămâne spațiu gol pentru logo. Calea din exemplu indică o imagine furnizată de instituție. Biblioteca nu include însemne oficiale.",
-  "docs.composition": "Componente folosite",
-  "docs.pageIsACompleteExampleRatherThanA": "Page este o pagină demonstrativă construită din Header, ServiceNavigation, Breadcrumbs, PageHeader, Grid, câmpuri de formular, Alert și Footer. Nu are un API separat; proprietățile sunt descrise în paginile componentelor folosite.",
   "docs.nativeHTMLAriaAndDataAttributesAreAvailable": "Componentele acceptă atribute HTML native, aria-* și data-* în limita tipurilor declarate. Tabelul proprietăților este generat din sursele TypeScript.",
   "docs.accessibility": "Accesibilitate",
   "docs.compositionAccessibilityDependsOnLabelsElementSemanticsFocus": "Accesibilitatea unei pagini depinde și de etichete, structura HTML, ordinea de navigare cu tastatura și modul în care sunt combinate componentele. Verificările bibliotecii acoperă exemplele documentate, nu întregul serviciu. Rezultatele și limitele sunt prezentate în",
@@ -118,7 +115,6 @@
   "docs-guides.variantsAreGroupedWithinTheirParentPatternsWith": "Variantele sunt grupate în paginile modelelor, cu exemple distincte și cod pentru fiecare situație.",
   "docs-guides.knownBoundaries": "Limite cunoscute",
   "docs-guides.thereIsNoEditableOrVirtualisedGridCustom": "Biblioteca nu include încă tabele editabile sau virtualizate, un combobox personalizat, un calendar propriu ori un widget ARIA tree. Selectorul de dată este cel al browserului. Navigarea ierarhică folosește secțiuni care se deschid, iar meniul conține linkuri obișnuite. Sortarea tabelelor se face în browser. Aplicația gestionează salvarea datelor, validarea pe server și acțiunile serviciului.",
-  "docs-guides.independentProposal": "Propunere independentă.",
   "docs-guides.romanianDesignSystem": "Sistem de Design Românesc",
   "docs-guides.componentsPatternsAndGuidanceForRomanianDigitalServices": "Componente, modele și recomandări pentru servicii digitale românești.",
   "layout-guide.pageStructure": "Structura unei pagini",
@@ -152,6 +148,5 @@
   "Identity.aboutProject": "Despre proiect",
   "Identity.projectMotivation": "SDR propune un limbaj comun de design și dezvoltare pentru serviciile publice digitale din România. Scopul este reducerea muncii repetate și construirea mai rapidă a unor servicii coerente, accesibile și ușor de folosit.",
   "navigation.reality": "Problemele majore de azi",
-  "Identity.realityDescription": "Studii de digitalizare și reproiectare a formularelor online.",
-  "DocsNotice.disclaimer": "Alpha · Propunere independentă, fără certificare de conformitate. Folosește date inventate în exemple; acestea nu trimit solicitări către instituții."
+  "Identity.realityDescription": "Studii de digitalizare și reproiectare a formularelor online."
 }

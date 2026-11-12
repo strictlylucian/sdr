@@ -58,7 +58,7 @@ ${uiText(locale, "docs-guides.thereIsNoEditableOrVirtualisedGridCustom")}
   for (const [path, guide] of Object.entries(guides)) {
     const target = `${root}/${locale}/${path}.mdx`;
     await mkdir(target.slice(0, target.lastIndexOf('/')), { recursive: true });
-    await writeGenerated(target, `---\ntitle: ${JSON.stringify(guide.title)}\ndescription: ${JSON.stringify(`${guide.title} — SDR. ${uiText(locale, "docs-guides.independentProposal")}`)}\n---\n${await formatGuide(guide.body)}\n`);
+    await writeGenerated(target, `---\ntitle: ${JSON.stringify(guide.title)}\ndescription: ${JSON.stringify(`${guide.title} — SDR`)}\n---\n${await formatGuide(guide.body)}\n`);
   }
   await writeGenerated(`${root}/${locale}/index.mdx`, `---
 title: ${uiText(locale, "docs-guides.romanianDesignSystem")}

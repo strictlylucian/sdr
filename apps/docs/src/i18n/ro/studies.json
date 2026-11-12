@@ -206,5 +206,18 @@
   "streetAndNumber": "Strada și numărul",
   "applicantName": "Numele și prenumele solicitantului",
   "documentStudies": "Alte formulare refăcute",
-  "submit": "Trimite"
+  "submit": "Trimite",
+  "healthAllowanceTitle": "Indemnizație pentru concediu medical",
+  "healthAllowanceEdition": "Prima pagină a formularului CASMB pentru persoane fizice, consultată la {date}.",
+  "medicalLeaveDetails": "Contractul și concediul medical",
+  "healthContractNumber": "Numărul contractului de asigurare",
+  "medicalCertificateNumber": "Seria și numărul certificatului medical",
+  "medicalCertificateDate": "Data emiterii certificatului medical",
+  "medicalCertificate": "Certificatul de concediu medical",
+  "healthContributionProof": "Dovada plății contribuției",
+  "healthPayment": "Cont pentru plată",
+  "personalIban": "IBAN",
+  "healthDemoIbanHint": "Folosește un IBAN fictiv pentru demonstrație.",
+  "healthApplicationNotes": "Observații pentru casa de asigurări",
+  "healthDemoFileHint": "Alege un fișier fictiv pentru demonstrație."
 }

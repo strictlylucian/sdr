@@ -12,9 +12,10 @@ export async function checkConsumer(npm: string, archives: Record<string, string
     ...archives, react: version, 'react-dom': version, '@types/react': types, '@types/react-dom': types,
   } }), 'utf8');
   execFileSync(process.execPath, [npm, 'install', '--ignore-scripts', '--no-audit', '--no-fund'], { cwd: directory, stdio: 'pipe' });
-  await writeFile(`${directory}/example.tsx`, `import { SdrProvider, TextInput, Button, DataTable, PasswordInput, CharacterCount, Radio, Checkbox } from '@strictlylucian/sdr-react';
+  await writeFile(`${directory}/example.tsx`, `import { SdrProvider, Page, Header, TextInput, Button, DataTable, PasswordInput, CharacterCount, Radio, Checkbox } from '@strictlylucian/sdr-react';
 import { init } from '@strictlylucian/sdr-core';
 export const Example = () => <SdrProvider><TextInput label="Nume" /><Button>Continuă</Button><DataTable caption="Date" columns={[{key:'name',label:'Nume'}]} rows={[]} /><Radio label="Telefon"><TextInput label="Număr" /></Radio><Checkbox label="Email"><TextInput label="Adresă" /></Checkbox></SdrProvider>;
+export const ServicePage = () => <SdrProvider><Page mainId="main" skipLabel="Skip to content" header={<Header serviceName="Service" />}><h1>Application</h1><TextInput label="Name" /></Page></SdrProvider>;
 init(document, { formatCount: remaining => String(remaining) });
 export const Translated = () => <SdrProvider lang="fr"><PasswordInput label="Mot de passe" showLabel="Afficher" hideLabel="Masquer" /><CharacterCount label="Message" limit={20} formatCount={remaining => String(remaining)} /></SdrProvider>;
 // @ts-expect-error Language selection is not a library API.

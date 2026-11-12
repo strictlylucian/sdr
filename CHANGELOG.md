@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Export a reusable Page layout and use it for service-page and form-remake examples, with full-width chrome, consistent content gutters and embedded-page landmarks. Remove generic alpha/fictional-data notices from documentation and examples, and eliminate standalone form pages' default outer margin.
+
 - Audit component examples against WCAG 2.2 A/AA rules across themes, densities, expanded content, keyboard focus, forced colours and text-spacing/reflow settings. Add bilingual, source-validated accessibility evidence badges and a per-component report; keep pending human and screen-reader evaluation explicit.
 - Keep tooltip text within horizontal viewport edges and place it below the trigger when there is no space above. Let clustered content shrink within its available width under enlarged text and text-spacing overrides.
 - Give ErrorSummary an explicit named region role, preserving its focus behavior and heading association.

@@ -1,6 +1,6 @@
 import type messages from '../i18n/en/studies.json';
 export type Key = keyof typeof messages;
-export type StudyId = 'criminal-record' | 'income-tax' | 'petition' | 'online-igi' | 'online-payment' | 'online-gruiu' | 'online-fishing' | 'lighting-clearance' | 'street-crossing';
+export type StudyId = 'criminal-record' | 'income-tax' | 'petition' | 'online-igi' | 'online-payment' | 'online-gruiu' | 'online-fishing' | 'lighting-clearance' | 'street-crossing' | 'health-allowance';
 export type Locale = 'ro' | 'en';
 export interface FieldCondition { field: string; value: string | string[] | boolean; }
 export interface Field {
@@ -17,6 +17,7 @@ export interface FormStudy {
   id: StudyId; title: Key; institution: string; source: string; edition: Key;
   sourceType: 'paper' | 'web'; sourcePreview?: 'publication'; capturedOn: string; image: { width: number; height: number };
   completionKey: Key; steps: Step[];
+  validateFirstStep?: true;
   fileTotalBytes?: number;
   pricing?: { unitAmount: number; countField: string; currency: 'RON' };
 }

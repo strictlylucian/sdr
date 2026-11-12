@@ -1,5 +1,6 @@
 import { expect, expectAccessible, expectReflow } from './fixtures';
 import type { Page } from '@playwright/test';
+import { expectPageLayout } from './page-layout';
 
 export async function expectStudyExamples(page: Page, count: number) {
   const root = page.locator('[data-form-study]');
@@ -12,6 +13,10 @@ export async function expectStudyExamples(page: Page, count: number) {
     const example = pages.nth(index);
     await expect(example).toBeVisible();
     await expect(example.locator('.sdr-header')).toBeVisible();
+    await expect(example).toHaveClass(/sdr-page/);
+    await expect(example.locator('main')).toHaveCount(0);
+    await expect(example.locator(':scope > .sdr-container > section')).toHaveAttribute('aria-labelledby', /-title$/);
+    await expectPageLayout(example);
     await expect(example.locator('[data-study-page-back]')).toBeVisible();
     const steps = example.locator('[data-study-stepper] li');
     await expect(steps).toHaveCount(count + 1);
@@ -32,4 +37,5 @@ export async function expectStudyExamples(page: Page, count: number) {
   await expectAccessible(page, '[data-form-study]');
   await page.setViewportSize({ width: 320, height: 900 });
   await expectReflow(root);
+  for (const example of await pages.all()) await expectPageLayout(example);
 }
