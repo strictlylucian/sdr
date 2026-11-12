@@ -98,7 +98,15 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       await root.locator('[data-study-stepper] a').last().click();
       await expect(root.locator('[name="issue-type"]').first()).toBeFocused();
       await expect(root.locator('[data-study-error]:visible')).toHaveCount(2);
+      const invalidGroup = root.locator('.sdr-field-group.sdr-field--error > .sdr-fieldset');
+      const groupError = invalidGroup.locator('.sdr-legend + .sdr-error');
+      await expect(groupError).toBeVisible();
+      const groupErrorId = (await groupError.getAttribute('id'))!;
+      await expect(invalidGroup).toHaveAttribute('aria-describedby', groupErrorId);
+      await expect(root.locator('[name="issue-type"]').first()).toHaveAttribute('aria-describedby', groupErrorId);
+      await root.screenshot({ path: info.outputPath('study-first-step-errors.png'), scale: 'css' });
       await root.locator('[name="issue-type"][value="other"]').check();
+      await expect(invalidGroup).toHaveCount(0);
       await root.locator('[name="description"]').fill('Exemplu fictiv');
       await next.click();
       await expect(root.locator('[name="other-issue"]')).toBeFocused();
@@ -107,6 +115,12 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
       await root.locator('[data-study-stepper] a').last().click();
       await expect(root.locator('[name="full-name"]')).toBeFocused();
       await expect(root.locator('[data-study-error]:visible')).toHaveCount(3);
+      const cnpField = root.locator('.sdr-field.sdr-field--error').filter({ has: page.locator('[name="personal-number"]') });
+      const cnpError = cnpField.locator('.sdr-hint + .sdr-error:has(+ .sdr-input)');
+      await expect(cnpError).toBeVisible();
+      await root.screenshot({ path: info.outputPath('study-first-step-errors.png'), scale: 'css' });
+      await root.locator('[name="personal-number"]').fill('0000000000000');
+      await expect(cnpField).toHaveCount(0);
     } else {
       for (const _step of study.steps) await next.click();
       await expect(root.locator('[data-study-review]')).toBeVisible();

@@ -14,6 +14,8 @@ export async function expectPageLayout(root: Locator) {
       header: box('.sdr-header'), navigation: box('.sdr-navigation'),
       headerContent: box('.sdr-header__inner'), navigationContent: box('.sdr-navigation > .sdr-width-container'),
       content: box(':scope > .sdr-container'),
+      footer: box(':scope > .sdr-footer'),
+      footerContent: box(':scope > .sdr-footer > .sdr-container'),
       padding: getComputedStyle(node).padding,
     };
   });
@@ -21,8 +23,10 @@ export async function expectPageLayout(root: Locator) {
   for (const edge of ['x', 'right'] as const) {
     expect(geometry.header[edge]).toBeCloseTo(geometry.root[edge], 1);
     expect(geometry.navigation[edge]).toBeCloseTo(geometry.root[edge], 1);
+    expect(geometry.footer[edge]).toBeCloseTo(geometry.root[edge], 1);
     expect(geometry.headerContent[edge]).toBeCloseTo(geometry.content[edge], 1);
     expect(geometry.navigationContent[edge]).toBeCloseTo(geometry.content[edge], 1);
+    expect(geometry.footerContent[edge]).toBeCloseTo(geometry.content[edge], 1);
   }
   expect(geometry.content.x).toBeGreaterThan(geometry.root.x);
   expect(geometry.content.right).toBeLessThan(geometry.root.right);
