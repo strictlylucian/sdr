@@ -21,9 +21,16 @@ export function ProgressExample({ locale }: P) { return <R.Progress label={tr(lo
 export function ToastExample({ locale }: P) {
   const [show, setShow] = useState(false);
   const [generation, setGeneration] = useState(0);
+  const message = tr(locale, "feedback.changesSaved");
   return <R.Stack>
+    <div role="status" aria-atomic="true" className="sdr-visually-hidden" data-sdr-toast-status>{show && <span key={generation}>{message}</span>}</div>
     <R.Button id="toast-trigger" data-sdr-toast-show onClick={() => { setGeneration(value => value + 1); setShow(true); }}>{tr(locale, "feedback.showConfirmation")}</R.Button>
-    <div hidden={!show} style={{ display: show ? 'contents' : undefined }} data-sdr-toast-example><R.Toast key={generation} returnFocusId="toast-trigger" closeLabel={componentText(locale, 'close')}>{tr(locale, "feedback.changesSaved")}</R.Toast></div>
+    <div hidden={!show} style={{ display: show ? 'contents' : undefined }} data-sdr-toast-example
+      onClick={event => { if (event.target instanceof Element && event.target.closest('[data-sdr-dismiss]')) setShow(false); }}>
+      <R.Toast key={generation} announce={false} returnFocusId="toast-trigger" closeLabel={componentText(locale, 'close')}>
+        <span data-sdr-toast-message>{message}</span>
+      </R.Toast>
+    </div>
   </R.Stack>;
 }
 export function CookieBannerExample({ locale }: P) { const [choice, setChoice] = useState(''); return <R.Stack>{!choice && <R.CookieBanner title={tr(locale, "feedback.cookiePreferences")} acceptLabel={tr(locale, "feedback.acceptAnalytics")} rejectLabel={tr(locale, "feedback.rejectAnalytics")} onAccept={() => setChoice(tr(locale, "feedback.analyticsAcceptedInThisDemonstration"))} onReject={() => setChoice(tr(locale, "feedback.analyticsRejectedInThisDemonstration"))}>{tr(locale, "feedback.optionalCookiesRemainOffUntilYouChoose")}</R.CookieBanner>}<p role="status" hidden={!choice}>{choice}</p></R.Stack>; }

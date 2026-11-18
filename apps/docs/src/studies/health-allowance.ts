@@ -17,7 +17,7 @@ export const healthAllowance: FormStudy = {
       key: 'identity',
       fields: [
         field('full-name', 'applicantName', { required: true, autoComplete: 'name' }),
-        field('personal-number', 'personalNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp' }),
+        field('personal-number', 'personalNumber', { required: true, pattern: '[0-9]{13}', hint: 'fictionalCnp', patternError: 'cnpFormatError' }),
         field('email', 'email', { type: 'email', required: true, autoComplete: 'email' }),
         field('phone', 'phone', { type: 'tel', autoComplete: 'tel' }),
       ],

@@ -159,10 +159,12 @@ for (const edition of ['react', 'html'] as const) for (const locale of ['ro', 'e
         await group.locator('[name="personal-number"]').fill('123');
         await next.click();
         await expect(group.locator('[name="personal-number"]')).toBeFocused();
+        await expect(group.locator('[data-study-error]')).toHaveText(locale === 'ro' ? 'Introdu un CNP fictiv de exact 13 cifre.' : 'Enter a fictional CNP with exactly 13 digits.');
         await group.locator('[name="personal-number"]').fill('0000000000000');
         await group.locator('[name="email"]').fill('invalid');
         await next.click();
         await expect(group.locator('[name="email"]')).toBeFocused();
+        await expect(group.locator('[name="email"]')).toHaveAccessibleDescription(locale === 'ro' ? 'Introdu o adresă de email în formatul nume@exemplu.ro.' : 'Enter an email address in the format name@example.com.');
         await group.locator('[name="email"]').fill('fictional@example.invalid');
         await expect(group.locator('[name="email"]')).not.toHaveAttribute('aria-invalid');
       }

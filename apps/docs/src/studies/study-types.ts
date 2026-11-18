@@ -7,6 +7,7 @@ export interface Field {
   name: string; key: Key;
   type?: 'text' | 'email' | 'tel' | 'date' | 'textarea' | 'checkbox' | 'number' | 'select' | 'file' | 'radios' | 'checkboxes';
   required?: boolean; pattern?: string; hint?: Key; autoComplete?: string;
+  patternError?: Key;
   min?: string; max?: string; step?: string; defaultValue?: string; fixedValueKey?: Key;
   options?: ({ value: string; label: string } | { value: string; labelKey: Key })[];
   showWhen?: FieldCondition | FieldCondition[];

@@ -31,8 +31,17 @@ const locale = 'en';
 export function ToastExample() {
   const [show, setShow] = useState(false);
   const [generation, setGeneration] = useState(0);
+  const message = 'Changes saved.';
   return (
     <R.Stack>
+      <div
+        role="status"
+        aria-atomic="true"
+        className="sdr-visually-hidden"
+        data-sdr-toast-status
+      >
+        {show && <span key={generation}>{message}</span>}
+      </div>
       <R.Button
         id="toast-trigger"
         data-sdr-toast-show
@@ -47,13 +56,21 @@ export function ToastExample() {
         hidden={!show}
         style={{ display: show ? 'contents' : undefined }}
         data-sdr-toast-example
+        onClick={(event) => {
+          if (
+            event.target instanceof Element &&
+            event.target.closest('[data-sdr-dismiss]')
+          )
+            setShow(false);
+        }}
       >
         <R.Toast
           key={generation}
+          announce={false}
           returnFocusId="toast-trigger"
           closeLabel="Close"
         >
-          Changes saved.
+          <span data-sdr-toast-message>{message}</span>
         </R.Toast>
       </div>
     </R.Stack>
@@ -73,6 +90,12 @@ export function ToastExample() {
   class="sdr"
 >
   <div class="sdr-stack">
+    <div
+      role="status"
+      aria-atomic="true"
+      class="sdr-visually-hidden"
+      data-sdr-toast-status="true"
+    ></div>
     <button
       id="toast-trigger"
       data-sdr-toast-show="true"
@@ -90,7 +113,7 @@ export function ToastExample() {
         data-sdr-component="dismiss"
         data-sdr-return-focus="toast-trigger"
       >
-        <div role="status">Changes saved.</div>
+        <div><span data-sdr-toast-message="true">Changes saved.</span></div>
         <button
           data-sdr-dismiss="true"
           type="button"
@@ -117,7 +140,7 @@ export function ToastExample() {
 
 ## Usage
 
-Toast renders in normal document flow, so this preview stays inside its example. The component does not create a portal or a fixed viewport region; applications own that positioning. Dismissal is manual, and returnFocusId identifies an existing focus destination. Persistent errors belong in the page.
+Toast renders in normal document flow, so this preview stays inside its example. The component does not create a portal or a fixed viewport region; applications own that positioning. Dismissal is manual, and returnFocusId identifies an existing focus destination. When the application supplies a persistent status region to announce the message, `announce={false}` lets that region handle announcements. Persistent errors belong in the page.
 
 
 
@@ -128,6 +151,7 @@ Toast renders in normal document flow, so this preview stays inside its example.
 | `children` | `ReactNode` | Yes |
 | `returnFocusId` | `string` | Yes |
 | `closeLabel` | `string` | Yes |
+| `announce` | `boolean \| undefined` | No |
 
 Native HTML, aria-* and data-* attributes are available where allowed by the component types. Component-specific properties are extracted from TypeScript when generating documentation.
 

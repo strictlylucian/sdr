@@ -12,7 +12,11 @@ export function studyValidation(fields: Field[], locale: Locale, control: (name:
     const empty = choice ? !inputs.some(item => (item as HTMLInputElement).checked) : !input.value.trim();
     const label = t(locale, field.key);
     if (empty) return field.required ? t(locale, 'required', { label }) : '';
-    if (input.validity.typeMismatch || input.validity.patternMismatch) return t(locale, 'invalid', { label });
+    if (input.validity.typeMismatch && field.type === 'email') return t(locale, 'emailFormatError');
+    if (input.validity.patternMismatch) {
+      if (!field.patternError) throw new Error(`Missing format correction for ${field.name}`);
+      return t(locale, field.patternError);
+    }
     return '';
   }
 

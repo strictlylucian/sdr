@@ -29,14 +29,17 @@ document.addEventListener('sdr:action', event => {
 });
 
 for (const trigger of document.querySelectorAll('[data-sdr-toast-show]')) {
+  const wrapper = trigger.parentElement.querySelector('[data-sdr-toast-example]');
+  const toast = wrapper?.querySelector('.sdr-toast');
+  const message = toast?.querySelector('[data-sdr-toast-message]');
+  const status = trigger.parentElement.querySelector('[data-sdr-toast-status]');
+  if (!toast || !message || !status) throw new Error('Toast example requires a toast, message and status region.');
+  toast.addEventListener('sdr:dismiss', () => { status.replaceChildren(); });
   trigger.addEventListener('click', () => {
-    const wrapper = trigger.parentElement.querySelector('[data-sdr-toast-example]');
-    if (!(wrapper instanceof HTMLElement)) throw new Error('Toast example requires a presentation wrapper.');
-    const toast = wrapper.querySelector('.sdr-toast');
-    if (!(toast instanceof HTMLElement)) throw new Error('Toast example requires toast markup.');
     wrapper.hidden = false;
     wrapper.style.display = 'contents';
     toast.hidden = false;
+    status.replaceChildren(document.createTextNode(message.textContent));
   });
 }
 

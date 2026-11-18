@@ -34,18 +34,26 @@ for (const locale of ['ro', 'en'] as Locale[]) for (const edition of ['react', '
   test(`WCAG toast ${edition} ${locale}: keyboard reveal, status and focus restoration`, async ({ page }) => {
     const root = await openExample(page, 'Toast', edition, locale);
     const trigger = root.locator('[data-sdr-toast-show]');
+    const status = root.getByRole('status');
+    await expect(status).toBeEmpty();
+    const originalStatus = await status.elementHandle();
+    const toast = root.locator('.sdr-toast');
+    const message = await toast.locator('[data-sdr-toast-message]').textContent();
     await trigger.focus();
     await page.keyboard.press('Enter');
-    const status = root.getByRole('status');
-    await expect(status).toBeVisible();
-    await expect(status).not.toBeEmpty();
+    await expect(toast).toBeVisible();
+    await expect(status).toHaveText(message!);
     await expect(trigger).toBeFocused();
     await expectAccessible(page, edition === 'html' ? 'main > .sdr' : '[data-sdr-example="Toast"] .sdr-demo__canvas');
     await page.keyboard.press('Tab');
     await expect(root.locator('[data-sdr-dismiss]')).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(status).toBeHidden();
+    await expect(toast).toBeHidden();
+    await expect(status).toBeEmpty();
     await expect(trigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(status).toHaveText(message!);
+    expect(await status.evaluate((node, original) => node === original, originalStatus)).toBe(true);
   });
 
   test(`WCAG disclosure ${edition} ${locale}: keyboard opening, Escape and focus restoration`, async ({ page, browserName }, info) => {
