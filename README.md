@@ -1,6 +1,8 @@
+![SDR](.github/sdr-banner.svg)
+
 # SDR — Sistem de Design Românesc
 
-[Română](README.ro.md) · [Repository](https://github.com/strictlylucian/sdr)
+**[Read the documentation](https://strictlylucian.github.io/sdr/en/)** · [Română](README.ro.md)
 
 **Independent proposal · 0.1.0-alpha.3 · Experimental implementation.**
 

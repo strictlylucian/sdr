@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="96" viewBox="0 0 900 96">
+  <title>SDR</title>
+  <path fill="#002B7F" d="M0 0h900v92H0z"/>
+  <path fill="#CE1126" d="M0 92h900v4H0z"/>
+  <text x="32" y="61" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="750">SDR</text>
+</svg>
