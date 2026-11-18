@@ -4,6 +4,11 @@
 
 **[Citește documentația](https://strictlylucian.github.io/sdr/ro/)** · [English](README.md)
 
+| Pachet npm | Ce include |
+| --- | --- |
+| [`@strictlylucian/sdr-core`](https://www.npmjs.com/package/@strictlylucian/sdr-core) | Stiluri comune, tokenuri de design și JavaScript portabil |
+| [`@strictlylucian/sdr-react`](https://www.npmjs.com/package/@strictlylucian/sdr-react) | Componente React |
+
 SDR oferă o bază CSS și JavaScript independentă de framework pentru interfețele serviciilor publice, o integrare React și o distribuție portabilă cu două fișiere. Documentația și exemplele sunt în română și engleză. Proiectul nu pretinde afiliere guvernamentală sau certificare de accesibilitate.
 
 Proiectul urmează principiul „Distribution first”: core furnizează baza comună, iar pachetele pentru framework-uri oferă propriile API-uri de componente. React este alegerea implicită în repository; sunt binevenite contribuțiile pentru alte framework-uri. Detaliile sunt în [ghidul de instalare și integrare](https://strictlylucian.github.io/sdr/ro/getting-started/).
