@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.1.0-alpha.3 — 2026-11-18
+
+### Library and documentation
+
 - Export a reusable Page layout and use it for service-page and form-remake examples, with full-width chrome, consistent content gutters and embedded-page landmarks. Remove generic alpha/fictional-data notices from documentation and examples, and eliminate standalone form pages' default outer margin.
 
 - Audit component examples against WCAG 2.2 A/AA rules across themes, densities, expanded content, keyboard focus, forced colours and text-spacing/reflow settings. Add bilingual, source-validated accessibility evidence badges and a per-component report; keep pending human and screen-reader evaluation explicit.
@@ -13,6 +17,19 @@
 - Fix React PasswordInput returning to masked mode after editing a revealed password. React now owns visibility, input type and the toggle state together. Clarify that Toast renders in normal flow and applications own viewport placement.
 
 - Expand the bilingual institutional identity study into seven related identities, with shared Wikimedia-derived vector artwork, inherited family colours, fixed proportions and service/header applications. This is documentation-only exploration, separate from the npm packages.
+
+- Add the medical leave allowance study and first-step validation demonstrations for it and Gruiu. Match inline errors, error rails and accessible descriptions to the SDR components.
+- Include the shared Page footer in every form study, both standalone journeys and the individual step examples.
+- Resolve the Astro build CLI through Node's package resolution so documentation builds support hoisted workspace dependencies.
+
+### Security
+
+- Upgrade the documentation application's Astro dependency to 7.4.13, covering GHSA-mh32-jxcr-mh9f and GHSA-r3h5-4585-7x3w, with the compatible Markdown processor update.
+
+### Verification
+
+- Verify installed archives on React 18.3.0, 18.3.1, 19.0.0 and 19.2.0; pass 270 component tests and 252 browser cases.
+- Refresh accessibility evidence with 266 passing React/HTML cases and 2,676 axe scans against the release sources and dependencies.
 
 ## 0.1.0-alpha.2 — 2026-10-27
 
